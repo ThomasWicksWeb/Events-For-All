@@ -5,13 +5,16 @@
 // 1 - Global resets
 // 
 // 2 - Navbar
-// 
+//
+// 3 - Single Event Page
 //
 // **************************************************************
 
-/* =============
-  Global Reset
-============= */
+// **********************************
+//
+//  1 - Global Reset
+//
+// ********************************** 
 
 * {
     padding: 0;
@@ -43,8 +46,17 @@ a:active {
 
 
 // **********************************
-// Singe Event Body Grid
+//
+//  2 - Navbar
+//
+// ********************************** 
+
+
 // **********************************
+//
+//  3 - Single Event Page
+//
+// ********************************** 
 
 .singleEventBodyGrid {
     &Parent {
@@ -56,7 +68,6 @@ a:active {
             "EventInfo EventDesc EventDesc EventDesc";
         grid-gap: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: max-content;
     }
 
     &Parent > * {

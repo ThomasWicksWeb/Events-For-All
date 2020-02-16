@@ -1,6 +1,3 @@
-/* =============
-  Global Reset
-============= */
 * {
   padding: 0;
   margin: 0;
@@ -41,9 +38,6 @@ a:active:focus {
   grid-gap: 20px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: max-content;
-      grid-template-rows: -webkit-max-content;
-      grid-template-rows: max-content;
 }
 
 .singleEventBodyGridParent > * {
