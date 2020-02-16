@@ -1,3 +1,16 @@
+<?php 
+
+//Start session and check logon status
+session_start();
+if (isset($_SESSION['loggedon'])) {
+	$loggedon = $_SESSION['loggedon'];
+}
+else {
+	$loggedon = FALSE;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
