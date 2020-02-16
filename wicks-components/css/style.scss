@@ -30,6 +30,7 @@ body {
     overflow-x: hidden;
     overflow: hidden;
     transition: all .5s;
+    line-height: 1.6;;
 }
 
 a,
@@ -42,6 +43,16 @@ a:active {
     &:focus {
         outline: none !important;
     }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+p {
+    padding: .5rem;
 }
 
 
@@ -64,14 +75,17 @@ a:active {
         width: 100%;
         grid-template-areas: "SplashImg SplashImg SplashImg SplashImg"
             "ProfileImg ActionsBar ActionsBar ActionsBar"
-            "ProfileImg EventDesc EventDesc EventDesc"
-            "EventInfo EventDesc EventDesc EventDesc";
+            "ProfileImg EventDesc EventDesc Atendees"
+            "EventInfo EventDesc EventDesc Atendees"
+            "EventInfo EventDesc EventDesc Atendees";
         grid-gap: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: min-content;
     }
 
     &Parent > * {
         outline: 2px solid #333;
+        align-self: stretch;
     }
 
     &SplashImg {
@@ -81,7 +95,7 @@ a:active {
 
     &ProfileImg {
         grid-area: ProfileImg;
-        height: 150px;
+        min-height: 150px;
     }
 
     &ActionsBar {
@@ -95,8 +109,37 @@ a:active {
     &EventInfo {
         grid-area: EventInfo;
     }
+
+    &Atendees {
+        grid-area: Atendees;
+    }
 }
 
+.antendeesListItem {
+    display: grid;
+    width: 100%;
+        grid-template-areas: "profileImg profileUserName"
+            "profileImg profileUserRole";
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: min-content;
+
+        & img {
+            grid-area: profileImg;
+            border-radius: 50%;
+            align-self: center;
+            justify-self: center;
+        }
+
+        & h4 {
+            grid-area: profileUserName;
+            padding-bottom: 0px;
+        }
+
+        & h5 {
+            grid-area: profileUserRole;
+            padding-top: 0px;
+        }
+}
 
 
 

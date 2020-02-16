@@ -13,6 +13,7 @@ body {
   overflow: hidden;
   -webkit-transition: all .5s;
   transition: all .5s;
+  line-height: 1.6;
 }
 
 a,
@@ -30,18 +31,34 @@ a:active:focus {
   outline: none !important;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+p {
+  padding: .5rem;
+}
+
 .singleEventBodyGridParent {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ProfileImg ActionsBar ActionsBar ActionsBar" "ProfileImg EventDesc EventDesc EventDesc" "EventInfo EventDesc EventDesc EventDesc";
+      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ProfileImg ActionsBar ActionsBar ActionsBar" "ProfileImg EventDesc EventDesc Atendees" "EventInfo EventDesc EventDesc Atendees" "EventInfo EventDesc EventDesc Atendees";
   grid-gap: 20px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: min-content;
+      grid-template-rows: -webkit-min-content;
+      grid-template-rows: min-content;
 }
 
 .singleEventBodyGridParent > * {
   outline: 2px solid #333;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
 }
 
 .singleEventBodyGridSplashImg {
@@ -57,7 +74,7 @@ a:active:focus {
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: ProfileImg;
-  height: 150px;
+  min-height: 150px;
 }
 
 .singleEventBodyGridActionsBar {
@@ -69,16 +86,63 @@ a:active:focus {
 
 .singleEventBodyGridEventDesc {
   -ms-grid-row: 3;
-  -ms-grid-row-span: 2;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 3;
+  -ms-grid-column-span: 2;
   grid-area: EventDesc;
 }
 
 .singleEventBodyGridEventInfo {
   -ms-grid-row: 4;
+  -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: EventInfo;
+}
+
+.singleEventBodyGridAtendees {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 4;
+  grid-area: Atendees;
+}
+
+.antendeesListItem {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+  -ms-grid-rows: min-content;
+      grid-template-rows: -webkit-min-content;
+      grid-template-rows: min-content;
+}
+
+.antendeesListItem img {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: profileImg;
+  border-radius: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.antendeesListItem h4 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: profileUserName;
+  padding-bottom: 0px;
+}
+
+.antendeesListItem h5 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: profileUserRole;
+  padding-top: 0px;
 }
 
 .block:not(:last-child),
