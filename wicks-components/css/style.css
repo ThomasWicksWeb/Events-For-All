@@ -1,0 +1,236 @@
+/* =============
+  Global Reset
+============= */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  background-color: #f5f5f5;
+  color: #3A3A3A;
+  overflow-x: hidden;
+  overflow: hidden;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:focus,
+a:visited:focus,
+a:hover:focus,
+a:active:focus {
+  outline: none !important;
+}
+
+.singleEventBodyGridParent {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ProfileImg ActionsBar ActionsBar ActionsBar" "ProfileImg EventDesc EventDesc EventDesc" "EventInfo EventDesc EventDesc EventDesc";
+  grid-gap: 20px;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: max-content;
+      grid-template-rows: -webkit-max-content;
+      grid-template-rows: max-content;
+}
+
+.singleEventBodyGridParent > * {
+  outline: 2px solid #333;
+}
+
+.singleEventBodyGridSplashImg {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: SplashImg;
+  height: 250px;
+}
+
+.singleEventBodyGridProfileImg {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: ProfileImg;
+  height: 150px;
+}
+
+.singleEventBodyGridActionsBar {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: ActionsBar;
+}
+
+.singleEventBodyGridEventDesc {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-area: EventDesc;
+}
+
+.singleEventBodyGridEventInfo {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: EventInfo;
+}
+
+.block:not(:last-child),
+.box:not(:last-child),
+.breadcrumb:not(:last-child),
+.content:not(:last-child),
+.highlight:not(:last-child),
+.level:not(:last-child),
+.list:not(:last-child),
+.message:not(:last-child),
+.notification:not(:last-child),
+.progress:not(:last-child),
+.subtitle:not(:last-child),
+.table-container:not(:last-child),
+.table:not(:last-child),
+.tabs:not(:last-child),
+.title:not(:last-child) {
+  margin-bottom: 0;
+}
+
+/* ==============
+    Animations
+============== */
+@-webkit-keyframes BGGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes BGGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes cheers {
+  0% {
+  }
+  15% {
+    -webkit-transform: scale(1.25);
+            transform: scale(1.25);
+  }
+  30% {
+    -webkit-transform: rotate(15deg) scale(1.25);
+            transform: rotate(15deg) scale(1.25);
+  }
+  45% {
+    -webkit-transform: rotate(0deg) scale(1.25);
+            transform: rotate(0deg) scale(1.25);
+  }
+  60% {
+    -webkit-transform: rotate(-15deg) scale(1.25);
+            transform: rotate(-15deg) scale(1.25);
+  }
+  80% {
+    -webkit-transform: rotate(0deg) scale(1.25);
+            transform: rotate(0deg) scale(1.25);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes cheers {
+  0% {
+  }
+  15% {
+    -webkit-transform: scale(1.25);
+            transform: scale(1.25);
+  }
+  30% {
+    -webkit-transform: rotate(15deg) scale(1.25);
+            transform: rotate(15deg) scale(1.25);
+  }
+  45% {
+    -webkit-transform: rotate(0deg) scale(1.25);
+            transform: rotate(0deg) scale(1.25);
+  }
+  60% {
+    -webkit-transform: rotate(-15deg) scale(1.25);
+            transform: rotate(-15deg) scale(1.25);
+  }
+  80% {
+    -webkit-transform: rotate(0deg) scale(1.25);
+            transform: rotate(0deg) scale(1.25);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+  }
+}
+
+/* ==========================================
+=============== MEDIA QUERIES ===============
+========================================== */
+/* ============= MOBILE 800 ============= */
+/* ============= MOBILE 568 ============= */
+/*# sourceMappingURL=style.css.map */
