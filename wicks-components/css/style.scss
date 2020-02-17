@@ -74,10 +74,8 @@ p {
         display: grid;
         width: 100%;
         grid-template-areas: "SplashImg SplashImg SplashImg SplashImg"
-            "ProfileImg ActionsBar ActionsBar ActionsBar"
-            "ProfileImg EventDesc EventDesc Atendees"
-            "EventInfo EventDesc EventDesc Atendees"
-            "EventInfo EventDesc EventDesc Atendees";
+            "ActionsBar ActionsBar ActionsBar ActionsBar"
+            "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
         grid-gap: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: min-content;
@@ -93,10 +91,16 @@ p {
         height: 250px;
     }
 
-    &ProfileImg {
-        grid-area: ProfileImg;
-        min-height: 150px;
+    &ProfileImgAndEventInfo {
+        grid-area: ProfileImgAndEventInfo;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
+
+    // &EventInfo {
+    //     grid-area: EventInfo;
+    // }
 
     &ActionsBar {
         grid-area: ActionsBar;
@@ -106,9 +110,7 @@ p {
         grid-area: EventDesc;
     }
 
-    &EventInfo {
-        grid-area: EventInfo;
-    }
+    
 
     &Atendees {
         grid-area: Atendees;
