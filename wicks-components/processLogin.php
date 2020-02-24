@@ -41,17 +41,20 @@ echo "<script>console.log('$querypassword');</script>";
 if($querypassword !== $password){
   $_SESSION['loggedon'] = NULL;
   $_SESSION['user'] = NULL;
+  header("Location: ./login.php");
 }
 elseif($querypassword === $password) {
   $_SESSION['loggedon'] = TRUE;
   $_SESSION['user'] = $logonid;
+  header("Location: ./home.php");
 }
 else{
     $_SESSION['loggedon'] = NULL;
     $_SESSION['user'] = NULL;
+    header("Location: ./login.php");
 }
 
-header("Location: ./home.php");
+
 
 
 
