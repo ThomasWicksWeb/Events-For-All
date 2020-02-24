@@ -30,7 +30,8 @@ body {
     overflow-x: hidden;
     overflow: hidden;
     transition: all .5s;
-    line-height: 1.6;;
+    line-height: 1.6;
+    ;
 }
 
 a,
@@ -79,21 +80,20 @@ form {
         display: grid;
         width: 100%;
         grid-template-areas: "SplashImg SplashImg SplashImg SplashImg"
-                            "ActionsBar ActionsBar ActionsBar ActionsBar"
-                            "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
+            "ActionsBar ActionsBar ActionsBar ActionsBar"
+            "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
         grid-gap: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: min-content;
     }
 
-    &Parent > * {
+    &Parent>* {
         outline: 2px solid #333;
         align-self: stretch;
     }
 
     &SplashImg {
         grid-area: SplashImg;
-        // background-image: url("http://placekitten.com/200/200");
         background-position: center;
         background-size: cover;
         height: 250px;
@@ -158,27 +158,27 @@ form {
 .antendeesListItem {
     display: grid;
     width: 100%;
-        grid-template-areas: "profileImg profileUserName"
-            "profileImg profileUserRole";
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: min-content;
+    grid-template-areas: "profileImg profileUserName"
+        "profileImg profileUserRole";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: min-content;
 
-        & img {
-            grid-area: profileImg;
-            border-radius: 50%;
-            align-self: center;
-            justify-self: center;
-        }
+    & img {
+        grid-area: profileImg;
+        border-radius: 50%;
+        align-self: center;
+        justify-self: center;
+    }
 
-        & h4 {
-            grid-area: profileUserName;
-            padding-bottom: 0px;
-        }
+    & h4 {
+        grid-area: profileUserName;
+        padding-bottom: 0px;
+    }
 
-        & h5 {
-            grid-area: profileUserRole;
-            padding-top: 0px;
-        }
+    & h5 {
+        grid-area: profileUserRole;
+        padding-top: 0px;
+    }
 }
 
 
