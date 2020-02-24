@@ -47,7 +47,6 @@ else {
 </head>
 
 <body>
-
     <!-- <NavBar> -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -64,7 +63,14 @@ else {
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">Home</a>
+                <?php 
+		            if ($loggedon) {
+                        echo "<a class='navbar-item' href='./home.php'>Home</a>";
+		            }
+		            else{
+                        echo "<a class='navbar-item' href='./index.php'>Home</a>";
+                    }
+		        ?> 
                 <a class="navbar-item">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -121,4 +127,3 @@ else {
 </body>
 
 </html>
-
