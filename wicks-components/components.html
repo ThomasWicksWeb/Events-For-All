@@ -51,17 +51,24 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item">Home</a>
-                <a class="navbar-item">Events</a>
+                <a class="navbar-item">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">More</a>
+                    <a class="navbar-link">Categories</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">How it works</a>
-                        <a class="navbar-item">Contact</a>
+                        <a class="navbar-item">Sports & Fitness</a>
+                        <a class="navbar-item">Tech</a>
+                        <a class="navbar-item">Food & Drinks</a>
+                        <a class="navbar-item">Outdoors & Adventure</a>
+                        <a class="navbar-item">Photography</a>
+                        <a class="navbar-item">Music</a>
+                        <a class="navbar-item">Movies</a>
+                        <a class="navbar-item">Other</a>
                         <hr class="navbar-divider">
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
+                <a href="#" class="navbar-item">About Rip-Off MeetUp (I forget our name)</a>
             </div>
 
             <div class="navbar-end">
@@ -83,18 +90,27 @@
 <!-- <SingleEventPageBody> -->
     <section class="section">
         <div class="container singleEventBodyGridParent">
-            <!-- <img src="" alt="" class="imagePlaceholder"> -->
-            <div class="singleEventBodyGridSplashImg"><strong>Banner Image</strong></div>
-            <div class="singleEventBodyGridActionsBar"><strong>ActionsBar -- Ex: Join Event btn, Message Event Organizer btn, etc...</strong></div>
+            <!-- NEED TO LOAD THE BACKGROUND-IMAGE HERE IN HTML -->
+            <div class="singleEventBodyGridSplashImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
+            <div class="singleEventBodyGridActionsBar">
+                <ul class="eventPageActionBar">
+                    <!-- <li><button class="button">Join Event</button></li>
+                    <li><button class="button">Message Organizers</button></li>
+                    <li><button class="button">View Antendees</button></li>
+                    <li><button class="button">Report Event</button></li> -->
+                    <li><a href="#">Join Event</a></li>
+                    <li><a href="#">Message Organizers</a></li>
+                    <li><a href="#">View Antendees</a></li>
+                    <li><a href="#">Report Event</a></li>
+                </ul>
+            </div>
             <div class="singleEventBodyGridProfileImgAndEventInfo">
-                <img src="http://placekitten.com/150/150" alt="">
+                <img src="http://placekitten.com/200/200" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam sit non unde dolorum voluptate nobis debitis ad, nulla suscipit molestiae, error sunt at possimus ex dignissimos aperiam est corporis? Illum illo, harum amet nesciunt odit voluptatum velit aliquid quod minus<br><br>porro voluptas veniam molestias quos ut error vero. Corrupti omnis culpa praesentium, excepturi sint in quia quas sit animi optio placeat facere ipsum perferendis dolorem odio quae minus. Omnis aperiam est in ad sit quidem, cupiditate et iure laudantium esse provident nemo veniam, nesciunt voluptatibus tenetur quae officiis ipsa distinctio. Qui minima accusamus iste nulla placeat aperiam id. Aspernatur.</p>
             </div>
             <!-- <div class="singleEventBodyGridProfileImg"><strong>Event Profile Picture/Logo</strong></div>
             <div class="singleEventBodyGridEventInfo"><strong>Event location info and data</strong> <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odit quam expedita.</div> -->
             <div class="singleEventBodyGridEventDesc">
-                <strong>Event description</strong>
-                <br><br>
                 <h1 class="is-size-2">Event title</h1>
                 <h2 class="is-size-4">Event subtitle</h2>
                 <p class="is-size-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident voluptatum, numquam eveniet saepe quae dolore dicta, in exercitationem rerum reprehenderit asperiores? Tenetur dolorum nobis officiis distinctio voluptatem quam animi nisi error quidem suscipit, quaerat in iure veritatis expedita odio optio, asperiores temporibus illum nostrum similique tempora at. Tempore, at officia esse minus cumque voluptate eum corporis repellat possimus fugiat illum vero nihil eveniet, tenetur accusamus facilis repudiandae non molestias error, laborum architecto dolore rem? Impedit, laboriosam cumque! Nobis consectetur placeat ratione beatae mollitia? Corporis, atque commodi, error laborum quas consectetur sequi veniam corrupti sint iste, quae ducimus nemo optio perspiciatis!</p>
@@ -108,6 +124,16 @@
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
                         <h4 class="is-size-5">John Smith</h4>
                         <h5 class="is-size-6">Event Founder</h5>
+                    </li>
+                    <li class="antendeesListItem">
+                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
+                        <h4 class="is-size-5">Mark Johnson</h4>
+                        <h5 class="is-size-6">Atendee</h5>
+                    </li>
+                    <li class="antendeesListItem">
+                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
+                        <h4 class="is-size-5">Tim Erikson</h4>
+                        <h5 class="is-size-6">Atendee</h5>
                     </li>
                 </ul>
             </div>

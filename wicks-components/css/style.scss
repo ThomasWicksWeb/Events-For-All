@@ -88,7 +88,11 @@ p {
 
     &SplashImg {
         grid-area: SplashImg;
+        // background-image: url("http://placekitten.com/200/200");
+        background-position: center;
+        background-size: cover;
         height: 250px;
+        width: 100%;
     }
 
     &ProfileImgAndEventInfo {
@@ -96,6 +100,11 @@ p {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        align-items: center;
+
+        & img {
+            padding-top: 10px;
+        }
     }
 
     // &EventInfo {
@@ -108,12 +117,36 @@ p {
 
     &EventDesc {
         grid-area: EventDesc;
-    }
 
-    
+        & h1 {
+            padding-bottom: 0;
+        }
+
+        & h2 {
+            padding-top: 0;
+        }
+    }
 
     &Atendees {
         grid-area: Atendees;
+    }
+}
+
+.eventPageActionBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    & li {
+        padding: 1rem 1rem;
+    }
+
+    & a:hover {
+        background-color: rgba(51, 51, 51, 0.096);
+    }
+
+    & li:not(:last-child) {
+        border-right: 1px solid rgba(51, 51, 51, 0.596);
     }
 }
 
