@@ -55,6 +55,11 @@ p {
     padding: .5rem;
 }
 
+form {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 
 // **********************************
 //
@@ -74,8 +79,8 @@ p {
         display: grid;
         width: 100%;
         grid-template-areas: "SplashImg SplashImg SplashImg SplashImg"
-            "ActionsBar ActionsBar ActionsBar ActionsBar"
-            "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
+                            "ActionsBar ActionsBar ActionsBar ActionsBar"
+                            "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
         grid-gap: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: min-content;
