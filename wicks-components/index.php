@@ -64,32 +64,34 @@ else {
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="./index.php">Home</a>
-                <a class="navbar-item" href="./components.html">Events</a>
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">More</a>
+                    <a class="navbar-link">Categories</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">How it works</a>
-                        <a class="navbar-item">Contact</a>
+                        <a class="navbar-item">Sports & Fitness</a>
+                        <a class="navbar-item">Tech</a>
+                        <a class="navbar-item">Food & Drinks</a>
+                        <a class="navbar-item">Outdoors & Adventure</a>
+                        <a class="navbar-item">Photography</a>
+                        <a class="navbar-item">Music</a>
+                        <a class="navbar-item">Movies</a>
+                        <a class="navbar-item">Other</a>
                         <hr class="navbar-divider">
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
+                <a href="#" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                    <?php 
-		                if ($loggedon) {
-			            
-		                }
-		                else{
-                        echo "<a class='button is-primary'><strong>Sign up</strong></a>";
-                        echo "<a class='button is-light'>Log in</a>";
-                        }
-		                ?>   
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">Log in</a>
                     </div>
                 </div>
             </div>
@@ -98,6 +100,16 @@ else {
     <!-- </NavBar> -->
 
 
+
+<?php 
+		                if ($loggedon) {
+			            
+		                }
+		                else{
+                        echo "<a class='button is-primary'><strong>Sign up</strong></a>";
+                        echo "<a class='button is-light'>Log in</a>";
+                        }
+		                ?>   
     
 
     <script>
