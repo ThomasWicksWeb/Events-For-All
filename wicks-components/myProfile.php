@@ -64,7 +64,16 @@ else {
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">Home</a>
+            <?php 
+		            if ($loggedon) {
+                        echo "<a class='navbar-item' href='./home.php'>Home</a>";
+                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
+                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
+		            }
+		            else{
+                        echo "<a class='navbar-item' href='./index.php'>Home</a>";
+                    }
+		        ?> 
                 <a class="navbar-item">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
