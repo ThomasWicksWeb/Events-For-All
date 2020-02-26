@@ -66,6 +66,8 @@ else {
                 <?php 
 		            if ($loggedon) {
                         echo "<a class='navbar-item' href='./home.php'>Home</a>";
+                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
+                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
 		            }
 		            else{
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";

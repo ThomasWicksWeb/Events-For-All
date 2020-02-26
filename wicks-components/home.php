@@ -66,12 +66,14 @@ else {
                 <?php 
 		            if ($loggedon) {
                         echo "<a class='navbar-item' href='./home.php'>Home</a>";
+                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
+                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
 		            }
 		            else{
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";
                     }
 		        ?> 
-                <a class="navbar-item">Events Near Me</a>
+                <a class="navbar-item" href="events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
@@ -96,7 +98,7 @@ else {
                     <div class="buttons">
                         <?php 
 		                    if ($loggedon) {
-                                echo "<a class='button is-light' href='logOut.php'>Log Out</a>";
+                                echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
                                 echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";

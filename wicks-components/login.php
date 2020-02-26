@@ -97,7 +97,7 @@ else {
                     <div class="buttons">
                         <?php 
 		                    if ($loggedon) {
-                                echo "<a class='button is-light' href='logOut.php'>Log Out</a>";
+                                echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
                                 echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
@@ -115,7 +115,7 @@ else {
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="./processLogin.php">
+            <form class="form" method="POST" action="./methods/processLogin.php">
                 <div class="field">
                     <label id="usernameOrEmailLogin" class="label">Login with Username or Email</label>
                     <div class="control">

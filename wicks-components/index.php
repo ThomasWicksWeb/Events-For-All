@@ -90,7 +90,7 @@ else {
                     <div class="buttons">
                         <?php 
 		                    if ($loggedon) {
-                                echo "<a class='button is-light'>Log Out</a>";
+                                echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
                                 echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";

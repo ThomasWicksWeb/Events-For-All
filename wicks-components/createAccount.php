@@ -64,14 +64,8 @@ else {
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <?php 
-		            if ($loggedon) {
-                        echo "<a class='navbar-item' href='./home.php'>Home</a>";
-		            }
-		            else{
-                        echo "<a class='navbar-item' href='./index.php'>Home</a>";
-                    }
-		        ?> 
+                
+		        <a class='navbar-item' href='./index.php'>Home</a>
                 <a class="navbar-item">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -97,7 +91,7 @@ else {
                     <div class="buttons">
                         <?php 
 		                    if ($loggedon) {
-                                echo "<a class='button is-light' href='logOut.php'>Log Out</a>";
+                                echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
                                 echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
@@ -111,7 +105,108 @@ else {
     </nav>
     <!-- </NavBar> -->
 
+<!-- <CreateAccountForm -->
+    <!-- TODO: Add left icons for username and DOB fields -->
+    <section class="section">
+        <div class="container">
+            <form class="form" method="POST" action="">
+                <div class="field">
+                    <label id="usernameInput" class="label">Username</label>
+                    <div class="control">
+                        <input class="input" required type="text" placeholder="Name">
+                    </div>
+                </div>
 
+                <div class="field">
+                    <label id="DOBInput" class="label">DOB <span
+                            class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
+                    <div class="control">
+                        <input class="input" required type="text" placeholder="Name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                        </span>
+                    </div>
+                    <!-- <p class="help is-danger">This email is invalid</p> -->
+                </div>
+
+                <div class="field">
+                    <label class="label">Confirm Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                        </span>
+                    </div>
+                    <!-- <p class="help is-danger">This email is invalid</p> -->
+                </div>
+
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="passwordInput" required class="input" type="password" placeholder="Password" value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="field">
+                    <label class="label">Confirm Password</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" required id="createTermsAndConditionsCheckbox">
+                            I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button value="submit" type="submit" class="button is-link">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- </CreateAccountForm -->
 
   
     
