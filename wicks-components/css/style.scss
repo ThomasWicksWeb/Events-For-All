@@ -8,6 +8,8 @@
 //
 // 3 - Single Event Page
 //
+// 4 - User Profile Page
+//
 // **************************************************************
 
 // **********************************
@@ -183,8 +185,58 @@ form {
 
 
 
+// **********************************
+//
+//  4 - User Profile Page
+//
+// ********************************** 
 
+.userProfile {
 
+    &Parent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &Img {
+        background-position: center;
+        background-size: cover;
+        height: 250px;
+        width: 100%;
+    }
+
+    &ActionBar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        & li {
+            padding: 5px 10px;
+        }
+    }
+
+    &UserImg {
+        align-self: flex-start;
+        justify-self: flex-start;
+        max-width: 200px;
+        margin-top: -100px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    &ContentBody {
+        display: flex;
+
+        &ShortBio {
+            flex: 1;
+        }
+
+        &LongBio {
+            flex: 4;
+        }
+    }
+}
 
 
 
@@ -208,99 +260,6 @@ form {
     margin-bottom: 0;
 }
 
-/* ==============
-    Animations
-============== */
-
-@-webkit-keyframes BGGradient {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-@-moz-keyframes BGGradient {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-@keyframes BGGradient {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-@keyframes cheers {
-    0% {}
-
-    15% {
-        transform: scale(1.25);
-    }
-
-    30% {
-        transform: rotate(15deg) scale(1.25);
-    }
-
-    45% {
-        transform: rotate(0deg) scale(1.25);
-    }
-
-    60% {
-        transform: rotate(-15deg) scale(1.25);
-    }
-
-    80% {
-        transform: rotate(0deg) scale(1.25);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-30px);
-    }
-
-    60% {
-        transform: translateY(-15px);
-    }
-}
-
 
 /* ==========================================
 =============== MEDIA QUERIES ===============
@@ -308,11 +267,7 @@ form {
 
 @media only screen and (max-width: 950px) {}
 
-/* ============= MOBILE 800 ============= */
-
 @media only screen and (max-width: 800px) {}
-
-/* ============= MOBILE 568 ============= */
 
 @media only screen and (max-width: 568px) {}
 
