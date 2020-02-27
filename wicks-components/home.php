@@ -8,7 +8,18 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
-
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+}
+else {
+	$userID = NULL;
+}
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
 ?>
 
 

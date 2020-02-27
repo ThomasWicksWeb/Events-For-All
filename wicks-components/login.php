@@ -3,7 +3,8 @@
 //Start session and check logon status
 session_start();
 if (isset($_SESSION['loggedon'])) {
-	$loggedon = $_SESSION['loggedon'];
+    $loggedon = $_SESSION['loggedon'];
+    header("Location: ./home.php");
 }
 else {
 	$loggedon = FALSE;
