@@ -90,7 +90,7 @@ form {
     }
 
     &Parent>* {
-        outline: 2px solid #333;
+        // outline: 2px solid #333;
         align-self: stretch;
     }
 
@@ -111,6 +111,7 @@ form {
 
         & img {
             padding-top: 10px;
+            border-radius: 50%;
         }
     }
 
@@ -124,6 +125,7 @@ form {
 
     &EventDesc {
         grid-area: EventDesc;
+        border-left: 2px solid rgba(51, 51, 51, 0.5);
 
         & h1 {
             padding-bottom: 0;
@@ -136,6 +138,7 @@ form {
 
     &Atendees {
         grid-area: Atendees;
+        border-left: 2px solid rgba(51, 51, 51, 0.5);
     }
 }
 
@@ -143,6 +146,7 @@ form {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    border-bottom: 2px solid rgba(51, 51, 51, 0.5);
 
     & li {
         padding: 1rem 1rem;
@@ -152,9 +156,9 @@ form {
         background-color: rgba(51, 51, 51, 0.096);
     }
 
-    & li:not(:last-child) {
-        border-right: 1px solid rgba(51, 51, 51, 0.596);
-    }
+    // & li:not(:last-child) {
+    //     border-right: 2px solid rgba(51, 51, 51, 0.5);
+    // }
 }
 
 .antendeesListItem {

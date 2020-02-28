@@ -60,7 +60,6 @@ form {
 }
 
 .singleEventBodyGridParent > * {
-  outline: 2px solid #333;
   -ms-flex-item-align: stretch;
       -ms-grid-row-align: stretch;
       align-self: stretch;
@@ -98,6 +97,7 @@ form {
 
 .singleEventBodyGridProfileImgAndEventInfo img {
   padding-top: 10px;
+  border-radius: 50%;
 }
 
 .singleEventBodyGridActionsBar {
@@ -112,6 +112,7 @@ form {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-area: EventDesc;
+  border-left: 2px solid rgba(51, 51, 51, 0.5);
 }
 
 .singleEventBodyGridEventDesc h1 {
@@ -126,6 +127,7 @@ form {
   -ms-grid-row: 3;
   -ms-grid-column: 4;
   grid-area: Atendees;
+  border-left: 2px solid rgba(51, 51, 51, 0.5);
 }
 
 .eventPageActionBar {
@@ -138,6 +140,7 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.5);
 }
 
 .eventPageActionBar li {
@@ -146,10 +149,6 @@ form {
 
 .eventPageActionBar a:hover {
   background-color: rgba(51, 51, 51, 0.096);
-}
-
-.eventPageActionBar li:not(:last-child) {
-  border-right: 1px solid rgba(51, 51, 51, 0.596);
 }
 
 .antendeesListItem {
