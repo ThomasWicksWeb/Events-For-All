@@ -1,0 +1,280 @@
+// **************************************************************
+//
+// Table of Contents
+//
+// 1 - Global resets
+// 
+// 2 - Navbar
+//
+// 3 - Single Event Page
+//
+// 4 - User Profile Page
+//
+// **************************************************************
+
+// **********************************
+//
+//  1 - Global Reset
+//
+// ********************************** 
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    // font-size: 62.5%;
+    font-family: 'Karla', sans-serif;
+    background-color: #f5f5f5;
+    color: #3A3A3A;
+    overflow-x: hidden;
+    overflow: hidden;
+    transition: all .5s;
+    line-height: 1.6;
+    ;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    padding: .5rem;
+}
+
+form {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+// **********************************
+//
+//  2 - Navbar
+//
+// ********************************** 
+
+
+// **********************************
+//
+//  3 - Single Event Page
+//
+// ********************************** 
+
+.singleEventBodyGrid {
+    &Parent {
+        display: grid;
+        width: 100%;
+        grid-template-areas: "SplashImg SplashImg SplashImg SplashImg"
+            "ActionsBar ActionsBar ActionsBar ActionsBar"
+            "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: min-content;
+    }
+
+    &Parent>* {
+        // outline: 2px solid #333;
+        align-self: stretch;
+    }
+
+    &SplashImg {
+        grid-area: SplashImg;
+        background-position: center;
+        background-size: cover;
+        height: 250px;
+        width: 100%;
+    }
+
+    &ProfileImgAndEventInfo {
+        grid-area: ProfileImgAndEventInfo;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        & img {
+            padding-top: 10px;
+            border-radius: 50%;
+        }
+    }
+
+    // &EventInfo {
+    //     grid-area: EventInfo;
+    // }
+
+    &ActionsBar {
+        grid-area: ActionsBar;
+    }
+
+    &EventDesc {
+        grid-area: EventDesc;
+        border-left: 2px solid rgba(51, 51, 51, 0.5);
+
+        & h1 {
+            padding-bottom: 0;
+        }
+
+        & h2 {
+            padding-top: 0;
+        }
+    }
+
+    &Atendees {
+        grid-area: Atendees;
+        border-left: 2px solid rgba(51, 51, 51, 0.5);
+    }
+}
+
+.eventPageActionBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 2px solid rgba(51, 51, 51, 0.5);
+
+    & li {
+        padding: 1rem 1rem;
+    }
+
+    & a:hover {
+        background-color: rgba(51, 51, 51, 0.096);
+    }
+
+    // & li:not(:last-child) {
+    //     border-right: 2px solid rgba(51, 51, 51, 0.5);
+    // }
+}
+
+.antendeesListItem {
+    display: grid;
+    width: 100%;
+    grid-template-areas: "profileImg profileUserName"
+        "profileImg profileUserRole";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: min-content;
+
+    & img {
+        grid-area: profileImg;
+        border-radius: 50%;
+        align-self: center;
+        justify-self: center;
+    }
+
+    & h4 {
+        grid-area: profileUserName;
+        padding-bottom: 0px;
+    }
+
+    & h5 {
+        grid-area: profileUserRole;
+        padding-top: 0px;
+    }
+}
+
+
+
+// **********************************
+//
+//  4 - User Profile Page
+//
+// ********************************** 
+
+.userProfile {
+
+    &Parent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &Img {
+        background-position: center;
+        background-size: cover;
+        height: 250px;
+        width: 100%;
+    }
+
+    &ActionBar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        & li {
+            padding: 5px 10px;
+        }
+    }
+
+    &UserImg {
+        align-self: flex-start;
+        justify-self: flex-start;
+        max-width: 200px;
+        margin-top: -150px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    &ContentBody {
+        display: flex;
+        width: 100%;
+
+        &ShortBio {
+            flex: 1;
+        }
+
+        &LongBio {
+            flex: 4;
+            border-left: 2px solid rgba(51, 51, 51, 0.5);
+        }
+    }
+}
+
+
+
+
+
+.block:not(:last-child),
+.box:not(:last-child),
+.breadcrumb:not(:last-child),
+.content:not(:last-child),
+.highlight:not(:last-child),
+.level:not(:last-child),
+.list:not(:last-child),
+.message:not(:last-child),
+.notification:not(:last-child),
+.progress:not(:last-child),
+.subtitle:not(:last-child),
+.table-container:not(:last-child),
+.table:not(:last-child),
+.tabs:not(:last-child),
+.title:not(:last-child) {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+=============== MEDIA QUERIES ===============
+========================================== */
+
+@media only screen and (max-width: 950px) {}
+
+@media only screen and (max-width: 800px) {}
+
+@media only screen and (max-width: 568px) {}
+
+@media only screen and (max-width: 469px) {}
