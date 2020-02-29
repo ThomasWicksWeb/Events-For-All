@@ -65,7 +65,7 @@ else {
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item">Home</a>
-                <a class="navbar-item">Events Near Me</a>
+                <a class="navbar-item" href="./events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
