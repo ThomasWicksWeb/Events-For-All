@@ -113,19 +113,23 @@ else {
     <!-- </NavBar> -->
 
 <!-- <LoginForm -->
-    <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
             <form class="form" method="POST" action="./methods/processLogin.php">
+            <h2 class="is-size-1 has-text-weight-bold has-text-centered">Login</h2>
                 <div class="field">
-                    <label id="usernameOrEmailLogin" class="label">Login with Username or Email</label>
-                    <div class="control">
+                    <label id="usernameOrEmailLogin" class="label is-size-5">Login with Username or Email</label>
+                    <div class="control has-icons-left">
                         <input id="userLogin" class="input" required type="text" placeholder="Name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label is-size-5">Password</label>
                     <div class="control has-icons-left has-icons-right">
                         <input id="passwordLogin" required class="input" type="password" placeholder="Password" value="">
                         <span class="icon is-small is-left">

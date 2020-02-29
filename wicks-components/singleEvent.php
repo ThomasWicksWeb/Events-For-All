@@ -126,15 +126,15 @@ else {
                     <li><button class="button">Message Organizers</button></li>
                     <li><button class="button">View Antendees</button></li>
                     <li><button class="button">Report Event</button></li> -->
-                    <li><a href="#">Join Event</a></li>
-                    <li><a href="#">Message Organizers</a></li>
-                    <li><a href="#">View Antendees</a></li>
-                    <li><a href="#">Report Event</a></li>
+                    <li><a class="is-size-5 button is-primary" href="#">Join Event</a></li>
+                    <li><a class="is-size-5 button is-secondary" href="#">Message Organizers</a></li>
+                    <li><a class="is-size-5 button is-secondary" href="#">View Antendees</a></li>
+                    <li><a class="is-size-5 button is-secondary" href="#">Report Event</a></li>
                 </ul>
             </div>
             <div class="singleEventBodyGridProfileImgAndEventInfo">
                 <img src="http://placekitten.com/200/200" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam sit non unde dolorum voluptate
+                <p class="is-size-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam sit non unde dolorum voluptate
                     nobis debitis ad, nulla suscipit molestiae, error sunt at possimus ex dignissimos aperiam est
                     corporis? Illum illo, harum amet nesciunt odit voluptatum velit aliquid quod minus<br><br>porro
                     voluptas veniam molestias quos ut error vero. Corrupti omnis culpa praesentium, excepturi sint in
@@ -143,12 +143,10 @@ else {
                     voluptatibus tenetur quae officiis ipsa distinctio. Qui minima accusamus iste nulla placeat aperiam
                     id. Aspernatur.</p>
             </div>
-            <!-- <div class="singleEventBodyGridProfileImg"><strong>Event Profile Picture/Logo</strong></div>
-            <div class="singleEventBodyGridEventInfo"><strong>Event location info and data</strong> <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odit quam expedita.</div> -->
             <div class="singleEventBodyGridEventDesc">
                 <h1 class="is-size-2">Event title</h1>
                 <h2 class="is-size-4">Event subtitle</h2>
-                <p class="is-size-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident voluptatum,
+                <p class="is-size-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident voluptatum,
                     numquam eveniet saepe quae dolore dicta, in exercitationem rerum reprehenderit asperiores? Tenetur
                     dolorum nobis officiis distinctio voluptatem quam animi nisi error quidem suscipit, quaerat in iure
                     veritatis expedita odio optio, asperiores temporibus illum nostrum similique tempora at. Tempore, at
@@ -156,7 +154,7 @@ else {
                     tenetur accusamus facilis repudiandae non molestias error, laborum architecto dolore rem? Impedit,
                     laboriosam cumque! Nobis consectetur placeat ratione beatae mollitia? Corporis, atque commodi, error
                     laborum quas consectetur sequi veniam corrupti sint iste, quae ducimus nemo optio perspiciatis!</p>
-                <p class="is-size-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In odio eius earum
+                <p class="is-size-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In odio eius earum
                     facilis officiis perspiciatis, deleniti veritatis numquam corporis nobis esse nesciunt fuga,
                     voluptatibus voluptate qui harum error officia? Expedita voluptates ab voluptate quaerat harum eius
                     recusandae aliquam est, dolor neque eos iste unde ad esse placeat ratione dolore? Sit cupiditate
@@ -168,7 +166,7 @@ else {
                     amet exercitationem! Velit placeat nesciunt architecto eius magni maxime fuga dolore non sed
                     cupiditate. Voluptatem atque voluptatum quod porro aliquid illum laboriosam voluptate voluptates
                     nemo esse architecto quam, libero eum in? Consequatur maxime accusantium ipsam.</p>
-                <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque perspiciatis rerum
+                <p class="is-size-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque perspiciatis rerum
                     odit, corporis id molestias ipsum maxime beatae consequuntur cum, similique error aspernatur
                     suscipit atque? Molestiae, eligendi. Dolorem quaerat enim dignissimos nostrum vitae rem doloremque
                     ab doloribus, maiores, iure harum quis magni eos consequuntur voluptatum corrupti similique ea ad
@@ -179,18 +177,18 @@ else {
                 <ul>
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">John Smith</h4>
-                        <h5 class="is-size-6">Event Founder</h5>
+                        <h4 class="is-size-4">John Smith</h4>
+                        <h5 class="is-size-5">Event Founder</h5>
                     </li>
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">Mark Johnson</h4>
-                        <h5 class="is-size-6">Atendee</h5>
+                        <h4 class="is-size-4">Mark Johnson</h4>
+                        <h5 class="is-size-5">Atendee</h5>
                     </li>
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">Tim Erikson</h4>
-                        <h5 class="is-size-6">Atendee</h5>
+                        <h4 class="is-size-4">Tim Erikson</h4>
+                        <h5 class="is-size-5">Atendee</h5>
                     </li>
                 </ul>
             </div>
