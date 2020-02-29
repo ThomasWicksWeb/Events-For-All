@@ -9,6 +9,35 @@ else {
 	$loggedon = FALSE;
 }
 
+$mysqli = new mysqli("localhost", "root", NULL, "EventsForAll"); 
+
+if ($mysqli->connection_error) {
+    die("connection Failed: " . $mysqli->connection_error);
+    echo "<script>console.log('Connection Error...')</script>";
+}
+else {
+    echo "<script>console.log('Connected successfully...')</script>";
+}
+
+
+if (isset($_SESSION['viewUserProfileID'])) {
+	$userProfileID = $_SESSION['viewUserProfileID'];
+}
+else {
+	header("Location: ./home.php");
+}
+ // Query database for user profile
+
+ $query = "SELECT userID, userName, user FROM Users WHERE userID = '$userProfileID'";
+ $result = $mysqli->query($query);
+ if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+       $userProfileID = $row["userID"]; 
+       $userName = $row["userName"];
+       
+   }
+
 ?>
 
 
