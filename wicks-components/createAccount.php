@@ -110,9 +110,9 @@ else {
     <section class="section">
         <div class="container">
             <form class="form" method="POST" action="">
-            <h2 class="is-size-1 has-text-weight-bold has-text-centered">Create an Account</h2>
+            <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
                 <div class="field">
-                    <label id="usernameInput" class="label is-size-5">Username</label>
+                    <label id="usernameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
                         <input class="input" required type="text" placeholder="Name">
                         <span class="icon is-small is-left">
@@ -122,7 +122,7 @@ else {
                 </div>
 
                 <div class="field">
-                    <label id="DOBInput" class="label is-size-5">DOB <span
+                    <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
                         <input class="input" required type="text" placeholder="Name">
@@ -133,7 +133,7 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-5">Email</label>
+                    <label class="label is-size-6">Email</label>
                     <div class="control has-icons-left has-icons-right">
                         <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
                         <span class="icon is-small is-left">
@@ -148,7 +148,7 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-5">Confirm Email</label>
+                    <label class="label is-size-6">Confirm Email</label>
                     <div class="control has-icons-left has-icons-right">
                         <input id="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
                             value="">
@@ -164,7 +164,7 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-5">Password</label>
+                    <label class="label is-size-6">Password</label>
                     <div class="control has-icons-left has-icons-right">
                         <input id="passwordInput" required class="input" type="password" placeholder="Password" value="">
                         <span class="icon is-small is-left">
@@ -179,7 +179,7 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-5">Confirm Password</label>
+                    <label class="label is-size-6">Confirm Password</label>
                     <div class="control has-icons-left has-icons-right">
                         <input id="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
                             value="">
