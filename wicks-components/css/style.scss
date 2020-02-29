@@ -107,11 +107,12 @@ form {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        // align-items: center;
 
         & img {
             padding-top: 10px;
             border-radius: 50%;
+            align-self: center;
         }
     }
 
