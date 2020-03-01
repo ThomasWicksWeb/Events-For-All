@@ -19,25 +19,28 @@ else {
     echo "<script>console.log('Connected successfully...')</script>";
 }
 
-
+/*
 if (isset($_SESSION['viewUserProfileID'])) {
 	$userProfileID = $_SESSION['viewUserProfileID'];
 }
 else {
 	header("Location: ./home.php");
 }
+
+*/
  // Query database for user profile
 
- $query = "SELECT userID, userName, user FROM Users WHERE userID = '$userProfileID'";
+
+$userProfileID = 1;
+ $query = "SELECT userName, profileImg FROM Users WHERE userID = '$userProfileID'";
  $result = $mysqli->query($query);
  if ($result->num_rows > 0) {
    // output data of each row
    while($row = $result->fetch_assoc()) {
-       $userProfileID = $row["userID"]; 
        $userName = $row["userName"];
-       
+       $profileImg = $row["profileImg"];
    }
-
+ }
 ?>
 
 
@@ -145,9 +148,9 @@ else {
         <div class="container userProfileParent">
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
-                <li class="has-text-weight-bold is-size-2">{{ Username }}</li>
+                <?php echo "<li class='has-text-weight-bold is-size-2'>$userName</li>" ;?>
                 <li><a class="is-size-5 button is-primary" href="#">Add Friend</a></li>
-                <li><a class="is-size-5 button is-secondary" href="#">Message {{name}}</a></li>
+                <?php echo "<li><a class='is-size-5 button is-secondary' href='./sendMessage.php'>Message $userName</a></li>"; ?>
                 <li><a class="is-size-5 button is-secondary" href="#">Placeholder</a></li>
                 <li><a class="is-size-5 button is-secondary" href="#">Placeholder</a></li>
             </ul>

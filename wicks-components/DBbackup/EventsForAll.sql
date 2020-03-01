@@ -70,7 +70,7 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`userID`, `email`, `userName`, `password`, `firstName`, `lastName`, `street`, `city`, `zip`, `phone`, `profileImg`, `bio`, `dateOfBirth`) VALUES
-(1, 'JohnSmith@testMail.com', 'JsmithTestUser', 'testuser1', 'John', 'Smith', '720 Broadhollow Road', 'Farmingdale', 11735, '1234567891', 'jsmithImg1', 'This is a test user profile for testing purposes.', '1987-04-01');
+(NULL, 'JohnSmith@testMail.com', 'JsmithTestUser', 'testuser1', 'John', 'Smith', '720 Broadhollow Road', 'Farmingdale', 11735, '1234567891', 'jsmithImg1', 'This is a test user profile for testing purposes.', '1987-04-01');
 
 --
 -- Indexes for dumped tables

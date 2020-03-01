@@ -114,7 +114,7 @@ else {
                 <div class="field">
                     <label id="usernameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
-                        <input class="input" required type="text" placeholder="Name">
+                        <input id="userName"class="input" required type="text" placeholder="Name">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -125,7 +125,7 @@ else {
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input class="input" required type="text" placeholder="Name">
+                        <input id="dob"class="input" required type="text" placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
