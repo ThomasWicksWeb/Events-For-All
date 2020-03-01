@@ -148,38 +148,38 @@ $userProfileID = 1;
         <div class="container userProfileParent">
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
-                <?php echo "<li class='has-text-weight-bold is-size-2'>$userName</li>" ;?>
-                <li><a class="is-size-5 button is-primary" href="#">Add Friend</a></li>
-                <?php echo "<li><a class='is-size-5 button is-secondary' href='./sendMessage.php'>Message $userName</a></li>"; ?>
-                <li><a class="is-size-5 button is-secondary" href="#">Placeholder</a></li>
-                <li><a class="is-size-5 button is-secondary" href="#">Placeholder</a></li>
+                <?php echo "<li class='has-text-weight-bold is-size-3'>$userName</li>" ;?>
+                <li><a class="is-size-6 button is-primary" href="#">Add Friend</a></li>
+                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $userName</a></li>"; ?>
+                <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+                <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
             </ul>
             <img class="userProfileUserImg" src="http://placekitten.com/200/200" alt="">
             <div class="userProfileContentBody">
                 <div class="userProfileContentBodyShortBio">
-                    <h3 class="is-size-3 has-text-weight-bold">Location</h3>
-                    <p class="is-size-5">Farmingdale, NY</p>
-                    <h3 class="is-size-3 has-text-weight-bold">Hobbies</h3>
-                    <ul class="is-size-5">
+                    <h3 class="is-size-4 has-text-weight-bold">Location</h3>
+                    <p class="is-size-6">Farmingdale, NY</p>
+                    <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
+                    <ul class="is-size-6">
                         <li>Volleyball</li>
                         <li>Gaming</li>
                         <li>Soccer</li>
                         <li>Dance</li>
                     </ul>
-                    <h3 class="is-size-3 has-text-weight-bold">Subtitle</h3>
-                    <p class="is-size-5">More information</p>
+                    <h3 class="is-size-4 has-text-weight-bold">Subtitle</h3>
+                    <p class="is-size-6">More information</p>
                 </div>
                 <div class="userProfileContentBodyLongBio">
-                    <h2 class="is-size-2 has-text-weight-bold">About Me</h2>
-                    <p class="is-size-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, blanditiis
+                    <h2 class="is-size-3 has-text-weight-bold">About Me</h2>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, blanditiis
                         voluptatibus? Sed
                         libero laborum animi quis nostrum provident nulla recusandae sapiente odit, iste dolorum. Unde
                         enim alias amet corrupti nisi.</p>
-                    <p class="is-size-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore
+                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore
                         delectus mollitia amet.
                         Quas laboriosam vero sunt cupiditate quod voluptate sit, illo recusandae in voluptas quisquam
                         maxime labore unde hic a praesentium commodi est optio consequuntur.</p>
-                    <p class="is-size-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus reiciendis
+                    <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus reiciendis
                         quia in fuga
                         consequatur asperiores ullam harum ipsam aspernatur eaque facere accusantium pariatur tenetur
                         fugit deserunt, veritatis vero quasi mollitia expedita nemo. Autem, inventore delectus quas
