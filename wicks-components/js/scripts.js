@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let imageNumber = Math.floor((Math.random() * 3) + 1); 
     // $("#HeroBody").style.backgroundImage = `./images/HeroBanner/heroBanner-${imageNumber}.jpg`;
     // document.getElementById("HeroBody").style.backgroundImage = `../images/HeroBanner/heroBanner-${imageNumber}.jpg`;
-    $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-${imageNumber}.jpg)`);
+    $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-min-${imageNumber}.jpg)`);
 
   
     // DOM Content Loaded listener ends
