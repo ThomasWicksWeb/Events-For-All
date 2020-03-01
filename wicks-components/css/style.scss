@@ -246,6 +246,57 @@ form {
 }
 
 
+#HeroBody {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    
+    & div > * {
+        color: white;
+    }
+    
+    & h2 {
+        padding-top: 20px;
+    }
+}
+
+.bannerTint {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(88, 86, 86, 0.37);
+}
+
+
+.homePage {
+
+    &CategorySection {
+
+        &EventsList {
+            display: flex;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+
+            & li {
+                display: flex;
+                flex-direction: column;
+                min-width: 300px;
+                max-width: 400px;
+                padding: 10px;
+                margin: 0 10px;
+
+                & img {
+                    align-self: center;
+                    justify-self: center;
+                }
+            }
+        }
+    }
+}
+
+
 
 
 

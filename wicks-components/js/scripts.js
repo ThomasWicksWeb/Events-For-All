@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
+
+
+    // Set random background image on home page hero banner
+    let imageNumber = Math.floor((Math.random() * 3) + 1); 
+    // $("#HeroBody").style.backgroundImage = `./images/HeroBanner/heroBanner-${imageNumber}.jpg`;
+    // document.getElementById("HeroBody").style.backgroundImage = `../images/HeroBanner/heroBanner-${imageNumber}.jpg`;
+    $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-${imageNumber}.jpg)`);
+
   
     // DOM Content Loaded listener ends
   });

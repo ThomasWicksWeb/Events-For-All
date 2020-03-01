@@ -254,6 +254,59 @@ form {
   border-left: 2px solid rgba(51, 51, 51, 0.5);
 }
 
+#HeroBody {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+#HeroBody div > * {
+  color: white;
+}
+
+#HeroBody h2 {
+  padding-top: 20px;
+}
+
+.bannerTint {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(88, 86, 86, 0.37);
+}
+
+.homePageCategorySectionEventsList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+}
+
+.homePageCategorySectionEventsList li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.homePageCategorySectionEventsList li img {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
 .block:not(:last-child),
 .box:not(:last-child),
 .breadcrumb:not(:last-child),
