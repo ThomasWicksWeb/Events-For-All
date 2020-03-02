@@ -8,6 +8,18 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+}
+else {
+	$userID = NULL;
+}
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
 
 ?>
 
@@ -119,9 +131,9 @@ else {
             <div class="container userProfileParent">
                 <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
                 <ul class="userProfileActionBar">
-                    <li class="has-text-weight-bold is-size-3">{{ Username }}</li>
-                    <li><a class="is-size-6 button is-primary" href="#">Add Friend</a></li>
-                    <li><a class="is-size-6 button is-secondary" href="#">Message {{name}}</a></li>
+                    <li class="has-text-weight-bold is-size-3">MyProfile</li>
+                    <li><a class="is-size-6 button is-primary" href="./friends.php">Friends</a></li>
+                    <li><a class="is-size-6 button is-secondary" href="./messages.php">Messages</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
                 </ul>

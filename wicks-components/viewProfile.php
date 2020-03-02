@@ -9,7 +9,7 @@ else {
 	$loggedon = FALSE;
 }
 
-$mysqli = new mysqli("localhost", "root", NULL, "EventsForAll"); 
+$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -154,7 +154,7 @@ $userProfileID = 1;
                 <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
                 <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
             </ul>
-            <img class="userProfileUserImg" src="http://placekitten.com/200/200" alt="">
+            <?php echo "<img class='userProfileUserImg' src='./images/$profileImg.jpeg' alt=''>";?>
             <div class="userProfileContentBody">
                 <div class="userProfileContentBodyShortBio">
                     <h3 class="is-size-4 has-text-weight-bold">Location</h3>

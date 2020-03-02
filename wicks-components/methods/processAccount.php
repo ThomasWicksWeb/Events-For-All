@@ -37,7 +37,7 @@ if(isset($_POST['passwordInput'])) {
 
 if (($logonid != NULL) AND ($password != NULL)){
 // Connect to MySQL and the EventsForAll Database
-$mysqli = new mysqli("localhost", "root", NULL, "EventsForAll"); 
+$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -51,11 +51,11 @@ else {
 // Query database for user profile
 $query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth) VALUES('$emailInput', '$userName', '$passwordInput', '$dob')";
 if ($mysqli->query($query) === TRUE) {
-    $message = "Account Successfully Created"
+    $message = "Account Successfully Created";
 }
 
-
-}
 $mysqli->close();
+}
+
 
 ?>

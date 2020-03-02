@@ -16,11 +16,14 @@ if(isset($_POST['passwordLogin'])) {
 else{
   $password = NULL;
 }
+echo var_dump($logonid, $password);
 
 
 if (($logonid != NULL) AND ($password != NULL)){
 // Connect to MySQL and the EventsForAll Database
-$mysqli = new mysqli("localhost", "root", NULL, "EventsForAll"); 
+$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+
+echo var_dump($mysqli);
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -32,33 +35,29 @@ else {
 
 
 // Query database for user profile
-$query = "SELECT userPassword FROM Users WHERE email = '$logonid' OR WHERE userName = '$logonid'";
+$query = "SELECT userPassword FROM Users WHERE userName = '$logonid' OR email = '$logonid'";
 $result = $mysqli->query($query);
 list($querypassword) = mysqli_fetch_row($result);
 echo "<script>console.log('$querypassword');</script>";
 
-$mysqli->close();
-}
 
- /*// Query database for user profile
+
+
+ // Query database for user profile
  $query2 = "SELECT userID, userName FROM Users WHERE email = '$logonid' OR WHERE userName = '$logonid'";
  $result2 = $mysqli->query($query2);
- if ($result->num_rows > 0) {
+ if ($result2->num_rows > 0) {
    // output data of each row
    while($row = $result2->fetch_assoc()) {
        $userID = $row["userID"]; 
        $userName = $row["userName"];
    }
- echo "<script>console.log('$querypassword');</script>";
- echo "<script>console.log('$userName');</script>";
- echo "<script>console.log('$userID');</script>";
+
  $_SESSION['userID'] = $userID;
  $_SESSION['userName'] = $userName;
  }
 
 
-}
-*/
 
 if($querypassword !== $password){
   $_SESSION['loggedon'] = FALSE;
@@ -67,13 +66,15 @@ if($querypassword !== $password){
 }
 elseif($querypassword === $password) {
   $_SESSION['loggedon'] = TRUE;
-  $_SESSION['user'] = $logonid;
   header("Location: ../home.php");
 }
 
-
-
-
+$mysqli->close();
+}
+else{
+  header("Location: ../login.php");
+  $mysqli->close(); 
+}
 
 
 

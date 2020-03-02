@@ -112,7 +112,7 @@ else {
             <form class="form" method="POST" action="">
             <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
                 <div class="field">
-                    <label id="usernameInput" class="label is-size-6">Username</label>
+                    <label id="userNameInput" name="userNameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
                         <input id="userName"class="input" required type="text" placeholder="Name">
                         <span class="icon is-small is-left">
@@ -125,7 +125,7 @@ else {
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="dob"class="input" required type="text" placeholder="Date of Birth">
+                        <input id="dob" name="dob" class="input" required type="text" placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -135,7 +135,7 @@ else {
                 <div class="field">
                     <label class="label is-size-6">Email</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
+                        <input id="emailInput" name="emailInput" required class="input" type="email" placeholder="Email" value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                         </span>
@@ -166,7 +166,7 @@ else {
                 <div class="field">
                     <label class="label is-size-6">Password</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="passwordInput" required class="input" type="password" placeholder="Password" value="">
+                        <input id="passwordInput" name="passwordInput" required class="input" type="password" placeholder="Password" value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
