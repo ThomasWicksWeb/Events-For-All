@@ -10,6 +10,10 @@
 //
 // 4 - User Profile Page
 //
+// 5 - Home page banner & Content
+//
+// 6 - Create New Event Form
+//
 // **************************************************************
 
 // **********************************
@@ -61,6 +65,18 @@ p {
 form {
     max-width: 900px;
     margin: 0 auto;
+}
+
+.field {
+    margin-bottom: .75rem;
+
+    // &.field:not(:last-child) {
+    //     margin-bottom: 0;
+    // }
+}
+
+.label {
+    margin-top: .75rem;
 }
 
 
@@ -246,6 +262,13 @@ form {
 }
 
 
+
+// **********************************
+//
+//  5 - Home page banner & Content
+//
+// ********************************** 
+
 #HeroBody {
     position: relative;
     background-size: cover;
@@ -294,6 +317,39 @@ form {
             }
         }
     }
+}
+
+
+
+// **********************************
+//
+//  6 - Create Event Form
+//
+// ********************************** 
+.flexTwoFields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // Doesn't work
+    &:nth-child(1) {
+        margin-right: 5px;
+    }
+
+    // Doesn't work
+    &:nth-child(2) {
+        padding-left: 5px;
+    }
+
+    & > * {
+        flex: 1;
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+.select {
+    margin-bottom: 10px;
 }
 
 
