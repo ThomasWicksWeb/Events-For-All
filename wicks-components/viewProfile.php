@@ -120,7 +120,7 @@ $userProfileID = 1;
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
