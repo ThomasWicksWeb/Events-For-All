@@ -101,7 +101,7 @@ else {
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
@@ -191,15 +191,15 @@ else {
   
     
 
-    <script>
-        var scroll = new SmoothScroll('a[href*="#"]', {
-            updateURL: false, // Update the URL on scroll
-            emitEvents: true, // Emit custom events
-            speed: 175 // 1.75 seconds to scroll to anchor point
-        });
-    </script>
+
 
     <script src="./js/scripts.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
 </body>
 
 </html>

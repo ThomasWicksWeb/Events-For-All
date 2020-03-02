@@ -91,7 +91,7 @@ else {
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
@@ -116,7 +116,7 @@ else {
 <!-- <LoginForm -->
     <section class="section">
         <div class="container">
-            <form class="form" action="./methods/processLogin.php" method="POST" >
+            <form class="form" action="<?php echo htmlspecialchars("./methods/processLogin.php");?>" method="POST" >
             <h2 class="is-size-2 has-text-weight-bold has-text-centered">Login</h2>
                 <div class="field">
                     <label id="usernameOrEmailLogin" class="label is-size-6">Login with Username or Email</label>

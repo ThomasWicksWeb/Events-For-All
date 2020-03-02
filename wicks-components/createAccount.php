@@ -109,12 +109,12 @@ else {
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>">
             <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
                 <div class="field">
-                    <label id="userNameInput" name="userNameInput" class="label is-size-6">Username</label>
+                    <label id="userNameInput"  class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
-                        <input id="userName"class="input" required type="text" placeholder="Name">
+                        <input id="userName" name="userName" class="input" required type="text" placeholder="Name">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -150,7 +150,7 @@ else {
                 <div class="field">
                     <label class="label is-size-6">Confirm Email</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
+                        <input id="confirmEmailInput" name="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
                             value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
@@ -181,7 +181,7 @@ else {
                 <div class="field">
                     <label class="label is-size-6">Confirm Password</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
+                        <input id="confirmPasswordInput" name="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
                             value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>

@@ -1,29 +1,31 @@
 <?php
 session_start();
 
+require './functions.php';
 
 //set form variables and capture form input
 
 if(isset($_POST['userLogin'])) {
-  $logonid = $_POST['userLogin'];
+  $logonid = test_input($_POST['userLogin']);
 }
 else{
   $logonid = NULL;
 }
 if(isset($_POST['passwordLogin'])) {
-  $password = $_POST['passwordLogin'];
+  $password = test_input($_POST['passwordLogin']);
 }
 else{
   $password = NULL;
 }
-echo var_dump($logonid, $password);
+
+
+
 
 
 if (($logonid != NULL) AND ($password != NULL)){
 // Connect to MySQL and the EventsForAll Database
 $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
 
-echo var_dump($mysqli);
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -38,7 +40,7 @@ else {
 $query = "SELECT userPassword FROM Users WHERE userName = '$logonid' OR email = '$logonid'";
 $result = $mysqli->query($query);
 list($querypassword) = mysqli_fetch_row($result);
-echo "<script>console.log('$querypassword');</script>";
+
 
 
 
