@@ -4,11 +4,12 @@
 session_start();
 if (isset($_SESSION['loggedon'])) {
     $loggedon = $_SESSION['loggedon'];
-    header("Location: ./home.php");
+    //header("Location: ./home.php");
 }
 else {
 	$loggedon = FALSE;
 }
+
 
 ?>
 
@@ -73,7 +74,7 @@ else {
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";
                     }
 		        ?> 
-                <a class="navbar-item">Events Near Me</a>
+                <a class="navbar-item" href="./events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
@@ -90,7 +91,7 @@ else {
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
@@ -113,21 +114,25 @@ else {
     <!-- </NavBar> -->
 
 <!-- <LoginForm -->
-    <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="./methods/processLogin.php">
+            <form class="form" action="<?php echo htmlspecialchars("./methods/processLogin.php");?>" method="POST" >
+            <h2 class="is-size-2 has-text-weight-bold has-text-centered">Login</h2>
                 <div class="field">
-                    <label id="usernameOrEmailLogin" class="label">Login with Username or Email</label>
-                    <div class="control">
-                        <input id="userLogin" class="input" required type="text" placeholder="Name">
+                    <label id="usernameOrEmailLogin" class="label is-size-6">Login with Username or Email</label>
+                    <div class="control has-icons-left">
+                        <input id="userLogin" name="userLogin" class="input" required type="text" placeholder="Name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label is-size-6">Password</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="passwordLogin" required class="input" type="password" placeholder="Password" value="">
+                        <input id="passwordLogin" name="passwordLogin" required class="input" type="password" placeholder="Password" value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>

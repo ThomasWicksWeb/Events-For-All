@@ -8,18 +8,39 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
-if (isset($_SESSION['userID'])) {
-    $userID = $_SESSION['userID'];
+
+$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+
+if ($mysqli->connection_error) {
+    die("connection Failed: " . $mysqli->connection_error);
+    echo "<script>console.log('Connection Error...')</script>";
 }
 else {
-	$userID = NULL;
+    echo "<script>console.log('Connected successfully...')</script>";
 }
-if (isset($_SESSION['userName'])) {
-    $userName = $_SESSION['userName'];
+
+/*
+if (isset($_SESSION['viewUserProfileID'])) {
+	$userProfileID = $_SESSION['viewUserProfileID'];
 }
 else {
-	$userName = NULL;
+	header("Location: ./home.php");
 }
+
+*/
+ // Query database for user profile
+
+
+$userProfileID = 1;
+ $query = "SELECT userName, profileImg FROM Users WHERE userID = '$userProfileID'";
+ $result = $mysqli->query($query);
+ if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+       $userName = $row["userName"];
+       $profileImg = $row["profileImg"];
+   }
+ }
 ?>
 
 
@@ -58,9 +79,8 @@ else {
 </head>
 
 <body>
-
-        <!-- <NavBar> -->
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+    <!-- <NavBar> -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -78,8 +98,6 @@ else {
                 <?php 
 		            if ($loggedon) {
                         echo "<a class='navbar-item' href='./home.php'>Home</a>";
-                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
-                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
 		            }
 		            else{
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";
@@ -125,7 +143,56 @@ else {
     <!-- </NavBar> -->
 
 
-
+    <!-- <UserProfile> -->
+    <section class="section">
+        <div class="container userProfileParent">
+            <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
+            <ul class="userProfileActionBar">
+                <?php echo "<li class='has-text-weight-bold is-size-3'>$userName</li>" ;?>
+                <li><a class="is-size-6 button is-primary" href="#">Add Friend</a></li>
+                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $userName</a></li>"; ?>
+                <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+                <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+            </ul>
+            <?php echo "<img class='userProfileUserImg' src='./images/$profileImg.jpeg' alt=''>";?>
+            <div class="userProfileContentBody">
+                <div class="userProfileContentBodyShortBio">
+                    <h3 class="is-size-4 has-text-weight-bold">Location</h3>
+                    <p class="is-size-6">Farmingdale, NY</p>
+                    <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
+                    <ul class="is-size-6">
+                        <li>Volleyball</li>
+                        <li>Gaming</li>
+                        <li>Soccer</li>
+                        <li>Dance</li>
+                    </ul>
+                    <h3 class="is-size-4 has-text-weight-bold">Subtitle</h3>
+                    <p class="is-size-6">More information</p>
+                </div>
+                <div class="userProfileContentBodyLongBio">
+                    <h2 class="is-size-3 has-text-weight-bold">About Me</h2>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, blanditiis
+                        voluptatibus? Sed
+                        libero laborum animi quis nostrum provident nulla recusandae sapiente odit, iste dolorum. Unde
+                        enim alias amet corrupti nisi.</p>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore
+                        delectus mollitia amet.
+                        Quas laboriosam vero sunt cupiditate quod voluptate sit, illo recusandae in voluptas quisquam
+                        maxime labore unde hic a praesentium commodi est optio consequuntur.</p>
+                    <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus reiciendis
+                        quia in fuga
+                        consequatur asperiores ullam harum ipsam aspernatur eaque facere accusantium pariatur tenetur
+                        fugit deserunt, veritatis vero quasi mollitia expedita nemo. Autem, inventore delectus quas
+                        alias quidem cupiditate possimus qui numquam est consequuntur mollitia voluptatibus ut non
+                        fugit, obcaecati expedita! Possimus, minima! Illo, magni quaerat veritatis eaque alias molestiae
+                        neque, delectus consequatur earum ex sapiente fugit ad iusto eius a ratione! Natus animi, magnam
+                        maiores cupiditate dicta neque voluptatibus quidem corrupti quaerat ex tempora. Amet
+                        voluptatibus temporibus quam natus?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- </UserProfile> -->
   
     
 

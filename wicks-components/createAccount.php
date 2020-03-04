@@ -66,7 +66,7 @@ else {
             <div class="navbar-start">
                 
 		        <a class='navbar-item' href='./index.php'>Home</a>
-                <a class="navbar-item">Events Near Me</a>
+                <a class="navbar-item" href="./events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
@@ -83,7 +83,7 @@ else {
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
@@ -109,26 +109,33 @@ else {
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>">
+            <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
                 <div class="field">
-                    <label id="usernameInput" class="label">Username</label>
-                    <div class="control">
-                        <input class="input" required type="text" placeholder="Name">
+                    <label id="userNameInput"  class="label is-size-6">Username</label>
+                    <div class="control has-icons-left">
+                        <input id="userName" name="userName" class="input" required type="text" placeholder="Name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label id="DOBInput" class="label">DOB <span
+                    <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
-                    <div class="control">
-                        <input class="input" required type="text" placeholder="Name">
+                    <div class="control has-icons-left">
+                        <input id="dob" name="dob" class="input" required type="text" placeholder="Date of Birth">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Email</label>
+                    <label class="label is-size-6">Email</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
+                        <input id="emailInput" name="emailInput" required class="input" type="email" placeholder="Email" value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                         </span>
@@ -141,9 +148,9 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label">Confirm Email</label>
+                    <label class="label is-size-6">Confirm Email</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
+                        <input id="confirmEmailInput" name="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
                             value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
@@ -157,9 +164,9 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label is-size-6">Password</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="passwordInput" required class="input" type="password" placeholder="Password" value="">
+                        <input id="passwordInput" name="passwordInput" required class="input" type="password" placeholder="Password" value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
@@ -172,9 +179,9 @@ else {
                 </div>
 
                 <div class="field">
-                    <label class="label">Confirm Password</label>
+                    <label class="label is-size-6">Confirm Password</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input id="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
+                        <input id="confirmPasswordInput" name="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
                             value="">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>

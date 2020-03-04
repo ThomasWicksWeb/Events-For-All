@@ -8,6 +8,18 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+}
+else {
+	$userID = NULL;
+}
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
 
 ?>
 
@@ -74,7 +86,7 @@ else {
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";
                     }
 		        ?> 
-                <a class="navbar-item">Events Near Me</a>
+                <a class="navbar-item" href="./events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
@@ -91,7 +103,7 @@ else {
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
@@ -114,7 +126,56 @@ else {
     <!-- </NavBar> -->
 
 
-
+    <!-- <UserProfile> -->
+    <section class="section">
+            <div class="container userProfileParent">
+                <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
+                <ul class="userProfileActionBar">
+                    <li class="has-text-weight-bold is-size-3">MyProfile</li>
+                    <li><a class="is-size-6 button is-primary" href="./friends.php">Friends</a></li>
+                    <li><a class="is-size-6 button is-secondary" href="./messages.php">Messages</a></li>
+                    <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+                    <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+                </ul>
+                <img class="userProfileUserImg" src="http://placekitten.com/200/200" alt="">
+                <div class="userProfileContentBody">
+                    <div class="userProfileContentBodyShortBio">
+                        <h3 class="is-size-4 has-text-weight-bold">Location</h3>
+                        <p class="is-size6">Farmingdale, NY</p>
+                        <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
+                        <ul class="is-size-6">
+                            <li>Volleyball</li>
+                            <li>Gaming</li>
+                            <li>Soccer</li>
+                            <li>Dance</li>
+                        </ul>
+                        <h3 class="is-size-4 has-text-weight-bold">Subtitle</h3>
+                        <p class="is-size-6">More information</p>
+                    </div>
+                    <div class="userProfileContentBodyLongBio">
+                        <h2 class="is-size-3 has-text-weight-bold">About Me</h2>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, blanditiis
+                            voluptatibus? Sed
+                            libero laborum animi quis nostrum provident nulla recusandae sapiente odit, iste dolorum. Unde
+                            enim alias amet corrupti nisi.</p>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore
+                            delectus mollitia amet.
+                            Quas laboriosam vero sunt cupiditate quod voluptate sit, illo recusandae in voluptas quisquam
+                            maxime labore unde hic a praesentium commodi est optio consequuntur.</p>
+                        <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus reiciendis
+                            quia in fuga
+                            consequatur asperiores ullam harum ipsam aspernatur eaque facere accusantium pariatur tenetur
+                            fugit deserunt, veritatis vero quasi mollitia expedita nemo. Autem, inventore delectus quas
+                            alias quidem cupiditate possimus qui numquam est consequuntur mollitia voluptatibus ut non
+                            fugit, obcaecati expedita! Possimus, minima! Illo, magni quaerat veritatis eaque alias molestiae
+                            neque, delectus consequatur earum ex sapiente fugit ad iusto eius a ratione! Natus animi, magnam
+                            maiores cupiditate dicta neque voluptatibus quidem corrupti quaerat ex tempora. Amet
+                            voluptatibus temporibus quam natus?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- </UserProfile> -->
   
     
 

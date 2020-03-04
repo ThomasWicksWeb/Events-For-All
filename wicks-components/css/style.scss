@@ -2,7 +2,7 @@
 //
 // Table of Contents
 //
-// 1 - Global resets
+// 1 - Global resets and Changing Bulma Classes
 // 
 // 2 - Navbar
 //
@@ -10,13 +10,19 @@
 //
 // 4 - User Profile Page
 //
+// 5 - Home page banner & Content
+//
+// 6 - Create New Event Form
+//
+// 7 - Landing Page
+//
 // **************************************************************
 
-// **********************************
+// ********************************************
 //
-//  1 - Global Reset
+//  1 - Global Reset and Changing Bulma Classes
 //
-// ********************************** 
+// ********************************************
 
 * {
     padding: 0;
@@ -63,6 +69,36 @@ form {
     margin: 0 auto;
 }
 
+.field {
+    margin-bottom: .75rem;
+
+    // &.field:not(:last-child) {
+    //     margin-bottom: 0;
+    // }
+}
+
+.label {
+    margin-top: .75rem;
+}
+
+.block:not(:last-child),
+.box:not(:last-child),
+.breadcrumb:not(:last-child),
+.content:not(:last-child),
+.highlight:not(:last-child),
+.level:not(:last-child),
+.list:not(:last-child),
+.message:not(:last-child),
+.notification:not(:last-child),
+.progress:not(:last-child),
+.subtitle:not(:last-child),
+.table-container:not(:last-child),
+.table:not(:last-child),
+.tabs:not(:last-child),
+.title:not(:last-child) {
+    margin-bottom: 0;
+}
+
 
 // **********************************
 //
@@ -107,11 +143,12 @@ form {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        // align-items: center;
 
         & img {
             padding-top: 10px;
             border-radius: 50%;
+            align-self: center;
         }
     }
 
@@ -246,25 +283,166 @@ form {
 
 
 
+// **********************************
+//
+//  5 - Home page banner & Content
+//
+// ********************************** 
 
+#HeroBody {
+    position: relative;
+    background-size: cover;
+    background-position: center;
 
-.block:not(:last-child),
-.box:not(:last-child),
-.breadcrumb:not(:last-child),
-.content:not(:last-child),
-.highlight:not(:last-child),
-.level:not(:last-child),
-.list:not(:last-child),
-.message:not(:last-child),
-.notification:not(:last-child),
-.progress:not(:last-child),
-.subtitle:not(:last-child),
-.table-container:not(:last-child),
-.table:not(:last-child),
-.tabs:not(:last-child),
-.title:not(:last-child) {
-    margin-bottom: 0;
+    & div>* {
+        color: white;
+    }
+
+    & h2 {
+        padding-top: 20px;
+    }
 }
+
+.bannerTint {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(88, 86, 86, 0.37);
+}
+
+
+.homePage {
+
+    &CategorySection {
+
+        &EventsList {
+            display: flex;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+
+            & li {
+                display: flex;
+                flex-direction: column;
+                min-width: 300px;
+                max-width: 400px;
+                padding: 10px;
+                margin: 0 10px;
+
+                & img {
+                    align-self: center;
+                    justify-self: center;
+                }
+            }
+        }
+    }
+}
+
+
+
+// **********************************
+//
+//  6 - Create Event Form
+//
+// ********************************** 
+.flexTwoFields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // Doesn't work
+    &:nth-child(1) {
+        margin-right: 5px;
+    }
+
+    // Doesn't work
+    &:nth-child(2) {
+        padding-left: 5px;
+    }
+
+    &>* {
+        flex: 1;
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+.select {
+    margin-bottom: 10px;
+}
+
+
+
+// **********************************
+//
+//  7 - Landing Page
+//
+// ********************************** 
+
+#HeroBodyandingPage {
+
+    & .container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: space-evenly;
+
+        // & .landingPageTextCont {
+        //     display: flex;
+        //     flex-direction: column;
+        //     justify-content: center;
+        //     align-items: flex-start;
+        //     flex: 1;
+        // }
+
+        & .landingPage {
+
+            &TextCont {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                flex: 1;
+
+                & h2 {
+                    padding-top: 0px;
+                }
+            }
+
+            &BtnCont {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                padding: 10px 0 0 10px;
+
+                & button:nth-child(1) {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        & p {
+            justify-self: center;
+            align-self: center;
+        }
+
+        & img {
+            max-width: 50%;
+            flex: 2;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /* ==========================================

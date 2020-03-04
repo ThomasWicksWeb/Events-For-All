@@ -53,7 +53,7 @@ CREATE TABLE `Users` (
   `userID` int(10) UNSIGNED NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `userName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `userPassword` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `firstName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `street` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -69,8 +69,8 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`userID`, `email`, `userName`, `password`, `firstName`, `lastName`, `street`, `city`, `zip`, `phone`, `profileImg`, `bio`, `dateOfBirth`) VALUES
-(1, 'JohnSmith@testMail.com', 'JsmithTestUser', 'testuser1', 'John', 'Smith', '720 Broadhollow Road', 'Farmingdale', 11735, '1234567891', 'jsmithImg1', 'This is a test user profile for testing purposes.', '1987-04-01');
+INSERT INTO `Users` (`userID`, `email`, `userName`, `userPassword`, `firstName`, `lastName`, `street`, `city`, `zip`, `phone`, `profileImg`, `bio`, `dateOfBirth`) VALUES
+(NULL, 'JohnSmith@testMail.com', 'JsmithTestUser', 'testuser1', 'John', 'Smith', '720 Broadhollow Road', 'Farmingdale', 11735, '1234567891', 'jsmithImg1', 'This is a test user profile for testing purposes.', '1987-04-01');
 
 --
 -- Indexes for dumped tables

@@ -71,7 +71,7 @@ else {
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";
                     }
 		        ?> 
-                <a class="navbar-item">Events Near Me</a>
+                <a class="navbar-item" href="./events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
@@ -88,7 +88,7 @@ else {
                         <a class="navbar-item">Report an issue</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item">About Events4All</a>
+                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
             </div>
 
             <div class="navbar-end">
