@@ -628,20 +628,17 @@
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-6">DOB <span
-                            class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
+                    <label class="label is-size-6">Bio</label>
                     <div class="control has-icons-left">
-                        <input id="DOBInput" class="input" required type="text" value="{(YYYY/MM/DD)}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                        <textarea id="EditBio" name="description" value="{Bio}" required class="textarea"></textarea>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-6">Bio</label>
+                    <label class="label is-size-6">Hobbies <span
+                        class="has-text-grey has-text-weight-normal">(Please put a comma between each hobby)</span></label>
                     <div class="control has-icons-left">
-                        <textarea id="EditBio" name="description" value="{Bio}" required class="textarea"></textarea>
+                        <textarea id="EditHobbies" name="hobbies" value="{Hobbies}" required class="textarea"></textarea>
                     </div>
                 </div>
 
@@ -681,6 +678,17 @@
                     <label class="label is-size-6">Email</label>
                     <div class="control has-icons-left">
                         <input id="EditEmail" class="input" name="email" required type="text" value="{{Email}}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">DOB <span
+                            class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
+                    <div class="control has-icons-left">
+                        <input id="DOBInput" class="input" required type="text" value="{(YYYY/MM/DD)}">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
