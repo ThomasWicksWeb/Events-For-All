@@ -127,14 +127,13 @@ else {
 
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Event</h2>
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">General Information</h2>
                 <div class="field">
                     <label id="createEventTitle" class="label is-size-6">Event Title</label>
                     <div class="control has-icons-left">
-                        <!-- NOTE THAT THIS eventTitle NAME DOES NOT EXIST IN THE DATABASE -->
-                        <input class="input" name="eventTitle" required type="text" placeholder="Title">
+                        <input id="eventTitle" class="input" name="eventTitle" required type="text" placeholder="Title">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
