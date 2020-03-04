@@ -571,29 +571,14 @@
                     </div>
                 </div>
 
-                <!-- <div class="dropdown field">
-                    <div class="dropdown-trigger">
-                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Select Category</span>
-                        <span class="icon is-small">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                      <div class="dropdown-content">
-                        <a href="" class="dropdown-item" value="">Art &amp; Crafts</a>
-                        <a href="" class="dropdown-item" value="">Sports</a>
-                        <a href="" class="dropdown-item" value="">Tech</a>
-                        <a href="" class="dropdown-item" value="">Food &amp; Drinks</a>
-                        <a href="" class="dropdown-item" value="">Outdoors &amp; Adventure</a>
-                        <a href="" class="dropdown-item" value="">Photography</a>
-                        <a href="" class="dropdown-item" value="">Music</a>
-                        <a href="" class="dropdown-item" value="">Movies</a>
-                        <a href="" class="dropdown-item" value="">Other</a>
-                      </div>
-                    </div>
-                  </div> -->
+                <div class="control">
+                    <label class="label is-size-6">Event Privacy</label>
+                    <label class="radio">
+                        <input type="radio" name="privacy" value="isPublic">Public</label>
+                    <label class="radio">
+                        <input type="radio" name="privacy" value="isPrivate">Private</label>
+                </div>
+
                 <label class="label is-size-6">Category</label>
                 <div class="select">
                     <select required>
@@ -624,6 +609,157 @@
     <!-- </CreateAccountForm -->
 
 
+    <!-- <EditProfileInformation> -->
+    <section class="section">
+        <div class="container">
+            <form class="form" method="POST" action="">
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">Edit Profile</h2>
+                <h2 class="is-size-4 has-text-weight-bold has-text-centered">General Information</h2>
+
+                <div class="field">
+                    <label class="label is-size-6">Username</label>
+                    <div class="control has-icons-left">
+                        <input id="EditUsername" class="input" name="username" required type="text"
+                            value="{{Username}}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">Bio</label>
+                    <div class="control has-icons-left">
+                        <textarea id="EditBio" name="description" value="{Bio}" required class="textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">Hobbies <span
+                        class="has-text-grey has-text-weight-normal">(Please put a comma between each hobby)</span></label>
+                    <div class="control has-icons-left">
+                        <textarea id="EditHobbies" name="hobbies" value="{Hobbies}" required class="textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button value="submit" type="submit" class="button is-info">Submit Changes</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-danger is-light">Cancel</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+    <!-- </EditProfileInformation> -->
+
+
+    <!-- <EditAccountInformation> -->
+    <section class="section">
+        <div class="container">
+            <form class="form" method="POST" action="">
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">Edit Account</h2>
+                <h2 class="is-size-4 has-text-weight-bold has-text-centered">Account Information</h2>
+
+                <div class="field">
+                    <label class="label is-size-6">Name</label>
+                    <div class="control has-icons-left">
+                        <input id="EditName" class="input" name="name" required type="text" value="{{Name}}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">Email</label>
+                    <div class="control has-icons-left">
+                        <input id="EditEmail" class="input" name="email" required type="text" value="{{Email}}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">DOB <span
+                            class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
+                    <div class="control has-icons-left">
+                        <input id="DOBInput" class="input" required type="text" value="{(YYYY/MM/DD)}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
+
+                <div class="field">
+                    <label class="label is-size-6">City</label>
+                    <div class="control has-icons-left">
+                        <input id="EditCity" class="input" name="city" required type="text" value="{City}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">State</label>
+                    <div class="control has-icons-left">
+                        <input id="EditState" class="input" name="state" required type="text" value="{State}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label is-size-6">ZIP Code</label>
+                    <div class="control has-icons-left">
+                        <input id="EditZip" class="input" name="zip" required type="text" value="{ZIP Code}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button value="submit" type="submit" class="button is-info">Submit Changes</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-danger is-light">Cancel</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+    <!-- </EditAccountInformation> -->
+
+
+
+    <!-- <LandingPage -->
+    <section class="hero  is-fullheight-with-navbar">
+        <div id="HeroBodyandingPage" class="hero-body" data-aos="fade-in" data-aos-duration="500">
+            <div class="container">
+                <div class="landingPageTextCont">
+                    <h1 class="is-size-2 has-text-weight-bold">Welcome to Events-4-All!</h1>
+                    <h2 class="is-size-3">Let's find an event near you</h2>
+                    <div class="landingPageBtnCont">
+                        <button class="button is-primary">Login</button>
+                        <button class="button">Create an Account</button>
+                    </div>
+                </div>
+                <img id="LandingPageImg" src="" alt="Welcome!">
+            </div>
+        </div>
+    </section>
+    <!-- </LandingPage -->
 
 
     <script>
