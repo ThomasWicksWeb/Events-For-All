@@ -54,6 +54,24 @@ form {
   margin-top: .75rem;
 }
 
+.block:not(:last-child),
+.box:not(:last-child),
+.breadcrumb:not(:last-child),
+.content:not(:last-child),
+.highlight:not(:last-child),
+.level:not(:last-child),
+.list:not(:last-child),
+.message:not(:last-child),
+.notification:not(:last-child),
+.progress:not(:last-child),
+.subtitle:not(:last-child),
+.table-container:not(:last-child),
+.table:not(:last-child),
+.tabs:not(:last-child),
+.title:not(:last-child) {
+  margin-bottom: 0;
+}
+
 .singleEventBodyGridParent {
   display: -ms-grid;
   display: grid;
@@ -350,22 +368,71 @@ form {
   margin-bottom: 10px;
 }
 
-.block:not(:last-child),
-.box:not(:last-child),
-.breadcrumb:not(:last-child),
-.content:not(:last-child),
-.highlight:not(:last-child),
-.level:not(:last-child),
-.list:not(:last-child),
-.message:not(:last-child),
-.notification:not(:last-child),
-.progress:not(:last-child),
-.subtitle:not(:last-child),
-.table-container:not(:last-child),
-.table:not(:last-child),
-.tabs:not(:last-child),
-.title:not(:last-child) {
-  margin-bottom: 0;
+#HeroBodyandingPage .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: space-evenly;
+      -ms-flex-align: space-evenly;
+          align-items: space-evenly;
+}
+
+#HeroBodyandingPage .container .landingPageTextCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#HeroBodyandingPage .container .landingPageTextCont h2 {
+  padding-top: 0px;
+}
+
+#HeroBodyandingPage .container .landingPageBtnCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0 0 10px;
+}
+
+#HeroBodyandingPage .container .landingPageBtnCont button:nth-child(1) {
+  margin-right: 10px;
+}
+
+#HeroBodyandingPage .container p {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#HeroBodyandingPage .container img {
+  max-width: 50%;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
 }
 
 /* ==========================================

@@ -24,8 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Set random background image on home page hero banner
-  let imageNumber = Math.floor((Math.random() * 3) + 1); // Change the multiplier based on how many images are available
-  $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-min-${imageNumber}.jpg)`);
+  let imageNumberHeroBanner = Math.floor((Math.random() * 3) + 1); // Change the multiplier based on how many images are available
+  $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-min-${imageNumberHeroBanner}.jpg)`);
+
+  
+  // Set random background image on the landing page
+  let imageNumberLandingPage = Math.floor((Math.random() * 5) + 1); // Change the multiplier based on how many images are available
+  document.getElementById("LandingPageImg").src = `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
+
+
 
 
   // DOM Content Loaded listener ends
