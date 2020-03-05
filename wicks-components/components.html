@@ -452,7 +452,7 @@
     <!-- </HomePage> -->
 
 
-
+    <!-- <CreateEventForm -->
     <section class="section">
         <div class="container">
             <form class="form" method="POST" action="">
@@ -606,7 +606,7 @@
             </form>
         </div>
     </section>
-    <!-- </CreateAccountForm -->
+    <!-- </CreateEventForm -->
 
 
     <!-- <EditProfileInformation> -->
@@ -635,10 +635,11 @@
                 </div>
 
                 <div class="field">
-                    <label class="label is-size-6">Hobbies <span
-                        class="has-text-grey has-text-weight-normal">(Please put a comma between each hobby)</span></label>
+                    <label class="label is-size-6">Hobbies <span class="has-text-grey has-text-weight-normal">(Please
+                            put a comma between each hobby)</span></label>
                     <div class="control has-icons-left">
-                        <textarea id="EditHobbies" name="hobbies" value="{Hobbies}" required class="textarea"></textarea>
+                        <textarea id="EditHobbies" name="hobbies" value="{Hobbies}" required
+                            class="textarea"></textarea>
                     </div>
                 </div>
 
@@ -698,6 +699,18 @@
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="field">
+                    <label class="label is-size-6">Street <span
+                        class="has-text-grey has-text-weight-normal">(This will not be shown publicly)</span>
+                    </label>
+                    <div class="control has-icons-left">
+                        <input id="EditSteet" class="input" name="street" required type="text" value="{Street}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
                     <label class="label is-size-6">City</label>
                     <div class="control has-icons-left">
                         <input id="EditCity" class="input" name="city" required type="text" value="{City}">
@@ -716,7 +729,6 @@
                         </span>
                     </div>
                 </div>
-
                 <div class="field">
                     <label class="label is-size-6">ZIP Code</label>
                     <div class="control has-icons-left">
