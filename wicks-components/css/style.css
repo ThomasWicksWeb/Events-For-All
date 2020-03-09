@@ -416,7 +416,7 @@ form {
   padding: 10px 0 0 10px;
 }
 
-#HeroBodyandingPage .container .landingPageBtnCont button:nth-child(1) {
+#HeroBodyandingPage .container .landingPageBtnCont a:nth-child(1) {
   margin-right: 10px;
 }
 

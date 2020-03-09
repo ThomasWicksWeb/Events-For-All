@@ -112,8 +112,8 @@ else {
                     <h1 class="is-size-2 has-text-weight-bold">Welcome to Events-4-All!</h1>
                     <h2 class="is-size-3">Let's find an event near you</h2>
                     <div class="landingPageBtnCont">
-                        <button class="button is-primary has-text-weight-bold">Login</button>
-                        <button class="button has-text-weight-bold">Create an Account</button>
+                        <a class="button is-primary has-text-weight-bold">Login</a>
+                        <a class="button has-text-weight-bold">Create an Account</a>
                     </div>
                 </div>
                 <img id="LandingPageImg" src="" alt="Welcome!">
