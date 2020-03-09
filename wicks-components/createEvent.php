@@ -242,6 +242,15 @@ else {
                     </div>
                 </div>
 
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button value="submit" type="submit" class="button is-link has-text-weight-bold">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light has-text-weight-bold">Cancel</button>
+                    </div>
+                </div>
+
                 <script src="./js/scripts.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
