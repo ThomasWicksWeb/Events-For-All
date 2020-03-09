@@ -104,20 +104,34 @@ else {
     </nav>
     <!-- </NavBar> -->
 
-
+ <!-- <LandingPage -->
+ <section class="hero  is-fullheight-with-navbar">
+        <div id="HeroBodyandingPage" class="hero-body" data-aos="fade-in" data-aos-duration="500">
+            <div class="container">
+                <div class="landingPageTextCont">
+                    <h1 class="is-size-2 has-text-weight-bold">Welcome to Events-4-All!</h1>
+                    <h2 class="is-size-3">Let's find an event near you</h2>
+                    <div class="landingPageBtnCont">
+                        <button class="button is-primary has-text-weight-bold">Login</button>
+                        <button class="button has-text-weight-bold">Create an Account</button>
+                    </div>
+                </div>
+                <img id="LandingPageImg" src="" alt="Welcome!">
+            </div>
+        </div>
+    </section>
+    <!-- </LandingPage -->
 
   
     
 
+    <script src="./js/scripts.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        var scroll = new SmoothScroll('a[href*="#"]', {
-            updateURL: false, // Update the URL on scroll
-            emitEvents: true, // Emit custom events
-            speed: 175 // 1.75 seconds to scroll to anchor point
+        AOS.init({
+            once: true
         });
     </script>
-
-    <script src="./js/scripts.js"></script>
 </body>
 
 </html>
