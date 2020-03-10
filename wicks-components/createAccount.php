@@ -124,7 +124,7 @@ else {
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="AccountCreationDOB" name="dob" class="input" required type="text" placeholder="Date of Birth">
+                        <input id="AccountCreationDOB" autocomplete="off" name="dob" class="input" required type="text" placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>

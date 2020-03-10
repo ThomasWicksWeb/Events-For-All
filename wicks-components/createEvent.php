@@ -144,7 +144,7 @@ else {
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventStartDate" class="input" name="startDate" required type="text"
+                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required type="text"
                                 placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -156,7 +156,7 @@ else {
                         <label class="label is-size-6">End Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventEndDate" class="input" name="endDate" required type="text"
+                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" required type="text"
                                 placeholder="End Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
