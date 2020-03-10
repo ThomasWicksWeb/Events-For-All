@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // *******************************************
+  // Bulma code for responsive navigation bar
+  // *******************************************
+
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -22,18 +26,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // *******************************************
+  // IIFEs assigning DatePickers to input fields
+  // *******************************************
 
-  // Set random background image on home page hero banner
-  let imageNumberHeroBanner = Math.floor((Math.random() * 3) + 1); // Change the multiplier based on how many images are available
+  (function(){
+    $("#AccountCreationDOB").datepicker({ dateFormat: 'yy/mm/dd' });
+  })();
+  
+  (function(){
+    $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
+  })();
+
+  (function(){
+    $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
+  })();
+  
+  (function(){
+    $("#EditAccountInformationDOB").datepicker({ dateFormat: 'yy/mm/dd' });
+  })();
+  
+
+  // ********************************************
+  // Setting background images from BG image pool
+  // ********************************************
+
+  // Setting image for Hero Banner for the home page
+  let imageNumberHeroBanner = Math.floor((Math.random() * 3) + 1); 
   $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-min-${imageNumberHeroBanner}.jpg)`);
 
   
   // Set random background image on the landing page
-  let imageNumberLandingPage = Math.floor((Math.random() * 5) + 1); // Change the multiplier based on how many images are available
+  let imageNumberLandingPage = Math.floor((Math.random() * 5) + 1);
   document.getElementById("LandingPageImg").src = `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
 
-
-
-
-  // DOM Content Loaded listener ends
-});
+});  // DOM Content Loaded listener ends

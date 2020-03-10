@@ -23,8 +23,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
 
 </head>
@@ -184,7 +186,7 @@
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input class="input" required type="text" placeholder="Name">
+                        <input id="AccountCreationDOB" class="input" required type="text" placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -474,7 +476,7 @@
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="startDate" class="input" name="startDate" required type="text"
+                            <input id="CreateEventStartDate" class="input" name="startDate" required type="text"
                                 placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -486,7 +488,7 @@
                         <label class="label is-size-6">End Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="endDate" class="input" name="endDate" required type="text"
+                            <input id="CreateEventEndDate" class="input" name="endDate" required type="text"
                                 placeholder="End Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -688,7 +690,7 @@
                     <label class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="DOBInput" class="input" required type="text" value="{(YYYY/MM/DD)}">
+                        <input id="EditAccountInformationDOB" class="input" required type="text" value="{(YYYY/MM/DD)}">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>

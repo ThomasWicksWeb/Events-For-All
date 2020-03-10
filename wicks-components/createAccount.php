@@ -19,19 +19,16 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
-    <title>Events For All</title>
+    <title>Site Title</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -40,8 +37,10 @@ else {
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
 
 </head>
@@ -125,7 +124,7 @@ else {
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="dob" name="dob" class="input" required type="text" placeholder="Date of Birth">
+                        <input id="AccountCreationDOB" name="dob" class="input" required type="text" placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
