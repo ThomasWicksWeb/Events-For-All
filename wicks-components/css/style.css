@@ -345,12 +345,12 @@ form {
           align-items: center;
 }
 
-.flexTwoFields:nth-child(1) {
-  margin-right: 5px;
+.flexTwoFields .field:nth-child(1) {
+  padding-right: 6px;
 }
 
-.flexTwoFields:nth-child(2) {
-  padding-left: 5px;
+.flexTwoFields .field:nth-child(2) {
+  padding-left: 6px;
 }
 
 .flexTwoFields > * {

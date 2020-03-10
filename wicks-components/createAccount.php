@@ -203,10 +203,10 @@ else {
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-link">Submit</button>
+                        <button value="submit" type="submit" class="button is-info">Submit</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light">Cancel</button>
+                        <button class="button is-danger is-light">Cancel</button>
                     </div>
                 </div>
             </form>
