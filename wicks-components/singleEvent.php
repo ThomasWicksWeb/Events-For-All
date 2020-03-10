@@ -101,7 +101,7 @@ else {
                                 echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
-                                echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
+                                echo "<a class='button is-info' href='./createAccount.php'><strong>Sign up</strong></a>";
                                 echo "<a class='button is-light' href='./login.php'>Log in</a>";
                             }
 		                ?> 
@@ -122,11 +122,7 @@ else {
                 style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <div class="singleEventBodyGridActionsBar">
                 <ul class="eventPageActionBar">
-                    <!-- <li><button class="button">Join Event</button></li>
-                    <li><button class="button">Message Organizers</button></li>
-                    <li><button class="button">View Antendees</button></li>
-                    <li><button class="button">Report Event</button></li> -->
-                    <li><a class="is-size-6 button is-primary" href="#">Join Event</a></li>
+                    <li><a class="is-size-6 button is-info" href="#">Join Event</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Message Organizers</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">View Antendees</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Report Event</a></li>

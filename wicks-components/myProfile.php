@@ -114,7 +114,7 @@ else {
                                 echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
-                                echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
+                                echo "<a class='button is-info' href='./createAccount.php'><strong>Sign up</strong></a>";
                                 echo "<a class='button is-light' href='./login.php'>Log in</a>";
                             }
 		                ?> 
@@ -132,7 +132,7 @@ else {
                 <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
                 <ul class="userProfileActionBar">
                     <li class="has-text-weight-bold is-size-3">MyProfile</li>
-                    <li><a class="is-size-6 button is-primary" href="./friends.php">Friends</a></li>
+                    <li><a class="is-size-6 button is-info" href="./friends.php">Friends</a></li>
                     <li><a class="is-size-6 button is-secondary" href="./messages.php">Messages</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>

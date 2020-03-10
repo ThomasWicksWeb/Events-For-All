@@ -93,7 +93,7 @@ else {
                                 echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
 		                    }
 		                    else{
-                                echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
+                                echo "<a class='button is-info' href='./createAccount.php'><strong>Sign up</strong></a>";
                                 echo "<a class='button is-light' href='./login.php'>Log in</a>";
                             }
 		                ?> 
