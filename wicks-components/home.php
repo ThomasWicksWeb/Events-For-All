@@ -142,7 +142,7 @@ else {
                 <h2 class="is-size-2 has-text-weight-bold">Sports</h2>
                 <ul class="homePageCategorySectionEventsList">
                     <li class="box">
-                        <img src="images/soccer.jpg" alt="">
+                        <img src="https://bloximages.chicago2.vip.townnews.com/newsandtribune.com/content/tncms/assets/v3/editorial/b/da/bda4e070-192a-11e9-92df-3f34c8382fbb/5c3e83393f323.image.jpg?resize=500%2C613" alt="">
                         <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
                         <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
                         <a href="#" class="button is-info">View Event</a>
