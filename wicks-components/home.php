@@ -139,7 +139,7 @@ else {
         <div class="container">
             <h2 class="is-size-1 has-text-weight-bold has-text-centered">Check out some events</h2>
             <div class="homePageCategorySection">
-                <h2 class="is-size-2 has-text-weight-bold">Sports</h2>
+                <h2 class="is-size-2 has-text-weight-bold">Sports & Fitness</h2>
                 <ul class="homePageCategorySectionEventsList">
                     <li class="box">
                         <img src="http://placekitten.com/300/200" alt="">
@@ -187,6 +187,165 @@ else {
             </div>
         </div>
     </section>
+ <section class="section">
+        <div class="container">
+            <h2 class="is-size-1 has-text-weight-bold has-text-centered">More events</h2>
+            <div class="homePageCategorySection">
+                <h2 class="is-size-2 has-text-weight-bold">Tech Conferences & Events</h2>
+                <ul class="homePageCategorySectionEventsList">
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Java Programming Seminar</h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Python Tech Summit</h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">The power of Technology in Industry </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Google I/O</h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Oracle Open Conference </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">AWS Seminar</h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Google Analytics the power of SEO Marketing </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+ <section class="section">
+        <div class="container">
+            <h2 class="is-size-1 has-text-weight-bold has-text-centered"> More Events </h2>
+            <div class="homePageCategorySection">
+                <h2 class="is-size-2 has-text-weight-bold">Food & Drinks</h2>
+                <ul class="homePageCategorySectionEventsList">
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">North Fork Crush Wine Festival </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Bluepoint Brewery Tasting Festival </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Food & Wine Pairing 101</h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Thursday Night Trivia at Greenport Harbor Brewing </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Tomato Taste Off Festival </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">St. Patricks Day Dinner </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Riverhead Farmers Market </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+	 <section class="section">
+        <div class="container">
+            <h2 class="is-size-1 has-text-weight-bold has-text-centered">Continued</h2>
+            <div class="homePageCategorySection">
+                <h2 class="is-size-2 has-text-weight-bold"></h2>
+                <ul class="homePageCategorySectionEventsList">
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Photography</h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Wedding Photography Workshop </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Event Photography </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Smartphone Photography Conference </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Time-lapse Photography with Sony </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Photoroma 2020 </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                    <li class="box">
+                        <img src="http://placekitten.com/300/200" alt="">
+                        <h3 class="is-size-4 has-text-weight-bold">Studio 54 Night Magic </h3>
+                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
+                        <a href="#" class="button is-info">View Event</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+	
+	
+	
     <!-- </HomePage> -->
   
     
