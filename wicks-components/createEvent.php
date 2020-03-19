@@ -123,7 +123,7 @@ else {
     <!-- </NavBar> -->
 
 
-
+    <!-- <CreateAnEvent> -->
     <section class="section">
         <div class="container">
             <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>">

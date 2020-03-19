@@ -412,9 +412,65 @@ form {
 }
 
 
+// **********************************
+//
+//  8 - My Friends Page
+//
+// ********************************** 
 
+.myFriendsGrid {
+    display: grid;
+    // grid-template-areas: "img username"
+    //     "img link";
+    grid-template-areas: "img textCont";
+    grid-gap: .5rem;
 
+    & img {
+        grid-area: img;
+        align-self: center;
+        justify-self: center;
+        border-radius: 50%;
+    }
 
+    &TextCont {
+        grid-area: textCont;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: space-between;
+
+        & h4 {
+            align-self: flex-start;
+        }
+
+        & a {
+            align-self: flex-start;
+            padding: 8px;
+            margin-top: -12px;
+        }
+    }
+
+    // & h4 {
+    //     grid-area: username;
+    //     align-self: flex-start;
+    //     justify-self: flex-start;
+    // }
+
+    // & a {
+    //     grid-area: link;
+    //     align-self: center;
+    //     justify-self: center;
+    //     width: 100%;
+    //     padding-bottom: 10px;
+    // }
+
+    &Parent {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-gap: 1rem;
+    }
+
+}
 
 
 
@@ -441,16 +497,16 @@ form {
             grid-template-columns: 1fr;
             grid-template-rows: min-content;
         }
-    
+
         &ActionsBar {
             grid-area: ActionsBar;
         }
-    
+
         &EventDesc {
             grid-area: EventDesc;
             border-left: none;
         }
-    
+
         &Atendees {
             grid-area: Atendees;
             width: 100%;
@@ -475,6 +531,8 @@ form {
         grid-template-rows: min-content;
     }
 }
+
+
 
 @media only screen and (max-width: 800px) {}
 

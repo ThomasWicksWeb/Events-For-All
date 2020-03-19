@@ -19,17 +19,14 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
     <title>Events-For-All</title>
 
@@ -96,7 +93,7 @@ else {
                                 echo "<a class='button is-info' href='./createAccount.php'><strong>Sign up</strong></a>";
                                 echo "<a class='button is-light' href='./login.php'>Log in</a>";
                             }
-		                ?> 
+		                ?>
                     </div>
                 </div>
             </div>
@@ -104,8 +101,8 @@ else {
     </nav>
     <!-- </NavBar> -->
 
- <!-- <LandingPage -->
- <section class="hero  is-fullheight-with-navbar">
+    <!-- <LandingPage -->
+    <section class="hero  is-fullheight-with-navbar">
         <div id="HeroBodyandingPage" class="hero-body" data-aos="fade-in" data-aos-duration="500">
             <div class="container">
                 <div class="landingPageTextCont">
@@ -122,8 +119,8 @@ else {
     </section>
     <!-- </LandingPage -->
 
-  
-    
+
+
 
     <script src="./js/scripts.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -135,4 +132,3 @@ else {
 </body>
 
 </html>
-

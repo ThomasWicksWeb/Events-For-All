@@ -47,8 +47,8 @@ else {
 
 <body>
 
-       <!-- <NavBar> -->
-       <nav class="navbar" role="navigation" aria-label="main navigation">
+    <!-- <NavBar> -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -63,8 +63,8 @@ else {
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                
-		        <a class='navbar-item' href='./index.php'>Home</a>
+
+                <a class='navbar-item' href='./index.php'>Home</a>
                 <a class="navbar-item" href="./events.php">Events Near Me</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -96,7 +96,7 @@ else {
                                 echo "<a class='button is-info' href='./createAccount.php'><strong>Sign up</strong></a>";
                                 echo "<a class='button is-light' href='./login.php'>Log in</a>";
                             }
-		                ?> 
+		                ?>
                     </div>
                 </div>
             </div>
@@ -104,16 +104,39 @@ else {
     </nav>
     <!-- </NavBar> -->
 
-<!-- <CreateAccountForm -->
+    <!-- <CreateAccountForm -->
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
             <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>">
-            <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label id="firstnameInput" class="label is-size-6">First Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" required type="text" name="FirstName" placeholder="First Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+    
+                    <div class="field">
+                        <label id="lastnameInput" class="label is-size-6">Last Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" required type="text" name="LastName" placeholder="Last Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="field">
-                    <label id="userNameInput"  class="label is-size-6">Username</label>
+                    <label id="userNameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
-                        <input id="userName" name="userName" class="input" required type="text" placeholder="Name">
+                        <input id="userName" name="UserName" class="input" required type="text" placeholder="Username">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -124,73 +147,149 @@ else {
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="AccountCreationDOB" autocomplete="off" name="dob" class="input" required type="text" placeholder="Date of Birth">
+                        <input id="AccountCreationDOB" autocomplete="off" name="dob" class="input" required type="text"
+                            placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label is-size-6">Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="emailInput" name="emailInput" required class="input" type="email" placeholder="Email" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Confirm Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="confirmEmailInput" name="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="passwordInput" name="passwordInput" required class="input" type="password" placeholder="Password" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="emailInput" name="Email" required class="input" type="email"
+                                placeholder="Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
 
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Confirm Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="confirmPasswordInput" name="confirmPasswordInput" required class="input" type="password" placeholder="Confirm Password"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
+                    <div class="field">
+                        <label class="label is-size-6">Confirm Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="confirmEmailInput" name="confirmEmail" required class="input" type="email"
+                                placeholder="Confirm Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
                 </div>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="passwordInput" name="passwordInput" required class="input" type="password"
+                                placeholder="Password" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">Confirm Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="confirmPasswordInput" name="confirmPasswordInput" required class="input"
+                                type="password" placeholder="Confirm Password" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="is-size-3 has-text-weight-bold has-text-centered">Location Information</h2>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Street</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="streetInput" name="Street" required class="input" type="text"
+                                placeholder="Street Name" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">City</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="cityInput" name="City" required class="input" type="text"
+                                placeholder="City" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">ZIP Code</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="zipInput" name="Zip" required class="input" type="text"
+                                placeholder="ZIP Code" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">Phone Number <span
+                            class="has-text-grey has-text-weight-normal">111 222 3333</span></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="phoneNumberInput" name="Phone" required class="input" type="text"
+                                placeholder="Phone Number" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
 
                 <div class="field">
                     <div class="control">
@@ -214,8 +313,8 @@ else {
     </section>
     <!-- </CreateAccountForm -->
 
-  
-    
+
+
 
     <script>
         var scroll = new SmoothScroll('a[href*="#"]', {

@@ -95,8 +95,9 @@
             <div class="singleEventBodyGridActionsBar">
                 <ul class="eventPageActionBar">
                     <li><a class="is-size-6 button is-info has-text-weight-bold" href="#">Join Event</a></li>
-                    <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Message Organizers</a></li>
-                    <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">View Antendees</a></li>                    
+                    <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Message Organizers</a>
+                    </li>
+                    <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">View Antendees</a></li>
                     <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Report Event</a></li>
                 </ul>
             </div>
@@ -172,6 +173,31 @@
         <div class="container">
             <form class="form" method="POST" action="">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label id="firstnameInput" class="label is-size-6">First Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" required type="text" name="FirstName" placeholder="First Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label id="lastnameInput" class="label is-size-6">Last Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" required type="text" name="LastName" placeholder="Last Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="field">
                     <label id="usernameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
@@ -186,74 +212,150 @@
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="AccountCreationDOB" autocomplete="off" class="input" required type="text" placeholder="Date of Birth">
+                        <input id="AccountCreationDOB" autocomplete="off" class="input" required type="text"
+                            placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label is-size-6">Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                </div>
 
-                <div class="field">
-                    <label class="label is-size-6">Confirm Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="passwordInput" required class="input" type="password" placeholder="Password"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
 
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Confirm Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="confirmPasswordInput" required class="input" type="password"
-                            placeholder="Confirm Password" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
+                    <div class="field">
+                        <label class="label is-size-6">Confirm Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="confirmEmailInput" required class="input" type="email"
+                                placeholder="Confirm Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
                 </div>
+
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="passwordInput" required class="input" type="password" placeholder="Password"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">Confirm Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="confirmPasswordInput" required class="input" type="password"
+                                placeholder="Confirm Password" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="is-size-3 has-text-weight-bold has-text-centered">Location Information</h2>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Street</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="streetInput" name="Street" required class="input" type="text"
+                                placeholder="Street Name" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">City</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="cityInput" name="City" required class="input" type="text" placeholder="City"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">ZIP Code</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="zipInput" name="Zip" required class="input" type="text" placeholder="ZIP Code"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">Phone Number <span
+                            class="has-text-grey has-text-weight-normal">111 222 3333</span></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="phoneNumberInput" name="Phone" required class="input" type="text"
+                                placeholder="Phone Number" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
 
                 <div class="field">
                     <div class="control">
@@ -475,8 +577,8 @@
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required type="text"
-                                placeholder="Start Date">
+                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required
+                                type="text" placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -487,8 +589,8 @@
                         <label class="label is-size-6">End Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" required type="text"
-                                placeholder="End Date">
+                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" required
+                                type="text" placeholder="End Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -645,7 +747,8 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit Changes</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit
+                            Changes</button>
                     </div>
                     <div class="control">
                         <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
@@ -689,7 +792,8 @@
                     <label class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="EditAccountInformationDOB" autocomplete="off" class="input" required type="text" value="{(YYYY/MM/DD)}">
+                        <input id="EditAccountInformationDOB" autocomplete="off" class="input" required type="text"
+                            value="{(YYYY/MM/DD)}">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -699,8 +803,8 @@
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="field">
-                    <label class="label is-size-6">Street <span
-                        class="has-text-grey has-text-weight-normal">(This will not be shown publicly)</span>
+                    <label class="label is-size-6">Street <span class="has-text-grey has-text-weight-normal">(This will
+                            not be shown publicly)</span>
                     </label>
                     <div class="control has-icons-left">
                         <input id="EditSteet" class="input" name="street" required type="text" value="{Street}">
@@ -741,7 +845,8 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit Changes</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit
+                            Changes</button>
                     </div>
                     <div class="control">
                         <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
@@ -773,7 +878,54 @@
     </section>
     <!-- </LandingPage -->
 
-    
+
+
+    <!-- <MyFriends> -->
+        <section class="section">
+            <div class="container">
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">My Friends</h2>
+                <ul class="myFriendsGridParent">
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/150/150" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/150/150" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/150/150" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/150/150" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/150/150" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    <!-- </MyFriends> -->
+
+
 
     <script>
         // var scroll = new SmoothScroll('a[href*="#"]', {
