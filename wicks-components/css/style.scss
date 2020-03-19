@@ -16,6 +16,8 @@
 //
 // 7 - Landing Page
 //
+// 8 - My Friends Page
+//
 // **************************************************************
 
 // ********************************************
@@ -420,8 +422,6 @@ form {
 
 .myFriendsGrid {
     display: grid;
-    // grid-template-areas: "img username"
-    //     "img link";
     grid-template-areas: "img textCont";
     grid-gap: .5rem;
 
@@ -450,23 +450,9 @@ form {
         }
     }
 
-    // & h4 {
-    //     grid-area: username;
-    //     align-self: flex-start;
-    //     justify-self: flex-start;
-    // }
-
-    // & a {
-    //     grid-area: link;
-    //     align-self: center;
-    //     justify-self: center;
-    //     width: 100%;
-    //     padding-bottom: 10px;
-    // }
-
     &Parent {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-gap: 1rem;
     }
 
