@@ -45,8 +45,19 @@ list($querypassword) = mysqli_fetch_row($result);
 
 
 
- // Query database for user profile
- $query2 = "SELECT userID, userName FROM Users WHERE email = '$logonid' OR WHERE userName = '$logonid'";
+
+
+
+
+if($querypassword !== $password){
+  $_SESSION['loggedon'] = FALSE;
+  header("Location: ../login.php");
+  
+}
+elseif($querypassword === $password) {
+  $_SESSION['loggedon'] = TRUE;
+   // Query database for user profile
+ $query2 = "SELECT userID, userName FROM Users WHERE email = '$logonid' OR userName = '$logonid'";
  $result2 = $mysqli->query($query2);
  if ($result2->num_rows > 0) {
    // output data of each row
@@ -58,17 +69,8 @@ list($querypassword) = mysqli_fetch_row($result);
  $_SESSION['userID'] = $userID;
  $_SESSION['userName'] = $userName;
  }
-
-
-
-if($querypassword !== $password){
-  $_SESSION['loggedon'] = FALSE;
-  header("Location: ../login.php");
-  
-}
-elseif($querypassword === $password) {
-  $_SESSION['loggedon'] = TRUE;
   header("Location: ../home.php");
+  
 }
 
 $mysqli->close();

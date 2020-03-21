@@ -93,7 +93,7 @@ else{
 
   }
 else{
-    $zip = NULL;
+    $genre = NULL;
   }
 
 if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
