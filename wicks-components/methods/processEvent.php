@@ -79,7 +79,22 @@ if(isset($_POST['zip'])) {
 else{
     $zip = NULL;
   }
+  if(isset($_POST['privacy'])) {
+    $privacy = test_input($_POST['privacy']);
+    if($privacy == 'isPrivate')
+    $privacy = 1;
+  }
+else{
+    $privacy = 0;
+  }
 
+  if(isset($_POST['genre'])) {
+    $genre = test_input($_POST['genre']);
+
+  }
+else{
+    $zip = NULL;
+  }
 
 if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
 
@@ -96,7 +111,7 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
 
 
     // Query database to create user
-    $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, state, zip) VALUES('$userID', '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip')";
+    $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, USstate, zip, eventDescription, genre, privacy) VALUES('$userID', '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip', '$description','$genre','$privacy')";
     if ($mysqli->query($query) === TRUE) {
         $message = "Event Successfully Created";
         $_SESSION['message'] = $message;
