@@ -88,6 +88,7 @@ else {
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
                     <div class="navbar-dropdown">
+                        <a class="navbar-item">Arts & Crafts</a>
                         <a class="navbar-item">Sports & Fitness</a>
                         <a class="navbar-item">Tech</a>
                         <a class="navbar-item">Food & Drinks</a>
@@ -251,15 +252,16 @@ else {
 
                 <label class="label is-size-6">Category</label>
                 <div class="select createEventSelect">
-                    <select required>
-                        <option value="">Art &amp; Crafts</option>
-                        <option value="">Sports</option>
-                        <option value="">Tech</option>
+                    <select name="category" required>
+                        <option value="">Arts &amp; Crafts</option>
                         <option value="">Food &amp; Drinks</option>
-                        <option value="">Outdoors &amp; Adventure</option>
-                        <option value="">Photography</option>
-                        <option value="">Music</option>
                         <option value="">Movies</option>
+                        <option value="">Music</option>
+                        <option value="">Outdoors &amp; Adventure</option>
+                        <option value="">Party</option>
+                        <option value="">Photography</option>
+                        <option value="">Sports &amp; Fitness</option>
+                        <option value="">Tech</option>
                         <option value="">Other</option>
                     </select>
                 </div>

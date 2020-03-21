@@ -72,6 +72,10 @@ form {
   margin-bottom: 0;
 }
 
+.navBarProfilePicture {
+  border-radius: 50%;
+}
+
 .singleEventBodyGridParent {
   display: -ms-grid;
   display: grid;
