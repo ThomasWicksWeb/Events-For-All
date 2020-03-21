@@ -81,8 +81,7 @@ else{
   }
 
 
-if (($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) 
-&& ($city != NULL) && ($state != NULL) && ($zip != NULL)){
+if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
 
     // Connect to MySQL and the EventsForAll Database
     $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
