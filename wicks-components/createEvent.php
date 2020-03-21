@@ -156,7 +156,7 @@ else {
                         <label class="label is-size-6">End Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" required type="text"
+                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" type="text"
                                 placeholder="End Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -239,6 +239,14 @@ else {
                             <i class="fas fa-user"></i>
                         </span>
                     </div>
+                </div>
+
+                <div class="control">
+                    <label class="label is-size-6">Event Privacy</label>
+                    <label class="radio">
+                        <input type="radio" name="privacy" value="isPublic">Public</label>
+                    <label class="radio">
+                        <input type="radio" name="privacy" value="isPrivate">Private</label>
                 </div>
 
                 <div class="field is-grouped">

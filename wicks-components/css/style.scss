@@ -18,6 +18,12 @@
 //
 // 8 - My Friends Page
 //
+// 9 - My Account Page
+//
+//
+//
+//
+//
 // **************************************************************
 
 // ********************************************
@@ -460,6 +466,25 @@ form {
 
 
 
+// **********************************
+//
+//  9 - My Account Page
+//
+// ********************************** 
+
+.dataSet {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    &Grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-gap: 1rem;
+
+        margin-bottom: 2rem;
+    }
+}
 
 
 
