@@ -125,7 +125,50 @@ else {
     <!-- </NavBar> -->
 
 
-
+<!-- <MyFriends> -->
+<section class="section">
+            <div class="container">
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">My Friends</h2>
+                <ul class="myFriendsGridParent">
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                    <li class="myFriendsGrid box">
+                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                        <div class="myFriendsGridTextCont">
+                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                            <a href="#" class="is-link is-size-6">View Profile</a>    
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    <!-- </MyFriends> -->
   
     
 
