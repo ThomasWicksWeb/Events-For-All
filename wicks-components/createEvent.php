@@ -249,6 +249,21 @@ else {
                         <input type="radio" name="privacy" value="isPrivate">Private</label>
                 </div>
 
+                <label class="label is-size-6">Category</label>
+                <div class="select createEventSelect">
+                    <select required>
+                        <option value="">Art &amp; Crafts</option>
+                        <option value="">Sports</option>
+                        <option value="">Tech</option>
+                        <option value="">Food &amp; Drinks</option>
+                        <option value="">Outdoors &amp; Adventure</option>
+                        <option value="">Photography</option>
+                        <option value="">Music</option>
+                        <option value="">Movies</option>
+                        <option value="">Other</option>
+                    </select>
+                </div>
+
                 <div class="field is-grouped">
                     <div class="control">
                         <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit</button>

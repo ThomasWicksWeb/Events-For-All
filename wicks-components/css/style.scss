@@ -365,6 +365,16 @@ form {
     margin-bottom: 10px;
 }
 
+.radio {
+    & input {
+        margin-right: .25rem;
+    }
+}
+
+.createEventSelect {
+    margin-bottom: 1.25rem;
+}
+
 
 
 // **********************************
