@@ -34,13 +34,13 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       echo "<script>console.log('Connected successfully...')</script>";
   }
   
-  
+  $friendlist = array();
   // Query database to create user
   $query = "SELECT friend1userID, firend2userID FROM Friendships WHERE (friend1userID = '$logonid' OR friend2userID = '$logonid') AND relationshipAccepted = 1 ";
  $result = $mysqli->query($query);
  if ($result->num_rows > 0) {
      $i = 0;
-     $friendlist = array();
+     
    // output data of each row
    while($row = $result->fetch_assoc()) {
        $friend1userID = $row["friend1userID"]; 
@@ -111,7 +111,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
                 <ul class="myFriendsGridParent">
                     
                 <?php 
-
+              if ($friendlist){
                 foreach($friendlist as $friendID){
                     $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users INNER JOIN UserProfile ON Users.userID=UserProfile.userID WHERE userID = '$friendID'";
                     $result2 = $mysqli->query($query2);
@@ -131,11 +131,12 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
 
                         }
                     }
-                    else{
+                    
+                }
+            }
+                else{
                         echo "You Have No Friends Yet!";
                     }
-                }
-
                 ?>
                 </ul>
             </div>
