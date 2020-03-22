@@ -20,6 +20,47 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+
+if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email != NULL)){
+
+    // Connect to MySQL and the EventsForAll Database
+  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  
+  if ($mysqli->connection_error) {
+      die("connection Failed: " . $mysqli->connection_error);
+      echo "<script>console.log('Connection Error...')</script>";
+  }
+  else {
+      echo "<script>console.log('Connected successfully...')</script>";
+  }
+  
+  
+  // Query database to create user
+  $query = "SELECT friend1userID, firend2userID FROM Friendships WHERE (friend1userID = '$logonid' OR friend2userID = '$logonid') AND relationshipAccepted = 1 ";
+ $result = $mysqli->query($query);
+ if ($result->num_rows > 0) {
+     $i = 0;
+     $friendlist = array();
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+       $friend1userID = $row["friend1userID"]; 
+       $friend2userID = $row["friend2userID"];
+       if ($friend1userID === $userID)
+       $friendlist[$i] = $friend2userID;
+       else
+       $friendlist[$i] = $friend1userID;
+
+       $i++;
+   }
+}
+  else {
+    $message = "Account Creation Failed!!!";
+  }
+  $mysqli->close();
+  }
+  
+  
+  
 ?>
 
 
@@ -68,41 +109,34 @@ else {
             <div class="container">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">My Friends</h2>
                 <ul class="myFriendsGridParent">
-                    <li class="myFriendsGrid box">
-                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
-                        <div class="myFriendsGridTextCont">
-                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
-                            <a href="#" class="is-link is-size-6">View Profile</a>    
-                        </div>
-                    </li>
-                    <li class="myFriendsGrid box">
-                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
-                        <div class="myFriendsGridTextCont">
-                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
-                            <a href="#" class="is-link is-size-6">View Profile</a>    
-                        </div>
-                    </li>
-                    <li class="myFriendsGrid box">
-                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
-                        <div class="myFriendsGridTextCont">
-                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
-                            <a href="#" class="is-link is-size-6">View Profile</a>    
-                        </div>
-                    </li>
-                    <li class="myFriendsGrid box">
-                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
-                        <div class="myFriendsGridTextCont">
-                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
-                            <a href="#" class="is-link is-size-6">View Profile</a>    
-                        </div>
-                    </li>
-                    <li class="myFriendsGrid box">
-                        <img src="http://placekitten.com/100/100" alt="Profile Photo" />
-                        <div class="myFriendsGridTextCont">
-                            <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
-                            <a href="#" class="is-link is-size-6">View Profile</a>    
-                        </div>
-                    </li>
+                    
+                <?php 
+
+                foreach($friendlist as $friendID){
+                    $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users INNER JOIN UserProfile ON Users.userID=UserProfile.userID WHERE userID = '$friendID'";
+                    $result2 = $mysqli->query($query2);
+                    if ($result2->num_rows > 0) {
+                    // output data of each row
+                        while($row2 = $result2->fetch_assoc()) {
+                            $friendUserName = $row2["userName"]; 
+                            $friendUserImg = $row2["profileImg"];
+      
+                            echo "<li class='myFriendsGrid box'>
+                            <img src='./images/$userName/$friendUserImg' alt='Profile Photo' />
+                            <div class='myFriendsGridTextCont'>
+                            <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
+                            <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
+                            </div>
+                            </li>";
+
+                        }
+                    }
+                    else{
+                        echo "You Have No Friends Yet!";
+                    }
+                }
+
+                ?>
                 </ul>
             </div>
         </section>

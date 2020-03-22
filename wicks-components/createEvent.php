@@ -189,16 +189,16 @@ else {
                 <label class="label is-size-6">Category</label>
                 <div class="select createEventSelect">
                     <select name="category" required>
-                        <option value="">Arts &amp; Crafts</option>
-                        <option value="">Food &amp; Drinks</option>
-                        <option value="">Movies</option>
-                        <option value="">Music</option>
-                        <option value="">Outdoors &amp; Adventure</option>
-                        <option value="">Party</option>
-                        <option value="">Photography</option>
-                        <option value="">Sports &amp; Fitness</option>
-                        <option value="">Tech</option>
-                        <option value="">Other</option>
+                        <option value="0">Arts &amp; Crafts</option>
+                        <option value="1">Food &amp; Drinks</option>
+                        <option value="2">Movies</option>
+                        <option value="3">Music</option>
+                        <option value="4">Outdoors &amp; Adventure</option>
+                        <option value="5">Party</option>
+                        <option value="6">Photography</option>
+                        <option value="7">Sports &amp; Fitness</option>
+                        <option value="8">Tech</option>
+                        <option value="9">Other</option>
                     </select>
                 </div>
 
