@@ -77,10 +77,10 @@ else {
                            <h3 class='is-size-6'>$userName</h3>
                         </a>
                         <div class='navbar-dropdown'>
-                            <a class='navbar-item'>Profile</a>
-                            <a class='navbar-item'>My Account</a>
-                            <a class='navbar-item'>Messages</a>
-                            <a class='navbar-item'>My Events</a>
+                            <a class='navbar-item' href='./myProfile.php'>Profile</a>
+                            <a class='navbar-item' href='./myAccount.php'>My Account</a>
+                            <a class='navbar-item' href='./messages.php'>Messages</a>
+                            <a class='navbar-item' href=''>My Events</a>
                         </div>
                     </div> ";} ?>
                     <div class="navbar-item">
