@@ -527,6 +527,10 @@ form {
   padding-top: 250px;
 }
 
+.allEventsCategoryHeader {
+  margin-top: 3rem;
+}
+
 .ViewAllEventsGridParent {
   display: -ms-grid;
   display: grid;
@@ -559,6 +563,34 @@ form {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.link-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.link-box .fa-arrow-circle-right {
+  font-size: 6rem !important;
+  margin-bottom: 10px;
+}
+
+.link-box .view-more-text:hover .view-more-arrow {
+  padding-left: 5px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
 /* ==========================================

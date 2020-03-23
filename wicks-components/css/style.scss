@@ -504,7 +504,7 @@ form {
 
 // **********************************
 //
-//  9 - My Account Page
+// 10 - View All Events Page
 //
 // ********************************** 
 
@@ -512,6 +512,10 @@ form {
     & h2:not(:nth-child(1)){
         padding-top: 250px;
     }
+}
+
+.allEventsCategoryHeader {
+    margin-top: 3rem;
 }
 
 .ViewAllEventsGrid {
@@ -534,19 +538,34 @@ form {
 
 }
 
-
-
-// **********************************
-//
-// 10 - View All Events Page
-//
-// ********************************** 
-
 .filtersList {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.link-box {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .fa-arrow-circle-right {
+        font-size: 6rem !important;
+        margin-bottom: 10px;
+    }
+
+    & .view-more-text:hover {
+        & .view-more-arrow {
+            padding-left: 5px;
+            transition: all .2s;
+    
+        }
+    }
+}
+
+
 
 
 

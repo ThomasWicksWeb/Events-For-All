@@ -63,7 +63,140 @@ else {
 
 
 
-  
+  <!-- <ViewAllEvents> -->
+  <section class="section">
+        <div class="container ViewAllEventsContainer">
+            <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
+
+            <nav class="panel">
+                <p class="panel-heading">Categories</p>
+                <div class="panel-block">
+                    <p class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Search Events">
+                        <span class="icon is-left">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
+                <nav class="nav filtersList">
+                    <button id="filterViewAll" class="button">View All</button>
+                    <button id="filterArtsAndCrafts" class="button">Arts &amp; Crafts</button>
+                    <button id="filterSportsAndFitness" class="button">Sports &amp; Fitness</button>
+                    <button id="filterTech" class="button">Technology</button>
+                    <button id="filterFoodAndDrinks" class="button">Food &amp; Drinks</button>
+                    <button id="filterOutdoorsAndAdventure" class="button">Outdors &amp; Adventure</button>
+                    <button id="filterPhotography" class="button">Photography</button>
+                    <button id="filterMusic" class="button">Music</button>
+                    <button id="filterMovies" class="button">Movies</button>
+                    <button id="filterOther" class="button">Other</button>
+                </nav>
+            </nav>
+
+            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Arts &amp; Crafts</h2>
+            <ul class="ViewAllEventsGridParent">
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident .</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <div class="box">
+                    <div class="link-box">
+                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                    </div>
+                </div>
+            </ul>
+
+            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Food &amp; Drinks</h2>
+            <ul class="ViewAllEventsGridParent">
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Pizza Party</h1>
+                    <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam delectus
+                        nisi accusantium deserunt minima, cupiditate laudantium voluptate quae tenetur illo dignissimos
+                        quis, excepturi earum unde non, commodi eligendi explicabo corrupti eveniet iste!</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Wine Tasting</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequuntur,
+                        illum corporis deserunt explicabo nulla obcaecati cupiditate doloremque quae beatae fugit
+                        nesciunt! Nihil velit perferendis excepturi ut culpa, provident ex molestiae, molestias placeat
+                        laboriosam, facere exercitationem enim nisi. At dicta cupiditate iure soluta modi aut commodi
+                        aperiam obcaecati incidunt, illo fugiat!</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident .</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <div class="box">
+                    <div class="link-box">
+                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                    </div>
+                </div>
+            </ul>
+
+        </div>
+    </section>
+    <!-- </ViewAllEvents> -->
     
 
     <!-- <script>
