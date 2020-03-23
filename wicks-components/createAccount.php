@@ -62,7 +62,7 @@ else {
                     <div class="field">
                         <label id="FirstnameInput" class="label is-size-6">First Name</label>
                         <div class="control has-icons-left">
-                            <input class="input" required type="text" name="FirstName" placeholder="First Name">
+                            <input class="input" required type="text" name="firstName" placeholder="First Name">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -72,7 +72,7 @@ else {
                     <div class="field">
                         <label id="LastnameInput" class="label is-size-6">Last Name</label>
                         <div class="control has-icons-left">
-                            <input id="LastName" class="input" required type="text" name="LastName" placeholder="Last Name">
+                            <input id="LastName" class="input" required type="text" name="lastName" placeholder="Last Name">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -83,7 +83,7 @@ else {
                 <div class="field">
                     <label id="UsernameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
-                        <input id="UserName" name="UserName" class="input" required type="text" placeholder="Username">
+                        <input id="UserName" name="userName" class="input" required type="text" placeholder="Username">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -106,7 +106,7 @@ else {
                     <div class="field">
                         <label class="label is-size-6">Email</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="EmailInput" name="Email" required class="input" type="email"
+                            <input id="EmailInput" name="email" required class="input" type="email"
                                 placeholder="Email" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
@@ -175,7 +175,7 @@ else {
                     <div class="field">
                         <label class="label is-size-6">Street</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="streetInput" name="Street" required class="input" type="text"
+                            <input id="streetInput" name="street" required class="input" type="text"
                                 placeholder="Street Name" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
@@ -190,7 +190,7 @@ else {
                     <div class="field">
                         <label class="label is-size-6">City</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="cityInput" name="City" required class="input" type="text"
+                            <input id="cityInput" name="city" required class="input" type="text"
                                 placeholder="City" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
@@ -206,7 +206,7 @@ else {
                 <div class="field">
                         <label class="label is-size-6">State</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="StateInput" name="State" required class="input" type="text"
+                            <input id="StateInput" name="state" required class="input" type="text"
                                 placeholder="State" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
@@ -222,7 +222,7 @@ else {
                     <div class="field">
                         <label class="label is-size-6">ZIP Code</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="ZipInput" name="Zip" required class="input" type="text"
+                            <input id="ZipInput" name="zip" required class="input" type="text"
                                 placeholder="ZIP Code" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
@@ -238,7 +238,7 @@ else {
                         <label class="label is-size-6">Phone Number <span
                             class="has-text-grey has-text-weight-normal">111 222 3333</span></label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="PhoneNumberInput" name="Phone" required class="input" type="text"
+                            <input id="PhoneNumberInput" name="phone" required class="input" type="text"
                                 placeholder="Phone Number" value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>

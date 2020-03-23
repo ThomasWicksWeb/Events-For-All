@@ -21,7 +21,7 @@ else {
 	$userName = NULL;
 }
 
-if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email != NULL)){
+if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
     // Connect to MySQL and the EventsForAll Database
   $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
@@ -34,31 +34,32 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       echo "<script>console.log('Connected successfully...')</script>";
   }
   
-  $friendlist = array();
+  
   // Query database to create user
-  $query = "SELECT friend1userID, firend2userID FROM Friendships WHERE (friend1userID = '$logonid' OR friend2userID = '$logonid') AND relationshipAccepted = 1 ";
+  $query = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
  $result = $mysqli->query($query);
  if ($result->num_rows > 0) {
      $i = 0;
-     
+     $friendlist = array();
    // output data of each row
    while($row = $result->fetch_assoc()) {
        $friend1userID = $row["friend1userID"]; 
        $friend2userID = $row["friend2userID"];
-       if ($friend1userID === $userID)
+       if ($friend1userID === $userID) {
        $friendlist[$i] = $friend2userID;
-       else
+        }
+       else {
        $friendlist[$i] = $friend1userID;
-
+       }
        $i++;
    }
 }
   else {
-    $message = "Account Creation Failed!!!";
+    
   }
-  $mysqli->close();
+ 
   }
-  
+  //var_dump($userID, $friend1userID, $friend2userID, $friendlist)
   
   
 ?>
@@ -120,23 +121,22 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
                         while($row2 = $result2->fetch_assoc()) {
                             $friendUserName = $row2["userName"]; 
                             $friendUserImg = $row2["profileImg"];
-      
-                            echo "<li class='myFriendsGrid box'>
+
+                        }
+                    }
+                    echo "<li class='myFriendsGrid box'>
                             <img src='./images/$userName/$friendUserImg' alt='Profile Photo' />
                             <div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
                             <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
                             </div>
                             </li>";
-
-                        }
-                    }
-                    
                 }
             }
                 else{
                         echo "<p class='has-text-centered is-size-5'>You Have No Friends Yet! :(</p>";
                     }
+                    $mysqli->close();
                 ?>
                 </ul>
             </div>

@@ -141,7 +141,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                     <label class='label is-size-6'>DOB <span
                             class='has-text-grey has-text-weight-normal'>(YYYY/MM/DD)</span></label>
                     <div class='control has-icons-left'>
-                        <input id='EditAccountInformationDOB' autocomplete='off' class='input' required type='text'
+                        <input id='EditAccountInformationDOB' name='dob' autocomplete='off' class='input' required type='text'
                             value='$dob'>
                         <span class='icon is-small is-left'>
                             <i class='fas fa-user'></i>
