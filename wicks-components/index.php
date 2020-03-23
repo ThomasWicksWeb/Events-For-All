@@ -76,6 +76,11 @@ else {
             once: true
         });
     </script>
+    <script>
+        // Set random background image on the landing page
+        let imageNumberLandingPage = Math.floor((Math.random() * 5) + 1);
+        document.getElementById("LandingPageImg").src = `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
+    </script>
 </body>
 
 </html>

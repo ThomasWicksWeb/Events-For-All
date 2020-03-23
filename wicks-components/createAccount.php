@@ -278,14 +278,23 @@ else {
 
 
 
-    <script>
+    <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
             updateURL: false, // Update the URL on scroll
             emitEvents: true, // Emit custom events
             speed: 175 // 1.75 seconds to scroll to anchor point
         });
-    </script>
+    </script> -->
+    <script>
+        // *******************************************
+        // IIFEs assigning DatePickers to input fields
+        // *******************************************
 
+        (function(){
+            $("#AccountCreationDOB").datepicker({ dateFormat: 'yy/mm/dd' });
+        })();
+
+    </script>
     <script src="./js/scripts.js"></script>
 </body>
 

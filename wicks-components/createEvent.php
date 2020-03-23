@@ -218,6 +218,15 @@ else {
             once: true
         });
     </script>
+    <script>
+        (function(){
+            $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
+        })();
+
+        (function(){
+            $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
+        })();
+    </script>
 </body>
 
 </html>

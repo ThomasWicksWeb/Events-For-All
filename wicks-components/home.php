@@ -138,6 +138,11 @@ else {
             once: true
         });
     </script>
+    <script>
+        // Setting image for Hero Banner for the home page
+        let imageNumberHeroBanner = Math.floor((Math.random() * 3) + 1); 
+        $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-min-${imageNumberHeroBanner}.jpg)`);
+    </script>
 </body>
 
 </html>

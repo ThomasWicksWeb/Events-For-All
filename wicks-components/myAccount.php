@@ -172,13 +172,13 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
 }
 ?>    
 
-    <script>
+    <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
             updateURL: false, // Update the URL on scroll
             emitEvents: true, // Emit custom events
             speed: 175 // 1.75 seconds to scroll to anchor point
         });
-    </script>
+    </script> -->
 
     <script src="./js/scripts.js"></script>
 </body>
