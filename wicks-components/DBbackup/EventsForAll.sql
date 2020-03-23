@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2020 at 04:42 PM
+-- Generation Time: Mar 23, 2020 at 03:23 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -63,12 +63,19 @@ CREATE TABLE `Events` (
   `endTime` time NOT NULL,
   `street` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `state` char(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `zip` int(5) NOT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `USstate` char(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `zip` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `eventDescription` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `genre` int(2) NOT NULL,
-  `private` tinyint(1) NOT NULL
+  `privacy` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `Events`
+--
+
+INSERT INTO `Events` (`EventID`, `userID`, `eventTitle`, `startDate`, `startTime`, `endDate`, `endTime`, `street`, `city`, `USstate`, `zip`, `eventDescription`, `genre`, `privacy`) VALUES
+(1, 1, 'Test Event 1', '2020-03-22', '12:00:00', '2020-03-22', '13:00:00', '720 Northern Blvd.', 'Brookville', 'NY', '11548', 'This is a test event.', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -80,8 +87,15 @@ CREATE TABLE `Friendships` (
   `friendshipID` int(11) NOT NULL,
   `friend1userID` int(11) NOT NULL,
   `friend2userID` int(11) NOT NULL,
-  `relationshipAccepted` int(11) NOT NULL
+  `relationshipAccepted` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `Friendships`
+--
+
+INSERT INTO `Friendships` (`friendshipID`, `friend1userID`, `friend2userID`, `relationshipAccepted`) VALUES
+(1, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -123,6 +137,19 @@ CREATE TABLE `UserImgs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `UserProfile`
+--
+
+CREATE TABLE `UserProfile` (
+  `userID` int(11) NOT NULL,
+  `profileImg` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bio` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `hobbies` text CHARACTER SET utf8 COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Users`
 --
 
@@ -135,10 +162,10 @@ CREATE TABLE `Users` (
   `lastName` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `street` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `USstate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `zip` int(5) DEFAULT NULL,
   `phone` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `profileImg` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `bio` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `dateOfBirth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -146,9 +173,9 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`userID`, `email`, `userName`, `userPassword`, `firstName`, `lastName`, `street`, `city`, `zip`, `phone`, `profileImg`, `bio`, `dateOfBirth`) VALUES
-(1, 'JohnSmith@testMail.com', 'JsmithTestUser', 'testuser1', 'John', 'Smith', '720 Broadhollow Road', 'Farmingdale', 11735, '1234567891', 'jsmithImg1', 'This is a test user profile for testing purposes.', '1987-04-01'),
-(2, 'testUser2@test.com', 'testUser2', 'testuser2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1980-01-02'),
+INSERT INTO `Users` (`userID`, `email`, `userName`, `userPassword`, `firstName`, `lastName`, `street`, `city`, `USstate`, `zip`, `phone`, `profileImg`, `dateOfBirth`) VALUES
+(1, 'JohnSmith@testMail.com', 'JsmithTestUser', 'testuser1', 'John', 'Smith', '720 Broadhollow Road', 'Farmingdale', 'NY', 11735, '1234567891', 'jsmithImg1', '1987-04-01'),
+(2, 'testUser2@test.com', 'testUser2', 'testuser2', 'Gertrude', '', '720 Northern Blvd.', 'Brookville', 'NY', 11548, NULL, NULL, '1980-01-02'),
 (3, 'testuser3@test.com', 'testUser3', 'testing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1980-01-02'),
 (4, 'testingUser4@test.com', 'testUser4', 'tetuser4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1980-01-02');
 
@@ -201,6 +228,12 @@ ALTER TABLE `UserImgs`
   ADD PRIMARY KEY (`imageID`);
 
 --
+-- Indexes for table `UserProfile`
+--
+ALTER TABLE `UserProfile`
+  ADD PRIMARY KEY (`userID`);
+
+--
 -- Indexes for table `Users`
 --
 ALTER TABLE `Users`
@@ -228,13 +261,13 @@ ALTER TABLE `EventImgs`
 -- AUTO_INCREMENT for table `Events`
 --
 ALTER TABLE `Events`
-  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Friendships`
 --
 ALTER TABLE `Friendships`
-  MODIFY `friendshipID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `friendshipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Invitees`
