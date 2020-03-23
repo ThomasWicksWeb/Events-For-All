@@ -135,7 +135,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
                 }
             }
                 else{
-                        echo "You Have No Friends Yet!";
+                        echo "<p class='has-text-centered is-size-5'>You Have No Friends Yet! :(</p>";
                     }
                 ?>
                 </ul>

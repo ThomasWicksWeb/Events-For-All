@@ -166,7 +166,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     <!-- </myAccount> --> ";
 }     
  else {
-     echo "Something Went wrong";
+     echo "<p class='is-size-4 has-text-centered'>Something went wrong... Please refresh the page to try again</p>";
  }   
     
 }
