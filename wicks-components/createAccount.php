@@ -60,7 +60,7 @@ else {
 
                 <div class="flexTwoFields">
                     <div class="field">
-                        <label id="firstnameInput" class="label is-size-6">First Name</label>
+                        <label id="FirstnameInput" class="label is-size-6">First Name</label>
                         <div class="control has-icons-left">
                             <input class="input" required type="text" name="FirstName" placeholder="First Name">
                             <span class="icon is-small is-left">
@@ -70,7 +70,7 @@ else {
                     </div>
     
                     <div class="field">
-                        <label id="lastnameInput" class="label is-size-6">Last Name</label>
+                        <label id="LastnameInput" class="label is-size-6">Last Name</label>
                         <div class="control has-icons-left">
                             <input id="LastName" class="input" required type="text" name="LastName" placeholder="Last Name">
                             <span class="icon is-small is-left">
@@ -81,7 +81,7 @@ else {
                 </div>
 
                 <div class="field">
-                    <label id="userNameInput" class="label is-size-6">Username</label>
+                    <label id="UsernameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
                         <input id="UserName" name="UserName" class="input" required type="text" placeholder="Username">
                         <span class="icon is-small is-left">
