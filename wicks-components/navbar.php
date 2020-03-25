@@ -27,10 +27,10 @@ else {
     <!-- <NavBar> -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            <a class="navbar-item" href="https://events-4all.com">
+                <img id="NavBarLogo" width="112" height="28" src="./images/LogoHorizontalNavBar.png" />
+                <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28"> -->
             </a>
-
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -43,8 +43,8 @@ else {
             <?php 
 		            if ($loggedon) {
                         echo "<a class='navbar-item' href='./home.php'>Home</a>";
-                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
-                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
+                        // echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
+                        // echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
 		            }
 		            else{
                         echo "<a class='navbar-item' href='./index.php'>Home</a>";
@@ -77,8 +77,9 @@ else {
                            <h3 class='is-size-6'>$userName</h3>
                         </a>
                         <div class='navbar-dropdown'>
-                            <a class='navbar-item' href='./myProfile.php'>Profile</a>
+                            <a class='navbar-item' href='./myProfile.php'>My Profile</a>
                             <a class='navbar-item' href='./myAccount.php'>My Account</a>
+                            <a class='navbar-item' href='./friends.php'>Friends</a>
                             <a class='navbar-item' href='./messages.php'>Messages</a>
                             <a class='navbar-item' href=''>My Events</a>
                         </div>
