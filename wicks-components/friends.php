@@ -114,23 +114,24 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
                 <?php 
               if ($friendlist){
                 foreach($friendlist as $friendID){
-                    $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users INNER JOIN UserProfile ON Users.userID=UserProfile.userID WHERE userID = '$friendID'";
+                    $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = Userprofile.userID WHERE Users.userID = '$friendID' AND UserProfile.userID = '$friendID'";
                     $result2 = $mysqli->query($query2);
                     if ($result2->num_rows > 0) {
                     // output data of each row
                         while($row2 = $result2->fetch_assoc()) {
                             $friendUserName = $row2["userName"]; 
                             $friendUserImg = $row2["profileImg"];
-
                         }
                     }
+
                     echo "<li class='myFriendsGrid box'>
-                            <img src='./images/$userName/$friendUserImg' alt='Profile Photo' />
+                            <img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />
                             <div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
                             <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
                             </div>
                             </li>";
+                            
                 }
             }
                 else{
@@ -157,3 +158,4 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 </body>
 
 </html>
+
