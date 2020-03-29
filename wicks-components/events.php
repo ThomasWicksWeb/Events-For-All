@@ -68,9 +68,7 @@ else {
         <div class="container ViewAllEventsContainer">
             <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
 
-
             <h2 class="has-text-weight-bold is-size-3">Filters</h2>
-            <!-- <h2 class="has-text-weight-bold is-size-4">My Events</h2> -->
 
             <a href="#" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
 
@@ -136,8 +134,6 @@ else {
                     </ul>
                 </div>
             </div>
-
-            <hr class="hr">
 
 <!-- 
             <br>

@@ -102,11 +102,27 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
             <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>'>
         <?php echo "<h2 class='is-size-2 has-text-weight-bold has-text-centered'>Edit Profile</h2>
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
-
+                
                 <div class='dataSet'>
                     <h6 class='has-text-weight-bold is-size-5'>Username</h6>
                     <p class='is-size-6'> { Username }
                 </div>
+                <hr />
+                <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>
+                <div class='file has-name'>
+                    <label class='file-label'>
+                        <input id='editProfileNewPicture' class='file-input' type='file' name='newProfileImg'>
+                        <span class='file-cta'>
+                        <span class='file-icon'>
+                            <i class='fas fa-upload'></i>
+                        </span>
+                        <span class='file-label'>Choose a file…</span>
+                        </span>
+                        <span class='file-name'>{ file name after upload }</span>
+                    </label>
+                </div>
+
+                <hr />
                     
                 <div class='field'>
                     <label class='label is-size-5'>Bio</label>
@@ -114,6 +130,8 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                         <textarea id='EditBio' name='description' value='{Bio}' required class='textarea'></textarea>
                     </div>
                 </div>
+
+                <hr />
 
                 <div class='field'>
                     <label class='label is-size-5'>Hobbies <span class='has-text-grey has-text-weight-normal'>(Please
