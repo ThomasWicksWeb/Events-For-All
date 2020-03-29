@@ -103,26 +103,20 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
         <?php echo "<h2 class='is-size-2 has-text-weight-bold has-text-centered'>Edit Profile</h2>
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
 
-                <div class='field'>
-                    <label class='label is-size-6'>Username</label>
-                    <div class='control has-icons-left'>
-                        <input id='EditUsername' class='input' name='username' required type='text'
-                            value='{{Username}}'>
-                        <span class='icon is-small is-left'>
-                            <i class='fas fa-user'></i>
-                        </span>
-                    </div>
+                <div class='dataSet'>
+                    <h6 class='has-text-weight-bold is-size-5'>Username</h6>
+                    <p class='is-size-6'> { Username }
                 </div>
-
+                    
                 <div class='field'>
-                    <label class='label is-size-6'>Bio</label>
+                    <label class='label is-size-5'>Bio</label>
                     <div class='control has-icons-left'>
                         <textarea id='EditBio' name='description' value='{Bio}' required class='textarea'></textarea>
                     </div>
                 </div>
 
                 <div class='field'>
-                    <label class='label is-size-6'>Hobbies <span class='has-text-grey has-text-weight-normal'>(Please
+                    <label class='label is-size-5'>Hobbies <span class='has-text-grey has-text-weight-normal'>(Please
                             put a comma between each hobby)</span></label>
                     <div class='control has-icons-left'>
                         <textarea id='EditHobbies' name='hobbies' value='{Hobbies}' required

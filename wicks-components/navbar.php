@@ -27,12 +27,7 @@ else {
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand" style="padding-top: 0; padding-bottom: 0;">
             <a class="navbar-item" style="padding-top: 0; padding-bottom: 0;" href="https://events-4all.com">
-                <!-- <img id="NavBarLogo" width="112" height="28" src="./images/LogoDark.png" /> -->
-                <!-- <div id="NavBarLogo" style="width: 6rem; height: 2rem; background-image: url('./images/LogoDark.PNG')"></div> -->
-                <!-- <img src="./images/LogoDark.PNG" style="width: 6rem; height: 2rem;" alt=""> -->
-                <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28"> -->
                 <img src="./images/LogoDark.PNG" alt="Events-4-All" width="112" height="28">
-                <!-- <div id="NavBarLogo">&nbsp;</div> -->
             </a>
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
