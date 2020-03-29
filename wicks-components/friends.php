@@ -114,7 +114,7 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
                 <?php 
               if ($friendlist){
                 foreach($friendlist as $friendID){
-                    $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = Userprofile.userID WHERE Users.userID = '$friendID' AND UserProfile.userID = '$friendID'";
+                    $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$friendID' AND UserProfile.userID = '$friendID'";
                     $result2 = $mysqli->query($query2);
                     if ($result2->num_rows > 0) {
                     // output data of each row

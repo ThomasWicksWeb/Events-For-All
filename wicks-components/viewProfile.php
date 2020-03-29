@@ -19,26 +19,29 @@ else {
     echo "<script>console.log('Connected successfully...')</script>";
 }
 
-/*
-if (isset($_SESSION['viewUserProfileID'])) {
-	$userProfileID = $_SESSION['viewUserProfileID'];
+
+if (isset($_GET['viewUser'])) {
+	$userProfileID = $_GET['viewUser'];
 }
 else {
 	header("Location: ./home.php");
 }
 
-*/
+
  // Query database for user profile
 
 
-$userProfileID = 1;
- $query = "SELECT userName, profileImg FROM Users WHERE userID = '$userProfileID'";
+ $query = "SELECT Users.userName, Users.city, Users.USstate, UserProfile.profileImg, UserProfile.bio, UserProfile.hobbies FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$userProfileID' AND UserProfile.userID = '$userProfileID'";
  $result = $mysqli->query($query);
  if ($result->num_rows > 0) {
    // output data of each row
    while($row = $result->fetch_assoc()) {
-       $userName = $row["userName"];
-       $profileImg = $row["profileImg"];
+       $viewedUserName = $row["userName"];
+       $viewedProfileImg = $row["profileImg"];
+       $viewedUserBio = $row["bio"];
+       $viewedUserHobbies = $row["hobbies"];
+       $viewedUserCity = $row["city"];
+       $viewedUSerState = $row["USstate"];
    }
  }
 ?>
@@ -88,17 +91,19 @@ $userProfileID = 1;
         <div class="container userProfileParent">
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
-                <?php echo "<li class='has-text-weight-bold is-size-3'>$userName</li>" ;?>
-                <li><a class="is-size-6 button is-primary" href="#">Add Friend</a></li>
-                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $userName</a></li>"; ?>
-                <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
-                <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+                <?php echo "<li class='has-text-weight-bold is-size-3'>$viewedUserName</li>" ;?>
+                <li><a class="is-size-6 button is-primary" href="./addFriend.php/">Add Friend</a></li>
+                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
             </ul>
-            <?php echo "<img class='userProfileUserImg' src='./images/$profileImg.jpeg' alt=''>";?>
+            <?php if($viewedProfileImg)
+            echo "<img class='userProfileUserImg' src='./images/$viewedProfileImg.jpeg' alt=''>";
+            else
+            echo "<img class='userProfileUserImg' src='./images/jsmithImg1.jpeg' alt=''>";
+            ?>
             <div class="userProfileContentBody">
                 <div class="userProfileContentBodyShortBio">
                     <h3 class="is-size-4 has-text-weight-bold">Location</h3>
-                    <p class="is-size-6">Farmingdale, NY</p>
+                    <?php echo "<p class='is-size-6'>$viewedUserCity, $viewedUSerState</p>";?>
                     <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
                     <ul class="is-size-6">
                         <li>Volleyball</li>
@@ -111,23 +116,7 @@ $userProfileID = 1;
                 </div>
                 <div class="userProfileContentBodyLongBio">
                     <h2 class="is-size-3 has-text-weight-bold">About Me</h2>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, blanditiis
-                        voluptatibus? Sed
-                        libero laborum animi quis nostrum provident nulla recusandae sapiente odit, iste dolorum. Unde
-                        enim alias amet corrupti nisi.</p>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore
-                        delectus mollitia amet.
-                        Quas laboriosam vero sunt cupiditate quod voluptate sit, illo recusandae in voluptas quisquam
-                        maxime labore unde hic a praesentium commodi est optio consequuntur.</p>
-                    <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus reiciendis
-                        quia in fuga
-                        consequatur asperiores ullam harum ipsam aspernatur eaque facere accusantium pariatur tenetur
-                        fugit deserunt, veritatis vero quasi mollitia expedita nemo. Autem, inventore delectus quas
-                        alias quidem cupiditate possimus qui numquam est consequuntur mollitia voluptatibus ut non
-                        fugit, obcaecati expedita! Possimus, minima! Illo, magni quaerat veritatis eaque alias molestiae
-                        neque, delectus consequatur earum ex sapiente fugit ad iusto eius a ratione! Natus animi, magnam
-                        maiores cupiditate dicta neque voluptatibus quidem corrupti quaerat ex tempora. Amet
-                        voluptatibus temporibus quam natus?</p>
+                    <?php echo "<p class='is-size-6'>$viewedUserBio</p>"; ?>
                 </div>
             </div>
         </div>

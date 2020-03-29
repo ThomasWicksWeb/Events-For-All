@@ -79,16 +79,16 @@ else {
                     </p>
                 </div>
                 <nav class="nav filtersList">
-                    <button id="filterViewAll" class="button">View All</button>
-                    <button id="filterArtsAndCrafts" class="button">Arts &amp; Crafts</button>
-                    <button id="filterSportsAndFitness" class="button">Sports &amp; Fitness</button>
-                    <button id="filterTech" class="button">Technology</button>
-                    <button id="filterFoodAndDrinks" class="button">Food &amp; Drinks</button>
-                    <button id="filterOutdoorsAndAdventure" class="button">Outdors &amp; Adventure</button>
-                    <button id="filterPhotography" class="button">Photography</button>
-                    <button id="filterMusic" class="button">Music</button>
-                    <button id="filterMovies" class="button">Movies</button>
-                    <button id="filterOther" class="button">Other</button>
+                    <a id="filterViewAll" class="button" href="./events.php?view=all">View All</a>
+                    <a id="filterArtsAndCrafts" class="button">Arts &amp; Crafts</a>
+                    <a id="filterSportsAndFitness" class="button">Sports &amp; Fitness</a>
+                    <a id="filterTech" class="button">Technology</a>
+                    <a id="filterFoodAndDrinks" class="button">Food &amp; Drinks</a>
+                    <a id="filterOutdoorsAndAdventure" class="button">Outdors &amp; Adventure</a>
+                    <a id="filterPhotography" class="button">Photography</a>
+                    <a id="filterMusic" class="button">Music</a>
+                    <a id="filterMovies" class="button">Movies</a>
+                    <a id="filterOther" class="button">Other</a>
                 </nav>
             </nav>
 
@@ -100,7 +100,7 @@ else {
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
                         explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
                         commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                    <a href="#" class="a is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
                 <li class="box">
                     <img src="https://placekitten.com/400/200" alt="" />
