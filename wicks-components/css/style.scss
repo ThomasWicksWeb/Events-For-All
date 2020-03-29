@@ -517,6 +517,10 @@ form {
 //
 // ********************************** 
 
+.panel-block {
+    flex-direction: column;
+}
+
 .viewAllEventsContainer {
     & h2:not(:nth-child(1)){
         padding-top: 250px;
@@ -547,10 +551,50 @@ form {
 
 }
 
-.filtersList {
+.panel-block {
+    flex-direction: row;
+}
+
+.panel-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+// .filtersList {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+//     width: 100%;
+
+//     margin-bottom: 1rem;
+
+//     & > * {
+//         margin: 5px 8px 0 0;
+//     }
+// }
+
+.filtersList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 2rem;
+
+    & ul {
+        margin-top: -12px;
+    }
+
+    & > * {
+        flex: 1;
+    }
+}
+
+.EventsPageCreateEventBtn {
+    float: right;
 }
 
 .link-box {
@@ -574,6 +618,12 @@ form {
     }
 }
 
+.filters-panel-parents {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 
 
 

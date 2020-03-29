@@ -68,8 +68,93 @@ else {
         <div class="container ViewAllEventsContainer">
             <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
 
+
+            <h2 class="has-text-weight-bold is-size-3">Filters</h2>
+            <!-- <h2 class="has-text-weight-bold is-size-4">My Events</h2> -->
+
+            <a href="#" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
+
+            <div class="filters-panel-parents">
+                <div class="nav filtersList content">
+                    <h2 class="has-text-weight-bold is-size-4">My Events</h2>
+                    <ul>
+                        <li>
+                            <a id="filterMyEvents" class="link" href="./events.php?view=all">My Events</a>
+                        </li>
+                        <li>
+                            <a id="filterMyAttending" class="link">Attending</a>
+                        </li>
+                        <li>
+                            <a id="filterMyAttended" class="link">Attended</a>
+                        </li> 
+                    </ul>
+                </div>
+                <div class="nav filtersList content">
+                    <h2 class="has-text-weight-bold is-size-4">All Events</h2>
+                    <ul>
+                        <li>
+                            <a id="filterViewAll" class="link" href="./events.php?view=all">View All</a>
+                        </li>
+                        <li>
+                            <a id="filterArtsAndCrafts" class="link">Arts &amp; Crafts</a>
+                        </li>
+                        <li>
+                            <a id="filterSportsAndFitness" class="link">Sports &amp; Fitness</a>
+                        </li> 
+                        <li>
+                            <a id="filterTech" class="link">Technology</a>
+                        </li>
+                        <li>
+                            <a id="filterFoodAndDrinks" class="link">Food &amp; Drinks</a>
+                        </li>
+                        <li>
+                            <a id="filterOutdoorsAndAdventure" class="link">Outdors &amp; Adventure</a>
+                        </li>
+                        <li>
+                            <a id="filterPhotography" class="link">Photography</a>
+                        </li>
+                        <li>
+                            <a id="filterMusic" class="link">Music</a>
+                        </li>
+                        <li>
+                            <a id="filterMovies" class="link">Movies</a>
+                        </li>
+                        <li>
+                            <a id="filterOther" class="butlinkton">Other</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav filtersList content">
+                    <h2 class="has-text-weight-bold is-size-4">Local</h2>
+                    <ul>
+                        <li>
+                            <a id="filterNearMe" class="link" href="#">Near Me</a>
+                        </li>
+                        <li>
+                            <a id="filterRecentlyAdded" class="link">Recently Added</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="hr">
+
+<!-- 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <nav class="panel">
                 <p class="panel-heading">Categories</p>
+
+                <nav class="nav filtersList">
+                    <a id="filterMyEvents" class="button" href="./events.php?view=all">My Events</a>
+                    <a id="filterMyAttending" class="button">Attending</a>
+                    <a id="filterMyAttended" class="button">Attended</a>
+                </nav>
+
                 <div class="panel-block">
                     <p class="control has-icons-left">
                         <input class="input" type="text" placeholder="Search Events">
@@ -78,6 +163,7 @@ else {
                         </span>
                     </p>
                 </div>
+
                 <nav class="nav filtersList">
                     <a id="filterViewAll" class="button" href="./events.php?view=all">View All</a>
                     <a id="filterArtsAndCrafts" class="button">Arts &amp; Crafts</a>
@@ -90,7 +176,7 @@ else {
                     <a id="filterMovies" class="button">Movies</a>
                     <a id="filterOther" class="button">Other</a>
                 </nav>
-            </nav>
+            </nav> -->
 
             <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Arts &amp; Crafts</h2>
             <ul class="ViewAllEventsGridParent">
@@ -98,9 +184,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="a is-info is-size-6 has-text-weight-bold">View Event</a>
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                    </p>
+                    <p class="is-size-6">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                    </p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
                 <li class="box">
                     <img src="https://placekitten.com/400/200" alt="" />
