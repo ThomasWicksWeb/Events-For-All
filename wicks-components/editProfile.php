@@ -105,7 +105,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                 
                 <div class='dataSet'>
                     <h6 class='has-text-weight-bold is-size-5'>Username</h6>
-                    <p class='is-size-6'> { Username }
+                    <p class='is-size-6'> $userName</p>
                 </div>
                 <hr />
                 <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>

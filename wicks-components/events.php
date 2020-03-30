@@ -70,14 +70,14 @@ else {
 
             <h2 class="has-text-weight-bold is-size-3">Filters</h2>
 
-            <a href="#" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
+            <a href="./createEvent.php" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
 
             <div class="filters-panel-parents">
                 <div class="nav filtersList content">
                     <h2 class="has-text-weight-bold is-size-4">My Events</h2>
                     <ul>
                         <li>
-                            <a id="filterMyEvents" class="link" href="./events.php?view=all">My Events</a>
+                            <a id="filterMyEvents" class="link">My Events</a>
                         </li>
                         <li>
                             <a id="filterMyAttending" class="link">Attending</a>
