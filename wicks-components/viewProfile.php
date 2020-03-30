@@ -98,7 +98,7 @@ else {
             <?php if($viewedProfileImg)
             echo "<img class='userProfileUserImg' src='./images/$viewedProfileImg.jpeg' alt=''>";
             else
-            echo "<img class='userProfileUserImg' src='./images/jsmithImg1.jpeg' alt=''>";
+            echo "<img class='userProfileUserImg' src='./images/ProfilePhotoWithLogo.png' alt=''>";
             ?>
             <div class="userProfileContentBody">
                 <div class="userProfileContentBodyShortBio">

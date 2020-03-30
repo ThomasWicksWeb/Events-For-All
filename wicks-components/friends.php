@@ -124,14 +124,19 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
                         }
                     }
 
-                    echo "<li class='myFriendsGrid box'>
-                            <img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />
-                            <div class='myFriendsGridTextCont'>
+                    echo "<li class='myFriendsGrid box'>";?>
+                           <?php 
+                           if($friendUserImg)
+                           echo "<img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />";
+                           else
+                           echo "<img src='./images/ProfilePhotoWithLogo' alt='Profile Photo' />";
+                           ?>
+                <?php echo "<div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
                             <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
                             </div>
                             </li>";
-                            
+                         
                 }
             }
                 else{
