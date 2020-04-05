@@ -30,17 +30,14 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
     <title>Events For All</title>
 
@@ -63,14 +60,27 @@ else {
 
 
 
-  <!-- <ViewAllEvents> -->
-  <section class="section">
+    <!-- <ViewAllEvents> -->
+    <section class="section">
         <div class="container ViewAllEventsContainer">
             <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
 
-            <h2 class="has-text-weight-bold is-size-3">Filters</h2>
-
             <a href="./createEvent.php" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
+
+            <div class="field">
+                <div class="eventSearch">
+                    <label class="label is-size-3 has-text-weight-bold">Search Events</label>
+                    <div class="control">
+                        <input class="input" type="text" name="eventSearch" placeholder="Search">
+                    </div>
+                </div>
+            </div>
+
+            <a id="showFiltersToggle" href="https://www.google.com" class="">
+                <h2 class="has-text-weight-bold is-size-4 filtersText">Filters</h2>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+            
 
             <div class="filters-panel-parents">
                 <div class="nav filtersList content">
@@ -84,7 +94,7 @@ else {
                         </li>
                         <li>
                             <a id="filterMyAttended" class="link">Attended</a>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
                 <div class="nav filtersList content">
@@ -98,7 +108,7 @@ else {
                         </li>
                         <li>
                             <a id="filterSportsAndFitness" class="link">Sports &amp; Fitness</a>
-                        </li> 
+                        </li>
                         <li>
                             <a id="filterTech" class="link">Technology</a>
                         </li>
@@ -135,7 +145,25 @@ else {
                 </div>
             </div>
 
-<!-- 
+            <script>
+
+                const filters = $('.filters-panel-parents');
+
+                $(".filters-panel-parents").slideUp(0);
+
+                $("#showFiltersToggle").on("click", function(e){
+                    e.preventDefault();
+
+                    if (filters.is(':visible')){
+                        filters.slideUp(300);
+                    } else {
+                        filters.slideDown(300);
+                    }
+                    console.log("Hello!");
+                })
+            </script>
+
+            <!-- 
             <br>
             <br>
             <br>
@@ -180,10 +208,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -221,7 +251,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -274,7 +305,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -285,10 +317,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -326,7 +360,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -338,10 +373,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -379,7 +416,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -390,10 +428,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -431,7 +471,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -444,10 +485,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -485,7 +528,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -498,10 +542,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -539,7 +585,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -551,10 +598,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -592,7 +641,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -604,10 +654,12 @@ else {
                     <img src="https://placekitten.com/400/200" alt="" />
                     <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
                     <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim repudiandae veritatis voluptatem
+                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
+                        repudiandae veritatis voluptatem
                     </p>
                     <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea, commodi laudantium!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
+                        commodi laudantium!
                     </p>
                     <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
                 </li>
@@ -645,7 +697,8 @@ else {
                 <div class="box">
                     <div class="link-box">
                         <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i class="fas fa-arrow-right view-more-arrow"></i></a>
+                        <a href="#" class="is-size-5 view-more-text">View more events <i
+                                class="fas fa-arrow-right view-more-arrow"></i></a>
                     </div>
                 </div>
             </ul>
@@ -653,7 +706,7 @@ else {
         </div>
     </section>
     <!-- </ViewAllEvents> -->
-    
+
 
     <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
