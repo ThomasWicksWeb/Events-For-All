@@ -99,8 +99,8 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
             $dob = $row["dateOfBirth"];
        }
             $areaCode = substr($phone, 0, 3);
-            $localCode = substr($phone, 4, 3);
-            $userCode = substr($phone, 7);
+            $localCode = substr($phone, 3, 3);
+            $userCode = substr($phone, 6);
 
    $mysqli->close();         
 

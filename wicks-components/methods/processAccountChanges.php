@@ -43,6 +43,12 @@ if(isset($_POST['email'])) {
 else{
     $email = NULL;
 }
+if(isset($_POST['phone'])) {
+  $phone = test_input($_POST['phone']);
+}
+else{
+  $phone = NULL;
+}
 if(isset($_POST['street'])) {
     $street = test_input($_POST['street']);
 }
@@ -69,7 +75,7 @@ else{
 }
 
 
-if (($userID != NULL) && ($firstName != NULL) && ($lastName != NULL) && ($dob != NULL) && ($email != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
+if (($userID != NULL) && ($firstName != NULL) && ($lastName != NULL) && ($dob != NULL) && ($email != NULL) && ($phone != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
 
   // Connect to MySQL and the EventsForAll Database
 $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
@@ -91,6 +97,7 @@ if ($mysqli->query($query) === TRUE) {
 }
 else {
   $message = "Account Update Failed!!!";
+  $_SESSION['message'] = $message;
 }
 $mysqli->close();
 }
