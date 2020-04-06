@@ -110,6 +110,15 @@ else {
     </section>
 
     <section class="section">
+        <div class="container helperMargin">
+            <h3 class="is-size-2 has-text-weight-bold">About <i>Events-4-All</i></h3>
+            <p class="is-size-5"><i>Events-4-All</i> is for the socialization you want, but might have trouble finding. There's already a great active community on the <i>Events-4-All</i> platform justwaiting for you to join them!</p>
+            <p class="is-size-5">Register for an account if you don't already have one, and once you're logged in you're free to start browsing and registering for any event you want! Interested in finding a yoga group, hiking group, D&amp;D group, or anything of the likes? We're sure you'll find others with similar interests, and if you can't, it's super easy to start hosting your own events!</p>
+            <p class="is-size-5">So what are you waiting for? Let's check out some events!</p>
+        </div>
+    </section>
+
+    <section class="section">
         <div class="container">
             <h2 class="has-text-centered is-size-2 has-text-weight-bold about-us-section-header helperMargin">Types of
                 Events</h2>
