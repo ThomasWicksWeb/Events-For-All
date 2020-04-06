@@ -65,7 +65,7 @@ else {
         <div class="container ViewAllEventsContainer">
             <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
 
-            <a href="#" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
+            <a href="./createEvent.php" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
 
             <div class="field">
                 <div class="eventSearch">
@@ -87,7 +87,7 @@ else {
                     <h2 class="has-text-weight-bold is-size-4">My Events</h2>
                     <ul>
                         <li>
-                            <a id="filterMyEvents" class="link" href="./events.php?view=all">My Events</a>
+                            <a id="filterMyEvents" class="link">My Events</a>
                         </li>
                         <li>
                             <a id="filterMyAttending" class="link">Attending</a>
