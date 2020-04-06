@@ -21,6 +21,30 @@ else {
 	$userName = NULL;
 }
 
+if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
+
+    // Connect to MySQL and the EventsForAll Database
+  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  
+  if ($mysqli->connection_error) {
+      die("connection Failed: " . $mysqli->connection_error);
+      echo "<script>console.log('Connection Error...')</script>";
+  }
+  else {
+      echo "<script>console.log('Connected successfully...')</script>";
+  }
+
+$query = "SELECT profileImg FROM UserProfile WHERE  userID = '$userID'";
+                    $result = $mysqli->query($query);
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            $userImg = $row["profileImg"];
+                        }
+                    }
+$mysqli->close();
+}
+
 ?>    
 
     <!-- <NavBar> -->
@@ -70,9 +94,14 @@ else {
 
             <div class="navbar-end">
            <?php if ($loggedon) {  echo "<div class='navbar-item has-dropdown is-hoverable'>
-                        <a class='navbar-link'>
-                            <img src='http://placekitten.com/50/50' class='navBarProfilePicture' alt='User Profile Picture'>
-                           <h3 class='is-size-6'>$userName</h3>
+                        <a class='navbar-link'>";
+                        if ($userImg) {
+                           echo "<img src='./images/$userImg.jpeg' class='navBarProfilePicture' alt='User Profile Picture'>";
+                        }
+                        else{
+                            echo "<img src='./images/ProfilePhotoWithLogo.png' class='navBarProfilePicture' alt='User Profile Picture'>";
+                        }
+                        echo "<h3 class='is-size-6'>$userName</h3>
                         </a>
                         <div class='navbar-dropdown'>
                             <a class='navbar-item' href='./myProfile.php'>My Profile</a>

@@ -129,7 +129,7 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
                            if($friendUserImg)
                            echo "<img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />";
                            else
-                           echo "<img src='./images/ProfilePhotoWithLogo' alt='Profile Photo' />";
+                           echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' />";
                            ?>
                 <?php echo "<div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>

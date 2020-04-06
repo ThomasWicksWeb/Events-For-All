@@ -43,6 +43,7 @@ else {
        $viewedUserCity = $row["city"];
        $viewedUSerState = $row["USstate"];
    }
+
  }
 ?>
 
