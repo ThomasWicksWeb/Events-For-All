@@ -186,6 +186,15 @@ else {
                         <input type="radio" name="privacy" value="isPrivate">Private</label>
                 </div>
 
+                <div id="maxGuastsParent" class="control">
+                    <label class="label is-size-6">Guest limit?</label>
+                    <label class="radio">
+                        <input type="radio" required name="maxGuests" value="notLimited">No Limit</label>
+                    <label class="radio">
+                        <input id="isLimited" required type="radio" name="maxGuests" value="Limited">Limited</label>
+                    <input id="maxGuestsTextInput" class="input" type="text" placeholder="How many guests are allowed?">
+                </div>
+
                 <label class="label is-size-6">Category</label>
                 <div class="select createEventSelect">
                     <select name="category" required>
@@ -226,6 +235,23 @@ else {
         (function(){
             $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
         })();
+
+
+        const isLimited = $("#isLimited");
+        const maxGuastsParent = $("#maxGuastsParent");
+        const maxGuestsTextInput = $("#maxGuestsTextInput");
+
+        maxGuestsTextInput.fadeOut(300);
+
+        maxGuastsParent.on("change", function(){
+            console.log("Hello");
+            if(isLimited.is(':checked')) {
+                maxGuestsTextInput.fadeIn(300);
+            } else {
+                maxGuestsTextInput.fadeOut(300);
+            }
+        });
+
     </script>
 </body>
 
