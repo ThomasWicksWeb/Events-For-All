@@ -21,7 +21,7 @@ else {
 	$userName = NULL;
 }
 if (isset($_SESSION['errorMessage'])) {
-    $errorMessage= $_SESSION['errorMessage'];
+    $errorMessage = $_SESSION['errorMessage'];
 }
 else{
     if($loggedon)

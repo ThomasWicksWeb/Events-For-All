@@ -70,7 +70,7 @@ else {
                     <li class="has-text-weight-bold is-size-3">MyProfile</li>
                     <li><a class="is-size-6 button is-info" href="./friends.php">Friends</a></li>
                     <li><a class="is-size-6 button is-secondary" href="./messages.php">Messages</a></li>
-                    <li><a class="is-size-6 button is-secondary" href="#">Edit Profile</a></li>
+                    <li><a class="is-size-6 button is-secondary" href="./editProfile.php">Edit Profile</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
                 </ul>
                 <img class="userProfileUserImg" src="http://placekitten.com/200/200" alt="">
