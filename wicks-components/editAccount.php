@@ -149,6 +149,17 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                     </div>
                 </div>
 
+                <div class='field'>
+                    <label class='label is-size-6'>Phone Number</label>
+                    <div class='control has-icons-left'>
+                        <input id='EditAccountInformationPhoneNumber' name='phone' class='input' required type='text'
+                            value='$phone'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
+                        </span>
+                    </div>
+                </div>
+
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>Location Information</h2>
 
                 <div class='field'>
