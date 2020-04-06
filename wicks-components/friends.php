@@ -20,6 +20,48 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+
+if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
+
+    // Connect to MySQL and the EventsForAll Database
+  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  
+  if ($mysqli->connection_error) {
+      die("connection Failed: " . $mysqli->connection_error);
+      echo "<script>console.log('Connection Error...')</script>";
+  }
+  else {
+      echo "<script>console.log('Connected successfully...')</script>";
+  }
+  
+  
+  // Query database to create user
+  $query = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
+ $result = $mysqli->query($query);
+ if ($result->num_rows > 0) {
+     $i = 0;
+     $friendlist = array();
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+       $friend1userID = $row["friend1userID"]; 
+       $friend2userID = $row["friend2userID"];
+       if ($friend1userID === $userID) {
+       $friendlist[$i] = $friend2userID;
+        }
+       else {
+       $friendlist[$i] = $friend1userID;
+       }
+       $i++;
+   }
+}
+  else {
+    
+  }
+ 
+  }
+  //var_dump($userID, $friend1userID, $friend2userID, $friendlist)
+  
+  
 ?>
 
 
@@ -59,85 +101,66 @@ else {
 
 <body>
 
-        <!-- <NavBar> -->
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-            </a>
+    <!-- <Navbar File> -->
+    <?php require './navbar.php'; ?>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
+
+<!-- <MyFriends> -->
+<section class="section">
+            <div class="container">
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">My Friends</h2>
+                <ul class="myFriendsGridParent">
+                    
                 <?php 
-		            if ($loggedon) {
-                        echo "<a class='navbar-item' href='./home.php'>Home</a>";
-                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
-                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
-		            }
-		            else{
-                        echo "<a class='navbar-item' href='./index.php'>Home</a>";
+              if ($friendlist){
+                foreach($friendlist as $friendID){
+                    $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$friendID' AND UserProfile.userID = '$friendID'";
+                    $result2 = $mysqli->query($query2);
+                    if ($result2->num_rows > 0) {
+                    // output data of each row
+                        while($row2 = $result2->fetch_assoc()) {
+                            $friendUserName = $row2["userName"]; 
+                            $friendUserImg = $row2["profileImg"];
+                        }
                     }
-		        ?> 
-                <a class="navbar-item" href="./events.php">Events Near Me</a>
 
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Categories</a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">Sports & Fitness</a>
-                        <a class="navbar-item">Tech</a>
-                        <a class="navbar-item">Food & Drinks</a>
-                        <a class="navbar-item">Outdoors & Adventure</a>
-                        <a class="navbar-item">Photography</a>
-                        <a class="navbar-item">Music</a>
-                        <a class="navbar-item">Movies</a>
-                        <a class="navbar-item">Other</a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">Report an issue</a>
-                    </div>
-                </div>
-                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
+                    echo "<li class='myFriendsGrid box'>";?>
+                           <?php 
+                           if($friendUserImg)
+                           echo "<img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />";
+                           else
+                           echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' />";
+                           ?>
+                <?php echo "<div class='myFriendsGridTextCont'>
+                            <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
+                            <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
+                            </div>
+                            </li>";
+                         
+                }
+            }
+                else{
+                        echo "<p class='has-text-centered is-size-5'>You Have No Friends Yet! :(</p>";
+                    }
+                    $mysqli->close();
+                ?>
+                </ul>
             </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <?php 
-		                    if ($loggedon) {
-                                echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
-		                    }
-		                    else{
-                                echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
-                                echo "<a class='button is-light' href='./login.php'>Log in</a>";
-                            }
-		                ?> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- </NavBar> -->
-
-
-
+        </section>
+    <!-- </MyFriends> -->
   
     
 
-    <script>
+    <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
             updateURL: false, // Update the URL on scroll
             emitEvents: true, // Emit custom events
             speed: 175 // 1.75 seconds to scroll to anchor point
         });
-    </script>
+    </script> -->
 
     <script src="./js/scripts.js"></script>
 </body>
 
 </html>
+

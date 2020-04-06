@@ -72,11 +72,15 @@ form {
   margin-bottom: 0;
 }
 
+.navBarProfilePicture {
+  border-radius: 50%;
+}
+
 .singleEventBodyGridParent {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ActionsBar ActionsBar ActionsBar ActionsBar" "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
+      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ActionsBar ActionsBar ActionsBar ActionsBar" "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
   grid-gap: 20px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -120,7 +124,7 @@ form {
 
 .singleEventBodyGridProfileImgAndEventInfo img {
   padding-top: 10px;
-  border-radius: 50%;
+  border-radius: 25px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -181,7 +185,7 @@ form {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
   -ms-grid-rows: min-content;
@@ -345,12 +349,12 @@ form {
           align-items: center;
 }
 
-.flexTwoFields:nth-child(1) {
-  margin-right: 5px;
+.flexTwoFields .field:nth-child(1) {
+  padding-right: 6px;
 }
 
-.flexTwoFields:nth-child(2) {
-  padding-left: 5px;
+.flexTwoFields .field:nth-child(2) {
+  padding-left: 6px;
 }
 
 .flexTwoFields > * {
@@ -366,6 +370,14 @@ form {
 
 .select {
   margin-bottom: 10px;
+}
+
+.radio input {
+  margin-right: .25rem;
+}
+
+.createEventSelect {
+  margin-bottom: 1.25rem;
 }
 
 #HeroBodyandingPage .container {
@@ -416,7 +428,7 @@ form {
   padding: 10px 0 0 10px;
 }
 
-#HeroBodyandingPage .container .landingPageBtnCont button:nth-child(1) {
+#HeroBodyandingPage .container .landingPageBtnCont a:nth-child(1) {
   margin-right: 10px;
 }
 
@@ -435,7 +447,335 @@ form {
           flex: 2;
 }
 
+.myFriendsGrid {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "img textCont";
+  grid-gap: .5rem;
+}
+
+.myFriendsGrid img {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: img;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  border-radius: 50%;
+}
+
+.myFriendsGridTextCont {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: textCont;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+}
+
+.myFriendsGridTextCont h4 {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.myFriendsGridTextCont a {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 8px;
+  margin-top: -12px;
+}
+
+.myFriendsGridParent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.dataSet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dataSetGrid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(400px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.panel-block {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.viewAllEventsContainer h2:not(:nth-child(1)) {
+  padding-top: 250px;
+}
+
+.allEventsCategoryHeader {
+  margin-top: 3rem;
+}
+
+.ViewAllEventsGridParent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.ViewAllEventsGridParent li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.ViewAllEventsGridParent li a {
+  width: 100%;
+  margin-top: auto;
+}
+
+.panel-block {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.panel-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+}
+
+#showFiltersToggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid rgba(51, 51, 51, 0.801);
+}
+
+.filtersList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 0 2rem;
+}
+
+.filtersList ul {
+  margin-top: -12px;
+}
+
+.filtersList > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.filters-panel-parents {
+  border: 2px solid rgba(51, 51, 51, 0.65);
+  border-top: 0px solid transparent;
+}
+
+.EventsPageCreateEventBtn {
+  float: right;
+}
+
+.link-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.link-box .fa-arrow-circle-right {
+  font-size: 6rem !important;
+  margin-bottom: 10px;
+}
+
+.link-box .view-more-text:hover .view-more-arrow {
+  padding-left: 5px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.filters-panel-parents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.about-us-hero {
+  background-image: url("../images/AboutUs/concert.jpg");
+  background-position: top;
+  z-index: 10;
+}
+
+.about-us-hero h1 {
+  padding-bottom: 2rem;
+}
+
+.about-us-hero-footer {
+  background-image: url("../images/AboutUs/hike.jpg");
+  background-position: center;
+}
+
+.about-us-hero-footer h1 {
+  padding-bottom: 2rem;
+}
+
+.about-us-section-header {
+  margin-bottom: 2rem;
+}
+
+.about-us-columns {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1.5rem;
+}
+
+.about-us-columns img {
+  margin: 0 auto;
+  min-height: 220px;
+  max-width: 90%;
+}
+
+.bannerTintDarker {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* ==========================================
 =============== MEDIA QUERIES ===============
 ========================================== */
+@media only screen and (max-width: 769px) {
+  .singleEventBodyGridParent {
+    width: 100%;
+        grid-template-areas: "SplashImg" "ProfileImgAndEventInfo" "ActionsBar" "EventDesc" "Atendees";
+    grid-gap: 10px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: min-content;
+        grid-template-rows: -webkit-min-content;
+        grid-template-rows: min-content;
+  }
+  .singleEventBodyGridActionsBar {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: ActionsBar;
+  }
+  .singleEventBodyGridEventDesc {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    grid-area: EventDesc;
+    border-left: none;
+  }
+  .singleEventBodyGridAtendees {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    grid-area: Atendees;
+    width: 100%;
+    border-left: 2px solid rgba(51, 51, 51, 0.5);
+  }
+  .singleEventBodyGridAtendees ul {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    padding-left: 10px;
+  }
+  .antendeesListItem {
+    display: -ms-grid;
+    display: grid;
+    width: 100%;
+        grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+    -ms-grid-columns: 1fr 3fr;
+        grid-template-columns: 1fr 3fr;
+    -ms-grid-rows: min-content;
+        grid-template-rows: -webkit-min-content;
+        grid-template-rows: min-content;
+  }
+}
 /*# sourceMappingURL=style.css.map */

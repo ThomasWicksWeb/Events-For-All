@@ -8,9 +8,28 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
-
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+}
+else {
+	$userID = NULL;
+}
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
+if (isset($_SESSION['errorMessage'])) {
+    $errorMessage= $_SESSION['errorMessage'];
+}
+else{
+    if($loggedon)
+    header("Location: ./home.php");
+    else
+    header("Location: ./index.php");
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,22 +65,15 @@ else {
 
 </head>
 
+
+
 <body>
     <!-- <Navbar File> -->
     <?php require './navbar.php'; ?>
 
+    <?php echo "<p class='has-text-centered is-size-5'>$errorMessage</p>"; ?>
 
 
-  
-    
-<!-- 
-    <script>
-        var scroll = new SmoothScroll('a[href*="#"]', {
-            updateURL: false, // Update the URL on scroll
-            emitEvents: true, // Emit custom events
-            speed: 175 // 1.75 seconds to scroll to anchor point
-        });
-    </script> -->
 
     <script src="./js/scripts.js"></script>
 </body>

@@ -30,19 +30,16 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
-    <title>Events For All</title>
+    <title>Site Title</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -51,80 +48,19 @@ else {
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
 
 </head>
 
 <body>
-    <!-- <NavBar> -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-            </a>
+    <!-- <Navbar File> -->
+    <?php require './navbar.php'; ?>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <?php 
-		            if ($loggedon) {
-                        echo "<a class='navbar-item' href='./home.php'>Home</a>";
-                        echo "<a class='navbar-item' href='./myProfile.php'>MyProfile</a>";
-                        echo "<a class='navbar-item' href='./friends.php'>Friends</a>";
-		            }
-		            else{
-                        echo "<a class='navbar-item' href='./index.php'>Home</a>";
-                    }
-		        ?> 
-                <a class="navbar-item" href="./events.php">Events Near Me</a>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Categories</a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">Sports & Fitness</a>
-                        <a class="navbar-item">Tech</a>
-                        <a class="navbar-item">Food & Drinks</a>
-                        <a class="navbar-item">Outdoors & Adventure</a>
-                        <a class="navbar-item">Photography</a>
-                        <a class="navbar-item">Music</a>
-                        <a class="navbar-item">Movies</a>
-                        <a class="navbar-item">Other</a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">Report an issue</a>
-                    </div>
-                </div>
-                <a href="./aboutUs.php" class="navbar-item">About Events4All</a>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <?php 
-		                    if ($loggedon) {
-                                echo "<a class='button is-light' href='./methods/logOut.php'>Log Out</a>";
-		                    }
-		                    else{
-                                echo "<a class='button is-primary' href='./createAccount.php'><strong>Sign up</strong></a>";
-                                echo "<a class='button is-light' href='./login.php'>Log in</a>";
-                            }
-		                ?> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- </NavBar> -->
-
-
-
+    <!-- <CreateAnEvent> -->
     <section class="section">
         <div class="container">
             <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>">
@@ -145,7 +81,7 @@ else {
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="startDate" class="input" name="startDate" required type="text"
+                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required type="text"
                                 placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -157,7 +93,7 @@ else {
                         <label class="label is-size-6">End Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="endDate" class="input" name="endDate" required type="text"
+                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" type="text"
                                 placeholder="End Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -242,12 +178,54 @@ else {
                     </div>
                 </div>
 
+                <div class="control">
+                    <label class="label is-size-6">Event Privacy</label>
+                    <label class="radio">
+                        <input type="radio" name="privacy" value="isPublic">Public</label>
+                    <label class="radio">
+                        <input type="radio" name="privacy" value="isPrivate">Private</label>
+                </div>
+
+                <label class="label is-size-6">Category</label>
+                <div class="select createEventSelect">
+                    <select name="category" required>
+                        <option value="0">Arts &amp; Crafts</option>
+                        <option value="1">Food &amp; Drinks</option>
+                        <option value="2">Movies</option>
+                        <option value="3">Music</option>
+                        <option value="4">Outdoors &amp; Adventure</option>
+                        <option value="5">Party</option>
+                        <option value="6">Photography</option>
+                        <option value="7">Sports &amp; Fitness</option>
+                        <option value="8">Tech</option>
+                        <option value="9">Other</option>
+                    </select>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
+                    </div>
+                </div>
+
                 <script src="./js/scripts.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
             once: true
         });
+    </script>
+    <script>
+        (function(){
+            $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
+        })();
+
+        (function(){
+            $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
+        })();
     </script>
 </body>
 

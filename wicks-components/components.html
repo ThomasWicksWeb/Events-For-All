@@ -23,8 +23,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
 
 </head>
@@ -71,7 +73,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-info">
                             <strong>Sign up</strong>
                         </a>
                         <a class="button is-light">Log in</a>
@@ -92,8 +94,9 @@
                 style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <div class="singleEventBodyGridActionsBar">
                 <ul class="eventPageActionBar">
-                    <li><a class="is-size-6 button is-primary has-text-weight-bold" href="#">Join Event</a></li>
-                    <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Message Organizers</a></li>
+                    <li><a class="is-size-6 button is-info has-text-weight-bold" href="#">Join Event</a></li>
+                    <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Message Organizers</a>
+                    </li>
                     <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">View Antendees</a></li>
                     <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Report Event</a></li>
                 </ul>
@@ -170,6 +173,31 @@
         <div class="container">
             <form class="form" method="POST" action="">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label id="firstnameInput" class="label is-size-6">First Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" required type="text" name="FirstName" placeholder="First Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label id="lastnameInput" class="label is-size-6">Last Name</label>
+                        <div class="control has-icons-left">
+                            <input class="input" required type="text" name="LastName" placeholder="Last Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="field">
                     <label id="usernameInput" class="label is-size-6">Username</label>
                     <div class="control has-icons-left">
@@ -184,74 +212,150 @@
                     <label id="DOBInput" class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input class="input" required type="text" placeholder="Name">
+                        <input id="AccountCreationDOB" autocomplete="off" class="input" required type="text"
+                            placeholder="Date of Birth">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label is-size-6">Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                </div>
 
-                <div class="field">
-                    <label class="label is-size-6">Confirm Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="confirmEmailInput" required class="input" type="email" placeholder="Confirm Email"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="passwordInput" required class="input" type="password" placeholder="Password"
-                            value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="emailInput" required class="input" type="email" placeholder="Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
 
-                </div>
-
-                <div class="field">
-                    <label class="label is-size-6">Confirm Password</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input id="confirmPasswordInput" required class="input" type="password"
-                            placeholder="Confirm Password" value="">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                        </span>
+                    <div class="field">
+                        <label class="label is-size-6">Confirm Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="confirmEmailInput" required class="input" type="email"
+                                placeholder="Confirm Email" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
                 </div>
+
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="passwordInput" required class="input" type="password" placeholder="Password"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">Confirm Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="confirmPasswordInput" required class="input" type="password"
+                                placeholder="Confirm Password" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="is-size-3 has-text-weight-bold has-text-centered">Location Information</h2>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">Street</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="streetInput" name="Street" required class="input" type="text"
+                                placeholder="Street Name" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">City</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="cityInput" name="City" required class="input" type="text" placeholder="City"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">ZIP Code</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="zipInput" name="Zip" required class="input" type="text" placeholder="ZIP Code"
+                                value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label is-size-6">Phone Number <span
+                                class="has-text-grey has-text-weight-normal">111 222 3333</span></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="phoneNumberInput" name="Phone" required class="input" type="text"
+                                placeholder="Phone Number" value="">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
 
                 <div class="field">
                     <div class="control">
@@ -264,10 +368,10 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-link has-text-weight-bold">Submit</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light has-text-weight-bold">Cancel</button>
+                        <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
                     </div>
                 </div>
             </form>
@@ -309,10 +413,10 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-link has-text-weight-bold">Login</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Login</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light has-text-weight-bold">Cancel</button>
+                        <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
                     </div>
                 </div>
             </form>
@@ -327,7 +431,7 @@
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
                 <li class="has-text-weight-bold is-size-3">{{ Username }}</li>
-                <li><a class="is-size-6 button is-primary has-text-weight-bold" href="#">Add Friend</a></li>
+                <li><a class="is-size-6 button is-info has-text-weight-bold" href="#">Add Friend</a></li>
                 <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Message {{name}}</a></li>
                 <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Placeholder</a></li>
                 <li><a class="is-size-6 button is-secondary has-text-weight-bold" href="#">Placeholder</a></li>
@@ -461,7 +565,6 @@
                 <div class="field">
                     <label id="createEventTitle" class="label is-size-6">Event Title</label>
                     <div class="control has-icons-left">
-                        <!-- NOTE THAT THIS eventTitle NAME DOES NOT EXIST IN THE DATABASE -->
                         <input class="input" name="eventTitle" required type="text" placeholder="Title">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
@@ -474,8 +577,8 @@
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="startDate" class="input" name="startDate" required type="text"
-                                placeholder="Start Date">
+                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required
+                                type="text" placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -486,7 +589,7 @@
                         <label class="label is-size-6">End Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="endDate" class="input" name="endDate" required type="text"
+                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" type="text"
                                 placeholder="End Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
@@ -580,7 +683,7 @@
                 </div>
 
                 <label class="label is-size-6">Category</label>
-                <div class="select">
+                <div class="select createEventSelect">
                     <select required>
                         <option value="">Art &amp; Crafts</option>
                         <option value="">Sports</option>
@@ -596,10 +699,10 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-link has-text-weight-bold">Submit</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light has-text-weight-bold">Cancel</button>
+                        <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
                     </div>
                 </div>
             </form>
@@ -644,7 +747,8 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit Changes</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit
+                            Changes</button>
                     </div>
                     <div class="control">
                         <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
@@ -664,13 +768,25 @@
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Edit Account</h2>
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">Account Information</h2>
 
-                <div class="field">
-                    <label class="label is-size-6">Name</label>
-                    <div class="control has-icons-left">
-                        <input id="EditName" class="input" name="name" required type="text" value="{{Name}}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                <div class="flexTwoFields">
+                    <div class="field">
+                        <label class="label is-size-6">First Name</label>
+                        <div class="control has-icons-left">
+                            <input id="EditName" class="input" name="firstName" required type="text" value="{{FirstName}}">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+    
+                    <div class="field">
+                        <label class="label is-size-6">Last Name</label>
+                        <div class="control has-icons-left">
+                            <input id="EditName" class="input" name="lastName" required type="text" value="{{Last Name}}">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -688,7 +804,8 @@
                     <label class="label is-size-6">DOB <span
                             class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                     <div class="control has-icons-left">
-                        <input id="DOBInput" class="input" required type="text" value="{(YYYY/MM/DD)}">
+                        <input id="EditAccountInformationDOB" autocomplete="off" class="input" required type="text"
+                            value="{(YYYY/MM/DD)}">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
@@ -698,8 +815,8 @@
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="field">
-                    <label class="label is-size-6">Street <span
-                        class="has-text-grey has-text-weight-normal">(This will not be shown publicly)</span>
+                    <label class="label is-size-6">Street <span class="has-text-grey has-text-weight-normal">(This will
+                            not be shown publicly)</span>
                     </label>
                     <div class="control has-icons-left">
                         <input id="EditSteet" class="input" name="street" required type="text" value="{Street}">
@@ -740,7 +857,8 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit Changes</button>
+                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit
+                            Changes</button>
                     </div>
                     <div class="control">
                         <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
@@ -762,8 +880,8 @@
                     <h1 class="is-size-2 has-text-weight-bold">Welcome to Events-4-All!</h1>
                     <h2 class="is-size-3">Let's find an event near you</h2>
                     <div class="landingPageBtnCont">
-                        <button class="button is-primary has-text-weight-bold">Login</button>
-                        <button class="button has-text-weight-bold">Create an Account</button>
+                        <a class="button is-info has-text-weight-bold">Login</a>
+                        <a class="button has-text-weight-bold">Create an Account</a>
                     </div>
                 </div>
                 <img id="LandingPageImg" src="" alt="Welcome!">
@@ -771,6 +889,314 @@
         </div>
     </section>
     <!-- </LandingPage -->
+
+
+
+    <!-- <MyFriends> -->
+    <section class="section">
+        <div class="container">
+            <h2 class="is-size-2 has-text-weight-bold has-text-centered">My Friends</h2>
+            <ul class="myFriendsGridParent">
+                <li class="myFriendsGrid box">
+                    <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                    <div class="myFriendsGridTextCont">
+                        <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                        <a href="#" class="is-link is-size-6">View Profile</a>
+                    </div>
+                </li>
+                <li class="myFriendsGrid box">
+                    <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                    <div class="myFriendsGridTextCont">
+                        <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                        <a href="#" class="is-link is-size-6">View Profile</a>
+                    </div>
+                </li>
+                <li class="myFriendsGrid box">
+                    <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                    <div class="myFriendsGridTextCont">
+                        <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                        <a href="#" class="is-link is-size-6">View Profile</a>
+                    </div>
+                </li>
+                <li class="myFriendsGrid box">
+                    <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                    <div class="myFriendsGridTextCont">
+                        <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                        <a href="#" class="is-link is-size-6">View Profile</a>
+                    </div>
+                </li>
+                <li class="myFriendsGrid box">
+                    <img src="http://placekitten.com/100/100" alt="Profile Photo" />
+                    <div class="myFriendsGridTextCont">
+                        <h4 class="is-size-4 has-text-weight-bold has-text-black">{{ Username }}</h4>
+                        <a href="#" class="is-link is-size-6">View Profile</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- </MyFriends> -->
+
+
+
+    <!-- <myAccount> -->
+    <section class="section">
+        <div class="container">
+            <h1 class="is-size-2 has-text-weight-bold has-text-centered">My Account Details</h1>
+
+            <a href="#" class="button is-info is-pulled-right is-size-6">Edit Details</a>
+
+            <h2 class="is-size-3 has-text-weight-bold">General</h2>
+            <ul class="dataSetGrid">
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Username:</h5>
+                    <p class="is-size-6">{{ Username }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">First Name:</h5>
+                    <p class="is-size-6">{{ First Name }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Last Name:</h5>
+                    <p class="is-size-6">{{ Last Name }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Email:</h5>
+                    <p class="is-size-6">{{ Email }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Phone Number:</h5>
+                    <p class="is-size-6">{{ Phone Number }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Date of Birth:</h5>
+                    <p class="is-size-6">{{ DOB }}</p>
+                </li>
+            </ul>
+
+            <h2 class="is-size-3 has-text-weight-bold">Location Details</h2>
+            <ul class="dataSetGrid">
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Street:</h5>
+                    <p class="is-size-6">{{ Street }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">City:</h5>
+                    <p class="is-size-6">{{ City }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">State:</h5>
+                    <p class="is-size-6">{{ State }}</p>
+                </li>
+                <li class="dataSet">
+                    <h5 class="is-size-5 has-text-weight-bold">Zip Code:</h5>
+                    <p class="is-size-6">{{ Zip Code }}</p>
+                </li>
+            </ul>
+
+
+        </div>
+    </section>
+    <!-- </myAccount> -->
+
+
+
+    <!-- <NavBarLoggedIn> -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">Home</a>
+                <a class="navbar-item">Events Near Me</a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Categories</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Sports & Fitness</a>
+                        <a class="navbar-item">Tech</a>
+                        <a class="navbar-item">Food & Drinks</a>
+                        <a class="navbar-item">Outdoors & Adventure</a>
+                        <a class="navbar-item">Photography</a>
+                        <a class="navbar-item">Party</a>
+                        <a class="navbar-item">Music</a>
+                        <a class="navbar-item">Movies</a>
+                        <a class="navbar-item">Other</a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">Report an issue</a>
+                    </div>
+                </div>
+                <a href="#" class="navbar-item">About Events4All</a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <img src="http://placekitten.com/50/50" class="navBarProfilePicture" alt="User Profile Picture">
+                        <h3 class="is-size-6">{{ Username }}</h3>
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Profile</a>
+                        <a class="navbar-item">My Account</a>
+                        <a class="navbar-item">Messages</a>
+                        <a class="navbar-item">My Events</a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- </NavBarLoggedIn> -->
+
+
+
+
+    <!-- <ViewAllEvents> -->
+    <section class="section">
+        <div class="container ViewAllEventsContainer">
+            <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
+
+            <nav class="panel">
+                <p class="panel-heading">Categories</p>
+                <div class="panel-block">
+                    <p class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Search Events">
+                        <span class="icon is-left">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
+                <nav class="nav filtersList">
+                    <button id="filterViewAll" class="button">View All</button>
+                    <button id="filterArtsAndCrafts" class="button">Arts &amp; Crafts</button>
+                    <button id="filterSportsAndFitness" class="button">Sports &amp; Fitness</button>
+                    <button id="filterTech" class="button">Technology</button>
+                    <button id="filterFoodAndDrinks" class="button">Food &amp; Drinks</button>
+                    <button id="filterOutdoorsAndAdventure" class="button">Outdors &amp; Adventure</button>
+                    <button id="filterPhotography" class="button">Photography</button>
+                    <button id="filterMusic" class="button">Music</button>
+                    <button id="filterMovies" class="button">Movies</button>
+                    <button id="filterOther" class="button">Other</button>
+                </nav>
+            </nav>
+
+            <h2 class="is-size-3 has-text-weight-bold">Arts &amp; Crafts</h2>
+            <ul class="ViewAllEventsGridParent">
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident .</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+            </ul>
+
+            <h2 class="is-size-3 has-text-weight-bold">Food &amp; Drinks</h2>
+            <ul class="ViewAllEventsGridParent">
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Pizza Party</h1>
+                    <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam delectus
+                        nisi accusantium deserunt minima, cupiditate laudantium voluptate quae tenetur illo dignissimos
+                        quis, excepturi earum unde non, commodi eligendi explicabo corrupti eveniet iste!</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Wine Tasting</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequuntur,
+                        illum corporis deserunt explicabo nulla obcaecati cupiditate doloremque quae beatae fugit
+                        nesciunt! Nihil velit perferendis excepturi ut culpa, provident ex molestiae, molestias placeat
+                        laboriosam, facere exercitationem enim nisi. At dicta cupiditate iure soluta modi aut commodi
+                        aperiam obcaecati incidunt, illo fugiat!</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident .</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+                <li class="box">
+                    <img src="https://placekitten.com/400/200" alt="" />
+                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
+                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
+                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
+                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
+                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
+                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
+                </li>
+            </ul>
+
+        </div>
+    </section>
+    <!-- </ViewAllEvents> -->
+
 
 
     <script>

@@ -12,6 +12,7 @@ else {
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
 }
 else {
 	$userID = NULL;
@@ -27,24 +28,31 @@ else{
   }
 if(isset($_POST['startDate'])) {
     $startDate = test_input($_POST['startDate']);
+    $startDate = str_replace("/","-", $startDate);
   }
 else{
     $startDate = NULL;
   }
 if(isset($_POST['endDate'])) {
     $endDate = test_input($_POST['endDate']);
+    $endDate = str_replace("/","-", $endDate);
+    
   }
 else{
     $endDate = NULL;
   }
 if(isset($_POST['startTime'])) {
     $startTime = test_input($_POST['startTime']);
+    $startTime = $startTime . ":00";
+    
   }
 else{
     $startTime = NULL;
   }
 if(isset($_POST['endTime'])) {
     $endTime = test_input($_POST['endTime']);
+    $endTime = $endTime . ":00";
+    
   }
 else{
     $endTime = NULL;
@@ -79,10 +87,26 @@ if(isset($_POST['zip'])) {
 else{
     $zip = NULL;
   }
+  if(isset($_POST['privacy'])) {
+    $privacy = test_input($_POST['privacy']);
+    if($privacy == 'isPrivate')
+    $privacy = 1;
+    else
+    $privacy = 0;
+  }
+else{
+    $privacy = 0;
+  }
 
+  if(isset($_POST['category'])) {
+    $genre = test_input($_POST['category']);
+    $genre = (int)$genre;
+  }
+else{
+    $genre = NULL;
+  }
 
-if (($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) 
-&& ($city != NULL) && ($state != NULL) && ($zip != NULL)){
+if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
 
     // Connect to MySQL and the EventsForAll Database
     $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
@@ -97,13 +121,14 @@ if (($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($s
 
 
     // Query database to create user
-    $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, state, zip) VALUES('$userID', '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip')";
+    $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, USstate, zip, eventDescription, genre, privacy) VALUES($userID, '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip', '$description',$genre,$privacy)";
     if ($mysqli->query($query) === TRUE) {
         $message = "Event Successfully Created";
         $_SESSION['message'] = $message;
     }
     else {
-        $message = "Event Creation Failed!!!";
+        $message = "Event Creation Failed!!!" . $mysqli->error;
+        var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy);
     }
     $mysqli->close();
     }

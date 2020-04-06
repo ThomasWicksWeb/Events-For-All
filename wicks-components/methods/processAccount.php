@@ -11,20 +11,32 @@ if(isset($_POST['userName'])) {
 else{
   $userName = NULL;
 }
+if(isset($_POST['firstName'])) {
+  $firstName = test_input($_POST['firstName']);
+}
+else{
+  $firstName = NULL;
+}
+if(isset($_POST['lastName'])) {
+  $lastName = test_input($_POST['lastName']);
+}
+else{
+  $lastName = NULL;
+}
 if(isset($_POST['dob'])) {
   $dob = test_input($_POST['dob']);
 }
 else{
   $dob = NULL;
 }
-if(isset($_POST['emailInput'])) {
-    $email = test_input($_POST['emailInput']);
+if(isset($_POST['email'])) {
+    $email = test_input($_POST['email']);
 }
 else{
     $email = NULL;
 }
-if(isset($_POST['confirmEmailInput'])) {
-    $confirmEmailInput = test_input($_POST['confirmEmailInput']);
+if(isset($_POST['confirmEmail'])) {
+    $confirmEmailInput = test_input($_POST['confirmEmail']);
 }
   else{
     $confirmEmailInput = NULL;
@@ -41,7 +53,36 @@ if(isset($_POST['confirmPasswordInput'])) {
 else{
   $confirmPasswordInput = NULL;
 }
-
+if(isset($_POST['street'])) {
+  $street = test_input($_POST['street']);
+}
+else{
+  $street = NULL;
+}
+if(isset($_POST['city'])) {
+  $city = test_input($_POST['city']);
+}
+else{
+  $city = NULL;
+}
+if(isset($_POST['state'])) {
+  $state = test_input($_POST['state']);
+}
+else{
+  $state = NULL;
+}
+if(isset($_POST['zip'])) {
+  $zip = test_input($_POST['zip']);
+}
+else{
+  $zip = NULL;
+}
+if(isset($_POST['phone'])) {
+  $phone = test_input($_POST['phone']);
+}
+else{
+  $phone = NULL;
+}
 
 if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email != NULL)){
 
@@ -58,7 +99,7 @@ else {
 
 
 // Query database to create user
-$query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth) VALUES('$email', '$userName', '$passwordInput', '$dob')";
+$query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth, firstName, lastName, street, city, USstate, zip, phone) VALUES('$email', '$userName', '$passwordInput', '$dob', '$firstName', '$lastName', '$street', '$city', '$state', '$zip', '$phone')";
 if ($mysqli->query($query) === TRUE) {
     $message = "Account Successfully Created";
     $_SESSION['message'] = $message;
