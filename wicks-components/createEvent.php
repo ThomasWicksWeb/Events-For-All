@@ -244,7 +244,6 @@ else {
         maxGuestsTextInput.fadeOut(300);
 
         maxGuastsParent.on("change", function(){
-            console.log("Hello");
             if(isLimited.is(':checked')) {
                 maxGuestsTextInput.fadeIn(300);
             } else {
