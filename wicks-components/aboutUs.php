@@ -41,7 +41,7 @@ else {
     <meta property="og:title" content="Title" />
     <meta property="og:description" content="Description" />
 
-    <title>Site Title</title>
+    <title>About Us | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">

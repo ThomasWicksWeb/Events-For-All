@@ -31,7 +31,7 @@ else {
     <meta property="og:description"
         content="Description" />
 
-    <title>Events For All</title>
+    <title>Event | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
