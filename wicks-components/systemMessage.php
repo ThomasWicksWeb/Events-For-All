@@ -20,14 +20,14 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
-if (isset($_SESSION['errorMessage'])) {
-    $errorMessage = $_SESSION['errorMessage'];
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
 }
 else{
-    /*if($loggedon)
+    if($loggedon)
     header("Location: ./home.php");
     else
-    header("Location: ./index.php");*/
+    header("Location: ./index.php");
 }
 ?>
 
@@ -50,7 +50,7 @@ else{
     <meta property="og:description"
         content="Description" />
 
-    <title>Error! | Events-4-All</title>
+    <title>Notification! | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -71,11 +71,12 @@ else{
     <!-- <Navbar File> -->
     <?php require './navbar.php'; ?>
 
-    <?php echo "<p class='has-text-centered is-size-5'>$errorMessage</p>"; 
+    <?php echo "<p class='has-text-centered is-size-5'>$message</p>"; 
     if ($loggedon)
     echo "<script> window.setTimeout(function() {window.location.replace('./home.php');}, 2*1000);</script>";
     else
     echo "<script> window.setTimeout(function() {window.location.replace('./index.php');}, 2*1000);</script>";
+    
     ?>
 
 

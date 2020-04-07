@@ -105,8 +105,15 @@ else{
 else{
     $genre = NULL;
   }
+if(isset($_POST['maxGuestsInput'])) {
+    $maxGuestsInput = test_input($_POST['maxGuestsInput']);
+  }
+else{
+    $maxGuestsInput = NULL;
+  }
 
-if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
+  
+if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL) && ($maxGuestsInput != NULL)){
 
     // Connect to MySQL and the EventsForAll Database
     $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
@@ -121,18 +128,22 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
 
 
     // Query database to create user
-    $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, USstate, zip, eventDescription, genre, privacy) VALUES($userID, '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip', '$description',$genre,$privacy)";
+    $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, USstate, zip, eventDescription, genre, privacy, maxNumAttendees) VALUES($userID, '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip', '$description',$genre, $privacy,$maxGuestsInput)";
     if ($mysqli->query($query) === TRUE) {
         $message = "Event Successfully Created";
         $_SESSION['message'] = $message;
+        header("Location: ./systemMessage.php");
     }
     else {
         $message = "Event Creation Failed!!!" . $mysqli->error;
-        var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy);
+        /*var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy, $maxGuestsInput);*/
+        $_SESSION['errorMessage'] = $message;
+        header("Location: ./error.php");
+
     }
     $mysqli->close();
     }
-    echo "<p>$message</p>";
+    
 
 
 ?>
