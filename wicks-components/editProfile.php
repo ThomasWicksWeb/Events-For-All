@@ -158,7 +158,9 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     <!-- </EditProfileInformation> -->";
     }
        else {
-        echo "Something Went wrong";
+        $errorMessage = "Something went wrong, please try again later...";
+        $_SESSION['errorMessage'] = $errorMessage;
+        header('Location: ./errorMessage.php');
     }   
     
    

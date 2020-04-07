@@ -20,6 +20,13 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+if (isset($_SESSION['eventID'])) {
+    $eventID = $_SESSION['eventID'];
+}
+else {
+	$eventID = NULL;
+}
+
 ?>
 
 
@@ -39,7 +46,7 @@ else {
     <meta property="og:title" content="Title" />
     <meta property="og:description" content="Description" />
 
-    <title>Create Event | Events-4-All</title>
+    <title>Edit Event | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -60,167 +67,210 @@ else {
     <!-- <Navbar File> -->
     <?php require './navbar.php'; ?>
 
-    <!-- <CreateAnEvent> -->
-    <section class="section">
-        <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>">
-                <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Event</h2>
-                <h2 class="is-size-4 has-text-weight-bold has-text-centered">General Information</h2>
-                <div class="field">
-                    <label id="createEventTitle" class="label is-size-6">Event Title</label>
-                    <div class="control has-icons-left">
-                        <input id="eventTitle" class="input" name="eventTitle" required type="text" placeholder="Title" value="{{ Title }}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
+    <!-- <EditAnEvent> -->
+    <?php 
+       // Connect to MySQL and the EventsForAll Database
+       $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+
+       if ($mysqli->connection_error) {
+           die("connection Failed: " . $mysqli->connection_error);
+           echo "<script>console.log('Connection Error...')</script>";
+       }
+       else {
+           echo "<script>console.log('Connected successfully...')</script>";
+       }
+
+
+       // Query database for event info
+    $query = "SELECT * FROM Events WHERE eventID = '$eventID'";
+    $result = $mysqli->query($query);
+    if ($result->num_rows > 0) {
+        // output data of each row
+       while($row = $result->fetch_assoc()) {
+            $userID = $row["userID"]; 
+            $eventTitle = $row["eventTitle"];
+            $startDate = $row["startDate"];
+            $startTime = $row["startTime"];
+            $endDate = $row["endDate"];
+            $endTime = $row["endTime"];
+            $street = $row["street"];
+            $city = $row["city"];
+            $state = $row["USstate"];
+            $zip = $row["zip"];
+            $description = $row["description"];
+            $genre = $row["genre"];
+            $privacy = $row["privacy"];
+            $maxGuests["maxNumAttendees"];
+       }
+
+    echo "
+    <section class='section'>
+        <div class='container'>
+            <form class='form' method='POST' action='<?php echo htmlspecialchars('./methods/processEventChange.php');?>'>
+                <h2 class='is-size-2 has-text-weight-bold has-text-centered'>Create an Event</h2>
+                <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
+                <div class='field'>
+                    <label id='createEventTitle' class='label is-size-6'>Event Title</label>
+                    <div class='control has-icons-left'>
+                        <input id='eventTitle' class='input' name='eventTitle' required type='text' placeholder='Title' value='$eventTitle'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="flexTwoFields">
-                    <div class="field">
-                        <label class="label is-size-6">Start Date<span
-                                class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
-                        <div class="control has-icons-left">
-                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required type="text"
-                                placeholder="Start Date" value="{{ Start Date }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                <div class='flexTwoFields'>
+                    <div class='field'>
+                        <label class='label is-size-6'>Start Date<span
+                                class='has-text-grey has-text-weight-normal'>(YYYY/MM/DD)</span></label>
+                        <div class='control has-icons-left'>
+                            <input id='CreateEventStartDate' autocomplete='off' class='input' name='startDate' required type='text'
+                                placeholder='Start Date' value='$startDate'>
+                            <span class='icon is-small is-left'>
+                                <i class='fas fa-user'></i>
                             </span>
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label is-size-6">End Date<span
-                                class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
-                        <div class="control has-icons-left">
-                            <input id="CreateEventEndDate" autocomplete="off" class="input" name="endDate" type="text"
-                                placeholder="End Date" value="{{ End Date }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                    <div class='field'>
+                        <label class='label is-size-6'>End Date<span
+                                class='has-text-grey has-text-weight-normal'>(YYYY/MM/DD)</span></label>
+                        <div class='control has-icons-left'>
+                            <input id='CreateEventEndDate' autocomplete='off' class='input' name='endDate' type='text'
+                                placeholder='End Date' value='$endDate'>
+                            <span class='icon is-small is-left'>
+                                <i class='fas fa-user'></i>
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="flexTwoFields">
-                    <div class="field">
-                        <label class="label is-size-6">Start Time<span class="has-text-grey has-text-weight-normal">(24
+                <div class='flexTwoFields'>
+                    <div class='field'>
+                        <label class='label is-size-6'>Start Time<span class='has-text-grey has-text-weight-normal'>(24
                                 hour format)</span></label>
-                        <div class="control has-icons-left">
-                            <input id="stateTime" class="input" name="startTime" required type="text"
-                                placeholder="Start Time" value="{{ Start Time }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                        <div class='control has-icons-left'>
+                            <input id='stateTime' class='input' name='startTime' required type='text'
+                                placeholder='Start Time' value='$startTime'>
+                            <span class='icon is-small is-left'>
+                                <i class='fas fa-user'></i>
                             </span>
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label is-size-6">End Time<span class="has-text-grey has-text-weight-normal">(24
+                    <div class='field'>
+                        <label class='label is-size-6'>End Time<span class='has-text-grey has-text-weight-normal'>(24
                                 hour format)</span></label>
-                        <div class="control has-icons-left">
-                            <input id="endTime" class="input" name="endTime" required type="text"
-                                placeholder="End Time" value="{{ End Time }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                        <div class='control has-icons-left'>
+                            <input id='endTime' class='input' name='endTime' required type='text'
+                                placeholder='End Time' value='$endTime'>
+                            <span class='icon is-small is-left'>
+                                <i class='fas fa-user'></i>
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label id="DOBInput" class="label is-size-6">Description</label>
-                    <div class="control has-icons-left">
-                        <textarea id="description" name="description" placeholder="What's your event about?" required
-                            class="textarea" value="{{ Event Desc }}"></textarea>
+                <div class='field'>
+                    <label id='DOBInput' class='label is-size-6'>Description</label>
+                    <div class='control has-icons-left'>
+                        <textarea id='description' name='description' placeholder='What's your event about?' required
+                            class='textarea' value='$description'></textarea>
                     </div>
                 </div>
 
-                <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
+                <h2 class='is-size-4 has-text-weight-bold has-text-centered'>Location Information</h2>
 
-                <div class="field">
-                    <label class="label is-size-6">Street</label>
-                    <div class="control has-icons-left">
-                        <input id="street" class="input" name="street" required type="text" placeholder="Street" value="{{ Street }}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
+                <div class='field'>
+                    <label class='label is-size-6'>Street</label>
+                    <div class='control has-icons-left'>
+                        <input id='street' class='input' name='street' required type='text' placeholder='Street' value='$street'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label is-size-6">City</label>
-                    <div class="control has-icons-left">
-                        <input id="city" class="input" name="city" required type="text" placeholder="City" value="{{ City }}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
+                <div class='field'>
+                    <label class='label is-size-6'>City</label>
+                    <div class='control has-icons-left'>
+                        <input id='city' class='input' name='city' required type='text' placeholder='City' value='$city'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label is-size-6">State</label>
-                    <div class="control has-icons-left">
-                        <input id="state" class="input" name="state" required type="text" placeholder="State" value="{{ State }}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
+                <div class='field'>
+                    <label class='label is-size-6'>State</label>
+                    <div class='control has-icons-left'>
+                        <input id='state' class='input' name='state' required type='text' placeholder='State' value='$state'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label is-size-6">ZIP Code</label>
-                    <div class="control has-icons-left">
-                        <input id="zip" class="input" name="zip" required type="text" placeholder="ZIP Code" value="{{ ZIP Code }}">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
+                <div class='field'>
+                    <label class='label is-size-6'>ZIP Code</label>
+                    <div class='control has-icons-left'>
+                        <input id='zip' class='input' name='zip' required type='text' placeholder='ZIP Code' value='$zip'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
                         </span>
                     </div>
                 </div>
 
-                <div class="control">
-                    <label class="label is-size-6">Event Privacy</label>
-                    <label class="radio">
-                        <input type="radio" name="privacy" value="isPublic" checked>Public</label>
-                    <label class="radio">
-                        <input type="radio" name="privacy" value="isPrivate">Private</label>
-                </div>
+                <div class='control'>
+                    <label class='label is-size-6'>Event Privacy</label>
+                    <label class='radio'>"?>;
 
-                <div id="maxGuastsParent" class="control">
-                    <label class="label is-size-6">Guest limit?</label>
-                    <label class="radio">
-                        <input type="radio" required name="maxGuests" value="notLimited">No Limit</label>
-                    <label class="radio">
-                        <input id="isLimited" required type="radio" name="maxGuests" value="Limited" checked>Limited</label>
-                    <input id="maxGuestsTextInput" class="input" type="number" min="1" placeholder="How many guests are allowed?">
+                        <input type='radio' name='privacy' value='isPublic' <?php if($privacy == 0){echo "checked";}?> >Public</label>
+                    <label class='radio'>
+                        <input type='radio' name='privacy' value='isPrivate' <?php if($privacy == 1){echo "checked";}?>>Private</label>
                 </div>
-
-                <label class="label is-size-6">Category</label>
-                <div class="select createEventSelect">
-                    <select name="category" required>
-                        <option value="0">Arts &amp; Crafts</option>
-                        <option value="1">Food &amp; Drinks</option>
-                        <option value="2">Movies</option>
-                        <option value="3">Music</option>
-                        <option value="4">Outdoors &amp; Adventure</option>
-                        <option value="5">Party</option>
-                        <option value="6">Photography</option>
-                        <option value="7">Sports &amp; Fitness</option>
-                        <option value="8">Tech</option>
-                        <option value="9">Other</option>
+<?php echo "
+                <div id='maxGuastsParent' class='control'>
+                    <label class='label is-size-6'>Guest limit?</label>
+                    <label class='radio'>
+                        <input type='radio' required name='maxGuests' value='notLimited'>No Limit</label>
+                    <label class='radio'>
+                        <input id='isLimited' required type='radio' name='maxGuests' value='Limited' checked>Limited</label>
+                    <input id='maxGuestsTextInput' name='maxGuestsInput' class='input' type='number' min='1' placeholder='How many guests are allowed?' value='$maxNumAttendees'>
+                </div>
+";?>
+                <label class='label is-size-6'>Category</label>
+                <div class='select createEventSelect'>
+                    <select name='category' required>
+                        <option value='0' <?php if($genre == 0){echo "selected";}?>>Arts &amp; Crafts</option>
+                        <option value='1' <?php if($genre == 1){echo "selected";}?>>Food &amp; Drinks</option>
+                        <option value='2' <?php if($genre == 2){echo "selected";}?>>Movies</option>
+                        <option value='3' <?php if($genre == 3){echo "selected";}?>>Music</option>
+                        <option value='4' <?php if($genre == 4){echo "selected";}?>>Outdoors &amp; Adventure</option>
+                        <option value='5' <?php if($genre == 5){echo "selected";}?>>Party</option>
+                        <option value='6' <?php if($genre == 6){echo "selected";}?>>Photography</option>
+                        <option value='7' <?php if($genre == 7){echo "selected";}?>>Sports &amp; Fitness</option>
+                        <option value='8' <?php if($genre == 8){echo "selected";}?>>Tech</option>
+                        <option value='9' <?php if($genre == 9){echo "selected";}?>>Other</option>
                     </select>
                 </div>
-
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button value="submit" type="submit" class="button is-info has-text-weight-bold">Submit</button>
+<?php echo "
+                <div class='field is-grouped'>
+                    <div class='control'>
+                        <button value='submit' type='submit' class='button is-info has-text-weight-bold'>Submit</button>
                     </div>
-                    <div class="control">
-                        <button class="button is-danger is-light has-text-weight-bold">Cancel</button>
+                    <div class='control'>
+                        <button class='button is-danger is-light has-text-weight-bold'>Cancel</button>
                     </div>
-                </div>
-
-                <script src="./js/scripts.js"></script>
+                </div>";
+    }
+    else{
+            $errorMessage = "Something went wrong, please try again later...";
+            $_SESSION['errorMessage'] = $errorMessage;
+            header('Location: ./errorMessage.php');
+    }
+    ?>            
+    <script src="./js/scripts.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
