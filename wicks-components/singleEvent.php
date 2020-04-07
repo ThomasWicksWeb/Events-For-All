@@ -19,17 +19,14 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
     <title>Event | Events-4-All</title>
 
@@ -52,8 +49,8 @@ else {
 
 
 
-      <!-- <SingleEventPageBody> -->
-      <section class="section">
+    <!-- <SingleEventPageBody> -->
+    <section class="section">
         <div class="container singleEventBodyGridParent">
             <!-- NEED TO LOAD THE BACKGROUND-IMAGE HERE IN HTML -->
             <div class="singleEventBodyGridSplashImg"
@@ -63,12 +60,14 @@ else {
                     <li><a class="is-size-6 button is-info" href="#">Join Event</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Message Organizers</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">View Antendees</a></li>
+                    <li><a class="is-size-6 button is-secondary" id="InviteFriendsBtn" href="#">Invite Friends</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Report Event</a></li>
                 </ul>
             </div>
             <div class="singleEventBodyGridProfileImgAndEventInfo">
                 <img src="http://placekitten.com/200/200" alt="">
-                <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam sit non unde dolorum voluptate
+                <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam sit non unde
+                    dolorum voluptate
                     nobis debitis ad, nulla suscipit molestiae, error sunt at possimus ex dignissimos aperiam est
                     corporis? Illum illo, harum amet nesciunt odit voluptatum velit aliquid quod minus<br><br>porro
                     voluptas veniam molestias quos ut error vero. Corrupti omnis culpa praesentium, excepturi sint in
@@ -129,7 +128,19 @@ else {
         </div>
     </section>
     <!-- </SingleEventPageBody> -->
-    
+
+    <div id="modal" class="modal ">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <h5 class="is-size-4 has-text-weight-bold">Invite Friends</h5>
+            <p class="is-size-6">Are you sure you want to invite your entire friends list?</p>
+            <div class="modal-button-cont">
+                <button id="sendInvites" class="button is-info">Invite All Friends</button>
+                <button id="cancelInvites" class="button is-danger">Cancel</button>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
@@ -139,7 +150,51 @@ else {
         });
     </script> -->
 
+    <script>
+        const modalParent = $("#modal")
+        const InviteFriendsBtn = $("#InviteFriendsBtn");
+        const modalGreySpace = $(".modal-background");
+        const modalClose = $(".modal-close");
+        const modalCancel = $("#cancelInvites");
+        const sendInvites = $("#sendInvites");
+
+        const ToggleIsActive = () => {
+            document.querySelectorAll('#modal').forEach(e => e.classList.toggle('is-active'));
+        } 
+
+        // document.querySelectorAll("#InviteFriendsBtn", ".modal-background", ".modal-close", "#cancelInvites").forEach(e => e.addEventListener("click", ToggleIsActive));
+
+
+        InviteFriendsBtn.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalGreySpace.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalClose.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalCancel.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        sendInvites.on("click", function(e){
+            e.preventDefault();
+            alert("Invites Sent!");
+            ToggleIsActive();
+        });
+
+    </script>
+
     <script src="./js/scripts.js"></script>
+    <script src="./js/singleEvent.js"></script>
 </body>
 
 </html>
