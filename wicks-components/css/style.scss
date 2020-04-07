@@ -24,6 +24,11 @@
 //
 // 11 - About Us
 //
+// 12 - Modal
+//
+//
+//
+//
 // **************************************************************
 
 // ********************************************
@@ -703,6 +708,34 @@ form {
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+// **************
+// 12 - Modal
+// **************
+.modal-content {
+    border-radius: 10px;
+    background-color: #fff;
+    color: #333;
+    padding: .75rem;
+}
+
+.modal-button-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    & button:nth-child(1) {
+        margin-right: .25rem;
+    }
+
+    & button:nth-child(2) {
+        margin-left: .25rem;
+    }
+}
+
+
 
 
 
