@@ -192,7 +192,7 @@ else {
                         <input type="radio" required name="maxGuests" value="notLimited">No Limit</label>
                     <label class="radio">
                         <input id="isLimited" required type="radio" name="maxGuests" value="Limited">Limited</label>
-                    <input id="maxGuestsTextInput" class="input" type="number" min="1" placeholder="How many guests are allowed?">
+                    <input id="maxGuestsInput" name="maxGuestsInput" class="input" type="number" min="1" placeholder="How many guests are allowed?">
                 </div>
 
                 <label class="label is-size-6">Category</label>
