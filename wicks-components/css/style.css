@@ -764,20 +764,21 @@ form {
   -ms-grid-columns: (minmax(1fr, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
   grid-gap: 1.25rem;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
 .all-messages li {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  padding-bottom: .5rem;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
 .all-messages li:hover {
   border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.795);
 }
 
 .all-messages li a {
