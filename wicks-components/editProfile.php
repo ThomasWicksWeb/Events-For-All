@@ -78,24 +78,16 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     
     
     // Query database for user profile
-    $query = "SELECT * FROM Users WHERE userName = '$userName'";
+    $query = "SELECT * FROM UserProfile WHERE userID = '$userID'";
     $result = $mysqli->query($query);
     if ($result->num_rows > 0) {
         // output data of each row
        while($row = $result->fetch_assoc()) {
-            $userID = $row["userID"]; 
-            $userName = $row["userName"];
-            $email = $row["email"];
-            $firstName = $row["firstName"];
-            $lastName = $row["lastName"];
-            $street = $row["street"];
-            $city = $row["city"];
-            $state = $row["USstate"];
-            $zip = $row["zip"];
-            $phone = $row["phone"];
-            $dob = $row["dateOfBirth"];
+            
+            $profileImage = ["profileImg"];
+            $bio = $row["bio"];
+            $hobbies = $row["hobbies"];
        }
-
       echo " <!-- <EditProfileInformation> -->
     <section class='section'>
         <div class='container'>"; ?>
@@ -127,7 +119,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                 <div class='field'>
                     <label class='label is-size-5'>Bio</label>
                     <div class='control has-icons-left'>
-                        <textarea id='EditBio' name='description' value='{Bio}' required class='textarea'></textarea>
+                        <textarea id='EditBio' name='description' value='$bio' required class='textarea'></textarea>
                     </div>
                 </div>
 
@@ -137,7 +129,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                     <label class='label is-size-5'>Hobbies <span class='has-text-grey has-text-weight-normal'>(Please
                             put a comma between each hobby)</span></label>
                     <div class='control has-icons-left'>
-                        <textarea id='EditHobbies' name='hobbies' value='{Hobbies}' required
+                        <textarea id='EditHobbies' name='hobbies' value='$hobbies' required
                             class='textarea'></textarea>
                     </div>
                 </div>
