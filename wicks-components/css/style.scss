@@ -26,7 +26,7 @@
 //
 // 12 - Modal
 //
-//
+// 13 - Messages List
 //
 //
 // **************************************************************
@@ -736,9 +736,61 @@ form {
 }
 
 
+// *****************
+// 13 - All Messages
+// *****************
+
+.all-messages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+    grid-gap: 1.25rem;
+
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+
+    transition: all .2s;
+
+    & li {
+
+        transition: all .2s;
+
+        &:hover {
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        & a {
+            transition: all .4s;
+        }
+
+        & img {
+            border-radius: 50%;
+        }
+
+        & div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        & > * {
+            padding: 0px;
+
+            & > * {
+                padding: 0px;
+            }
+        }
+    }
+}
 
 
+// *****************
+// 14 - Create Account
+// *****************
 
+.createAccountUserUpload {
+    margin-bottom: 3rem;
+}
 
 
 /* ==========================================

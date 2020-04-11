@@ -758,6 +758,61 @@ form {
   margin-left: .25rem;
 }
 
+.all-messages {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(1fr, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  grid-gap: 1.25rem;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.all-messages li {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.all-messages li:hover {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.all-messages li a {
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.all-messages li img {
+  border-radius: 50%;
+}
+
+.all-messages li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.all-messages li > * {
+  padding: 0px;
+}
+
+.all-messages li > * > * {
+  padding: 0px;
+}
+
+.createAccountUserUpload {
+  margin-bottom: 3rem;
+}
+
 /* ==========================================
 =============== MEDIA QUERIES ===============
 ========================================== */
