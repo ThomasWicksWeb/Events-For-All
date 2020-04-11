@@ -769,21 +769,21 @@ form {
 }
 
 .all-messages li {
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  border-bottom-left-radius: 15px;
   padding-bottom: .5rem;
+  padding-left: .5rem;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
 
 .all-messages li:hover {
-  border-top: 1px solid #333;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.795);
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 .all-messages li a {
-  -webkit-transition: all .4s;
-  transition: all .4s;
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
 .all-messages li img {
@@ -812,6 +812,24 @@ form {
 
 .createAccountUserUpload {
   margin-bottom: 3rem;
+}
+
+#SendMessageInput {
+  width: 100% !important;
+}
+
+.SendMessageForm {
+  margin-top: 1.5rem;
+}
+
+.friendsMessages {
+  max-width: 80%;
+  margin-right: auto;
+}
+
+.myMessages {
+  max-width: 80%;
+  margin-left: auto;
 }
 
 /* ==========================================

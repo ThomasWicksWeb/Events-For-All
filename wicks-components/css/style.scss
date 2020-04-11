@@ -748,18 +748,21 @@ form {
     transition: all .2s;
 
     & li {
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid transparent;    
+        // border-bottom: 1px solid transparent;    
+        // border-left: 1px solid transparent;
+        border-bottom-left-radius: 15px;  
         padding-bottom: .5rem;
+        padding-left: .5rem;
         transition: all .2s;
 
         &:hover {
-            border-top: 1px solid #333;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.795);
+            // border-bottom: 1px solid rgba(51, 51, 51, 0.795);
+            // border-left: 1px solid rgba(51, 51, 51, 0.795);
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
         }
 
         & a {
-            transition: all .4s;
+            transition: all .2s;
         }
 
         & img {
@@ -789,6 +792,29 @@ form {
 
 .createAccountUserUpload {
     margin-bottom: 3rem;
+}
+
+
+// *****************
+// 15 - View Message
+// *****************
+
+#SendMessageInput {
+    width: 100% !important;
+}
+
+.SendMessageForm {
+    margin-top: 1.5rem;
+}
+
+.friendsMessages {
+max-width: 80%;
+margin-right: auto;
+}
+
+.myMessages {
+    max-width: 80%;
+    margin-left: auto;
 }
 
 
