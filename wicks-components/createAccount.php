@@ -169,6 +169,7 @@ else {
                     </div>
                 </div>
 
+
                 <h2 class="is-size-3 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="flexTwoFields">
@@ -249,6 +250,22 @@ else {
                             </span>
                         </div>
                     </div>
+
+                    <h2 class='is-size-5 has-text-weight-bold'>User Image</h2>
+                <div class='file has-name'>
+                    <label class='file-label'>
+                        <input id='editProfileNewPicture' class='file-input' type='file' name='newProfileImg'>
+                        <span class='file-cta'>
+                        <span class='file-icon'>
+                            <i class='fas fa-upload'></i>
+                        </span>
+                        <span class='file-label'>Choose a file…</span>
+                        </span>
+                        <span class='file-name'>{{} file name after upload }}</span>
+                    </label>
+                </div>
+
+                <hr />
 
                 </div>
 
