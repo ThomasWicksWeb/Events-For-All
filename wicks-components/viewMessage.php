@@ -51,7 +51,28 @@ else {
     <?php require './navbar.php'; ?>
 
 
+    <section class="section">
+        <div class="container">
+            <h1 class="has-text-weight-bold is-size-3">{{ person you're chatting with's name }}</h1>
 
+            <!-- Duplicate this line each time you receive a message -->
+            <p class="is-size-6"><span class="has-text-weight-bold">{{ person msg is from }}</span> - {{ Their message }}</p>
+
+            <!-- Duplicate when you send a message -->
+            <p class="is-size-6 has-text-right">{{ Your message }}</p>
+            <p class="is-size-6 has-text-right">{{ Your message }}</p>
+            <p class="is-size-6 has-text-right">{{ Your message }}</p>
+
+            <form action="">
+                <div class="field">
+                    <div class="control">
+                        <input id="SendMessageInput" class="input" type="text" placeholder="Your message">
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </section>
   
     
 <!-- 
