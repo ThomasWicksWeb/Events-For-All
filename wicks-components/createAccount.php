@@ -258,15 +258,23 @@ else {
                 <h2 class="is-size-3 has-text-weight-bold has-text-centered">User Image</h2>
                 <div class='file has-name createAccountUserUpload'>
                     <label class='file-label'>
+<<<<<<< HEAD
+                        <input id='profilePicture' class='file-input' type='file' name='profileImg'>
+=======
                         <input id='profilePicture' class='file-input' type='file' name='newProfileImg'
                             onchange="getFileData(this)">
+>>>>>>> 19865d71a8a6b6115716dcc5ed45b8f1dd5287cd
                         <span class='file-cta'>
                             <span class='file-icon'>
                                 <i class='fas fa-upload'></i>
                             </span>
                             <span class='file-label'>Choose a file…</span>
                         </span>
+<<<<<<< HEAD
+                        <span class='file-name'>{{ file name after upload }}</span>
+=======
                         <span id="displayFileText" class='file-name'>Filename</span>
+>>>>>>> 19865d71a8a6b6115716dcc5ed45b8f1dd5287cd
                     </label>
                 </div>
 
