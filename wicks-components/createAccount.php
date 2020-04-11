@@ -266,7 +266,7 @@ else {
                             </span>
                             <span class='file-label'>Choose a file…</span>
                         </span>
-                        <span id="displayFileText" class='file-name'>{{} file name after upload }}</span>
+                        <span id="displayFileText" class='file-name'>Filename</span>
                     </label>
                 </div>
 
