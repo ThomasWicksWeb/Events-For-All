@@ -162,9 +162,6 @@ else {
             document.querySelectorAll('#modal').forEach(e => e.classList.toggle('is-active'));
         } 
 
-        // document.querySelectorAll("#InviteFriendsBtn", ".modal-background", ".modal-close", "#cancelInvites").forEach(e => e.addEventListener("click", ToggleIsActive));
-
-
         InviteFriendsBtn.on("click", function(e){
             e.preventDefault();
             ToggleIsActive();
