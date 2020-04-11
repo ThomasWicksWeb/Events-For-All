@@ -60,7 +60,7 @@ else {
                     <li><a class="is-size-6 button is-info" href="#">Join Event</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Message Organizers</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">View Antendees</a></li>
-                    <li><a class="is-size-6 button is-secondary" id="InviteFriendsBtn" href="#">Invite Friends</a></li>
+                    <li><a class="is-size-6 button is-secondary" id="InviteFriendsBtn" href="#">Invite All Friends</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Edit Event</a></li>
                 </ul>
             </div>
