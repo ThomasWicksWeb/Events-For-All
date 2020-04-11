@@ -38,17 +38,14 @@ else{
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
     <title>Error! | Events-4-All</title>
 
@@ -63,6 +60,12 @@ else{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
 
+    <style>
+        article {
+            margin-top: -15rem;
+        }
+    </style>
+
 </head>
 
 
@@ -71,7 +74,23 @@ else{
     <!-- <Navbar File> -->
     <?php require './navbar.php'; ?>
 
-    <?php echo "<p class='has-text-centered is-size-5'>$errorMessage</p>"; 
+    <?php
+         echo "
+         <section class='hero is-fullheight-with-navbar'>
+            <div class='hero-body'>
+                <div class='container'>
+                    <article class='message is-danger'>
+                        <div class='message-header'>
+                            <p class='has-text-weight-bold is-size-4'>Whoops!</p>
+                        </div>
+                        <div class='message-body has-text-centered is-size-5'>
+                            $errorMessage
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>";
+         
     if ($loggedon)
     echo "<script> window.setTimeout(function() {window.location.replace('./home.php');}, 2*1000);</script>";
     else
