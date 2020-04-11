@@ -745,18 +745,17 @@ form {
     grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
     grid-gap: 1.25rem;
 
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-
     transition: all .2s;
 
     & li {
-
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;    
+        padding-bottom: .5rem;
         transition: all .2s;
 
         &:hover {
             border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(51, 51, 51, 0.795);
         }
 
         & a {
