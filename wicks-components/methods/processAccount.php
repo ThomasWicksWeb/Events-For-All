@@ -104,9 +104,19 @@ $query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth, firstNam
 if ($mysqli->query($query) === TRUE) {
     $message = "Account Successfully Created";
     $_SESSION['message'] = $message;
-    if(isset($_POST['profileImg'])) {
-      $target_dir = "./images/" . $userName . "/";
+
+      $query2 = "SELECT * FROM Users WHERE userName = $userName";
+      $result = $mysqli->query($query2);
+      if ($result->num_rows > 0) {
+        // output data of each row
+       while($row = $result->fetch_assoc()) {   
+            $userName = $row["userName"];
+            $userID = $row["userID"];        
+       }
+      }
+      $target_dir = "../images/" . $userName . "/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+      $filename = basename($_FILES["fileToUpload"]["name"]);
       $uploadOk = 1;
       $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
       // Check if image file is a actual image or fake image
@@ -120,7 +130,7 @@ if ($mysqli->query($query) === TRUE) {
               $errorMessage1 = "File is not an image.";
               $_SESSION["errorMessage"] = $errorMessage1;
               $uploadOk = 0;
-              header("Location: ./error.php");
+              header("Location: ../error.php");
           }
       }
       // Check if file already exists
@@ -128,28 +138,28 @@ if ($mysqli->query($query) === TRUE) {
           $errorMessage2 = "Sorry, file already exists.";
           $_SESSION["errorMessage"] = $errorMessage2;
           $uploadOk = 0;
-          header("Location: ./error.php");
+          header("Location: ../error.php");
       }
       // Check file size
       if ($_FILES["fileToUpload"]["size"] > 500000) {
           $errorMessage3 = "Sorry, your file is too large.";
           $_SESSION["errorMessage"] = $errorMessage3;
           $uploadOk = 0;
-          header("Location: ./error.php");
+          header("Location: ../error.php");
       }
       // Allow certain file formats
       if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
           $errorMessage4 = "Sorry, only JPG, JPEG, PNG files are allowed.";
           $_SESSION["errorMessage"] = $errorMessage4;
           $uploadOk = 0;
-          header("Location: ./error.php");
+          header("Location: ../error.php");
       }
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk == 0) {
           $errorMessage5 = "Sorry, your file was not uploaded.";
           $_SESSION["errorMessage"] = $errorMessage5;
           $uploadOk = 0;
-          header("Location: ./error.php");
+          header("Location: ../error.php");
       // if everything is ok, try to upload file
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -157,7 +167,7 @@ if ($mysqli->query($query) === TRUE) {
           } else {
               $errorMessage6 =  "Sorry, there was an error uploading your file.";
               $_SESSION["errorMessage"] = $errorMessage6;
-              header("Location: ./error.php");
+              header("Location: ../error.php");
           }
       }
       }
@@ -165,24 +175,26 @@ if ($mysqli->query($query) === TRUE) {
         $profileImg = NULL;
       }
     if ($profileImg !== NULL) {
-      $query2 = "INSERT INTO UserProfile(profileImg) VALUES('')";
-    }
-    if ($mysqli->query($query2) === TRUE) {
-      $message2 = " and Profile Image Successfully uploaded";
-      $_SESSION['message'] = $message . $message2;
+      $query2 = "INSERT INTO UserProfile(userID, profileImg) VALUES('$userID','$filename')";
+      if ($mysqli->query($query2) === TRUE) {
+        $message2 = " and Profile Image Successfully uploaded";
+        $_SESSION['message'] = $message . $message2;
+        header("Location: ../systemMessage.php");}
     }
     else {
     $errorMessage7 = "Profile Successfully Created, but Image Upload Failed!!!";
+    $_SESSION['message'] = $errorMessage7;
+    header("Location: ../systemMessage.php");
     }
 }
 else {
   $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
-  header("Location: ./error.php");
+  header("Location: ../error.php");
 }
 
 $mysqli->close();
-}
+
 
 
 ?>
