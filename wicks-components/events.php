@@ -79,7 +79,7 @@ else {
             <div class="box">
                 <a id="showFiltersToggle" href="https://www.google.com" class="">
                     <h2 class="has-text-weight-bold is-size-4 filtersText">Filters</h2>
-                    <i class="fas fa-arrow-down"></i>
+                    <i id="EventsPageFilterArrow" class="fas fa-arrow-down"></i>
                 </a>
 
 
@@ -169,7 +169,8 @@ else {
                     } else {
                         filters.slideDown(300);
                     }
-                    console.log("Hello!");
+
+                    $("#EventsPageFilterArrow").toggleClass("arrowIsFlipped");
                 })
             </script>
 
