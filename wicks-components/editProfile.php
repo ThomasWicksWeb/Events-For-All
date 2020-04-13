@@ -90,7 +90,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
       echo " <!-- <EditProfileInformation> -->
     <section class='section'>
         <div class='container'>"; ?>
-    <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>'>
+    <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>' enctype="multipart/form-data">
         <?php echo "<h2 class='is-size-2 has-text-weight-bold has-text-centered'>Edit Profile</h2>
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
                 
