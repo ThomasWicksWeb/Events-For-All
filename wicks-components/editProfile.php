@@ -32,17 +32,14 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
     <title>Edit Profile | Events-4-All</title>
 
@@ -60,9 +57,9 @@ else {
 </head>
 
 <body>
-<!-- <Navbar File> -->
-<?php require './navbar.php'; ?>
-<?php
+    <!-- <Navbar File> -->
+    <?php require './navbar.php'; ?>
+    <?php
 
 if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     // Connect to MySQL and the EventsForAll Database
@@ -93,7 +90,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
       echo " <!-- <EditProfileInformation> -->
     <section class='section'>
         <div class='container'>"; ?>
-            <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>'>
+    <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>'>
         <?php echo "<h2 class='is-size-2 has-text-weight-bold has-text-centered'>Edit Profile</h2>
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
                 
@@ -101,8 +98,11 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                     <h6 class='has-text-weight-bold is-size-5'>Username</h6>
                     <p class='is-size-6'>$userName</p>
                 </div>
+
                 <hr />
+
                 <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>
+
                 <div class='file has-name'>
                     <label class='file-label'>
                         <input id='editProfileNewPicture' class='file-input' type='file' name='newProfileImg'>
@@ -112,7 +112,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                         </span>
                         <span class='file-label'>Choose a file…</span>
                         </span>
-                        <span class='file-name'>$profileImage</span>
+                        <span id='displayFileText' class='file-name'>$profileImage</span>
                     </label>
                 </div>
 
@@ -160,9 +160,20 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
    
    
    }
-   ?>   
+   ?>
 
-<script src="./js/scripts.js"></script>
+        <script src="./js/scripts.js"></script>
+        <script>
+            const profilePictureInput = $("#editProfileNewPicture");
+            const displayFileText = $("#displayFileText");
+
+            function getFileData(myFile) {
+                const file = myFile.files[0];
+                const filename = file.name;
+                // document.getElementById('displayFileText').val = filename;
+                displayFileText.text(filename);
+            }
+        </script>
 </body>
 
 </html>
