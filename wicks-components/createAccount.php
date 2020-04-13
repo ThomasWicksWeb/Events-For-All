@@ -55,7 +55,7 @@ else {
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>" enctype="multipart/form-data">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
 
                 <div class="flexTwoFields">
