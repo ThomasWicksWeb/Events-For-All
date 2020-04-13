@@ -112,81 +112,64 @@ if ($mysqli->query($query) === TRUE) {
         // output data of each row
        while($row = $result->fetch_assoc()) {   
             $userName = $row["userName"];
-            $userID = $row["userID"];        
+            $userID = $row["userID"];
+            $userID = (int)$userID;        
        }
       
       $_SESSION['userName'] = $userName;
       $_SESSION['userID'] = $userID;
-      $target_dir = "../images/" . $userName . "/";
-      $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-      $filename = basename($_FILES["fileToUpload"]["name"]);
-      $uploadOk = 1;
-      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-      // Check if image file is a actual image or fake image
-      if(isset($_POST["submit"])) {
-          $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-          if($check !== false) {
-              $message1 = "File is an image - " . $check["mime"] . ".";
-              echo "<script>console.log('$message1')</script>";
-              $uploadOk = 1;
-          } else {
-              $errorMessage1 = "File is not an image.";
-              $_SESSION["errorMessage"] = $errorMessage1;
-              $uploadOk = 0;
-              header("Location: ../error.php");
-          }
-      }
-      // Check if file already exists
-      if (file_exists($target_file)) {
-          $errorMessage2 = "Sorry, file already exists.";
-          $_SESSION["errorMessage"] = $errorMessage2;
-          $uploadOk = 0;
-          header("Location: ../error.php");
-      }
-      // Check file size
-      if ($_FILES["fileToUpload"]["size"] > 500000) {
-          $errorMessage3 = "Sorry, your file is too large.";
-          $_SESSION["errorMessage"] = $errorMessage3;
-          $uploadOk = 0;
-          header("Location: ../error.php");
-      }
-      // Allow certain file formats
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-          $errorMessage4 = "Sorry, only JPG, JPEG, PNG files are allowed.";
-          $_SESSION["errorMessage"] = $errorMessage4;
-          $uploadOk = 0;
-          header("Location: ../error.php");
-      }
-      // Check if $uploadOk is set to 0 by an error
-      if ($uploadOk == 0) {
-          $errorMessage5 = "Sorry, your file was not uploaded.";
-          $_SESSION["errorMessage"] = $errorMessage5;
-          $uploadOk = 0;
-          header("Location: ../error.php");
-      // if everything is ok, try to upload file
-      } 
-      else {
-          if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-              $successMessage = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-              $query2 = "INSERT INTO UserProfile(userID, profileImg) VALUES('$userID','$filename')";
-              if ($mysqli->query($query2) === TRUE) {
-              $message2 = " and Profile Image Successfully uploaded";
-              $_SESSION['message'] = $message . $message2;
-              header("Location: ../systemMessage.php");}
-          } 
-          else {
-              $errorMessage6 =  "Sorry, there was an error uploading your file.";
-              $_SESSION["errorMessage"] = $errorMessage6;
-              header("Location: ../error.php");
-          }  
-      }
-    }
-    else {
-    $errorMessage7 = "Profile Successfully Created, but Image Upload Failed!!!";
-    $_SESSION['message'] = $errorMessage7;
-    header("Location: ../systemMessage.php");
-    }
+        
+  $target_dir = "../images/$userName/";
+  $file = $_FILES['profileImg'];
+  $filename = $_FILES['profileImg']['name'];
+  $fileTmpName = $_FILES['profileImg']['tmp_name'];
+  $fileSize = $_FILES['profileImg']['size'];
+  $fileError = $_FILES['profileImg']['error'];
+  $fileType = $_FILES['profileImg']['type'];
+  $target_file = $target_dir . $file;
+
+$fileExt = explode(".", $filename);
+$fileLowerExt = strtolower(end($fileExt));
+
+  $uploadOk = 1;
+  
+  
+  // Check if file already exists
+  if (file_exists($target_file)) {
+      $errormessage = "Sorry, file already exists.";
+      $uploadOk = 0;
   }
+  // Check file size
+  if ($_FILES["file"]["size"] > 500000) {
+      $errormessage = "Sorry, your file is too large.";
+      $uploadOk = 0;
+  }
+  // Allow certain file formats
+  if(($fileLowerExt != "jpg") && ($fileLowerExt != "png") && ($fileLowerExt != "jpeg")) {
+      $errormessage =  "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+      echo "Sorry, your file was not uploaded.";
+  // if everything is ok, try to upload file
+  } else {
+      $fileNewName = uniqid('', TRUE).".".$fileLowerExt;
+      $target_file = $target_dir . $fileNewName;
+      if (move_uploaded_file($fileTmpName, $target_file)) {
+          $imageUpload = TRUE;
+      } else {
+            $imageUpload = false;
+            $errormessage = "Sorry, there was an error uploading your file.";   
+      }
+  }
+  $query3 = "INSERT INTO UserImgs(userID, imageName) VALUES($userID, '$fileNewName')";
+  $query4 = "INSERT INTO UserProfile(userID, profileImg) VALUES($userID, '$fileNewName')";
+  if (($mysqli->query($query3) === TRUE) && ($mysqli->query($query4) === TRUE)) {
+    $message = "Account Successfully Created";
+    $_SESSION['message'] = $message;
+    header("Location: ../systemMessage.php");
+}
 }
 else {
   $message = "Account Creation Failed!!!";
