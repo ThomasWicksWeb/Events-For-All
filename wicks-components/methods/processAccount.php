@@ -133,7 +133,9 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
         $_SESSION['userName'] = $userName;
         $_SESSION['userID'] = $userID;
       
-  
+      var_dump($userName);
+      var_dump($userID);
+      mkdir("../images/$userName/");
       $target_dir = "../images/$userName/";
       $file = $_FILES['profileImg'];
       $filename = $_FILES['profileImg']['name'];
@@ -141,7 +143,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       $fileSize = $_FILES['profileImg']['size'];
       $fileError = $_FILES['profileImg']['error'];
       $fileType = $_FILES['profileImg']['type'];
-      $target_file = $target_dir . $file;
+      
 
       $fileExt = explode(".", $filename);
       $fileLowerExt = strtolower(end($fileExt));
@@ -172,23 +174,28 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
         $fileNewName = uniqid('', TRUE).".".$fileLowerExt;
         $target_file = $target_dir . $fileNewName;
         if (move_uploaded_file($fileTmpName, $target_file)) {
+          $query3 = "INSERT INTO UserImgs(userID, imageName) VALUES($userID, '$fileNewName')";
+          $query4 = "INSERT INTO UserProfile(userID, profileImg) VALUES($userID, '$fileNewName')";
+          if (($mysqli->query($query3) === TRUE) && ($mysqli->query($query4) === TRUE)) {
+          $message = "Account Successfully Created";
+          $_SESSION['message'] = $message;
+          //header("Location: ../systemMessage.php");
+        }
           $imageUpload = TRUE;
           echo "<script>console.log('$imageUpload')</script>";
+          echo "<script>console.log('$target_dir')</script>";
+          echo "<script>console.log('$target_file')</script>";
         } 
         else {
             $imageUpload = false;
             $errormessage = "Sorry, there was an error uploading your file.";
             echo "<script>console.log('$imageUpload')</script>";
-            echo "<script>console.log('$errormessage')</script>";   
+            echo "<script>console.log('$errormessage')</script>";
+            echo "<script>console.log('$target_dir')</script>";
+            echo "<script>console.log('$target_file')</script>";   
         }
-      }
-      $query3 = "INSERT INTO UserImgs(userID, imageName) VALUES($userID, '$fileNewName')";
-      $query4 = "INSERT INTO UserProfile(userID, profileImg) VALUES($userID, '$fileNewName')";
-      if (($mysqli->query($query3) === TRUE) && ($mysqli->query($query4) === TRUE)) {
-      $message = "Account Successfully Created";
-      $_SESSION['message'] = $message;
-      header("Location: ../systemMessage.php");
-      }
+        }
+        
     }
   }
   else {
@@ -201,7 +208,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
 else {
   $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
-  header("Location: ../error.php");
+  //header("Location: ../error.php");
 }
 
 $mysqli->close();
