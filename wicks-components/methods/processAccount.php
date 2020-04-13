@@ -133,8 +133,8 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
         $_SESSION['userName'] = $userName;
         $_SESSION['userID'] = $userID;
       
-      var_dump($userName);
-      var_dump($userID);
+      //var_dump($userName);
+      //var_dump($userID);
       mkdir("../images/$userName/");
       $target_dir = "../images/$userName/";
       $file = $_FILES['profileImg'];
@@ -179,7 +179,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
           if (($mysqli->query($query3) === TRUE) && ($mysqli->query($query4) === TRUE)) {
           $message = "Account Successfully Created";
           $_SESSION['message'] = $message;
-          //header("Location: ../systemMessage.php");
+          header("Location: ../systemMessage.php");
         }
           $imageUpload = TRUE;
           echo "<script>console.log('$imageUpload')</script>";
@@ -201,14 +201,14 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
   else {
     $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
-  //header("Location: ../error.php");
+  header("Location: ../error.php");
   var_dump($message);
   } 
 }
 else {
   $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
-  //header("Location: ../error.php");
+  header("Location: ../error.php");
 }
 
 $mysqli->close();

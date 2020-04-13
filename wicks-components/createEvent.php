@@ -63,7 +63,7 @@ else {
     <!-- <CreateAnEvent> -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>" enctype="multipart/form-data">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Event</h2>
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">General Information</h2>
                 <div class="field">

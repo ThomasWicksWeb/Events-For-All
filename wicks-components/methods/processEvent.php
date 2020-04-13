@@ -124,14 +124,86 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
     }
     else {
         echo "<script>console.log('Connected successfully...')</script>";
-    }
+    }   
+    
 
-
-    // Query database to create user
+    // Query database to create event
     $query = "INSERT INTO Events(userID, eventTitle, startDate, startTime, endDate, endTime, street, city, USstate, zip, eventDescription, genre, privacy, maxNumAttendees) VALUES($userID, '$eventTitle', '$startDate', '$startTime', '$endDate', '$endTime', '$street', '$city', '$state', '$zip', '$description',$genre, $privacy,$maxGuestsInput)";
     if ($mysqli->query($query) === TRUE) {
         $message = "Event Successfully Created";
         $_SESSION['message'] = $message;
+        echo "$message";
+        echo "$mysqli->error";
+        $target_dir = "../images/eventImages/";
+      $file = $_FILES['profileImg'];
+      $filename = $_FILES['profileImg']['name'];
+      $fileTmpName = $_FILES['profileImg']['tmp_name'];
+      $fileSize = $_FILES['profileImg']['size'];
+      $fileError = $_FILES['profileImg']['error'];
+      $fileType = $_FILES['profileImg']['type'];
+      
+
+      $fileExt = explode(".", $filename);
+      $fileLowerExt = strtolower(end($fileExt));
+
+      $uploadOk = 1;
+  
+  
+      // Check if file already exists
+      if (file_exists($target_file)) {
+        $errormessage = "Sorry, file already exists.";
+        $uploadOk = 0;
+        echo "$errormessage";
+      }
+      // Check file size
+      if ($_FILES["file"]["size"] > 500000) {
+        $errormessage = "Sorry, your file is too large.";
+        $uploadOk = 0;
+        echo "$errormessage";
+      }
+      // Allow certain file formats
+      if(($fileLowerExt != "jpg") && ($fileLowerExt != "png") && ($fileLowerExt != "jpeg")) {
+      $errormessage =  "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+      echo "$errormessage";
+      }
+      // Check if $uploadOk is set to 0 by an error
+      if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+      } else {
+        $fileNewName = uniqid('', TRUE).".".$fileLowerExt;
+        $target_file = $target_dir . $fileNewName;
+        if (move_uploaded_file($fileTmpName, $target_file)) {
+         // $message = "";
+         // $_SESSION['message'] = $message;
+         $query2 = "SELECT EventID FROM Events WHERE userID = '$userID' AND WHERE eventTitle = '$eventTitle'";
+      $result = $mysqli->query($query2);
+      echo "$mysqli->error";
+      if ($result->num_rows > 0) {
+        // output data of each row
+        echo "Second Query Works";
+        while($row = $result->fetch_assoc()) {   
+            $eventID = $row["EventID"];
+        }
+         $query3 = "INSERT INTO EventImgs(eventID, userID, imageName) VALUES($eventID, '$userID', '$fileNewName')";
+          
+         if ($mysqli->query($query3) === TRUE) {
+          $imageUpload = TRUE;
+          echo "<script>console.log('$imageUpload')</script>";
+          echo "<script>console.log('$target_dir')</script>";
+          echo "<script>console.log('$target_file')</script>";
+         }
+        }
+        else {
+          echo "$mysqli->error";
+        }
+      }else {
+        echo "Image move Failed";
+      }
+      } 
+
+
         header("Location: ./systemMessage.php");
     }
     else {
