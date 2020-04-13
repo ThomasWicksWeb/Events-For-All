@@ -107,6 +107,7 @@ else{
   }
 if(isset($_POST['maxGuestsInput'])) {
     $maxGuestsInput = test_input($_POST['maxGuestsInput']);
+    $maxGuestsInput = (int)$maxGuestsInput;
   }
 else{
     $maxGuestsInput = NULL;
