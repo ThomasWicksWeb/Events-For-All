@@ -105,8 +105,9 @@ else {
 
     echo "
     <section class='section'>
-        <div class='container'>
+        <div class='container'> ";?>
             <form class='form' method='POST' action='<?php echo htmlspecialchars('./methods/processEventChange.php');?>'>
+            <?php echo "
                 <h2 class='is-size-2 has-text-weight-bold has-text-centered'>Create an Event</h2>
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
                 <div class='field'>
@@ -267,7 +268,7 @@ else {
     else{
             $errorMessage = "Something went wrong, please try again later...";
             $_SESSION['errorMessage'] = $errorMessage;
-            header('Location: ./errorMessage.php');
+            header('Location: ./error.php');
     }
     ?>            
     <script src="./js/scripts.js"></script>

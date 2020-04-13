@@ -119,19 +119,19 @@ if ($mysqli->query($query) === TRUE) {
       $_SESSION['userName'] = $userName;
       $_SESSION['userID'] = $userID;
         
-  $target_dir = "../images/$userName/";
-  $file = $_FILES['profileImg'];
-  $filename = $_FILES['profileImg']['name'];
-  $fileTmpName = $_FILES['profileImg']['tmp_name'];
-  $fileSize = $_FILES['profileImg']['size'];
-  $fileError = $_FILES['profileImg']['error'];
-  $fileType = $_FILES['profileImg']['type'];
-  $target_file = $target_dir . $file;
+      $target_dir = "../images/$userName/";
+      $file = $_FILES['profileImg'];
+      $filename = $_FILES['profileImg']['name'];
+      $fileTmpName = $_FILES['profileImg']['tmp_name'];
+      $fileSize = $_FILES['profileImg']['size'];
+      $fileError = $_FILES['profileImg']['error'];
+      $fileType = $_FILES['profileImg']['type'];
+      $target_file = $target_dir . $file;
 
-$fileExt = explode(".", $filename);
-$fileLowerExt = strtolower(end($fileExt));
+      $fileExt = explode(".", $filename);
+      $fileLowerExt = strtolower(end($fileExt));
 
-  $uploadOk = 1;
+      $uploadOk = 1;
   
   
   // Check if file already exists
@@ -169,7 +169,9 @@ $fileLowerExt = strtolower(end($fileExt));
     $message = "Account Successfully Created";
     $_SESSION['message'] = $message;
     header("Location: ../systemMessage.php");
-}
+      }
+    }
+  }
 }
 else {
   $message = "Account Creation Failed!!!";
