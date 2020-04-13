@@ -136,6 +136,21 @@ else {
                     </div>
                 </div>
 
+                <h2 class='is-size-4 has-text-weight-bold has-text-centered'>User Image</h2>
+                <div class='file has-name createAccountUserUpload'>
+                    <label class='file-label'>
+                        <input id='profilePicture' class='file-input' type='file' name='profileImg'
+                            onchange='getFileData(this)'>
+                        <span class='file-cta'>
+                            <span class='file-icon'>
+                                <i class='fas fa-upload'></i>
+                            </span>
+                            <span class='file-label'>Choose a file…</span>
+                        </span>
+                        <span id='displayFileText' class='file-name'>Filename</span>
+                    </label>
+                </div>
+
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="field">
@@ -250,6 +265,16 @@ else {
                 maxGuestsTextInput.fadeOut(300);
             }
         });
+
+        const profilePictureInput = $("#profilePicture");
+        const displayFileText = $("#displayFileText");
+
+        function getFileData(myFile) {
+            const file = myFile.files[0];
+            const filename = file.name;
+            // document.getElementById('displayFileText').val = filename;
+            displayFileText.text(filename);
+        }
 
     </script>
 </body>
