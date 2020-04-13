@@ -100,8 +100,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                 </div>
 
                 <hr />
-
-                <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>";?>
+        ";?>
 
         <h2 class="is-size-3 has-text-weight-bold has-text-centered">User Image</h2>
         <div class='file has-name createAccountUserUpload'>
