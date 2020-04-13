@@ -33,6 +33,7 @@ if(isset($_POST['hobbies'])) {
     $hobbies = NULL;
   }
 
+  /*
   $target_dir = "../images/$userName/";
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   $uploadOk = 1;
@@ -75,6 +76,35 @@ if(isset($_POST['hobbies'])) {
           echo "Sorry, there was an error uploading your file.";
       }
   }
+  */
+
+  if(($bio != NULL) && ($hobbies != NULL)) {
+      // Connect to MySQL and the EventsForAll Database
+$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+
+if ($mysqli->connection_error) {
+    die("connection Failed: " . $mysqli->connection_error);
+    echo "<script>console.log('Connection Error...')</script>";
+}
+else {
+    echo "<script>console.log('Connected successfully...')</script>";
+}
+
+
+// Query database to create user
+$query = "UPDATE UserProfile SET bio='$bio', hobbies='$hobbies' WHERE userID=$userID";
+if ($mysqli->query($query) === TRUE) {
+    $message = "Profile Successfully Updated";
+    $_SESSION['message'] = $message;
+    header("Location: ../systemMessage.php");
+}
+else {
+  $message = "Profile Update Failed!!!";
+  $_SESSION['errorMessage'] = $message;
+  header("Location: ../error.php");
+}
+$mysqli->close();
+}
 
 
 
