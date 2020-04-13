@@ -76,131 +76,84 @@ else {
                 </div>
             </div>
 
-            <a id="showFiltersToggle" href="https://www.google.com" class="">
-                <h2 class="has-text-weight-bold is-size-4 filtersText">Filters</h2>
-                <i class="fas fa-arrow-down"></i>
-            </a>
-            
+            <div class="box">
+                <a id="showFiltersToggle" href="https://www.google.com" class="">
+                    <h2 class="has-text-weight-bold is-size-4 filtersText">Filters</h2>
+                    <i id="EventsPageFilterArrow" class="fas fa-arrow-down"></i>
+                </a>
 
-            <div class="filters-panel-parents">
-                <div class="nav filtersList content">
-                    <h2 class="has-text-weight-bold is-size-4">My Events</h2>
-                    <ul>
-                        <li>
-                            <a id="filterMyEvents" class="link">My Events</a>
-                        </li>
-                        <li>
-                            <a id="filterMyAttending" class="link">Attending</a>
-                        </li>
-                        <li>
-                            <a id="filterMyAttended" class="link">Attended</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav filtersList content">
-                    <h2 class="has-text-weight-bold is-size-4">All Events</h2>
-                    <ul>
-                        <li>
-                            <a id="filterViewAll" class="link" href="./events.php?view=all">View All</a>
-                        </li>
-                        <li>
-                            <a id="filterArtsAndCrafts" class="link">Arts &amp; Crafts</a>
-                        </li>
-                        <li>
-                            <a id="filterSportsAndFitness" class="link">Sports &amp; Fitness</a>
-                        </li>
-                        <li>
-                            <a id="filterTech" class="link">Technology</a>
-                        </li>
-                        <li>
-                            <a id="filterFoodAndDrinks" class="link">Food &amp; Drinks</a>
-                        </li>
-                        <li>
-                            <a id="filterOutdoorsAndAdventure" class="link">Outdors &amp; Adventure</a>
-                        </li>
-                        <li>
-                            <a id="filterPhotography" class="link">Photography</a>
-                        </li>
-                        <li>
-                            <a id="filterMusic" class="link">Music</a>
-                        </li>
-                        <li>
-                            <a id="filterMovies" class="link">Movies</a>
-                        </li>
-                        <li>
-                            <a id="filterOther" class="butlinkton">Other</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav filtersList content">
-                    <h2 class="has-text-weight-bold is-size-4">Local</h2>
-                    <ul>
-                        <li>
-                            <a id="filterNearMe" class="link" href="#">Near Me</a>
-                        </li>
-                        <li>
-                            <a id="filterRecentlyAdded" class="link">Recently Added</a>
-                        </li>
-                    </ul>
+
+                <div class="filters-panel-parents">
+                    <div class="nav filtersList content">
+                        <h2 class="has-text-weight-bold is-size-4">My Events</h2>
+                        <ul>
+                            <li>
+                                <a id="filterMyEvents" class="link">My Events</a>
+                            </li>
+                            <li>
+                                <a id="filterMyAttending" class="link">Attending</a>
+                            </li>
+                            <li>
+                                <a id="filterMyAttended" class="link">Attended</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav filtersList content">
+                        <h2 class="has-text-weight-bold is-size-4">All Events</h2>
+                        <ul>
+                            <li>
+                                <a id="filterViewAll" class="link" href="./events.php?view=all">View All</a>
+                            </li>
+                            <li>
+                                <a id="filterArtsAndCrafts" class="link">Arts &amp; Crafts</a>
+                            </li>
+                            <li>
+                                <a id="filterSportsAndFitness" class="link">Sports &amp; Fitness</a>
+                            </li>
+                            <li>
+                                <a id="filterTech" class="link">Technology</a>
+                            </li>
+                            <li>
+                                <a id="filterFoodAndDrinks" class="link">Food &amp; Drinks</a>
+                            </li>
+                            <li>
+                                <a id="filterOutdoorsAndAdventure" class="link">Outdors &amp; Adventure</a>
+                            </li>
+                            <li>
+                                <a id="filterPhotography" class="link">Photography</a>
+                            </li>
+                            <li>
+                                <a id="filterMusic" class="link">Music</a>
+                            </li>
+                            <li>
+                                <a id="filterMovies" class="link">Movies</a>
+                            </li>
+                            <li>
+                                <a id="filterOther" class="butlinkton">Other</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav filtersList content">
+                        <h2 class="has-text-weight-bold is-size-4">Local</h2>
+                        <ul>
+                            <li>
+                                <a id="filterNearMe" class="link" href="#">Near Me</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav filtersList content">
+                        <h2 class="has-text-weight-bold is-size-4">My Date</h2>
+                        <ul>
+                            <li>
+                                <a id="filterComingUp" class="link" href="#">Coming Up</a>
+                            </li>
+                            <li>
+                                <a id="filterRecentlyAdded" class="link">Recently Added</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <script>
-
-                const filters = $('.filters-panel-parents');
-
-                $(".filters-panel-parents").slideUp(0);
-
-                $("#showFiltersToggle").on("click", function(e){
-                    e.preventDefault();
-
-                    if (filters.is(':visible')){
-                        filters.slideUp(300);
-                    } else {
-                        filters.slideDown(300);
-                    }
-                    console.log("Hello!");
-                })
-            </script>
-
-            <!-- 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <nav class="panel">
-                <p class="panel-heading">Categories</p>
-
-                <nav class="nav filtersList">
-                    <a id="filterMyEvents" class="button" href="./events.php?view=all">My Events</a>
-                    <a id="filterMyAttending" class="button">Attending</a>
-                    <a id="filterMyAttended" class="button">Attended</a>
-                </nav>
-
-                <div class="panel-block">
-                    <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Search Events">
-                        <span class="icon is-left">
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                        </span>
-                    </p>
-                </div>
-
-                <nav class="nav filtersList">
-                    <a id="filterViewAll" class="button" href="./events.php?view=all">View All</a>
-                    <a id="filterArtsAndCrafts" class="button">Arts &amp; Crafts</a>
-                    <a id="filterSportsAndFitness" class="button">Sports &amp; Fitness</a>
-                    <a id="filterTech" class="button">Technology</a>
-                    <a id="filterFoodAndDrinks" class="button">Food &amp; Drinks</a>
-                    <a id="filterOutdoorsAndAdventure" class="button">Outdors &amp; Adventure</a>
-                    <a id="filterPhotography" class="button">Photography</a>
-                    <a id="filterMusic" class="button">Music</a>
-                    <a id="filterMovies" class="button">Movies</a>
-                    <a id="filterOther" class="button">Other</a>
-                </nav>
-            </nav> -->
 
             <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Arts &amp; Crafts</h2>
             <ul class="ViewAllEventsGridParent">
@@ -717,6 +670,23 @@ else {
     </script> -->
 
     <script src="./js/scripts.js"></script>
+    <script>
+        const filters = $('.filters-panel-parents');
+
+        $(".filters-panel-parents").slideUp(0);
+
+        $("#showFiltersToggle").on("click", function (e) {
+            e.preventDefault();
+
+            if (filters.is(':visible')) {
+                filters.slideUp(300);
+            } else {
+                filters.slideDown(300);
+            }
+
+            $("#EventsPageFilterArrow").toggleClass("arrowIsFlipped");
+        })
+    </script>
 </body>
 
 </html>

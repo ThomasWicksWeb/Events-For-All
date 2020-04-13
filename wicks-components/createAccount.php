@@ -55,7 +55,7 @@ else {
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>" enctype="multipart/form-data">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
 
                 <div class="flexTwoFields">
@@ -251,9 +251,6 @@ else {
                             </span>
                         </div>
                     </div>
-
-                    <hr />
-                    
                 </div>
 
                 <hr />
@@ -261,14 +258,15 @@ else {
                 <h2 class="is-size-3 has-text-weight-bold has-text-centered">User Image</h2>
                 <div class='file has-name createAccountUserUpload'>
                     <label class='file-label'>
-                        <input id='editProfileNewPicture' class='file-input' type='file' name='newProfileImg'>
+                        <input id='profilePicture' class='file-input' type='file' name='profileImg'
+                            onchange="getFileData(this)">
                         <span class='file-cta'>
                             <span class='file-icon'>
                                 <i class='fas fa-upload'></i>
                             </span>
                             <span class='file-label'>Choose a file…</span>
                         </span>
-                        <span class='file-name'>{{} file name after upload }}</span>
+                        <span id="displayFileText" class='file-name'>Filename</span>
                     </label>
                 </div>
 
@@ -315,6 +313,17 @@ else {
                 dateFormat: 'yy/mm/dd'
             });
         })();
+
+        const profilePictureInput = $("#profilePicture");
+        const displayFileText = $("#displayFileText");
+
+        function getFileData(myFile) {
+            const file = myFile.files[0];
+            const filename = file.name;
+            // document.getElementById('displayFileText').val = filename;
+            displayFileText.text(filename);
+        }
+
     </script>
     <script src="./js/scripts.js"></script>
 </body>
