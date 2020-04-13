@@ -318,8 +318,8 @@ else {
         const displayFileText = $("#displayFileText");
 
         function getFileData(myFile) {
-            var file = myFile.files[0];
-            var filename = file.name;
+            const file = myFile.files[0];
+            const filename = file.name;
             // document.getElementById('displayFileText').val = filename;
             displayFileText.text(filename);
         }
