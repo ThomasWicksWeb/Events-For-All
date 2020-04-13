@@ -2,6 +2,7 @@
 
 //Start session and check logon status
 session_start();
+
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
@@ -41,10 +42,11 @@ else {
        $viewedUserBio = $row["bio"];
        $viewedUserHobbies = $row["hobbies"];
        $viewedUserCity = $row["city"];
-       $viewedUSerState = $row["USstate"];
+       $viewedUserState = $row["USstate"];
    }
-
+   $viewedUserHobbiesArray = explode(",", $viewedUserHobbies);
  }
+ $mysqli->close();
 ?>
 
 
@@ -97,20 +99,21 @@ else {
                 <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
             </ul>
             <?php if($viewedProfileImg)
-            echo "<img class='userProfileUserImg' src='./images/$viewedProfileImg.jpeg' alt=''>";
+            echo "<img class='userProfileUserImg' src='./images/$viewedUserName/$viewedProfileImg' alt=''>";
             else
             echo "<img class='userProfileUserImg' src='./images/ProfilePhotoWithLogo.png' alt=''>";
             ?>
             <div class="userProfileContentBody">
                 <div class="userProfileContentBodyShortBio">
                     <h3 class="is-size-4 has-text-weight-bold">Location</h3>
-                    <?php echo "<p class='is-size-6'>$viewedUserCity, $viewedUSerState</p>";?>
+                    <?php echo "<p class='is-size-6'>$viewedUserCity, $viewedUserState</p>";?>
                     <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
                     <ul class="is-size-6">
-                        <li>Volleyball</li>
-                        <li>Gaming</li>
-                        <li>Soccer</li>
-                        <li>Dance</li>
+                        <?php 
+                        foreach($viewedUserHobbiesArray as $hobby){
+                            echo "<li>$hobby</li>";
+                        }
+                        ?>
                     </ul>
                     <h3 class="is-size-4 has-text-weight-bold">Subtitle</h3>
                     <p class="is-size-6">More information</p>

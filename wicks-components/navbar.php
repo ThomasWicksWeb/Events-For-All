@@ -96,7 +96,7 @@ $mysqli->close();
            <?php if ($loggedon) {  echo "<div class='navbar-item has-dropdown is-hoverable'>
                         <a class='navbar-link'>";
                         if ($userImg) {
-                           echo "<img src='./images/$userImg.jpeg' class='navBarProfilePicture' alt='User Profile Picture'>";
+                           echo "<img src='./images/$userName/$userImg' class='navBarProfilePicture' alt='User Profile Picture'>";
                         }
                         else{
                             echo "<img src='./images/ProfilePhotoWithLogo.png' class='navBarProfilePicture' alt='User Profile Picture'>";

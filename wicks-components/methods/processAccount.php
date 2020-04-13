@@ -104,8 +104,9 @@ $query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth, firstNam
 if ($mysqli->query($query) === TRUE) {
     $message = "Account Successfully Created";
     $_SESSION['message'] = $message;
+    $_SESSION['loggedon'] = TRUE;
 
-      $query2 = "SELECT * FROM Users WHERE userName = $userName";
+      $query2 = "SELECT * FROM Users WHERE userName = '$userName'";
       $result = $mysqli->query($query2);
       if ($result->num_rows > 0) {
         // output data of each row
@@ -113,7 +114,9 @@ if ($mysqli->query($query) === TRUE) {
             $userName = $row["userName"];
             $userID = $row["userID"];        
        }
-      }
+      
+      $_SESSION['userName'] = $userName;
+      $_SESSION['userID'] = $userID;
       $target_dir = "../images/" . $userName . "/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
       $filename = basename($_FILES["fileToUpload"]["name"]);
@@ -161,31 +164,29 @@ if ($mysqli->query($query) === TRUE) {
           $uploadOk = 0;
           header("Location: ../error.php");
       // if everything is ok, try to upload file
-      } else {
+      } 
+      else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-             $successMessage = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-          } else {
+              $successMessage = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+              $query2 = "INSERT INTO UserProfile(userID, profileImg) VALUES('$userID','$filename')";
+              if ($mysqli->query($query2) === TRUE) {
+              $message2 = " and Profile Image Successfully uploaded";
+              $_SESSION['message'] = $message . $message2;
+              header("Location: ../systemMessage.php");}
+          } 
+          else {
               $errorMessage6 =  "Sorry, there was an error uploading your file.";
               $_SESSION["errorMessage"] = $errorMessage6;
               header("Location: ../error.php");
-          }
+          }  
       }
-      }
-      else{
-        $profileImg = NULL;
-      }
-    if ($profileImg !== NULL) {
-      $query2 = "INSERT INTO UserProfile(userID, profileImg) VALUES('$userID','$filename')";
-      if ($mysqli->query($query2) === TRUE) {
-        $message2 = " and Profile Image Successfully uploaded";
-        $_SESSION['message'] = $message . $message2;
-        header("Location: ../systemMessage.php");}
     }
     else {
     $errorMessage7 = "Profile Successfully Created, but Image Upload Failed!!!";
     $_SESSION['message'] = $errorMessage7;
     header("Location: ../systemMessage.php");
     }
+  }
 }
 else {
   $message = "Account Creation Failed!!!";

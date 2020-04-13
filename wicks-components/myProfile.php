@@ -10,6 +10,7 @@ else {
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
+  
 }
 else {
 	$userID = NULL;
@@ -20,6 +21,36 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+
+//Connect to database
+$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+
+if ($mysqli->connection_error) {
+    die("connection Failed: " . $mysqli->connection_error);
+    echo "<script>console.log('Connection Error...')</script>";
+}
+else {
+    echo "<script>console.log('Connected successfully...')</script>";
+}
+
+// Query database for user profile
+
+
+$query = "SELECT Users.userName, Users.city, Users.USstate, UserProfile.profileImg, UserProfile.bio, UserProfile.hobbies FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$userID' AND UserProfile.userID = '$userID'";
+$result = $mysqli->query($query);
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+      $userName = $row["userName"];
+      $profileImg = $row["profileImg"];
+      $userBio = $row["bio"];
+      $userHobbies = $row["hobbies"];
+      $userCity = $row["city"];
+      $userState = $row["USstate"];
+  }
+  $userHobbiesArray = explode(",", $userHobbies);
+}
+$mysqli->close();
 
 ?>
 
@@ -73,40 +104,29 @@ else {
                     <li><a class="is-size-6 button is-secondary" href="./editProfile.php">Edit Profile</a></li>
                     <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
                 </ul>
-                <img class="userProfileUserImg" src="http://placekitten.com/200/200" alt="">
+                <?php if($profileImg)
+            echo "<img class='userProfileUserImg' src='./images/$userName/$profileImg' alt='User Profile Image'>";
+            else
+            echo "<img class='userProfileUserImg' src='./images/ProfilePhotoWithLogo.png' alt='User Profile Image'>";
+            ?>
                 <div class="userProfileContentBody">
                     <div class="userProfileContentBodyShortBio">
                         <h3 class="is-size-4 has-text-weight-bold">Location</h3>
-                        <p class="is-size6">Farmingdale, NY</p>
+                        <?php echo "<p class='is-size-6'>$userCity, $userState</p>";?>
                         <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
                         <ul class="is-size-6">
-                            <li>Volleyball</li>
-                            <li>Gaming</li>
-                            <li>Soccer</li>
-                            <li>Dance</li>
+                        <?php 
+                        foreach($userHobbiesArray as $hobbie){
+                            echo "<li>$hobbie</li>";
+                        }
+                        ?>
                         </ul>
                         <h3 class="is-size-4 has-text-weight-bold">Subtitle</h3>
                         <p class="is-size-6">More information</p>
                     </div>
                     <div class="userProfileContentBodyLongBio">
                         <h2 class="is-size-3 has-text-weight-bold">About Me</h2>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, blanditiis
-                            voluptatibus? Sed
-                            libero laborum animi quis nostrum provident nulla recusandae sapiente odit, iste dolorum. Unde
-                            enim alias amet corrupti nisi.</p>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore
-                            delectus mollitia amet.
-                            Quas laboriosam vero sunt cupiditate quod voluptate sit, illo recusandae in voluptas quisquam
-                            maxime labore unde hic a praesentium commodi est optio consequuntur.</p>
-                        <p class="is-size-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus reiciendis
-                            quia in fuga
-                            consequatur asperiores ullam harum ipsam aspernatur eaque facere accusantium pariatur tenetur
-                            fugit deserunt, veritatis vero quasi mollitia expedita nemo. Autem, inventore delectus quas
-                            alias quidem cupiditate possimus qui numquam est consequuntur mollitia voluptatibus ut non
-                            fugit, obcaecati expedita! Possimus, minima! Illo, magni quaerat veritatis eaque alias molestiae
-                            neque, delectus consequatur earum ex sapiente fugit ad iusto eius a ratione! Natus animi, magnam
-                            maiores cupiditate dicta neque voluptatibus quidem corrupti quaerat ex tempora. Amet
-                            voluptatibus temporibus quam natus?</p>
+                        <?php echo "<p class='is-size-6'>$userBio</p>"; ?>
                     </div>
                 </div>
             </div>

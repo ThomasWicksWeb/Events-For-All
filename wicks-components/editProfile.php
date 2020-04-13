@@ -10,6 +10,7 @@ else {
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
 }
 else {
 	$userID = NULL;
@@ -84,10 +85,11 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
         // output data of each row
        while($row = $result->fetch_assoc()) {
             
-            $profileImage = ["profileImg"];
+            $profileImage = $row["profileImg"];
             $bio = $row["bio"];
             $hobbies = $row["hobbies"];
        }
+       
       echo " <!-- <EditProfileInformation> -->
     <section class='section'>
         <div class='container'>"; ?>
@@ -97,7 +99,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                 
                 <div class='dataSet'>
                     <h6 class='has-text-weight-bold is-size-5'>Username</h6>
-                    <p class='is-size-6'> $userName</p>
+                    <p class='is-size-6'>$userName</p>
                 </div>
                 <hr />
                 <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>
@@ -110,7 +112,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                         </span>
                         <span class='file-label'>Choose a file…</span>
                         </span>
-                        <span class='file-name'>{ file name after upload }</span>
+                        <span class='file-name'>$profileImage</span>
                     </label>
                 </div>
 
@@ -119,7 +121,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                 <div class='field'>
                     <label class='label is-size-5'>Bio</label>
                     <div class='control has-icons-left'>
-                        <textarea id='EditBio' name='description' value='$bio' required class='textarea'></textarea>
+                        <textarea id='EditBio' name='description' value='$bio' required class='textarea'>$bio</textarea>
                     </div>
                 </div>
 
@@ -130,7 +132,7 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                             put a comma between each hobby)</span></label>
                     <div class='control has-icons-left'>
                         <textarea id='EditHobbies' name='hobbies' value='$hobbies' required
-                            class='textarea'></textarea>
+                            class='textarea'>$hobbies</textarea>
                     </div>
                 </div>
 
