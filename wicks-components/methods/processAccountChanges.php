@@ -94,12 +94,12 @@ $query = "UPDATE Users SET firstName='$firstName', lastName='$lastName', email='
 if ($mysqli->query($query) === TRUE) {
     $message = "Account Successfully Updated";
     $_SESSION['message'] = $message;
-    header("Location: ../systemMessage.php")
+    header("Location: ../systemMessage.php");
 }
 else {
   $message = "Account Update Failed!!!";
   $_SESSION['errorMessage'] = $message;
-  header("Location: ../error.php")
+  header("Location: ../error.php");
 }
 $mysqli->close();
 }
