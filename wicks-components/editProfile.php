@@ -101,21 +101,22 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
 
                 <hr />
 
-                <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>
+                <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>";?>
 
-                <div class='file has-name'>
+                <div class='file has-name createAccountUserUpload'>
                     <label class='file-label'>
-                        <input id='editProfileNewPicture' class='file-input' type='file' name='newProfileImg'>
+                        <input id='profilePicture' class='file-input' type='file' name='profileImg'
+                            onchange="getFileData(this)">
                         <span class='file-cta'>
-                        <span class='file-icon'>
-                            <i class='fas fa-upload'></i>
+                            <span class='file-icon'>
+                                <i class='fas fa-upload'></i>
+                            </span>
+                            <span class='file-label'>Choose a file…</span>
                         </span>
-                        <span class='file-label'>Choose a file…</span>
-                        </span>
-                        <span id='displayFileText' class='file-name'>$profileImage</span>
+                        <span id="displayFileText" class='file-name'>Filename</span>
                     </label>
                 </div>
-
+<?php echo "
                 <hr />
                     
                 <div class='field'>
@@ -164,16 +165,27 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
 
         <script src="./js/scripts.js"></script>
         <script>
-            const profilePictureInput = $("#editProfileNewPicture");
-            const displayFileText = $("#displayFileText");
+        // *******************************************
+        // IIFEs assigning DatePickers to input fields
+        // *******************************************
 
-            function getFileData(myFile) {
-                const file = myFile.files[0];
-                const filename = file.name;
-                // document.getElementById('displayFileText').val = filename;
-                displayFileText.text(filename);
-            }
-        </script>
+        (function () {
+            $("#AccountCreationDOB").datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
+        })();
+
+        const profilePictureInput = $("#profilePicture");
+        const displayFileText = $("#displayFileText");
+
+        function getFileData(myFile) {
+            const file = myFile.files[0];
+            const filename = file.name;
+            // document.getElementById('displayFileText').val = filename;
+            displayFileText.text(filename);
+        }
+
+    </script>
 </body>
 
 </html>
