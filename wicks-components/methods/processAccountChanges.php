@@ -92,14 +92,16 @@ else {
 // Query database to create user
 $query = "UPDATE Users SET firstName='$firstName', lastName='$lastName', email='$email', dateOfBirth='$dob', street='$street', city='$city', USstate='$state', zip='$zip' WHERE userID=$userID";
 if ($mysqli->query($query) === TRUE) {
+    $mysqli->close();
     $message = "Account Successfully Updated";
     $_SESSION['message'] = $message;
-    header("Location: ../systemMessage.php");
+    header("Location: ../systemMessage.php?routed=3");
 }
 else {
+  $mysqli->close();
   $message = "Account Update Failed!!!";
   $_SESSION['errorMessage'] = $message;
-  header("Location: ../error.php");
+  header("Location: ../error.php?routed=3");
 }
 $mysqli->close();
 }

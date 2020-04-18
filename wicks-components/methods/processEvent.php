@@ -190,6 +190,7 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
          $query3 = "INSERT INTO EventImgs(eventID, userID, imageName) VALUES($eventID, '$userID', '$fileNewName')";
           
          if ($mysqli->query($query3) === TRUE) {
+          $mysqli->close();
           $imageUpload = TRUE;
           echo "<script>console.log('$imageUpload')</script>";
           echo "<script>console.log('$target_dir')</script>";
@@ -200,18 +201,19 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
           echo "$mysqli->error";
         }
       }else {
+        $mysqli->close();
         echo "Image move Failed";
       }
       } 
 
 
-        header("Location: ./systemMessage.php");
+        header("Location: ../systemMessage.php?routed=2");
     }
     else {
         $message = "Event Creation Failed!!!" . $mysqli->error;
         /*var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy, $maxGuestsInput);*/
         $_SESSION['errorMessage'] = $message;
-        header("Location: ./error.php");
+        header("Location: ../error.php?routed=2");
 
     }
     $mysqli->close();

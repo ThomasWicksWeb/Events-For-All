@@ -46,5 +46,34 @@ function parseGenre($data) {
 
 }
 
+function parseRouting($data) {
+  switch($data){
+    case 0: 
+      return "home.php";
+    break;
+    case 1:
+      return "myProfile.php";
+    break;
+    case 2:  
+     return  "myEvents.php";
+    break;
+    case 3:
+      return "myAccount.php";
+    break;
+    case 4:
+      return "login.php";
+    break;
+    default:
+      return "index.php";
+    break;
+  }
+
+
+}
+
+
+/*if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
+    
+}*/
 
 ?>

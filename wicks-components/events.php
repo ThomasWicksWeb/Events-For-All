@@ -6,10 +6,12 @@ if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
 else {
-	$loggedon = FALSE;
+    $loggedon = FALSE;
+    
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
 }
 else {
 	$userID = NULL;
@@ -20,6 +22,8 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+
+
 ?>
 
 
@@ -64,8 +68,10 @@ else {
     <section class="section">
         <div class="container ViewAllEventsContainer">
             <h1 class="is-size-2 has-text-weight-bold has-text-centered">Browse Events</h1>
-
-            <a href="./createEvent.php" class="button is-info EventsPageCreateEventBtn">Create New Event</a>
+<?php if($loggedon) {
+    echo "<a href='./createEvent.php' class='button is-info EventsPageCreateEventBtn'>Create New Event</a>";
+}
+?>            
 
             <div class="field">
                 <div class="eventSearch">

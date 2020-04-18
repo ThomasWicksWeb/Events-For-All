@@ -20,6 +20,12 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+
+if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
+    $message = "You must be logged in to view this page!!!";
+    $_SESSION["errorMessage"] = $message;
+    header("Location: ./error.php?routed=4");
+}
 ?>
 
 

@@ -177,9 +177,11 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
           $query3 = "INSERT INTO UserImgs(userID, imageName) VALUES($userID, '$fileNewName')";
           $query4 = "INSERT INTO UserProfile(userID, profileImg) VALUES($userID, '$fileNewName')";
           if (($mysqli->query($query3) === TRUE) && ($mysqli->query($query4) === TRUE)) {
-          $message = "Account Successfully Created";
+            $mysqli->close();
+            $message = "Account Successfully Created";
           $_SESSION['message'] = $message;
-          header("Location: ../systemMessage.php");
+          header("Location: ../systemMessage.php?routed=0");
+          
         }
           $imageUpload = TRUE;
           echo "<script>console.log('$imageUpload')</script>";
@@ -199,16 +201,18 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
     }
   }
   else {
+    $mysqli->close();
     $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
-  header("Location: ../error.php");
+  header("Location: ../error.php?routed=0");
   var_dump($message);
   } 
 }
 else {
+  $mysqli->close();
   $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
-  header("Location: ../error.php");
+  header("Location: ../error.php?routed=0");
 }
 
 $mysqli->close();

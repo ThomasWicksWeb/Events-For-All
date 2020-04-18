@@ -2,6 +2,7 @@
 
 //Start session and check logon status
 session_start();
+require('./methods/functions.php');
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
@@ -24,11 +25,21 @@ if (isset($_SESSION['errorMessage'])) {
     $errorMessage = $_SESSION['errorMessage'];
 }
 else{
-    /*if($loggedon)
+    if($loggedon)
     header("Location: ./home.php");
     else
-    header("Location: ./index.php");*/
+    header("Location: ./index.php");
 }
+
+if(isset($_GET["routed"])) {
+    $routed = $_GET["routed"];
+    var_dump($routed);
+}
+else {
+    $routed = 0;
+}
+
+$route = parseRouting($routed);
 ?>
 
 <!DOCTYPE html>
@@ -92,9 +103,9 @@ else{
         </section>";
          
     if ($loggedon)
-    echo "<script> window.setTimeout(function() {window.location.replace('./home.php');}, 2*1000);</script>";
+    echo "<script> window.setTimeout(function() {window.location.replace('./home.php');}, 4*1000);</script>";
     else
-    echo "<script> window.setTimeout(function() {window.location.replace('./index.php');}, 2*1000);</script>";
+    echo "<script> window.setTimeout(function() {window.location.replace('./index.php');}, 4*1000);</script>";
     ?>
 
 

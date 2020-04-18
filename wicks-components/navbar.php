@@ -108,7 +108,7 @@ $mysqli->close();
                             <a class='navbar-item' href='./myAccount.php'>My Account</a>
                             <a class='navbar-item' href='./friends.php'>Friends</a>
                             <a class='navbar-item' href='./messages.php'>Messages</a>
-                            <a class='navbar-item' href=''>My Events</a>
+                            <a class='navbar-item' href='./myEvents.php'>My Events</a>
                         </div>
                     </div> ";} ?>
                     <div class="navbar-item">

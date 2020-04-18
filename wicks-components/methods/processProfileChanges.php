@@ -101,17 +101,20 @@ else {
 $query = "UPDATE UserProfile SET profileImg='$fileNewName', bio='$bio', hobbies='$hobbies' WHERE userID=$userID";
 $query2 = "INSERT INTO UserImgs(userID, imageName) VALUES($userID, '$fileNewName')";
 if (($mysqli->query($query) === TRUE) && ($mysqli->query($query2) === TRUE)) {
+    $mysqli->close();
     $message = "Profile Successfully Updated";
     $_SESSION['message'] = $message;
-    header("Location: ../systemMessage.php");
+    header("Location: ../systemMessage.php?routed=1");
 }
 else {
-    $message = "Profile Update Failed!!!";
+    
+    $message = "Profile Update Failed!!!" . $mysqli->errormessage;
     if($errormessage){
         $message = "Profile Update Failed!!!" . $errormessage;
     }
   $_SESSION['errorMessage'] = $message;
-    header("Location: ../error.php");
+    $mysqli->close();
+    header("Location: ../error.php?routed=1");
 }
 
 

@@ -167,7 +167,11 @@ else {
             <div class="bannerTintDarker">&nbsp;</div>
             <div class="container has-text-centered">
                 <h1 class="title is-size-2">Event Creators, your time is now!</h1>
-                <a href="./createAccount.php" class="subtitle is-size-5 button is-info">Sign up now</a>
+                <?php 
+                if(!$loggedon) {
+                    echo "<a href='./createAccount.php' class='subtitle is-size-5 button is-info'>Sign up now</a>";
+                } 
+                ?>
             </div>
         </div>
     </section>
