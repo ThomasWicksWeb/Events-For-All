@@ -86,7 +86,7 @@ $fileLowerExt = strtolower(end($fileExt));
 
   if(($bio != NULL) && ($hobbies != NULL)) {
       // Connect to MySQL and the EventsForAll Database
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+      require './databaseConnection.php';
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);

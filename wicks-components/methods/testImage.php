@@ -1,4 +1,6 @@
-<?php $target_dir = "../images/" . "testingImage" . "/";
+<?php 
+
+      $target_dir = "../images/" . "testingImage" . "/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
       $filename = basename($_FILES["fileToUpload"]["name"]);
       $uploadOk = 1;
@@ -32,7 +34,7 @@
           header("Location: ../error.php");
       }
       // Allow certain file formats
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+      if(($imageFileType != "jpg") && ($imageFileType != "png") && ($imageFileType != "jpeg")) {
           $errorMessage4 = "Sorry, only JPG, JPEG, or PNG files are allowed.";
           $_SESSION["errorMessage"] = $errorMessage4;
           $uploadOk = 0;
@@ -52,12 +54,10 @@
               $errorMessage6 =  "Sorry, there was an error uploading your file.";
               $_SESSION["errorMessage"] = $errorMessage6;
               header("Location: ../error.php");
+              $profileImg = NULL;
           }
       }
-      }
-      else{
-        $profileImg = NULL;
-      }
+      
     if ($profileImg !== NULL) {
       $query2 = "INSERT INTO UserProfile(userID, profileImg) VALUES('$userID','$filename')";
       if ($mysqli->query($query2) === TRUE) {

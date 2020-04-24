@@ -142,18 +142,18 @@ if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
                     </div>
                 </div>
 
-                <h2 class='is-size-4 has-text-weight-bold has-text-centered'>User Image</h2>
-                <div class='file has-name createAccountUserUpload'>
-                    <label class='file-label'>
-                        <input id='profilePicture' class='file-input' type='file' name='profileImg'
-                            onchange='getFileData(this)'>
-                        <span class='file-cta'>
-                            <span class='file-icon'>
-                                <i class='fas fa-upload'></i>
+                <h2 class="is-size-4 has-text-weight-bold has-text-centered">Event Image</h2>
+                <div class="file has-name createAccountUserUpload">
+                    <label class="file-label">
+                        <input id="profilePicture" class="file-input" type="file" name="eventImg"
+                            onchange="getFileData(this)">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
                             </span>
-                            <span class='file-label'>Choose a file…</span>
+                            <span class="file-label">Choose a file…</span>
                         </span>
-                        <span id='displayFileText' class='file-name'>Filename</span>
+                        <span id="displayFileText" class="file-name">Filename</span>
                     </label>
                 </div>
 
@@ -264,7 +264,7 @@ if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
 
         maxGuestsTextInput.fadeOut(300);
 
-        maxGuastsParent.on("change", function(){
+        maxGuestsParent.on("change", function(){
             if(isLimited.is(':checked')) {
                 maxGuestsTextInput.fadeIn(300);
             } else {
