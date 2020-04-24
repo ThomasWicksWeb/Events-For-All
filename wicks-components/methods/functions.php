@@ -32,13 +32,13 @@ function parseGenre($data) {
       case 6:
         return "Photography";
       break;
-      case 6:
+      case 7:
         return "Sports & Fitness";
       break;
-      case 7:
+      case 8:
         return "Tech";
       break;
-      case 8:
+      case 9:
         return "Other";
       break;
     }

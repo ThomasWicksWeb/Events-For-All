@@ -69,7 +69,7 @@ else {
     <?php if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
 // Connect to MySQL and the EventsForAll Database
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+require './methods/databaseConnection.php';
 
 if ($mysqli->connection_error) {
   die("connection Failed: " . $mysqli->connection_error);
@@ -128,7 +128,7 @@ else {
 
                     echo "<li class='myFriendsGrid box'>";?>
                            <?php 
-                           if($friendUserImg)
+                           if($friendUserImg != NULL)
                            echo "<img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />";
                            else
                            echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' />";
@@ -138,6 +138,7 @@ else {
                             <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
                             </div>
                             </li>";
+                            
                          
                 }
             }

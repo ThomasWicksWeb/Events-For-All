@@ -9,6 +9,16 @@ else {
 	$loggedon = FALSE;
 }
 
+
+if (isset($_GEt['viewEventID'])) {
+    $eventID = $_GET['viewEventID'];
+}
+else {
+	$$eventID = NULL;
+}
+
+
+
 ?>
 
 

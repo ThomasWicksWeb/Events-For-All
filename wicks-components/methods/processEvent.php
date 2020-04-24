@@ -127,7 +127,7 @@ else{
 
   /*var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy, $maxGuestsInput);*/
 
-if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($endTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL) && ($description != NULL)){
+if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($startTime != NULL) && ($endDate != NULL) && ($endTime != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL) && ($description != NULL)){
 
     require './databaseConnection.php';
 
