@@ -77,7 +77,8 @@ $mysqli->close();
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item red">Sports & Fitness</a>
+                        <a class="navbar-item red">Arts & Crafts</a>
+                        <a class="navbar-item">Sports & Fitness</a>
                         <a class="navbar-item">Tech</a>
                         <a class="navbar-item">Food & Drinks</a>
                         <a class="navbar-item">Outdoors & Adventure</a>

@@ -33,7 +33,7 @@ if (isset($_GET['filter'])) {
 else {
 	$filter = NULL;
 }
-var_dump($filter);
+
 
 ?>
 
@@ -263,8 +263,309 @@ var_dump($filter);
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>";
+                    </ul>
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Technology</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewTechQuery = "SELECT * FROM Events WHERE genre = 8 ORDER BY startDate DESC LIMIT 5";
+                    $result3 = $mysqli->query($viewTechQuery);
+                        if ($result3->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result3->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
 
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=8' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul>
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Food &amp; Drinks</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewFoodQuery = "SELECT * FROM Events WHERE genre = 1 ORDER BY startDate DESC LIMIT 5";
+                    $result4 = $mysqli->query($viewFoodQuery);
+                        if ($result4->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result4->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=1' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul>
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Outdoors &amp; Adventure</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewOutdoorsQuery = "SELECT * FROM Events WHERE genre = 4 ORDER BY startDate DESC LIMIT 5";
+                    $result5 = $mysqli->query($viewOutdoorsQuery);
+                        if ($result5->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result5->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=4' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul>
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Photography</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewPhotoQuery = "SELECT * FROM Events WHERE genre = 6 ORDER BY startDate DESC LIMIT 5";
+                    $result6 = $mysqli->query($viewPhotoQuery);
+                        if ($result6->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result6->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=6' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul>
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Movies</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewMoviesQuery = "SELECT * FROM Events WHERE genre = 2 ORDER BY startDate DESC LIMIT 5";
+                    $result7 = $mysqli->query($viewMoviesQuery);
+                        if ($result7->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result7->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=7' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul>
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Music</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewMusicQuery = "SELECT * FROM Events WHERE genre = 3 ORDER BY startDate DESC LIMIT 5";
+                    $result8 = $mysqli->query($viewMusicQuery);
+                        if ($result8->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result8->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=3' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Party</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 5 ORDER BY startDate DESC LIMIT 5";
+                    $result9 = $mysqli->query($viewPartyQuery);
+                        if ($result9->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result9->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=5' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul></ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 9 ORDER BY startDate DESC LIMIT 5";
+                    $result10 = $mysqli->query($viewPartyQuery);
+                        if ($result10->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result10->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "
+                    <div class='box'>
+                        <div class='link-box'>
+                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                            </div>
+                        </div>
+                    </ul>";
 
 
 
@@ -273,7 +574,7 @@ var_dump($filter);
 
                     switch($filter){
 
-                        case 0: {
+                        case 0: 
                             echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Arts &amp; Crafts</h2>
                             <ul class='ViewAllEventsGridParent'>";
                     
@@ -305,8 +606,309 @@ var_dump($filter);
                                 }
                             }
                             echo "</ul>";
+                        break;
+                        
+                        case 1:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Food &amp; Drinks</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $viewFoodQuery = "SELECT * FROM Events WHERE genre = 1 ORDER BY startDate DESC";
+                            $result4 = $mysqli->query($viewFoodQuery);
+                            if ($result4->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result4->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
 
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
                         }
+                            echo "</ul>";
+                        break;
+
+                        case 2:
+                            echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Movies</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $viewMoviesQuery = "SELECT * FROM Events WHERE genre = 2 ORDER BY startDate DESC";
+                            $result7 = $mysqli->query($viewMoviesQuery);
+                                if ($result7->num_rows > 0) {
+                                    // output data of each row
+                                    while($row = $result7->fetch_assoc()){
+                                        $eventID = $row['EventID'];
+                                        $eventTitle = $row['eventTitle'];
+                                        $eventDescription = $row['eventDescription'];
+                                        $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                        $imageResult = $mysqli->query($imageQuery);
+                                        list($eventImage) = mysqli_fetch_row($imageResult);
+        
+                                        echo "<li class='box'>";
+                                        if ($eventImage === NULL) {
+                                            echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                        }
+                                        else{
+                                            echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                        }
+                                        echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                            <p class='is-size-6'>$eventDescription
+                                            </p>
+                                            <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                        </li>";
+                                       
+                                    }
+                                }
+                            echo "</ul>";
+                        break;
+
+                        case 3:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Music</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                        $viewMusicQuery = "SELECT * FROM Events WHERE genre = 3 ORDER BY startDate DESC LIMIT 5";
+                        $result8 = $mysqli->query($viewMusicQuery);
+                        if ($result7->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result8->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "</ul>";
+                        break;
+
+                        case 4:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Outdoors &amp; Adventure</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $viewOutdoorsQuery = "SELECT * FROM Events WHERE genre = 4 ORDER BY startDate DESC";
+                        $result5 = $mysqli->query($viewOutdoorsQuery);
+                        if ($result5->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result5->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "</ul>";
+                        break;
+
+                        case 5:
+                            echo "
+                            </ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Party</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 5 ORDER BY startDate DESC LIMIT 5";
+                    $result9 = $mysqli->query($viewPartyQuery);
+                        if ($result9->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result9->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                        echo "</ul>";
+                        break;
+
+                        case 6:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Photography</h2>
+                    <ul class='ViewAllEventsGridParent'>";
+                    $viewPhotoQuery = "SELECT * FROM Events WHERE genre = 4 ORDER BY startDate DESC";
+                    $result6 = $mysqli->query($viewPhotoQuery);
+                        if ($result6->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result6->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                    echo "</ul>";
+                        break;
+                        case 7: 
+                            echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Sports &amp; Fitness</h2>
+                        <ul class='ViewAllEventsGridParent'>";
+                        $viewSportsNFitnessQuery = "SELECT * FROM Events WHERE genre = 7 ORDER BY startDate DESC";
+                        $result2 = $mysqli->query($viewSportsNFitnessQuery);
+                        if ($result2->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result2->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                            }
+                        echo "</ul>";
+                        break;
+                        
+                        case 8: 
+                            echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Technology</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $viewTechQuery = "SELECT * FROM Events WHERE genre = 8 ORDER BY startDate DESC";
+                            $result3 = $mysqli->query($viewTechQuery);
+                            if ($result3->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result3->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                            }
+                        echo "</ul>";
+                        break;
+                        
+                        case 9:
+                            echo "
+                            </ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                    $viewOtherQuery = "SELECT * FROM Events WHERE genre = 9 ORDER BY startDate DESC LIMIT 5";
+                    $result10 = $mysqli->query($viewOtherQuery);
+                        if ($result10->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result10->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                        echo "</ul>";
+                        break;
 
                     }
 
@@ -317,401 +919,6 @@ var_dump($filter);
                 
                  ?>
                 
-               
-
-            
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Technology</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
-
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Food &amp; Drinks</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Outdoors &amp; Adventure</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
-
-
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Photography</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
-
-
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Music</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
-
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Movies</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
-
-
-            <h2 class="is-size-3 has-text-weight-bold allEventsCategoryHeader">Other</h2>
-            <ul class="ViewAllEventsGridParent">
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-                        repudiandae veritatis voluptatem
-                    </p>
-                    <p class="is-size-6">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil eaque ipsum dolor harum ea,
-                        commodi laudantium!
-                    </p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident .</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <li class="box">
-                    <img src="https://placekitten.com/400/200" alt="" />
-                    <h1 class="is-size-4 has-text-weight-bold">Event Title</h1>
-                    <p class="is-size-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quia nobis sit
-                        explicabo maiores provident ducimus corrupti excepturi est! Molestias sunt, natus accusantium
-                        commodi voluptatem odio architecto nulla aut iure. excepturi est! Molestias sunt, natus
-                        accusantium commodi voluptatem odio architecto nulla aut iure.</p>
-                    <a href="#" class="button is-info is-size-6 has-text-weight-bold">View Event</a>
-                </li>
-                <div class="box">
-                    <div class="link-box">
-                        <i class="fas fa-arrow-circle-right is-size-1 has-text-info"></i>
-                        <a href="#" class="is-size-5 view-more-text">View more events <i
-                                class="fas fa-arrow-right view-more-arrow"></i></a>
-                    </div>
-                </div>
-            </ul>
 
         </div>
     </section>
