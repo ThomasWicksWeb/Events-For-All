@@ -95,7 +95,7 @@ else {
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
                 <?php echo "<li class='has-text-weight-bold is-size-3'>$viewedUserName</li>" ;?>
-                <li><a class="is-size-6 button is-primary" href="./addFriend.php/">Add Friend</a></li>
+                <li><a id="AddFriend" class="is-size-6 button is-primary" href="./addFriend.php/">Add Friend</a></li>
                 <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
             </ul>
             <?php if($viewedProfileImg)
@@ -127,7 +127,20 @@ else {
     </section>
     <!-- </UserProfile> -->
   
-    
+    <div id="modal" class="modal ">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <h5 class="is-size-4 has-text-weight-bold">Invite Friends</h5>
+            <p class="is-size-6">Are you sure you want to invite your entire friends list?</p>
+            <form action="">
+                <div class="modal-button-cont">
+                    <button id="sendInvites" class="button is-info">Invite All Friends</button>
+                    <button id="cancelInvites" class="button is-danger">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
@@ -137,6 +150,44 @@ else {
         });
     </script> -->
 
+    <script>
+        const modalParent = $("#modal")
+        const AddFriend = $("#AddFriend");
+        const modalGreySpace = $(".modal-background");
+        const modalClose = $(".modal-close");
+        const modalCancel = $("#cancelInvites");
+        const sendInvites = $("#sendInvites");
+
+        const ToggleIsActive = () => {
+            document.querySelectorAll('#modal').forEach(e => e.classList.toggle('is-active'));
+        } 
+
+        AddFriend.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalGreySpace.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalClose.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalCancel.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        sendInvites.on("click", function(e){
+            e.preventDefault();
+            alert("Invites Sent!");
+            ToggleIsActive();
+        });
+    </script>
     <script src="./js/scripts.js"></script>
 </body>
 
