@@ -87,9 +87,11 @@ else {
             <div class="field">
                 <div class="eventSearch">
                     <label class="label is-size-3 has-text-weight-bold">Search Events</label>
-                    <div class="control">
-                        <input class="input" type="text" name="eventSearch" placeholder="Search">
+                    <div class="control eventsSearchWithButton">
+                        <input id="EventsSearchInput" class="input" type="text" name="eventSearch" placeholder="Search">
+                        <button id="EventsSearchButton" class="button is-info">Search</button>
                     </div>
+                    
                 </div>
             </div>
 
