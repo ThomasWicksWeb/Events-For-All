@@ -130,11 +130,11 @@ else {
     <div id="modal" class="modal ">
         <div class="modal-background"></div>
         <div class="modal-content">
-            <h5 class="is-size-4 has-text-weight-bold">Invite Friends</h5>
-            <p class="is-size-6">Are you sure you want to invite your entire friends list?</p>
+            <h5 class="is-size-4 has-text-weight-bold">Add friend?</h5>
+            <p class="is-size-6">Are you sure you want to add this person as a friend??</p>
             <form action="">
                 <div class="modal-button-cont">
-                    <button id="sendInvites" class="button is-info">Invite All Friends</button>
+                    <button id="sendInvites" class="button is-info">Add Friend</button>
                     <button id="cancelInvites" class="button is-danger">Cancel</button>
                 </div>
             </form>
