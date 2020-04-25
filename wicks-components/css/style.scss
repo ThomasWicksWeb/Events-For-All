@@ -170,6 +170,10 @@ form {
             border-radius: 25px;
             align-self: center;
         }
+
+        & ul li {
+            padding-left: 12px;
+        }
     }
 
     &ActionsBar {
