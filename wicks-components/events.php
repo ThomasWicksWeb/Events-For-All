@@ -172,10 +172,10 @@ else {
                         <h2 class="has-text-weight-bold is-size-4">My Date</h2>
                         <ul>
                             <li>
-                                <a id="filterComingUp" class="link" href="#">Coming Up</a>
+                                <a id="filterComingUp" class="link" href="./events.php?filter=11">Coming Up</a>
                             </li>
                             <li>
-                                <a id="filterRecentlyAdded" class="link">Recently Added</a>
+                                <a id="filterRecentlyAdded" class="link" href="./events.php?filter=12">Recently Added</a>
                             </li>
                         </ul>
                     </div>
@@ -214,7 +214,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -226,6 +226,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -252,7 +256,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -264,6 +268,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                         echo "
                     <div class='box'>
@@ -290,7 +298,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -302,6 +310,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -328,7 +340,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -340,6 +352,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -366,7 +382,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -378,6 +394,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -404,7 +424,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -416,6 +436,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -442,7 +466,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -454,6 +478,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -480,7 +508,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -492,6 +520,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -517,7 +549,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -529,6 +561,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -554,7 +590,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -566,6 +602,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "
                     <div class='box'>
@@ -602,7 +642,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -614,6 +654,10 @@ else {
                                 </li>";
                                
                                 }
+                            }
+                            else {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                             }
                             echo "</ul>";
                         break;
@@ -636,7 +680,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -648,6 +692,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                             echo "</ul>";
                         break;
@@ -669,7 +717,7 @@ else {
         
                                         echo "<li class='box'>";
                                         if ($eventImage === NULL) {
-                                            echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                            echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                         }
                                         else{
                                             echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -681,6 +729,10 @@ else {
                                         </li>";
                                        
                                     }
+                                }
+                                else {
+                                    echo "
+                                    <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                                 }
                             echo "</ul>";
                         break;
@@ -703,7 +755,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -715,6 +767,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "</ul>";
                         break;
@@ -737,7 +793,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -749,6 +805,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "</ul>";
                         break;
@@ -771,7 +831,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -783,6 +843,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                         echo "</ul>";
                         break;
@@ -805,7 +869,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -817,6 +881,10 @@ else {
                                 </li>";
                                
                             }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                         }
                     echo "</ul>";
                         break;
@@ -837,7 +905,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -849,6 +917,10 @@ else {
                                 </li>";
                                
                             }
+                            }
+                            else {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
                             }
                         echo "</ul>";
                         break;
@@ -870,7 +942,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -883,12 +955,16 @@ else {
                                
                             }
                             }
+                            else {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
+                            }
                         echo "</ul>";
                         break;
                         
                         case 9:
                             echo "
-                            </ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
                             <ul class='ViewAllEventsGridParent'>";
                     $viewOtherQuery = "SELECT * FROM Events WHERE genre = 9 ORDER BY startDate DESC LIMIT 5";
                     $result10 = $mysqli->query($viewOtherQuery);
@@ -904,7 +980,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -917,10 +993,17 @@ else {
                                
                             }
                         }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
+                        }
                         echo "</ul>";
                         break;
 
                         case 10:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Search Results</h2>
+                            <ul class='ViewAllEventsGridParent'>";
                             $searchQuery = "SELECT * FROM Events WHERE eventDescription LIKE '%$search%' OR eventTitle LIKE '%$search%'";
                             $result11 = $mysqli->query($searchQuery);
                         if ($result11->num_rows > 0) {
@@ -935,7 +1018,7 @@ else {
 
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
-                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                                 }
                                 else{
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
@@ -948,10 +1031,131 @@ else {
                                
                             }
                         }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                        }
                         echo "</ul>";
 
                         break;
 
+                        case 11:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Upcoming Events</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $searchQuery = "SELECT * FROM Events ORDER BY startDate ASC";
+                            $result11 = $mysqli->query($searchQuery);
+                        if ($result11->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result11->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                        }
+                        echo "</ul>";
+                        break;
+
+                        case 12:
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Recently Added Events</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $searchQuery = "SELECT * FROM Events ORDER BY EventID DESC";
+                            $result11 = $mysqli->query($searchQuery);
+                        if ($result11->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result11->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                        }
+                        echo "</ul>";
+                        break;
+
+                        case 13:
+
+                            $userInfoQuery = "SELECT zip FROM Users WHERE userID = $userID";
+                            $userInfoResult = $mysqli->query($userInfoQuery);
+                            list($zip) = mysqli_fetch_row($userInfoResult);
+                            echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Events Near You</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $nearQuery = "SELECT * FROM Events WHERE zip = $zip ORDER BY EventID DESC";
+                            $result12 = $mysqli->query($nearQuery);
+                        if ($result12->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result12->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                        }
+                        echo "</ul>";
+                        break;
                     }
 
                 }
