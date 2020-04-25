@@ -522,6 +522,20 @@ form {
 //
 // ********************************** 
 
+
+.eventsSearchWithButton {
+    display: flex !important;
+    &:first-child{
+        flex:90 !important;
+    }
+    &:nth-child(2) {
+        flex: 10 !important;
+    }
+    button {
+        margin-left: 15px;
+    }
+}
+
 .panel-block {
     flex-direction: column;
 }
