@@ -184,7 +184,7 @@ else {
 
         sendInvites.on("click", function(e){
             e.preventDefault();
-            alert("Invites Sent!");
+            alert("Friend invite sent!");
             ToggleIsActive();
         });
     </script>
