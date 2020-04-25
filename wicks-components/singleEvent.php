@@ -167,10 +167,12 @@ else {
         <div class="modal-content">
             <h5 class="is-size-4 has-text-weight-bold">Invite Friends</h5>
             <p class="is-size-6">Are you sure you want to invite your entire friends list?</p>
-            <div class="modal-button-cont">
-                <button id="sendInvites" class="button is-info">Invite All Friends</button>
-                <button id="cancelInvites" class="button is-danger">Cancel</button>
-            </div>
+            <form action="">
+                <div class="modal-button-cont">
+                    <button id="sendInvites" class="button is-info">Invite All Friends</button>
+                    <button id="cancelInvites" class="button is-danger">Cancel</button>
+                </div>
+            </form>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
