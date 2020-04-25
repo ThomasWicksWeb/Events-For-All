@@ -76,19 +76,29 @@ else {
             </div>
             <div class="singleEventBodyGridProfileImgAndEventInfo">
                 <img src="http://placekitten.com/200/200" alt="">
-                <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam sit non unde
-                    dolorum voluptate
-                    nobis debitis ad, nulla suscipit molestiae, error sunt at possimus ex dignissimos aperiam est
-                    corporis? Illum illo, harum amet nesciunt odit voluptatum velit aliquid quod minus<br><br>porro
-                    voluptas veniam molestias quos ut error vero. Corrupti omnis culpa praesentium, excepturi sint in
-                    quia quas sit animi optio placeat facere ipsum perferendis dolorem odio quae minus. Omnis aperiam
-                    est in ad sit quidem, cupiditate et iure laudantium esse provident nemo veniam, nesciunt
-                    voluptatibus tenetur quae officiis ipsa distinctio. Qui minima accusamus iste nulla placeat aperiam
-                    id. Aspernatur.</p>
+
+                <p class="has-text-weight-bold is-size-4">Location</p>
+                <ul>
+                    <li class="has-text-weight-semi-bold is-size-5">Street: <span class="has-text-weight-normal is-size-6">{{ 5 Street St }}</span></li>
+                    <li class="has-text-weight-semi-bold is-size-5">Town: <span class="has-text-weight-normal is-size-6">{{ Town }}</span></li>
+                    <li class="has-text-weight-semi-bold is-size-5">State: <span class="has-text-weight-normal is-size-6">{{ XX }}</span></li>
+                </ul>
+
+                <p class="has-text-weight-bold is-size-4">Event Dates</p>
+                <ul>
+                    <li class="has-text-weight-semi-bold is-size-5">Start date: <span class="has-text-weight-normal is-size-6">{{ xx/xx/xxxx }}</span></li>
+                    <li class="has-text-weight-semi-bold is-size-5">End date: <span class="has-text-weight-normal is-size-6">{{ xx/xx/xxxx }}</span></li>
+                </ul>
+
+                <p class="has-text-weight-bold is-size-4">Times:</p>
+                <ul>
+                    <li class="has-text-weight-semi-bold is-size-5">Starts at: <span class="has-text-weight-normal is-size-6">{{ xx:xx dd/mm }}</span></li>
+                    <li class="has-text-weight-semi-bold is-size-5">Ends at: <span class="has-text-weight-normal is-size-6">{{ xx:xx dd/mm }}</span></li>
+                </ul>
             </div>
             <div class="singleEventBodyGridEventDesc">
                 <h1 class="is-size-3">Event title</h1>
-                <h2 class="is-size-5">Event subtitle</h2>
+                <h2 class="is-size-4">Event subtitle</h2>
                 <p class="is-size-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident voluptatum,
                     numquam eveniet saepe quae dolore dicta, in exercitationem rerum reprehenderit asperiores? Tenetur
                     dolorum nobis officiis distinctio voluptatem quam animi nisi error quidem suscipit, quaerat in iure
@@ -116,7 +126,19 @@ else {
                     tenetur optio? Quos optio atque nulla ullam itaque impedit cum quia?</p>
             </div>
             <div class="singleEventBodyGridAtendees">
-                <h2 class="is-size-5">Event Organizers</h2>
+                <h2 class="is-size-4 has-text-weight-semi-bold">Event Organizers</h2>
+                <ul>
+                    <li class="antendeesListItem">
+                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
+                        <h4 class="is-size-5">John Smith</h4>
+                        <h5 class="is-size-6">Event Founder</h5>
+                    </li>
+
+                    <a class="has-text-centered" href="#">View all organizers</a>
+
+                </ul>
+
+                <h2 class="is-size-4 has-text-weight-semi-bold">Attendees</h2>
                 <ul>
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
@@ -126,13 +148,16 @@ else {
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
                         <h4 class="is-size-5">Mark Johnson</h4>
-                        <h5 class="is-size-6">Atendee</h5>
+                        <h5 class="is-size-6">Attendee</h5>
                     </li>
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
                         <h4 class="is-size-5">Tim Erikson</h4>
-                        <h5 class="is-size-6">Atendee</h5>
+                        <h5 class="is-size-6">Attendee</h5>
                     </li>
+
+                    <a class="has-text-centered" href="#">View all organizers</a>
+
                 </ul>
             </div>
         </div>
