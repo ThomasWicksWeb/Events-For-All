@@ -122,31 +122,31 @@ else {
                                 <a id="filterViewAll" class="link" href="./events.php?view=all">View All</a>
                             </li>
                             <li>
-                                <a id="filterArtsAndCrafts" class="link">Arts &amp; Crafts</a>
+                                <a id="filterArtsAndCrafts" class="link" href="./events.php?filter=0">Arts &amp; Crafts</a>
                             </li>
                             <li>
-                                <a id="filterSportsAndFitness" class="link">Sports &amp; Fitness</a>
+                                <a id="filterSportsAndFitness" class="link" href="./events.php?filter=7">Sports &amp; Fitness</a>
                             </li>
                             <li>
-                                <a id="filterTech" class="link">Technology</a>
+                                <a id="filterTech" class="link" href="./events.php?filter=8">Technology</a>
                             </li>
                             <li>
-                                <a id="filterFoodAndDrinks" class="link">Food &amp; Drinks</a>
+                                <a id="filterFoodAndDrinks" class="link" href="./events.php?filter=1">Food &amp; Drinks</a>
                             </li>
                             <li>
-                                <a id="filterOutdoorsAndAdventure" class="link">Outdors &amp; Adventure</a>
+                                <a id="filterOutdoorsAndAdventure" class="link" href="./events.php?filter=4">Outdors &amp; Adventure</a>
                             </li>
                             <li>
-                                <a id="filterPhotography" class="link">Photography</a>
+                                <a id="filterPhotography" class="link" href="./events.php?filter=6">Photography</a>
                             </li>
                             <li>
-                                <a id="filterMusic" class="link">Music</a>
+                                <a id="filterMusic" class="link" href="./events.php?filter=3">Music</a>
                             </li>
                             <li>
-                                <a id="filterMovies" class="link">Movies</a>
+                                <a id="filterMovies" class="link" href="./events.php?filter=2">Movies</a>
                             </li>
                             <li>
-                                <a id="filterOther" class="butlinkton">Other</a>
+                                <a id="filterOther" class="link" href="./events.php?filter=9">Other</a>
                             </li>
                         </ul>
                     </div>

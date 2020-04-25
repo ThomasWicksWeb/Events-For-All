@@ -77,15 +77,15 @@ $mysqli->close();
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item red">Arts & Crafts</a>
-                        <a class="navbar-item">Sports & Fitness</a>
-                        <a class="navbar-item">Tech</a>
-                        <a class="navbar-item">Food & Drinks</a>
-                        <a class="navbar-item">Outdoors & Adventure</a>
-                        <a class="navbar-item">Photography</a>
-                        <a class="navbar-item">Music</a>
-                        <a class="navbar-item">Movies</a>
-                        <a class="navbar-item">Other</a>
+                        <a class="navbar-item red" href="./events.php?filter=0">Arts & Crafts</a>
+                        <a class="navbar-item" href="./events.php?filter=7">Sports & Fitness</a>
+                        <a class="navbar-item" href="./events.php?filter=8">Tech</a>
+                        <a class="navbar-item" href="./events.php?filter=1">Food & Drinks</a>
+                        <a class="navbar-item" href="./events.php?filter=4">Outdoors & Adventure</a>
+                        <a class="navbar-item" href="./events.php?filter=6">Photography</a>
+                        <a class="navbar-item" href="./events.php?filter=3">Music</a>
+                        <a class="navbar-item" href="./events.php?filter=2">Movies</a>
+                        <a class="navbar-item" href="./events.php?filter=9">Other</a>
                         <hr class="navbar-divider">
                         <a class="navbar-item">Report an issue</a>
                     </div>
