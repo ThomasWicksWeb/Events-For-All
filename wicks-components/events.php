@@ -34,7 +34,13 @@ else {
 	$filter = NULL;
 }
 
-
+if (isset($_GET['eventSearch'])) {
+    $search = test_input($_GET['eventSearch']);
+    $filter = 10;
+}
+else {
+	$search = NULL;
+}
 ?>
 
 
@@ -88,9 +94,9 @@ else {
                 <div class="eventSearch">
                     <label class="label is-size-3 has-text-weight-bold">Search Events</label>
                     <div class="control eventsSearchWithButton">
-                        <form action="">
+                        <form action="<?php echo htmlspecialchars("./events.php");?>" method="GET">
                             <input id="EventsSearchInput" class="input" type="text" name="eventSearch" placeholder="Search">
-                            <button id="EventsSearchButton" class="button is-info">Search</button>
+                            <button id="EventsSearchButton" class="button is-info" type="submit">Search</button>
                         </form>
                     </div>
                     
@@ -912,6 +918,38 @@ else {
                             }
                         }
                         echo "</ul>";
+                        break;
+
+                        case 10:
+                            $searchQuery = "SELECT * FROM Events WHERE eventDescription LIKE '%$search%' OR eventTitle LIKE '%$search%'";
+                            $result11 = $mysqli->query($searchQuery);
+                        if ($result11->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result11->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='https://placekitten.com/400/200' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
+                        echo "</ul>";
+
                         break;
 
                     }
