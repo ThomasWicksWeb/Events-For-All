@@ -134,8 +134,6 @@ else {
                         <h5 class="is-size-6">Event Founder</h5>
                     </li>
 
-                    <a class="has-text-centered" href="#">View all organizers</a>
-
                 </ul>
 
                 <h2 class="is-size-4 has-text-weight-semi-bold">Attendees</h2>
@@ -155,8 +153,6 @@ else {
                         <h4 class="is-size-5">Tim Erikson</h4>
                         <h5 class="is-size-6">Attendee</h5>
                     </li>
-
-                    <a class="has-text-centered" href="#">View all organizers</a>
 
                 </ul>
             </div>
