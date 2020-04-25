@@ -154,6 +154,8 @@ else {
                         <h5 class="is-size-6">Attendee</h5>
                     </li>
 
+                    <a class="has-text-centered" href="#">View all attendees</a>
+
                 </ul>
             </div>
         </div>
