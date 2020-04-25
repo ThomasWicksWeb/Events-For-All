@@ -106,6 +106,10 @@ form {
   width: 100%;
 }
 
+.singleEventBodyGrid .has-text-centered {
+  color: red !important;
+}
+
 .singleEventBodyGridProfileImgAndEventInfo {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
@@ -128,6 +132,10 @@ form {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.singleEventBodyGridProfileImgAndEventInfo ul li {
+  padding-left: 12px;
 }
 
 .singleEventBodyGridActionsBar {
