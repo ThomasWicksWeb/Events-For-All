@@ -1,6 +1,6 @@
 <?php 
 
-//test input function definition
+// test input function definition
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -8,7 +8,7 @@ function test_input($data) {
     return $data;
   }
 
-
+// return string genre name from enumeration
 function parseGenre($data) {
     switch($data){
       case 0: 
@@ -46,6 +46,7 @@ function parseGenre($data) {
 
 }
 
+// return previous url from enumeration
 function parseRouting($data) {
   switch($data){
     case 0: 
@@ -70,6 +71,21 @@ function parseRouting($data) {
 
 
 }
+
+// parse dates to mm/dd/yyyyy
+function parseDate($data) {
+  $parts = explode("-", $data);
+  $newDate = $parts[1]."/".$parts[2]."/".$parts[0];
+  return $newDate; 
+}
+
+// parse time to remove seconds
+function parseTime($data) {
+  $parts = explode(":", $data);
+  $newTime = $parts[0].":".$parts[1];
+  return $newTime;
+}
+
 
 
 /*if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {

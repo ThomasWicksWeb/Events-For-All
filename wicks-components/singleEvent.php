@@ -2,6 +2,8 @@
 
 //Start session and check logon status
 session_start();
+require './methods/functions.php';
+
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
@@ -9,16 +11,76 @@ else {
 	$loggedon = FALSE;
 }
 
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
+}
+else {
+	$userID = NULL;
+}
 
-if (isset($_GEt['viewEventID'])) {
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
+
+if (isset($_GET['viewEventID'])) {
     $eventID = $_GET['viewEventID'];
 }
 else {
 	$$eventID = NULL;
 }
 
+// Connect to MySQL and the EventsForAll Database
+require './methods/databaseConnection.php';
+
+// query event data
+$eventQuery = "SELECT * FROM Events WHERE EventID = '$eventID'";
+$eventResult = $mysqli->query($eventQuery);
+if ($eventResult->num_rows > 0) {
+    while($row = $eventResult->fetch_assoc()){
+        $eventOwnerID = $row['userID'];
+        $title = $row['eventTitle'];
+        $startDate = parseDate($row['startDate']);
+        $startTime = parseTime($row['startTime']);
+        $endDate = parseDate($row['endDate']);
+        $endTime = parseTime($row['endTime']);
+        $street = $row['street'];
+        $city = $row['city'];
+        $state = $row['USstate'];
+        $description = $row['eventDescription'];
+        $genre = parseGenre($row['genre']);
+        $privacy = $row['privacy'];
+        $maxNumAttendees = $row['maxNumAtt'];
+        $eventStatus = $row['eventStatus'];
+    }
+
+    // query event owner data
+        $userQuery = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$eventOwnerID' AND UserProfile.userID = '$eventOwnerID'";
+        $userResult = $mysqli->query($userQuery);
+        if ($userResult->num_rows > 0){
+        while($row2 = $userResult->fetch_assoc()) {
+            $eventOwnerName = $row2['userName'];
+            $eventOwnerImg = $row2['profileImg'];
+            }
+        }
 
 
+    // query event image
+    $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+    $imageResult = $mysqli->query($imageQuery);
+    list($eventImage) = mysqli_fetch_row($imageResult);
+
+    
+}
+else {
+    $errorMessage = "Something went wrong finding your event!";
+    $_SESSION['errorMessage'] = $errorMessage;
+}
+
+$mysqli->close();
 ?>
 
 
@@ -67,82 +129,109 @@ else {
                 style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <div class="singleEventBodyGridActionsBar">
                 <ul class="eventPageActionBar">
-                    <li><a class="is-size-6 button is-info" href="#">Join Event</a></li>
-                    <li><a class="is-size-6 button is-secondary" href="#">Message Organizers</a></li>
-                    <li><a class="is-size-6 button is-secondary" href="#">View Antendees</a></li>
-                    <li><a class="is-size-6 button is-secondary" id="InviteFriendsBtn" href="#">Invite All Friends</a></li>
+                <?php if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+                    echo "<li><a class='is-size-6 button is-info' href='#'>Join Event</a></li>
+                    <li><a class='is-size-6 button is-secondary' href='#'>Message Organizers</a></li>
+                    <li><a class='is-size-6 button is-secondary' href='#'>View Antendees</a></li>
+                    <li><a class='is-size-6 button is-secondary' id='InviteFriendsBtn' href='#'>Invite All Friends</a></li>";
+                    } ?>
                     <li><a class="is-size-6 button is-secondary" href="#">Report Event</a></li>
                 </ul>
             </div>
             <div class="singleEventBodyGridProfileImgAndEventInfo">
-                <img src="http://placekitten.com/200/200" alt="">
-
+                <?php
+                if ($eventImage != NULL) {
+                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image'>";
+                }
+                else {
+                    echo "<img src='./images/DefaultEventImage.jpg' alt='Default Event Image'>";
+                }
+                ?>
                 <p class="has-text-weight-bold is-size-4">Location</p>
                 <ul>
-                    <li class="has-text-weight-semi-bold is-size-5">Street: <span class="has-text-weight-normal is-size-6">{{ 5 Street St }}</span></li>
-                    <li class="has-text-weight-semi-bold is-size-5">Town: <span class="has-text-weight-normal is-size-6">{{ Town }}</span></li>
-                    <li class="has-text-weight-semi-bold is-size-5">State: <span class="has-text-weight-normal is-size-6">{{ XX }}</span></li>
+            <?php
+            if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($attending)) {
+                echo "<li class='has-text-weight-semi-bold is-size-5'>Street: <span class='has-text-weight-normal is-size-6'>$street</span></li>";
+            }
+            else if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+                echo "<li class='has-text-weight-semi-bold is-size-5'>Town: <span class='has-text-weight-normal is-size-6'>$city</span></li>
+                    <li class='has-text-weight-semi-bold is-size-5'>State: <span class='has-text-weight-normal is-size-6'>$state</span></li>";
+            }
+            else {
+                echo "<li class='has-text-weight-semi-bold is-size-5'><span class='has-text-weight-normal is-size-6'>Sign up for an account in order to see location information</span></li>";
+            }
+
+            ?>   
                 </ul>
 
                 <p class="has-text-weight-bold is-size-4">Event Dates</p>
                 <ul>
-                    <li class="has-text-weight-semi-bold is-size-5">Start date: <span class="has-text-weight-normal is-size-6">{{ xx/xx/xxxx }}</span></li>
-                    <li class="has-text-weight-semi-bold is-size-5">End date: <span class="has-text-weight-normal is-size-6">{{ xx/xx/xxxx }}</span></li>
+                <?php 
+                    echo "<li class='has-text-weight-semi-bold is-size-5'>Start date: <span class='has-text-weight-normal is-size-6'>$startDate</span></li>
+                    <li class='has-text-weight-semi-bold is-size-5'>End date: <span class='has-text-weight-normal is-size-6'>$endDate</span></li>"; ?>
                 </ul>
 
                 <p class="has-text-weight-bold is-size-4">Times:</p>
                 <ul>
-                    <li class="has-text-weight-semi-bold is-size-5">Starts at: <span class="has-text-weight-normal is-size-6">{{ xx:xx dd/mm }}</span></li>
-                    <li class="has-text-weight-semi-bold is-size-5">Ends at: <span class="has-text-weight-normal is-size-6">{{ xx:xx dd/mm }}</span></li>
+                    <?php 
+                echo "<li class='has-text-weight-semi-bold is-size-5'>Starts at: <span class='has-text-weight-normal    is-size-6'>$startTime</span></li>
+                    <li class='has-text-weight-semi-bold is-size-5'>Ends at: <span class='has-text-weight-normal is-size-6'>$endTime</span></li>"; ?>
                 </ul>
             </div>
             <div class="singleEventBodyGridEventDesc">
-                <h1 class="is-size-3">Event title</h1>
-                <h2 class="is-size-4">Event subtitle</h2>
-                <p class="is-size-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident voluptatum,
-                    numquam eveniet saepe quae dolore dicta, in exercitationem rerum reprehenderit asperiores? Tenetur
-                    dolorum nobis officiis distinctio voluptatem quam animi nisi error quidem suscipit, quaerat in iure
-                    veritatis expedita odio optio, asperiores temporibus illum nostrum similique tempora at. Tempore, at
-                    officia esse minus cumque voluptate eum corporis repellat possimus fugiat illum vero nihil eveniet,
-                    tenetur accusamus facilis repudiandae non molestias error, laborum architecto dolore rem? Impedit,
-                    laboriosam cumque! Nobis consectetur placeat ratione beatae mollitia? Corporis, atque commodi, error
-                    laborum quas consectetur sequi veniam corrupti sint iste, quae ducimus nemo optio perspiciatis!</p>
-                <p class="is-size-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In odio eius earum
-                    facilis officiis perspiciatis, deleniti veritatis numquam corporis nobis esse nesciunt fuga,
-                    voluptatibus voluptate qui harum error officia? Expedita voluptates ab voluptate quaerat harum eius
-                    recusandae aliquam est, dolor neque eos iste unde ad esse placeat ratione dolore? Sit cupiditate
-                    eveniet soluta provident illo temporibus aliquam repellat? Non officiis hic commodi, labore
-                    aspernatur dolor assumenda impedit aliquam, necessitatibus ad error corrupti voluptatem itaque quis
-                    eligendi officia laborum? Possimus veritatis autem nobis libero velit, magnam animi, ex id provident
-                    atque veniam hic ducimus, fuga aspernatur dolore expedita eos eaque dignissimos. Ipsa tempora
-                    laudantium porro nam veritatis placeat ab doloremque doloribus inventore nesciunt sed, illum nisi
-                    amet exercitationem! Velit placeat nesciunt architecto eius magni maxime fuga dolore non sed
-                    cupiditate. Voluptatem atque voluptatum quod porro aliquid illum laboriosam voluptate voluptates
-                    nemo esse architecto quam, libero eum in? Consequatur maxime accusantium ipsam.</p>
-                <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque perspiciatis rerum
-                    odit, corporis id molestias ipsum maxime beatae consequuntur cum, similique error aspernatur
-                    suscipit atque? Molestiae, eligendi. Dolorem quaerat enim dignissimos nostrum vitae rem doloremque
-                    ab doloribus, maiores, iure harum quis magni eos consequuntur voluptatum corrupti similique ea ad
-                    tenetur optio? Quos optio atque nulla ullam itaque impedit cum quia?</p>
+            <?php echo " 
+                <h1 class='is-size-3'>$title</h1>
+                <p class='is-size-6'>$description</p>";
+                ?>
             </div>
             <div class="singleEventBodyGridAtendees">
-                <h2 class="is-size-4 has-text-weight-semi-bold">Event Organizers</h2>
+                <h2 class="is-size-4 has-text-weight-semi-bold">Event Organizer</h2>
                 <ul>
                     <li class="antendeesListItem">
-                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">John Smith</h4>
-                        <h5 class="is-size-6">Event Founder</h5>
+                    <?php 
+                        if ($eventImage != NULL) {
+                            echo "<img src='./images/$eventOwnerName/$eventOwnerImg' alt='Event Image'>";
+                        }
+                        else {
+                            echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Default Event Image'>";
+                        }
+                        echo "
+                        <h4 class='is-size-5'>$eventOwnerName</h4>
+                        <h5 class='is-size-6'>Event Founder</h5>
+                        <a class='is-size-7' href='./viewProfile.php?viewUser=$eventOwnerID'>View Profile</a>"; ?>
                     </li>
 
                 </ul>
 
                 <h2 class="is-size-4 has-text-weight-semi-bold">Attendees</h2>
                 <ul>
-                    <li class="antendeesListItem">
-                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">John Smith</h4>
-                        <h5 class="is-size-6">Event Founder</h5>
-                    </li>
+                <?php
+                    // query attendees
+                    $attendeeQuery = "SELECT * FROM Attendees WHERE eventID = '$eventID'";
+                    $attendeeResult = $mysqli->query($attendeeQuery);
+                    if ($attendeeResult->num_rows > 0) {
+                        while ($row3 = $attendeeResult->fetch_assoc()) {
+                        
+                        echo "<li class='antendeesListItem'>";
+                        if ($eventImage != NULL) {
+                            echo "<img src='./images/$eventOwnerName/$eventOwnerImg' alt='Event Image'>";
+                        }
+                        else {
+                            echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Default Event Image'>";
+                        }
+                        echo "
+                        <h4 class='is-size-5'>John Smith</h4>
+                        <h5 class='is-size-6'>Event Founder</h5>
+                        <a class='is-size-7' href='./viewProfile.php?viewUser=$eventOwnerID'>View Profile</a>
+                        </li>";
+                        }
+
+                        
+                    }
+                    else {
+
+                    }
+                    
                     <li class="antendeesListItem">
                         <img src="http://placekitten.com/50/50" alt="User Profile Icon">
                         <h4 class="is-size-5">Mark Johnson</h4>
@@ -176,6 +265,12 @@ else {
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
+
+
+
+
+
+
 
     <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
