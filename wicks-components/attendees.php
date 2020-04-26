@@ -2,23 +2,35 @@
 
 //Start session and check logon status
 session_start();
+require './methods/functions.php';
+
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
 else {
 	$loggedon = FALSE;
 }
+
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
 }
 else {
 	$userID = NULL;
 }
+
 if (isset($_SESSION['userName'])) {
     $userName = $_SESSION['userName'];
 }
 else {
 	$userName = NULL;
+}
+
+if (isset($_GET['eventID'])) {
+    $eventID = $_GET['eventID'];
+}
+else {
+	$$eventID = NULL;
 }
 
 
@@ -47,7 +59,7 @@ else {
     <meta property="og:description"
         content="Description" />
 
-    <title>Friends | Events-4-All</title>
+    <title>Attendees | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -68,49 +80,47 @@ else {
     <?php require './navbar.php'; ?>
     <?php if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
-// Connect to MySQL and the EventsForAll Database
-require './methods/databaseConnection.php';
+        // Connect to MySQL and the EventsForAll Database
+        require './methods/databaseConnection.php';
 
-if ($mysqli->connection_error) {
-  die("connection Failed: " . $mysqli->connection_error);
-  echo "<script>console.log('Connection Error...')</script>";
-}
-else {
-  echo "<script>console.log('Connected successfully...')</script>";
-}
+        if ($mysqli->connection_error) {
+        die("connection Failed: " . $mysqli->connection_error);
+            echo "<script>console.log('Connection Error...')</script>";
+        }
+        else {
+            echo "<script>console.log('Connected successfully...')</script>";
+        }
 
 
-// Query database to create user
-$query = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
-$result = $mysqli->query($query);
-if ($result->num_rows > 0) {
- $i = 0;
- $friendlist = array();
-// output data of each row
-while($row = $result->fetch_assoc()) {
-   $friend1userID = $row["friend1userID"]; 
-   $friend2userID = $row["friend2userID"];
-   if ($friend1userID === $userID) {
-   $friendlist[$i] = $friend2userID;
+        // Query database to create user
+        $query = "SELECT * FROM Attendees WHERE eventID = '$eventID'";
+        $result = $mysqli->query($query);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $friend1userID = $row["friend1userID"]; 
+                $friend2userID = $row["friend2userID"];
+                if ($friend1userID === $userID) {
+                $friendlist[$i] = $friend2userID;
+                }
+                else {
+                $friendlist[$i] = $friend1userID;
+                }
+                $i++;
+            }
+        }
+        else {
+
+        }
+
     }
-   else {
-   $friendlist[$i] = $friend1userID;
-   }
-   $i++;
-}
-}
-else {
-
-}
-
-}
-?>
+    ?>
 
 
 <!-- <MyFriends> -->
 <section class="section">
             <div class="container">
-                <h2 class="is-size-2 has-text-weight-bold has-text-centered">My Friends</h2>
+                <h2 class="is-size-2 has-text-weight-bold has-text-centered">Event Attendees</h2>
                 <ul class="myFriendsGridParent">
                     
                 <?php 

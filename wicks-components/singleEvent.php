@@ -80,7 +80,7 @@ else {
     $_SESSION['errorMessage'] = $errorMessage;
 }
 
-$mysqli->close();
+
 ?>
 
 
@@ -189,7 +189,8 @@ $mysqli->close();
                 <ul>
                     <li class="antendeesListItem">
                     <?php 
-                        if ($eventImage != NULL) {
+
+                        if ($eventOwnerImage != NULL) {
                             echo "<img src='./images/$eventOwnerName/$eventOwnerImg' alt='Event Image'>";
                         }
                         else {
@@ -206,44 +207,50 @@ $mysqli->close();
                 <h2 class="is-size-4 has-text-weight-semi-bold">Attendees</h2>
                 <ul>
                 <?php
-                    // query attendees
-                    $attendeeQuery = "SELECT * FROM Attendees WHERE eventID = '$eventID'";
-                    $attendeeResult = $mysqli->query($attendeeQuery);
-                    if ($attendeeResult->num_rows > 0) {
-                        while ($row3 = $attendeeResult->fetch_assoc()) {
+                    require './methods/databaseConnection.php';
+                    if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+                        // query attendees
+                        $attendeeQuery = "SELECT * FROM Attendees WHERE eventID = '$eventID'";
+                        $attendeeResult = $mysqli->query($attendeeQuery);
+                        if ($attendeeResult->num_rows > 0) {
+                            while ($row3 = $attendeeResult->fetch_assoc()) {
+                            echo "<li class='antendeesListItem'>";
+                            $eventAttendeeID = $row3['userID'];
+                            
+                            $attendeeProfileQuery = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$eventAttendeeID' AND UserProfile.userID = '$eventAttendeeID'";
+                            $attendeeProfileResult = $mysqli->query($attendeeProfileQuery);
+                            if ($attendeeProfileResult->num_rows > 0){
+                                while($row4 = $attendeeProfileResult->fetch_assoc()) {
+                                $eventAttendeeName = $row4['userName'];
+                                $eventAttendeeImg = $row4['profileImg'];
+                                }
+                            }
+                            if ($eventAttendeeImg != NULL) {
+                            echo "<img src='./images/$eventAttendeeName/$eventAttendeeImg' alt='Event Image'>";
+                            }
+                            else {
+                                echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Default Event Image'>";
+                            }
+                            echo "
+                            <h4 class='is-size-5'>$eventAttendeeName</h4>
+                            <h5 class='is-size-6'>Attendee</h5>
+                            <a class='is-size-7' href='./viewProfile.php?viewUser=$eventAttendeeID'>View Profile</a>
+                            </li>";
+                        }
                         
-                        echo "<li class='antendeesListItem'>";
-                        if ($eventImage != NULL) {
-                            echo "<img src='./images/$eventOwnerName/$eventOwnerImg' alt='Event Image'>";
+                        
                         }
                         else {
-                            echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Default Event Image'>";
+                            echo "<h4 class='is-size-5'>No Attendees Regitered Yet</h4>";
                         }
-                        echo "
-                        <h4 class='is-size-5'>John Smith</h4>
-                        <h5 class='is-size-6'>Event Founder</h5>
-                        <a class='is-size-7' href='./viewProfile.php?viewUser=$eventOwnerID'>View Profile</a>
-                        </li>";
-                        }
-
-                        
                     }
                     else {
-
+                        echo "<h4 class='is-size-5'>Create an Account to View Attendees</h4>";
                     }
-                    
-                    <li class="antendeesListItem">
-                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">Mark Johnson</h4>
-                        <h5 class="is-size-6">Attendee</h5>
-                    </li>
-                    <li class="antendeesListItem">
-                        <img src="http://placekitten.com/50/50" alt="User Profile Icon">
-                        <h4 class="is-size-5">Tim Erikson</h4>
-                        <h5 class="is-size-6">Attendee</h5>
-                    </li>
 
-                    <a class="has-text-centered" href="#">View all attendees</a>
+                    
+                    echo "<a class='has-text-centered' href='./attendees.php?eventID=$eventID'>View all attendees</a>";
+                    ?>
 
                 </ul>
             </div>
