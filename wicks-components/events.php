@@ -94,7 +94,7 @@ else {
                 <div class="eventSearch">
                     <label class="label is-size-3 has-text-weight-bold">Search Events</label>
                     <div class="control eventsSearchWithButton">
-                        <form action="<?php echo htmlspecialchars("./events.php");?>" method="GET">
+                        <form class="EventsSearchForm" action="<?php echo htmlspecialchars("./events.php");?>" method="GET">
                             <input id="EventsSearchInput" class="input" type="text" name="eventSearch" placeholder="Search">
                             <button id="EventsSearchButton" class="button is-info" type="submit">Search</button>
                         </form>

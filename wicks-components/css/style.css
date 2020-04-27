@@ -538,25 +538,26 @@ form {
   margin-bottom: 2rem;
 }
 
-.eventsSearchWithButton {
+.EventsSearchForm {
+  width: 100%;
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
 }
 
-.eventsSearchWithButton:first-child {
+.EventsSearchForm:first-child {
   -webkit-box-flex: 90 !important;
       -ms-flex: 90 !important;
           flex: 90 !important;
 }
 
-.eventsSearchWithButton:nth-child(2) {
+.EventsSearchForm:nth-child(2) {
   -webkit-box-flex: 10 !important;
       -ms-flex: 10 !important;
           flex: 10 !important;
 }
 
-.eventsSearchWithButton button {
+.EventsSearchForm button {
   margin-left: 15px;
 }
 
