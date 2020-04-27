@@ -230,7 +230,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=0' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -275,7 +275,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=7' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -319,7 +319,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=8' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -363,7 +363,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=1' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -407,7 +407,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=4' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -451,7 +451,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=6' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -495,7 +495,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=2' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -539,7 +539,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=3' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
@@ -584,7 +584,7 @@ else {
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=5' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>

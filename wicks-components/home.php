@@ -75,19 +75,20 @@ else {
 
     <section class="section">
         <div class="container">
-            <h2 class="is-size-1 has-text-weight-bold has-text-centered">Check out some events</h2>
+            <h2 class="is-size-1 has-text-weight-bold has-text-centered">Check Out Some Events</h2>
             <div class="homePageCategorySection">
-                <h2 class="is-size-2 has-text-weight-bold">Sports</h2>
+                <h2 class="is-size-2 has-text-weight-bold">Upcoming soon...</h2>
                 <ul class="homePageCategorySectionEventsList">
                     <?php 
                         // Connect to MySQL and the EventsForAll Database
                         require './methods/databaseConnection.php';
 
                         // query event data
-                        $eventQuery = "SELECT * FROM Events WHERE privacy = 0 ORDER BY startDate DESC LIMIT 8";
+                        $eventQuery = "SELECT * FROM Events WHERE privacy = 0 ORDER BY startDate ASC LIMIT 8";
                         $eventResult = $mysqli->query($eventQuery);
                         if ($eventResult->num_rows > 0) {
                             while($row = $eventResult->fetch_assoc()){
+                                $eventID = $row['EventID'];
                                 $eventOwnerID = $row['userID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
