@@ -265,8 +265,6 @@ $attending = false;
                             </li>
                             <a class='has-text-centered viewAllAttendeesLink' href='./attendees.php?eventID=$eventID'>View all attendees</a>";
                         }
-                        
-                        
                     }
                     else {
                         echo "<h4 class='is-size-5'>No Attendees Regitered Yet</h4>";
@@ -275,9 +273,7 @@ $attending = false;
                 else {
                     echo "<h4 class='is-size-5'>Create an account to view attendees</h4>";
                 }
-                
-                
-                
+
                 ?>
 
                 </ul>
