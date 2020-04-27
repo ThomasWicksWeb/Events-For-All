@@ -348,6 +348,13 @@ form {
             overflow-x: scroll;
             padding-bottom: 10px;
 
+            & .box {
+                // display: grid;
+                // grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                // grid-gap: 1rem;
+                max-width: 250px;
+            }
+
             & li {
                 display: flex;
                 flex-direction: column;
@@ -540,12 +547,15 @@ form {
 .EventsSearchForm {
     width: 100%;
     display: flex !important;
-    &:first-child{
-        flex:90 !important;
+
+    &:first-child {
+        flex: 90 !important;
     }
+
     &:nth-child(2) {
         flex: 10 !important;
     }
+
     button {
         margin-left: 15px;
     }
@@ -635,9 +645,17 @@ form {
 }
 
 @keyframes rotateArrow {
-    0% {transform: rotateX(0deg);}
-    50% {transform: rotateX(90deg);}
-    100% {transform: rotateX(180deg);}
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(90deg);
+    }
+
+    100% {
+        transform: rotateX(180deg);
+    }
 }
 
 
@@ -715,7 +733,7 @@ form {
 
         & h1 {
             padding-bottom: 2rem;
-        }   
+        }
     }
 
     &-hero-footer {
@@ -724,7 +742,7 @@ form {
 
         & h1 {
             padding-bottom: 2rem;
-        }   
+        }
     }
 
     &-section-header {
@@ -799,7 +817,7 @@ form {
     & li {
         // border-bottom: 1px solid transparent;    
         // border-left: 1px solid transparent;
-        border-bottom-left-radius: 15px;  
+        border-bottom-left-radius: 15px;
         padding-bottom: .5rem;
         padding-left: .5rem;
         transition: all .2s;
@@ -824,10 +842,10 @@ form {
             align-items: center;
         }
 
-        & > * {
+        &>* {
             padding: 0px;
 
-            & > * {
+            &>* {
                 padding: 0px;
             }
         }
@@ -857,8 +875,8 @@ form {
 }
 
 .friendsMessages {
-max-width: 80%;
-margin-right: auto;
+    max-width: 80%;
+    margin-right: auto;
 }
 
 .myMessages {

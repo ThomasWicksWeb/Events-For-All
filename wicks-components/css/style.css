@@ -330,6 +330,10 @@ form {
   padding-bottom: 10px;
 }
 
+.homePageCategorySectionEventsList .box {
+  max-width: 250px;
+}
+
 .homePageCategorySectionEventsList li {
   display: -webkit-box;
   display: -ms-flexbox;
