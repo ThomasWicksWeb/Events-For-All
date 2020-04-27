@@ -106,10 +106,6 @@ form {
   width: 100%;
 }
 
-.singleEventBodyGrid .has-text-centered {
-  color: red !important;
-}
-
 .singleEventBodyGridProfileImgAndEventInfo {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
@@ -193,7 +189,7 @@ form {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole" "profileImg profileUserLink";
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
   -ms-grid-rows: min-content;
@@ -203,7 +199,7 @@ form {
 
 .antendeesListItem img {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: profileImg;
   border-radius: 50%;
@@ -226,6 +222,17 @@ form {
   -ms-grid-column: 2;
   grid-area: profileUserRole;
   padding-top: 0px;
+}
+
+.antendeesListItem a {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: profileUserLink;
+  padding-top: 0px;
+}
+
+.viewAllAttendeesLink {
+  margin-left: 50px !important;
 }
 
 .userProfileParent {

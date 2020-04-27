@@ -130,7 +130,7 @@ $attending = false;
                 style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <div class="singleEventBodyGridActionsBar">
                 <ul class="eventPageActionBar">
-                <?php 
+                    <?php 
                 require './methods/databaseConnection.php';
                 $attendeeIDQuery = "SELECT userID FROM Attendees WHERE eventID = '$eventID'";
                 $attendeeIDResult = $mysqli->query($attendeeIDQuery);
@@ -168,7 +168,7 @@ $attending = false;
                 ?>
                 <p class="has-text-weight-bold is-size-4">Location</p>
                 <ul>
-            <?php
+                    <?php
             
             if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($attending)) {
                 echo "<li class='has-text-weight-semi-bold is-size-5'>Street: <span class='has-text-weight-normal is-size-6'>$street</span></li>
@@ -188,12 +188,12 @@ $attending = false;
                 echo "<li class='has-text-weight-semi-bold is-size-5'><span class='has-text-weight-normal is-size-6'>Create an account to see location information</span></li>";
             }
 
-            ?>   
+            ?>
                 </ul>
 
                 <p class="has-text-weight-bold is-size-4">Event Dates</p>
                 <ul>
-                <?php 
+                    <?php 
                     echo "<li class='has-text-weight-semi-bold is-size-5'>Start date: <span class='has-text-weight-normal is-size-6'>$startDate</span></li>
                     <li class='has-text-weight-semi-bold is-size-5'>End date: <span class='has-text-weight-normal is-size-6'>$endDate</span></li>"; ?>
                 </ul>
@@ -206,7 +206,7 @@ $attending = false;
                 </ul>
             </div>
             <div class="singleEventBodyGridEventDesc">
-            <?php echo " 
+                <?php echo " 
                 <h1 class='is-size-3'>$title</h1>
                 <p class='is-size-6'>$description</p>";
                 ?>
@@ -215,7 +215,7 @@ $attending = false;
                 <h2 class="is-size-4 has-text-weight-semi-bold">Event Organizer</h2>
                 <ul>
                     <li class="antendeesListItem">
-                    <?php 
+                        <?php 
 
                         if ($eventOwnerImg != NULL) {
                             echo "<img src='./images/$eventOwnerName/$eventOwnerImg' alt='Event Image'>";
@@ -233,7 +233,7 @@ $attending = false;
 
                 <h2 class="is-size-4 has-text-weight-semi-bold">Attendees</h2>
                 <ul>
-                <?php
+                    <?php
                     //require './methods/databaseConnection.php';
                     if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
                         // query attendees
@@ -263,22 +263,22 @@ $attending = false;
                             <h5 class='is-size-6'>Attendee</h5>
                             <a class='is-size-7' href='./viewProfile.php?viewUser=$eventAttendeeID'>View Profile</a>
                             </li>
-                            <a class='has-text-centered' href='./attendees.php?eventID=$eventID'>View all attendees</a>";
+                            <a class='has-text-centered viewAllAttendeesLink' href='./attendees.php?eventID=$eventID'>View all attendees</a>";
                         }
                         
                         
-                        }
-                        else {
-                            echo "<h4 class='is-size-5'>No Attendees Regitered Yet</h4>";
-                        }
                     }
                     else {
-                        echo "<h4 class='is-size-5'>Create an account to view attendees</h4>";
+                        echo "<h4 class='is-size-5'>No Attendees Regitered Yet</h4>";
                     }
-
-                    
+                }
+                else {
+                    echo "<h4 class='is-size-5'>Create an account to view attendees</h4>";
+                }
                 
-                    ?>
+                
+                
+                ?>
 
                 </ul>
             </div>
@@ -327,34 +327,33 @@ $attending = false;
 
         const ToggleIsActive = () => {
             document.querySelectorAll('#modal').forEach(e => e.classList.toggle('is-active'));
-        } 
+        }
 
-        InviteFriendsBtn.on("click", function(e){
+        InviteFriendsBtn.on("click", function (e) {
             e.preventDefault();
             ToggleIsActive();
         });
 
-        modalGreySpace.on("click", function(e){
+        modalGreySpace.on("click", function (e) {
             e.preventDefault();
             ToggleIsActive();
         });
 
-        modalClose.on("click", function(e){
+        modalClose.on("click", function (e) {
             e.preventDefault();
             ToggleIsActive();
         });
 
-        modalCancel.on("click", function(e){
+        modalCancel.on("click", function (e) {
             e.preventDefault();
             ToggleIsActive();
         });
 
-        sendInvites.on("click", function(e){
+        sendInvites.on("click", function (e) {
             e.preventDefault();
             alert("Invites Sent!");
             ToggleIsActive();
         });
-
     </script>
 
     <script src="./js/scripts.js"></script>
