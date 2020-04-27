@@ -69,7 +69,8 @@ if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
     <!-- <CreateAnEvent> -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>" enctype="multipart/form-data">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>"
+                enctype="multipart/form-data">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Event</h2>
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">General Information</h2>
                 <div class="field">
@@ -87,8 +88,8 @@ if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required type="text"
-                                placeholder="Start Date">
+                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required
+                                type="text" placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -207,13 +208,14 @@ if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
                         <input type="radio" name="privacy" value="isPrivate">Private</label>
                 </div>
 
-                <div id="maxGuastsParent" class="control">
+                <div id="maxGuestsParent" class="control">
                     <label class="label is-size-6">Guest limit?</label>
                     <label class="radio">
                         <input type="radio" required name="maxGuests" value="notLimited">No Limit</label>
                     <label class="radio">
                         <input id="isLimited" required type="radio" name="maxGuests" value="Limited">Limited</label>
-                    <input id="maxGuestsInput" name="maxGuestsInput" class="input" type="number" min="1" placeholder="How many guests are allowed?">
+                    <input id="maxGuestsTextInput" name="maxGuestsInput" class="input" type="number" min="1"
+                        placeholder="How many guests are allowed?">
                 </div>
 
                 <label class="label is-size-6">Category</label>
@@ -242,47 +244,145 @@ if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
                 </div>
 
                 <script src="./js/scripts.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true
-        });
-    </script>
-    <script>
-        (function(){
-            $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
-        })();
+                <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+                <script>
+                    AOS.init({
+                        once: true
+                    });
+                </script>
+                <script>
+                    // (function(){
+                    //     $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
+                    // })();
 
-        (function(){
-            $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
-        })();
+                    // (function(){
+                    //     $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
+                    // })();
 
 
-        const isLimited = $("#isLimited");
-        const maxGuastsParent = $("#maxGuastsParent");
-        const maxGuestsTextInput = $("#maxGuestsTextInput");
+                    // const isLimited = $("#isLimited");
+                    // const maxGuastsParent = $("#maxGuastsParent");
+                    // const maxGuestsTextInput = $("#maxGuestsTextInput");
 
-        maxGuestsTextInput.fadeOut(300);
+                    // maxGuestsTextInput.fadeOut(300);
 
-        maxGuestsParent.on("change", function(){
-            if(isLimited.is(':checked')) {
-                maxGuestsTextInput.fadeIn(300);
-            } else {
-                maxGuestsTextInput.fadeOut(300);
-            }
-        });
+                    // maxGuestsParent.on("change", function(){
+                    //     if(isLimited.is(':checked')) {
+                    //         maxGuestsTextInput.fadeIn(300);
+                    //     } else {
+                    //         maxGuestsTextInput.fadeOut(300);
+                    //     }
+                    // });
 
-        const profilePictureInput = $("#profilePicture");
-        const displayFileText = $("#displayFileText");
+                    // // const profilePictureInput = $("#profilePicture");
+                    // // const displayFileText = $("#displayFileText");
 
-        function getFileData(myFile) {
-            const file = myFile.files[0];
-            const filename = file.name;
-            // document.getElementById('displayFileText').val = filename;
-            displayFileText.text(filename);
-        }
+                    // // function getFileData(myFile) {
+                    // //     const file = myFile.files[0];
+                    // //     const filename = file.name;
+                    // //     // document.getElementById('displayFileText').val = filename;
+                    // //     displayFileText.text(filename);
+                    // // }
 
-    </script>
+                    // const profilePictureInput = $("#profilePicture");
+                    // const displayFileText = $("#displayFileText");
+
+                    // function getFileData(myFile) {
+                    //     const file = myFile.files[0];
+                    //     const filename = file.name;
+                    //     // document.getElementById('displayFileText').val = filename;
+                    //     displayFileText.text(filename);
+                    // }
+
+                    //         document.addEventListener('DOMContentLoaded', () => {
+                    //             (function(){
+                    //             $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
+                    //         })();
+
+                    //         (function(){
+                    //             $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
+                    //         })();
+
+
+                    //         const isLimited = $("#isLimited");
+                    //         const maxGuastsParent = $("#maxGuastsParent");
+                    //         const maxGuestsTextInput = $("#maxGuestsTextInput");
+
+                    //         maxGuestsTextInput.fadeOut(300);
+
+                    //         maxGuestsParent.on("change", function(){
+                    //             if(isLimited.is(':checked')) {
+                    //                 maxGuestsTextInput.fadeIn(300);
+                    //             } else {
+                    //                 maxGuestsTextInput.fadeOut(300);
+                    //             }
+                    //         });
+
+                    //         // const profilePictureInput = $("#profilePicture");
+                    //         // const displayFileText = $("#displayFileText");
+
+                    //         // function getFileData(myFile) {
+                    //         //     const file = myFile.files[0];
+                    //         //     const filename = file.name;
+                    //         //     // document.getElementById('displayFileText').val = filename;
+                    //         //     displayFileText.text(filename);
+                    //         // }
+
+                    //         const profilePictureInput = $("#profilePicture");
+                    //         const displayFileText = $("#displayFileText");
+
+                    //         function getFileData(myFile) {
+                    //             const file = myFile.files[0];
+                    //             const filename = file.name;
+                    //             // document.getElementById('displayFileText').val = filename;
+                    //             displayFileText.text(filename);
+                    //         }
+
+                    // });  // DOM Content Loaded listener ends
+                    (function () {
+                        $("#CreateEventStartDate").datepicker({
+                            dateFormat: 'yy/mm/dd'
+                        });
+                    })();
+
+                    (function () {
+                        $("#CreateEventEndDate").datepicker({
+                            dateFormat: 'yy/mm/dd'
+                        });
+                    })();
+
+
+                    const isLimited = $("#isLimited");
+                    const maxGuestsParent = $("#maxGuestsParent");
+                    const maxGuestsTextInput = $("#maxGuestsTextInput");
+
+                    (function () {
+                        maxGuestsTextInput.fadeOut(300);
+
+                    })();
+
+                    maxGuestsParent.on("change", function () {
+                        if (isLimited.is(':checked')) {
+                            maxGuestsTextInput.fadeIn(300);
+                        } else {
+                            maxGuestsTextInput.fadeOut(300);
+                        }
+                    });
+
+
+
+                    const profilePictureInput = $("#profilePicture");
+                    const displayFileText = $("#displayFileText");
+
+                    function getFileData(myFile) {
+                        const file = myFile.files[0];
+                        const filename = file.name;
+                        // document.getElementById('displayFileText').val = filename;
+                        displayFileText.text(filename);
+                    }
+                </script>
+                <script src="./js/scripts.js"></script>
+                <!-- <script src="./js/createEvent.js"></script> -->
 </body>
 
 </html>
