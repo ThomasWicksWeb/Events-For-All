@@ -273,7 +273,7 @@ $attending = false;
                         }
                     }
                     else {
-                        echo "<h4 class='is-size-5'>Create an Account to View Attendees</h4>";
+                        echo "<h4 class='is-size-5'>Create an account to view attendees</h4>";
                     }
 
                     
