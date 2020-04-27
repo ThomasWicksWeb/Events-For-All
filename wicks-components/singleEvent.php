@@ -80,6 +80,7 @@ else {
     $_SESSION['errorMessage'] = $errorMessage;
 }
 
+$attending = false;
 
 ?>
 
@@ -129,10 +130,28 @@ else {
                 style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <div class="singleEventBodyGridActionsBar">
                 <ul class="eventPageActionBar">
-                <?php if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+                <?php 
+                require './methods/databaseConnection.php';
+                $attendeeIDQuery = "SELECT userID FROM Attendees WHERE eventID = '$eventID'";
+                $attendeeIDResult = $mysqli->query($attendeeIDQuery);
+                if ($attendeeIDResult->num_rows > 0){
+                    while ($attendeeRow = $attendeeIDResult->fetch_assoc()) {
+                        if ($userID == $attendeeRow['userID']){
+                        $attending = true;
+                        }
+                    }
+                }
+                else{
+                    $attending = false;
+                }
+
+
+                
+                   
+                if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
                     echo "<li><a class='is-size-6 button is-info' href='#'>Join Event</a></li>
                     <li><a class='is-size-6 button is-secondary' href='#'>Message Organizers</a></li>
-                    <li><a class='is-size-6 button is-secondary' href='#'>View Antendees</a></li>
+                    <li><a class='is-size-6 button is-secondary' href='./attendees.php?eventID=$eventID'>View Antendees</a></li>
                     <li><a class='is-size-6 button is-secondary' id='InviteFriendsBtn' href='#'>Invite All Friends</a></li>";
                     } ?>
                     <li><a class="is-size-6 button is-secondary" href="#">Report Event</a></li>
@@ -150,15 +169,23 @@ else {
                 <p class="has-text-weight-bold is-size-4">Location</p>
                 <ul>
             <?php
+            
             if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($attending)) {
-                echo "<li class='has-text-weight-semi-bold is-size-5'>Street: <span class='has-text-weight-normal is-size-6'>$street</span></li>";
+                echo "<li class='has-text-weight-semi-bold is-size-5'>Street: <span class='has-text-weight-normal is-size-6'>$street</span></li>
+                <li class='has-text-weight-semi-bold is-size-5'>Town: <span class='has-text-weight-normal is-size-6'>$city</span></li>
+                    <li class='has-text-weight-semi-bold is-size-5'>State: <span class='has-text-weight-normal is-size-6'>$state</span></li>";
             }
-            else if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+            else if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($privacy == 0)) {
                 echo "<li class='has-text-weight-semi-bold is-size-5'>Town: <span class='has-text-weight-normal is-size-6'>$city</span></li>
                     <li class='has-text-weight-semi-bold is-size-5'>State: <span class='has-text-weight-normal is-size-6'>$state</span></li>";
             }
+            else if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($privacy == 1)) {
+                echo "<li class='has-text-weight-semi-bold is-size-5'><span class='has-text-weight-normal is-size-6'>This event is private!</span></li>
+                <li class='has-text-weight-semi-bold is-size-5'>Town: <span class='has-text-weight-normal is-size-6'>$city</span></li>
+                    <li class='has-text-weight-semi-bold is-size-5'>State: <span class='has-text-weight-normal is-size-6'>$state</span></li>";
+            }
             else {
-                echo "<li class='has-text-weight-semi-bold is-size-5'><span class='has-text-weight-normal is-size-6'>Sign up for an account in order to see location information</span></li>";
+                echo "<li class='has-text-weight-semi-bold is-size-5'><span class='has-text-weight-normal is-size-6'>Create an account to see location information</span></li>";
             }
 
             ?>   
@@ -190,7 +217,7 @@ else {
                     <li class="antendeesListItem">
                     <?php 
 
-                        if ($eventOwnerImage != NULL) {
+                        if ($eventOwnerImg != NULL) {
                             echo "<img src='./images/$eventOwnerName/$eventOwnerImg' alt='Event Image'>";
                         }
                         else {
@@ -207,7 +234,7 @@ else {
                 <h2 class="is-size-4 has-text-weight-semi-bold">Attendees</h2>
                 <ul>
                 <?php
-                    require './methods/databaseConnection.php';
+                    //require './methods/databaseConnection.php';
                     if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
                         // query attendees
                         $attendeeQuery = "SELECT * FROM Attendees WHERE eventID = '$eventID'";
@@ -217,7 +244,7 @@ else {
                             echo "<li class='antendeesListItem'>";
                             $eventAttendeeID = $row3['userID'];
                             
-                            $attendeeProfileQuery = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$eventAttendeeID' AND UserProfile.userID = '$eventAttendeeID'";
+                            $attendeeProfileQuery = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$eventAttendeeID' AND UserProfile.userID = '$eventAttendeeID' LIMIT 6";
                             $attendeeProfileResult = $mysqli->query($attendeeProfileQuery);
                             if ($attendeeProfileResult->num_rows > 0){
                                 while($row4 = $attendeeProfileResult->fetch_assoc()) {
@@ -235,7 +262,8 @@ else {
                             <h4 class='is-size-5'>$eventAttendeeName</h4>
                             <h5 class='is-size-6'>Attendee</h5>
                             <a class='is-size-7' href='./viewProfile.php?viewUser=$eventAttendeeID'>View Profile</a>
-                            </li>";
+                            </li>
+                            <a class='has-text-centered' href='./attendees.php?eventID=$eventID'>View all attendees</a>";
                         }
                         
                         
@@ -249,7 +277,7 @@ else {
                     }
 
                     
-                    echo "<a class='has-text-centered' href='./attendees.php?eventID=$eventID'>View all attendees</a>";
+                
                     ?>
 
                 </ul>
@@ -277,7 +305,9 @@ else {
 
 
 
-
+    <?php 
+    $mysqli->close();
+    ?>
 
     <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {

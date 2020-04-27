@@ -35,7 +35,7 @@ else{
 
 if(isset($_GET["routed"])) {
     $routed = $_GET["routed"];
-    var_dump($routed);
+    
 }
 else {
     $routed = 0;

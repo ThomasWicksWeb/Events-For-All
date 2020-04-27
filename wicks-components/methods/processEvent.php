@@ -191,16 +191,16 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
         if (move_uploaded_file($fileTmpName, $target_file)) {
          // $message = "";
          // $_SESSION['message'] = $message;
-         $query2 = "SELECT EventID FROM Events WHERE userID = '$userID' AND WHERE eventTitle = '$eventTitle'";
-        $result2 = $mysqli->query($query2);
-        echo "$mysqli->error";
-        if ($result2->num_rows > 0) {
-        // output data of each row
-        echo "Second Query Works";
-        echo "<script>console.log('query2 worked')</script>";
-        while($row = $result2->fetch_assoc()) {   
+          $query2 = "SELECT EventID FROM Events WHERE userID = '$userID' AND eventTitle = '$eventTitle'";
+          $result2 = $mysqli->query($query2);
+          echo "$mysqli->error";
+          if ($result2->num_rows > 0) {
+          // output data of each row
+          echo "Second Query Works";
+          echo "<script>console.log('query2 worked')</script>";
+          while($row = $result2->fetch_assoc()) {   
             $eventID = $row["EventID"];
-        }
+          }
          $query3 = "INSERT INTO EventImgs(eventID, userID, imageName) VALUES($eventID, '$userID', '$fileNewName')";
           
          if ($mysqli->query($query3) === TRUE) {
@@ -227,7 +227,7 @@ if (($userID != NULL) && ($eventTitle != NULL) && ($startDate != NULL) && ($star
     }
     else {
         $message = "Event Creation Failed!!!" . $mysqli->error;
-        var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy, $maxGuestsInput);
+        /*var_dump($userID, $eventTitle, $startDate, $startTime, $endDate, $endTime, $street, $city, $state, $zip, $description, $genre, $privacy, $maxGuestsInput);*/
         $_SESSION['errorMessage'] = $message;
         header("Location: ../error.php?routed=2");
 
