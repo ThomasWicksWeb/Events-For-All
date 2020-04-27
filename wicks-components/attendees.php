@@ -92,27 +92,6 @@ else {
         }
 
 
-        // Query database to create user
-        $query = "SELECT * FROM Attendees WHERE eventID = '$eventID'";
-        $result = $mysqli->query($query);
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                $friend1userID = $row["friend1userID"]; 
-                $friend2userID = $row["friend2userID"];
-                if ($friend1userID === $userID) {
-                $friendlist[$i] = $friend2userID;
-                }
-                else {
-                $friendlist[$i] = $friend1userID;
-                }
-                $i++;
-            }
-        }
-        else {
-
-        }
-
     }
     ?>
 
@@ -124,8 +103,12 @@ else {
                 <ul class="myFriendsGridParent">
                     
                 <?php 
-              if ($friendlist){
-                foreach($friendlist as $friendID){
+
+                    $query = "SELECT * FROM Attendees WHERE EventID = '$eventID'";
+                    $result = $mysqli->query($query);
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()){
+                            $friendID = $row['userID'];
                     $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$friendID' AND UserProfile.userID = '$friendID'";
                     $result2 = $mysqli->query($query2);
                     if ($result2->num_rows > 0) {
@@ -133,27 +116,28 @@ else {
                         while($row2 = $result2->fetch_assoc()) {
                             $friendUserName = $row2["userName"]; 
                             $friendUserImg = $row2["profileImg"];
-                        }
-                    }
+                        
 
-                    echo "<li class='myFriendsGrid box'>";?>
-                           <?php 
+                    echo "<li class='myFriendsGrid box'>";
+                           
                            if($friendUserImg != NULL)
                            echo "<img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />";
                            else
                            echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' />";
-                           ?>
-                <?php echo "<div class='myFriendsGridTextCont'>
+                           
+                        echo "<div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
                             <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
                             </div>
                             </li>";
-                            
+                        }
+                }          
                          
-                }
             }
+        }
+            
                 else{
-                        echo "<p class='has-text-centered is-size-5'>You Have No Friends Yet! :(</p>";
+                        echo "<p class='has-text-centered is-size-5'>There are no attendees yet! :(</p>";
                     }
                     $mysqli->close();
                 ?>
