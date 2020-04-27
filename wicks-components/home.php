@@ -89,56 +89,31 @@ else {
                         if ($eventResult->num_rows > 0) {
                             while($row = $eventResult->fetch_assoc()){
                                 $eventOwnerID = $row['userID'];
-                                $title = $row['eventTitle'];
-                                $description = $row['eventDescription'];
-        
-                                echo "
-                                    <li class='box'>
-                        <img src='http://placekitten.com/300/200' alt=''>
-                        <h3 class='is-size-4 has-text-weight-bold'>Soccer with the boys</h3>
-                        <p class='is-size-6'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href='#' class='button is-info'>View Event</a>
-                    </li>";
-                    }
-                }
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                if ($imageResult)
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                            }
+                        }
                     ?>
 
-                    <li class="box">
-                        <img src="http://placekitten.com/300/200" alt="">
-                        <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href="#" class="button is-info">View Event</a>
-                    </li>
-                    <li class="box">
-                        <img src="http://placekitten.com/300/200" alt="">
-                        <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href="#" class="button is-info">View Event</a>
-                    </li>
-                    <li class="box">
-                        <img src="http://placekitten.com/300/200" alt="">
-                        <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href="#" class="button is-info">View Event</a>
-                    </li>
-                    <li class="box">
-                        <img src="http://placekitten.com/300/200" alt="">
-                        <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href="#" class="button is-info">View Event</a>
-                    </li>
-                    <li class="box">
-                        <img src="http://placekitten.com/300/200" alt="">
-                        <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href="#" class="button is-info">View Event</a>
-                    </li>
-                    <li class="box">
-                        <img src="http://placekitten.com/300/200" alt="">
-                        <h3 class="is-size-4 has-text-weight-bold">Soccer with the boys</h3>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolore molestias corrupti deleniti numquam impedit quis amet! Eius, delectus at aut nihil autem voluptate culpa!</p>
-                        <a href="#" class="button is-info">View Event</a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

@@ -226,20 +226,23 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=0' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "
+                    
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Sports &amp; Fitness</h2>
                         <ul class='ViewAllEventsGridParent'>";
                         $viewSportsNFitnessQuery = "SELECT * FROM Events WHERE genre = 7 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -268,20 +271,22 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                        echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=7' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                        echo "       
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Technology</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewTechQuery = "SELECT * FROM Events WHERE genre = 8 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -310,20 +315,22 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=8' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "  
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Food &amp; Drinks</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewFoodQuery = "SELECT * FROM Events WHERE genre = 1 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -352,20 +359,22 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=1' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "                    
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Outdoors &amp; Adventure</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewOutdoorsQuery = "SELECT * FROM Events WHERE genre = 4 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -394,20 +403,22 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=4' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Photography</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewPhotoQuery = "SELECT * FROM Events WHERE genre = 6 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -436,20 +447,22 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=6' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Movies</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewMoviesQuery = "SELECT * FROM Events WHERE genre = 2 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -478,20 +491,22 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=7' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Music</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewMusicQuery = "SELECT * FROM Events WHERE genre = 3 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
@@ -520,20 +535,24 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=3' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Party</h2>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+
+                    echo "
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Party</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewPartyQuery = "SELECT * FROM Events WHERE genre = 5 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
                     $result9 = $mysqli->query($viewPartyQuery);
@@ -561,20 +580,23 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=5' class='is-size-5 view-more-text'>View more events 
+                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
                             <i class='fas fa-arrow-right view-more-arrow'></i></a>
                             </div>
                         </div>
-                    </ul></ul><h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
+                    </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+                    echo "
+                    <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
                     <ul class='ViewAllEventsGridParent'>";
                     $viewPartyQuery = "SELECT * FROM Events WHERE genre = 9 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
                     $result10 = $mysqli->query($viewPartyQuery);
@@ -602,12 +624,7 @@ else {
                                 </li>";
                                
                             }
-                        }
-                        else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>";
-                        }
-                    echo "
                     <div class='box'>
                         <div class='link-box'>
                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
@@ -616,6 +633,13 @@ else {
                             </div>
                         </div>
                     </ul>";
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        }
+
 
 
 
