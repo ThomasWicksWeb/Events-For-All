@@ -28,7 +28,7 @@ else {
 }
 
 if (isset($_GET['filter'])) {
-    $filter = $_GET['filter'];
+    $filter = test_input($_GET['filter']);
 }
 else {
 	$filter = NULL;
@@ -129,34 +129,34 @@ else {
                         <h2 class="has-text-weight-bold is-size-4">All Events</h2>
                         <ul>
                             <li>
-                                <a id="filterViewAll" class="link" href="./events.php?view=all">View All</a>
+                                <a id="filterViewAll" class="link" href="<?php echo htmlspecialchars("./events.php?view=all");?>">View All</a>
                             </li>
                             <li>
-                                <a id="filterArtsAndCrafts" class="link" href="./events.php?filter=0">Arts &amp; Crafts</a>
+                                <a id="filterArtsAndCrafts" class="link" href="<?php echo htmlspecialchars("./events.php?filter=0");?>">Arts &amp; Crafts</a>
                             </li>
                             <li>
-                                <a id="filterSportsAndFitness" class="link" href="./events.php?filter=7">Sports &amp; Fitness</a>
+                                <a id="filterSportsAndFitness" class="link" href="<?php echo htmlspecialchars("./events.php?filter=7");?>">Sports &amp; Fitness</a>
                             </li>
                             <li>
-                                <a id="filterTech" class="link" href="./events.php?filter=8">Technology</a>
+                                <a id="filterTech" class="link" href="<?php echo htmlspecialchars("./events.php?filter=8");?>">Technology</a>
                             </li>
                             <li>
-                                <a id="filterFoodAndDrinks" class="link" href="./events.php?filter=1">Food &amp; Drinks</a>
+                                <a id="filterFoodAndDrinks" class="link" href="<?php echo htmlspecialchars("./events.php?filter=1");?>">Food &amp; Drinks</a>
                             </li>
                             <li>
-                                <a id="filterOutdoorsAndAdventure" class="link" href="./events.php?filter=4">Outdors &amp; Adventure</a>
+                                <a id="filterOutdoorsAndAdventure" class="link" href="<?php echo htmlspecialchars("./events.php?filter=4");?>">Outdors &amp; Adventure</a>
                             </li>
                             <li>
-                                <a id="filterPhotography" class="link" href="./events.php?filter=6">Photography</a>
+                                <a id="filterPhotography" class="link" href="<?php echo htmlspecialchars("./events.php?filter=6");?>">Photography</a>
                             </li>
                             <li>
-                                <a id="filterMusic" class="link" href="./events.php?filter=3">Music</a>
+                                <a id="filterMusic" class="link" href="<?php echo htmlspecialchars("./events.php?filter=3");?>">Music</a>
                             </li>
                             <li>
-                                <a id="filterMovies" class="link" href="./events.php?filter=2">Movies</a>
+                                <a id="filterMovies" class="link" href="<?php echo htmlspecialchars("./events.php?filter=2");?>">Movies</a>
                             </li>
                             <li>
-                                <a id="filterOther" class="link" href="./events.php?filter=9">Other</a>
+                                <a id="filterOther" class="link" href="<?php echo htmlspecialchars("./events.php?filter=9");?>">Other</a>
                             </li>
                         </ul>
                     </div>
@@ -164,7 +164,7 @@ else {
                         <h2 class="has-text-weight-bold is-size-4">Local</h2>
                         <ul>
                             <li>
-                                <a id="filterNearMe" class="link" href="#">Near Me</a>
+                                <a id="filterNearMe" class="link" href="<?php echo htmlspecialchars("./events.php?filter=13");?>">Near Me</a>
                             </li>
                         </ul>
                     </div>
@@ -172,10 +172,10 @@ else {
                         <h2 class="has-text-weight-bold is-size-4">My Date</h2>
                         <ul>
                             <li>
-                                <a id="filterComingUp" class="link" href="./events.php?filter=11">Coming Up</a>
+                                <a id="filterComingUp" class="link" href="<?php echo htmlspecialchars("./events.php?filter=11");?>">Coming Up</a>
                             </li>
                             <li>
-                                <a id="filterRecentlyAdded" class="link" href="./events.php?filter=12">Recently Added</a>
+                                <a id="filterRecentlyAdded" class="link" href="<?php echo htmlspecialchars("./events.php?filter=12");?>">Recently Added</a>
                             </li>
                         </ul>
                     </div>
@@ -208,10 +208,18 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription,0,100);
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -220,21 +228,30 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6 EventDateText has-text-grey'>{{Apr 27, 4:00 PM}}</p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed = TRUE;
                             }
+                            
+                        }
+                        if ($displayed == TRUE) {
+                            echo "<div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=0' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                        }
+                        if ($displayed != TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=0' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                            </ul>";
+                        } 
                         }
                         else {
                             echo "
@@ -253,10 +270,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -265,21 +289,30 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed7 = TRUE;
                             }
+                            }
+                            if ($displayed7 == TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=7' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=7' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed7 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
                         }
                         else {
                             echo "
@@ -297,10 +330,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -309,21 +349,30 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed8 = TRUE;
                             }
+                            }
+                            if ($displayed8 == TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=8' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=8' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed8 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
                         }
                         else {
                             echo "
@@ -341,10 +390,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -353,21 +409,31 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed1 = TRUE;
                             }
+                            }
+                            if ($displayed1 == TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=1' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=1' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed1 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
+                            
                         }
                         else {
                             echo "
@@ -385,10 +451,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -397,21 +470,31 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed4 = TRUE;
                             }
+                            }
+                            if ($displayed4 == TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=4' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=4' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed4 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
+                            
                         }
                         else {
                             echo "
@@ -429,10 +512,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -441,21 +531,30 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed6 = TRUE;
                             }
+                            }
+                            if ($displayed6 == TRUE){
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=6' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=6' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed6 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
                         }
                         else {
                             echo "
@@ -473,10 +572,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -485,21 +591,31 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed2 = TRUE;
+                            }                        
                             }
+                            if ($displayed2 == TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=2' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=2' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed2 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
+                            
                         }
                         else {
                             echo "
@@ -517,10 +633,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -529,21 +652,30 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                
+                                $displayed3 = TRUE;
                             }
+                            }
+                            if ($displayed3 == TRUE){
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=3' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=3' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed3 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
                         }
                         else {
                             echo "
@@ -562,10 +694,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -574,21 +713,29 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed5 = TRUE;
                             }
+                            }
+                            if ($displayed5 == TRUE) {
                             echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=5' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                                    <div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=5' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed5 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
                         }
                         else {
                             echo "
@@ -606,10 +753,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -618,21 +772,28 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
-                                    <p class='is-size-6'>$eventDescription
-                                    </p>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription</p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed9 = TRUE;
                             }
-                            echo "
-                    <div class='box'>
-                        <div class='link-box'>
-                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
-                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                            </div>
-                        </div>
-                    </ul>";
+                            }
+                            if($displayed9 == TRUE){
+                            echo "<div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=9' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                </ul>";
+                            }
+                            if ($displayed9 != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
+                            }
                         }
                         else {
                             echo "
@@ -660,10 +821,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -672,11 +840,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                                }
+                                if ($displayed != TRUE) {
+                                    echo "
+                                    <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                    </ul>";
                                 }
                             }
                             else {
@@ -698,10 +873,18 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
 
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -710,11 +893,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -735,10 +925,17 @@ else {
                                         $eventID = $row['EventID'];
                                         $eventTitle = $row['eventTitle'];
                                         $eventDescription = $row['eventDescription'];
+                                        $startDate = $row['startDate'];
+                                        $startTime = parseTime($row['startTime']);
                                         $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                         $imageResult = $mysqli->query($imageQuery);
                                         list($eventImage) = mysqli_fetch_row($imageResult);
-        
+                                        $currentDate = getdate();
+                                        $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                        $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                        $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                        $startDate = parseDate($startDate);
+                                        if ($startDateCheck >= $currentDateStr) {
                                         echo "<li class='box'>";
                                         if ($eventImage === NULL) {
                                             echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -747,11 +944,18 @@ else {
                                             echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                         }
                                         echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                            <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                             <p class='is-size-6'>$eventDescription
                                             </p>
                                             <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                         </li>";
-                                       
+                                        $displayed = TRUE;
+                                        }
+                                    }
+                                    if ($displayed != TRUE) {
+                                        echo "
+                                        <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                        </ul>";
                                     }
                                 }
                                 else {
@@ -773,10 +977,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -785,11 +996,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed =TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -811,10 +1029,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -823,11 +1048,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -849,10 +1081,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -861,11 +1100,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -887,10 +1133,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -899,11 +1152,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -923,10 +1183,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -935,11 +1202,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                             }
                             else {
@@ -960,10 +1234,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -972,11 +1253,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                             }
                             else {
@@ -998,10 +1286,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -1010,11 +1305,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -1036,10 +1338,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -1048,11 +1357,18 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                                <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Events Found in this Category...</h3>
+                                </ul>";
                             }
                         }
                         else {
@@ -1075,10 +1391,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -1087,11 +1410,17 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
                             }
                         }
                         else {
@@ -1113,10 +1442,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -1125,11 +1461,17 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
-                               
+                                $displayed = TRUE;
+                                }
+                            }
+                            if ($displayed != TRUE) {
+                                echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
                             }
                         }
                         else {
@@ -1155,10 +1497,17 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
                                 $imageResult = $mysqli->query($imageQuery);
                                 list($eventImage) = mysqli_fetch_row($imageResult);
-
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
                                     echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
@@ -1167,11 +1516,13 @@ else {
                                     echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
                                 }
                                 echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
                                     <p class='is-size-6'>$eventDescription
                                     </p>
                                     <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                                 </li>";
                                
+                                }
                             }
                         }
                         else {
