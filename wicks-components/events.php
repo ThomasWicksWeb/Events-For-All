@@ -1483,9 +1483,14 @@ else {
 
                         case 13:
 
-                            $userInfoQuery = "SELECT zip FROM Users WHERE userID = $userID";
+                            if ($loggedon) {
+                            $userInfoQuery = "SELECT zip FROM Users WHERE userID = '$userID'";
                             $userInfoResult = $mysqli->query($userInfoQuery);
                             list($zip) = mysqli_fetch_row($userInfoResult);
+                            }
+                            else {
+                                $zip = 11735;
+                            }
                             echo "
                             <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Events Near You</h2>
                             <ul class='ViewAllEventsGridParent'>";
