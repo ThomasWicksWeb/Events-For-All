@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 09:43 PM
+-- Generation Time: Apr 27, 2020 at 04:39 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -39,11 +39,7 @@ CREATE TABLE `Attendees` (
 --
 
 INSERT INTO `Attendees` (`attendeeID`, `eventID`, `userID`) VALUES
-(1, 6, 1),
-(2, 12, 1),
-(3, 12, 38),
-(4, 12, 2),
-(5, 12, 34);
+(1, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -63,8 +59,7 @@ CREATE TABLE `EventImgs` (
 --
 
 INSERT INTO `EventImgs` (`imageID`, `eventID`, `userID`, `imageName`) VALUES
-(1, 9, 1, '5ea62a0f61fb52.63429654.jpeg'),
-(2, 11, 1, '5ea6feb97ad594.75880811.jpeg');
+(1, 9, 1, '5ea62a0f61fb52.63429654.jpeg');
 
 -- --------------------------------------------------------
 
@@ -105,9 +100,7 @@ INSERT INTO `Events` (`EventID`, `userID`, `eventTitle`, `startDate`, `startTime
 (7, 1, 'Test Event 21', '2020-04-30', '12:00:00', '2020-04-30', '13:00:00', '746 Sheraton Drive', 'Virginia Beach', 'Va', '23452', 'testing image upload', 2, 0, 0, 0),
 (8, 1, 'Test Event 21', '2020-04-30', '12:00:00', '2020-05-01', '13:00:00', '746 Sheraton Drive', 'Virginia Beach', 'Va', '23452', 'testing image upload', 5, 0, 0, 0),
 (9, 1, 'Test Event 10', '2020-05-29', '12:00:00', '2020-05-30', '13:00:00', '123 Shell Street', 'Centereach', 'NY', '11548', 'testing image upload.', 2, 0, 0, 0),
-(10, 1, 'Test Private Event', '2020-04-30', '12:00:00', '2020-04-29', '13:00:00', '250 Cricket Court', 'Wading River', 'NY', '12345', 'Testing event privacy.', 0, 1, 0, 0),
-(11, 1, 'Sprint 4 Event', '2020-04-30', '15:00:00', '2020-04-30', '17:00:00', '720 Northern Blvd.', 'Brookville', 'NY', '11548', 'This is a test event for sprint 4 demo.', 1, 0, 0, 0),
-(12, 1, 'Open Hockey At Dix Hills Park', '2020-05-23', '23:50:00', '2020-05-24', '00:50:00', 'Baron Street', 'Peconic', 'NY', '11935', 'One hour skate. All goalies who sign up via this form MUST BE PRESENT 10 minutes prior to starting time at the game they intend on playing in. Any goalie who fails to show up or repeatedly cancels after signing up will be put on notice and may be permanently barred from playing goalie in any and all future open hockey games.', 7, 0, NULL, 0);
+(10, 1, 'Test Private Event', '2020-04-30', '12:00:00', '2020-04-29', '13:00:00', '250 Cricket Court', 'Wading River', 'NY', '12345', 'Testing event privacy.', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -129,9 +122,7 @@ CREATE TABLE `Friendships` (
 INSERT INTO `Friendships` (`friendshipID`, `friend1userID`, `friend2userID`, `relationshipAccepted`) VALUES
 (1, 1, 2, 1),
 (3, 1, 33, 1),
-(4, 1, 34, 1),
-(5, 34, 38, 1),
-(6, 1, 38, 1);
+(4, 1, 34, 1);
 
 -- --------------------------------------------------------
 
@@ -209,8 +200,7 @@ INSERT INTO `UserProfile` (`profileID`, `userID`, `profileImg`, `bio`, `hobbies`
 (7, 33, '', NULL, NULL),
 (8, 34, '5e9488e1408d06.75726522.jpeg', 'This is a test bio', 'Fishing, Hunting, Sailing'),
 (9, 35, '5e9a471f38c599.34064428.jpeg', NULL, NULL),
-(10, 37, '5e9a52c04843f4.81498421.jpeg', 'This is a test user profile.', 'Testing, Testing, Testing, Testing,'),
-(11, 38, NULL, NULL, NULL);
+(10, 37, '5e9a52c04843f4.81498421.jpeg', 'This is a test user profile.', 'Testing, Testing, Testing, Testing,');
 
 -- --------------------------------------------------------
 
@@ -245,27 +235,7 @@ INSERT INTO `Users` (`userID`, `email`, `userName`, `userPassword`, `firstName`,
 (33, 'wicktj@farmingdale.edu', 'Tjtester', 'testuing', 'Tjtester', 'Tester', '123 Shell Street', 'Centereach', 'NY', 11548, '6311234090', '2020-04-01'),
 (34, 'steww@farmingdale.edu', 'wstew', 'testing', 'will', 'stewart', '720 Northern blvd', 'Brookville', 'NY', 11753, '1233333243', '1987-08-12'),
 (35, 'testerCS@test.com', 'CStest', 'testing', 'CStest', 'Inglesby', '250 Cricket Court', 'Wading River', 'NY', 12345, '1112223333', '2020-04-01'),
-(37, 'thoma@farmingdale.edu', 'ThomaTest', 'testing', 'Allen', 'Thomas', '555 Campus Lane', 'Farmingdale', 'NY', 11111, '1112223333', '2020-04-02'),
-(38, 'suskc@farmingdale.edu', 'chrissusky', 'Hockey77', 'Christopher', 'Suskevich', '425 Monsell Lane', 'Cutchogue', 'NY', 11935, '6316803390', '1992-12-13'),
-(39, 'witcheeeee3@netscape.net', 'witch33', '12345!', 'Karen', 'Suskevich', 'P.O Box 781', 'Southold', 'NY', 11971, '6316035709', '1991-05-11'),
-(40, 'gdoroski@aol.com', 'gdoroski', 'paint11', 'Gary', 'Doroski', '25 Kenneys Road', 'Southol', 'NY', 11971, '6315043322', '1960-04-05'),
-(41, 'laubaud@aol.com', 'laubaud', '7fun7', 'Laurie', 'Baudoine', '433 Main Road', 'Mamaroneck', 'NY', 10538, '6215769900', '1970-07-22'),
-(42, 'mikesus@gmail.com', 'mikelawrence', 'sports33', 'Mike', 'Smith', '44 Dillon Avenue', 'East Meadow', 'NY', 11554, '6311231212', '1990-09-14'),
-(47, 'wavinflag36@aim.com', 'soccerfan44', 'December4!', 'David', 'Jones', '181 Sweet Hollow Road', 'Old Bethpage', 'NY', 11804, '2345678899', '1981-02-14'),
-(48, 'Thomas33@gmail.com', 'ThomasG11', '00110', 'Thomas', 'Greer', '505 Old Arlington Court', 'Bridgeport', 'CT', 6606, '1234567890', '1977-08-22'),
-(49, 'AndrewThomas@farmingdale.edu', 'AndrewT33', 'Fdale!', 'Andrew', 'Thomas', '844 Penn Ave', 'Forest Hills', 'NY', 11375, '2345678901', '1988-03-04'),
-(50, 'Nick44@gmail.com', 'NickTheGoat', '33Goat', 'Nick', 'Hallock', '86 Addison Court', 'Suwanee', 'GA', 30024, '4560098912', '1990-04-08'),
-(51, 'BrianSmith@gmail.com', 'BrianS11', '123Brian123', 'Brian', 'Smith', '294 Goldfield Street', 'Jamaica', 'NY', 11432, '7189178833', '1999-10-05'),
-(52, 'NickWalker@gmail.com', 'sportsfreak12', 'Soccer!', 'Nick', 'Walker', '7787 Sunset Street', 'Troy', 'NY', 12180, '8898875660', '2000-05-06'),
-(53, 'HarryHubbard@gmail.com', 'hubbard12', '12hub12', 'Harry', 'Hubbard', '33 Main Road', 'Jamesport', 'NY', 11901, '9871237456', '1980-03-03'),
-(54, 'MattHallock@gmail.com', 'mattyH13', 'hallock123', 'Matt', 'Hallock', '44 Smith Street', 'Albany', 'NY', 12084, '3475566782', '2000-06-08'),
-(55, 'JThompson@gmail.com', 'TBone44', 'banana14', 'John', 'Thompson', '22 Garden Avenue', 'Holtsville', 'NY', 501, '4567098823', '1999-09-12'),
-(56, 'JakeEllis@aol.com', 'JellyElly9', 'Ellis14', 'Jake', 'Ellis', '55 Rose Street', 'Babylon', 'NY', 11702, '1202202390', '2000-05-05'),
-(57, 'CCorvese@gmail.com', 'Coco44', '!Coco!', 'Courtney', 'Corvese', '44 Sweet Hill Road', 'East Hampton', 'NY', 11937, '2348971223', '2001-02-01'),
-(58, 'NateWinn@gmail.com', 'NateWinn', 'patch33', 'Nate', 'Winn', '17 Oak Drive', 'Patchogue', 'NY', 11722, '5167183223', '1998-05-09'),
-(59, 'JohnBieber@gmail.com', 'Jbiebs', 'cooking44', 'John', 'Bieber', '33 Brook Lane', 'Buffalo', 'NY', 14201, '6329876610', '1999-08-12'),
-(60, 'BunchBrandon@aol.com', 'Bunch33', '12345678', 'Brandon', 'Johnson', '11 Harbor Avenue', 'Rochester', 'NY', 14602, '2348097716', '2000-02-03'),
-(61, 'NickGardone@aol.com', 'Gardone7', '7Gardone7', 'Nicholai', 'Giovanni', '302 Piper Avenue', 'San Antonio', 'TX', 78006, '8048822379', '1989-03-09');
+(37, 'thoma@farmingdale.edu', 'ThomaTest', 'testing', 'Allen', 'Thomas', '555 Campus Lane', 'Farmingdale', 'NY', 11111, '1112223333', '2020-04-02');
 
 --
 -- Indexes for dumped tables
@@ -338,25 +308,25 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Attendees`
 --
 ALTER TABLE `Attendees`
-  MODIFY `attendeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `attendeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `EventImgs`
 --
 ALTER TABLE `EventImgs`
-  MODIFY `imageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `imageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Events`
 --
 ALTER TABLE `Events`
-  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `Friendships`
 --
 ALTER TABLE `Friendships`
-  MODIFY `friendshipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `friendshipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Invitees`
@@ -380,13 +350,13 @@ ALTER TABLE `UserImgs`
 -- AUTO_INCREMENT for table `UserProfile`
 --
 ALTER TABLE `UserProfile`
-  MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `profileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `userID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `userID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
