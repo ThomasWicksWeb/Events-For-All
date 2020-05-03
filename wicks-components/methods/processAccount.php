@@ -132,7 +132,11 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
         $userID = (int)$userID;
         $_SESSION['userName'] = $userName;
         $_SESSION['userID'] = $userID;
-      
+        
+      //generate user profile
+      $profileQuery = "INSERT INTO UserProfile(userID) VALUES($userID)";
+      $mysqli->query($profileQuery);
+
       //var_dump($userName);
       //var_dump($userID);
       mkdir("../images/$userName/");

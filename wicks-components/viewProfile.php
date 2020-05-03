@@ -35,6 +35,9 @@ else {
 	header("Location: ./home.php");
 }
 
+if($userID == $userProfileID){
+    header("Location: ./myProfile.php");
+}
 
  // Query database for user profile
 
@@ -169,11 +172,12 @@ else {
         <div class="modal-content">
             <h5 class="is-size-4 has-text-weight-bold">Add friend?</h5>
             <p class="is-size-6">Are you sure you want to add this person as a friend??</p>
-            <form action="">
+            <form action="<?php echo htmlspecialchars("./methods/addFriend.php");?>" method="POST">
                 <div class="modal-button-cont">
                     <button id="sendInvites" class="button is-info">Add Friend</button>
                     <button id="cancelInvites" class="button is-danger">Cancel</button>
                 </div>
+             <?php echo "<input type='hidden' id='userID' name='addedFriendID' value='$userProfileID'>";?>
             </form>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
@@ -219,11 +223,11 @@ else {
             ToggleIsActive();
         });
 
-        sendInvites.on("click", function(e){
+        /*sendInvites.on("click", function(e){
             e.preventDefault();
             alert("Friend invite sent!");
             ToggleIsActive();
-        });
+        });*/
     </script>
     <script src="./js/scripts.js"></script>
 </body>

@@ -213,8 +213,8 @@ else {
                             while($row = $result->fetch_assoc()){
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
-                                $eventDescriptionLong = (string)$row['eventDescription'];
-                                $eventDescription = substr($eventDescriptionLong, 1, 10);
+                                $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -276,6 +276,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -336,6 +337,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -396,6 +398,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -457,6 +460,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -518,6 +522,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -578,6 +583,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -639,6 +645,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -700,6 +707,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -759,6 +767,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -827,6 +836,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -879,6 +889,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -931,6 +942,7 @@ else {
                                         $eventID = $row['EventID'];
                                         $eventTitle = $row['eventTitle'];
                                         $eventDescription = $row['eventDescription'];
+                                        $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                         $startDate = $row['startDate'];
                                         $startTime = parseTime($row['startTime']);
                                         $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -983,6 +995,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1035,6 +1048,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1087,6 +1101,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1139,6 +1154,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1189,6 +1205,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1240,6 +1257,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1292,6 +1310,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1344,6 +1363,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1397,6 +1417,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1448,6 +1469,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
@@ -1508,6 +1530,7 @@ else {
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
                                 $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
