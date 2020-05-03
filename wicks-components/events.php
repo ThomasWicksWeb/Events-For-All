@@ -112,18 +112,21 @@ else {
 
                 <div class="filters-panel-parents">
                     <div class="nav filtersList content">
-                        <h2 class="has-text-weight-bold is-size-4">My Events</h2>
+                    <?php 
+                    if ($loggedon) {
+                        echo "
+                        <h2 class='has-text-weight-bold is-size-4'>My Events</h2>
                         <ul>
                             <li>
-                                <a id="filterMyEvents" class="link">My Events</a>
+                                <a id='filterMyEvents' class='link'>My Events</a>
                             </li>
                             <li>
-                                <a id="filterMyAttending" class="link">Attending</a>
+                                <a id='filterMyAttending' class='link'>Attending</a>
                             </li>
                             <li>
-                                <a id="filterMyAttended" class="link">Attended</a>
+                                <a id='filterMyAttended' class='link'>Attended</a>
                             </li>
-                        </ul>
+                        </ul>";} ?>
                     </div>
                     <div class="nav filtersList content">
                         <h2 class="has-text-weight-bold is-size-4">All Events</h2>
@@ -160,16 +163,19 @@ else {
                             </li>
                         </ul>
                     </div>
-                    <div class="nav filtersList content">
-                        <h2 class="has-text-weight-bold is-size-4">Local</h2>
+                    <?php 
+                    if ($loggedon) {
+                        echo "
+                    <div class='nav filtersList content'>
+                        <h2 class='has-text-weight-bold is-size-4'>Local</h2>
                         <ul>
                             <li>
-                                <a id="filterNearMe" class="link" href="<?php echo htmlspecialchars("./events.php?filter=13");?>">Near Me</a>
+                                <a id='filterNearMe' class='link' href='./events.php?filter=13'>Near Me</a>
                             </li>
                         </ul>
-                    </div>
+                    </div>";} ?>
                     <div class="nav filtersList content">
-                        <h2 class="has-text-weight-bold is-size-4">My Date</h2>
+                        <h2 class="has-text-weight-bold is-size-4">By Date</h2>
                         <ul>
                             <li>
                                 <a id="filterComingUp" class="link" href="<?php echo htmlspecialchars("./events.php?filter=11");?>">Coming Up</a>
@@ -207,8 +213,8 @@ else {
                             while($row = $result->fetch_assoc()){
                                 $eventID = $row['EventID'];
                                 $eventTitle = $row['eventTitle'];
-                                $eventDescription = $row['eventDescription'];
-                                $eventDescription = substr($eventDescription,0,100);
+                                $eventDescriptionLong = (string)$row['eventDescription'];
+                                $eventDescription = substr($eventDescriptionLong, 1, 10);
                                 $startDate = $row['startDate'];
                                 $startTime = parseTime($row['startTime']);
                                 $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
