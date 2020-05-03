@@ -136,7 +136,7 @@ else {
                 <?php echo "<div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
                             <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>
-                            <button class='button is-dange is-size-6'>Delete Friend</button>    
+                            <button class='button is-danger is-size-6'>Delete Friend</button>    
                             </div>
                             </li>";
                             
