@@ -9,8 +9,15 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
+}
+else {
+	$userID = NULL;
+}
 
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+require './methods/databaseConnection.php'; 
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -46,6 +53,35 @@ else {
    }
    $viewedUserHobbiesArray = explode(",", $viewedUserHobbies);
  }
+
+ if (($loggedon) && ($userID != NULL)){
+    
+    // Query database to create user
+    $friendQuery = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
+    $friendResult = $mysqli->query($friendQuery);
+    if ($friendResult->num_rows > 0) {
+     $i = 0;
+     $friendlist = array();
+    // output data of each row
+    while($row2 = $friendResult->fetch_assoc()) {
+       $friend1userID = $row2["friend1userID"]; 
+       $friend2userID = $row2["friend2userID"];
+       if ($friend1userID == $userID) {
+       $friendlist[$i] = $friend2userID;
+        }
+       else {
+       $friendlist[$i] = $friend1userID;
+       }
+       $i++;
+    }
+    foreach($friendlist as $friend) {
+        if ($userProfileID == $friend) {
+            $friendsAlready = TRUE;
+        }
+    }
+    }
+    
+    }
  $mysqli->close();
 ?>
 
@@ -95,7 +131,8 @@ else {
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
                 <?php echo "<li class='has-text-weight-bold is-size-3'>$viewedUserName</li>" ;?>
-                <li><a id="AddFriend" class="is-size-6 button is-primary" href="./addFriend.php/">Add Friend</a></li>
+                <?php if (!$friendsAlready) {
+                echo "<li><a id='AddFriend' class='is-size-6 button is-primary' href='./addFriend.php/'>Add Friend</a></li>";}?>
                 <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
             </ul>
             <?php if($viewedProfileImg)

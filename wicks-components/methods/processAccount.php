@@ -102,7 +102,7 @@ var_dump($phone);
 if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email != NULL)){
 
   // Connect to MySQL and the EventsForAll Database
-  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  require './databaseConnection.php';
 
   if ($mysqli->connection_error) {
       die("connection Failed: " . $mysqli->connection_error);
