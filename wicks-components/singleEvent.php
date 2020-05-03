@@ -148,8 +148,11 @@ $attending = false;
 
                 
                    
-                if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
-                    echo "<li><a class='is-size-6 button is-info' href='#'>Join Event</a></li>
+                if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($attending == false)) {
+                    echo "<li><a class='is-size-6 button is-info' href='./methods/joinEvent.php?joinEventID=$eventID'>Join Event</a></li>";
+                }
+                    if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+                        echo"
                     <li><a class='is-size-6 button is-secondary' href='#'>Message Organizers</a></li>
                     <li><a class='is-size-6 button is-secondary' href='./attendees.php?eventID=$eventID'>View Antendees</a></li>
                     <li><a class='is-size-6 button is-secondary' id='InviteFriendsBtn' href='#'>Invite All Friends</a></li>";

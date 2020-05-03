@@ -134,9 +134,11 @@ if($userID == $userProfileID){
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
                 <?php echo "<li class='has-text-weight-bold is-size-3'>$viewedUserName</li>" ;?>
-                <?php if (!$friendsAlready) {
+                <?php if ((!$friendsAlready) && ($loggedon)) {
                 echo "<li><a id='AddFriend' class='is-size-6 button is-primary' href='./addFriend.php/'>Add Friend</a></li>";}?>
-                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
+                <?php if ($loggedon) {
+                    echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; 
+                } ?>
             </ul>
             <?php if($viewedProfileImg)
             echo "<img class='userProfileUserImg' src='./images/$viewedUserName/$viewedProfileImg' alt=''>";

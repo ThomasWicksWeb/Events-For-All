@@ -118,13 +118,13 @@ else {
                         <h2 class='has-text-weight-bold is-size-4'>My Events</h2>
                         <ul>
                             <li>
-                                <a id='filterMyEvents' class='link'>My Events</a>
+                                <a id='filterMyEvents' class='link' href='./events.php?filter=15'>My Events</a>
                             </li>
                             <li>
-                                <a id='filterMyAttending' class='link'>Attending</a>
+                                <a id='filterMyAttending' class='link' href='./events.php?filter=14'>Attending</a>
                             </li>
                             <li>
-                                <a id='filterMyAttended' class='link'>Attended</a>
+                                <a id='filterMyAttended' class='link' href='./events.php?filter=16'>Attended</a>
                             </li>
                         </ul>";} ?>
                     </div>
@@ -1565,6 +1565,185 @@ else {
                         }
                         echo "</ul>";
                         break;
+
+                        case 14:
+
+                            if ($loggedon) {
+                                
+                            $attendingQuery = "SELECT eventID FROM Attendees WHERE userID = '$userID'";
+                            $attendingResult = $mysqli->query($attendingQuery);
+                            if ($attendingResult->num_rows > 0){
+                                while($attendingRow = $attendingResult->fetch_assoc()) {
+                                   $eventID = $attendingRow['eventID'];
+                                    
+                            $nearQuery = "SELECT * FROM Events WHERE EventID = $eventID ORDER BY EventID DESC";
+                            $result12 = $mysqli->query($nearQuery);
+                        if ($result12->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result12->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
+                                    echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Attending</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                                }
+                            }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not registered for any events...</h3>";
+                        }
+                        echo "</ul>"; 
+                                }
+                            }
+
+                            }
+                            
+                            
+                        break;
+
+                        case 15:
+
+                            if ($loggedon) {
+                        
+                                    echo "
+                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>My Events</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $nearQuery = "SELECT * FROM Events WHERE userID = $userID ORDER BY EventID DESC";
+                            $result12 = $mysqli->query($nearQuery);
+                        if ($result12->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result12->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck >= $currentDateStr) {
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                                }
+                            }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                        }
+                        echo "</ul>"; 
+                                }
+                            
+                        break;
+
+                        case 16:
+
+                            if ($loggedon) {
+                                
+                            echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Attended</h2>
+                            <ul class='ViewAllEventsGridParent'>";
+                            $attendingQuery = "SELECT eventID FROM Attendees WHERE userID = '$userID'";
+                            $attendingResult = $mysqli->query($attendingQuery);
+                            if ($attendingResult->num_rows > 0){
+                                while($attendingRow = $attendingResult->fetch_assoc()) {
+                                   $eventID = $attendingRow['eventID'];
+                            
+                            $nearQuery = "SELECT * FROM Events WHERE EventID = $eventID ORDER BY EventID DESC";
+                            $result12 = $mysqli->query($nearQuery);
+                        if ($result12->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result12->fetch_assoc()){
+                                $eventID = $row['EventID'];
+                                $eventTitle = $row['eventTitle'];
+                                $eventDescription = $row['eventDescription'];
+                                $eventDescription = substr($eventDescription, 0, 200) . " ...";
+                                $startDate = $row['startDate'];
+                                $startTime = parseTime($row['startTime']);
+                                $imageQuery = "SELECT imageName FROM EventImgs WHERE eventID = $eventID";
+                                $imageResult = $mysqli->query($imageQuery);
+                                list($eventImage) = mysqli_fetch_row($imageResult);
+                                $currentDate = getdate();
+                                $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
+                                $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                $startDate = parseDate($startDate);
+                                if ($startDateCheck < $currentDateStr) {
+                                echo "<li class='box'>";
+                                if ($eventImage === NULL) {
+                                    echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
+                                }
+                                else{
+                                    echo "<img src='./images/eventImages/$eventImage' alt='Event Image' />";
+                                }
+                                echo "<h1 class='is-size-4 has-text-weight-bold'>$eventTitle</h1>
+                                    <p class='is-size-6 EventDateText has-text-grey'>Event Starts: $startDate $startTime</p>
+                                    <p class='is-size-6'>$eventDescription
+                                    </p>
+                                    <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
+                                </li>";
+                               
+                                }
+                            }
+                        }
+                        else {
+                            echo "
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                        }
+                        echo "</ul>"; 
+                                }
+                            }
+
+                            }
+                            
+                            
+                        break;
+
                     }
 
                 }
