@@ -80,7 +80,7 @@ else {
 }
 
 
-// Query database to create user
+// Query database for friendships
 $query = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {

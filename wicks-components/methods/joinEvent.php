@@ -50,7 +50,7 @@ if (($loggedon) && ($userID != NULL) && ($eventID != NULL)) {
     }
 }
 else {
-    $message = "Event Joined Successfully!";
+    $message = "Something went wrong";
     $_SESSION['errorMessage'] = $message;
     header("Location: ../erorr.php?routed=5&eventID=$eventID");
 }
