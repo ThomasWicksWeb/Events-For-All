@@ -119,6 +119,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       $message = "Account Successfully Created";
       $_SESSION['message'] = $message;
       $_SESSION['loggedon'] = TRUE;
+      $creation = 1;
 
      /* var_dump($message, $_SESSION['message'], $_SESSION['loggedon']);*/
 
@@ -171,7 +172,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       $uploadOk = 0;
       }
       // Check if $uploadOk is set to 0 by an error
-      if ($uploadOk == 0) {
+      if (($uploadOk == 0) || (!$file)) {
         echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
       } else {
@@ -185,36 +186,44 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
             $message = "Account Successfully Created";
           $_SESSION['message'] = $message;
           header("Location: ../systemMessage.php?routed=0");
-          
-        }
           $imageUpload = TRUE;
-          echo "<script>console.log('$imageUpload')</script>";
+          $creation = 2;
+        }
+          
+          /*echo "<script>console.log('$imageUpload')</script>";
           echo "<script>console.log('$target_dir')</script>";
-          echo "<script>console.log('$target_file')</script>";
+          echo "<script>console.log('$target_file')</script>";*/
         } 
         else {
             $imageUpload = false;
             $errormessage = "Sorry, there was an error uploading your file.";
-            echo "<script>console.log('$imageUpload')</script>";
+            header("Location: ../error.php?routed=0");
+            $creation = 3;
+           /* echo "<script>console.log('$imageUpload')</script>";
             echo "<script>console.log('$errormessage')</script>";
             echo "<script>console.log('$target_dir')</script>";
-            echo "<script>console.log('$target_file')</script>";   
+            echo "<script>console.log('$target_file')</script>";*/   
         }
         }
         
     }
+    else{
+      $message = "Account Successfully Created";
+          $_SESSION['message'] = $message;
+          header("Location: ../systemMessage.php?routed=0");
+    }
   }
   else {
     $mysqli->close();
-    $message = "Account Creation Failed!!!";
+    $message = "Account Creation Failed!!! message 1";
   $_SESSION["errorMessage"] = $message;
   header("Location: ../error.php?routed=0");
-  var_dump($message);
+  
   } 
 }
 else {
   $mysqli->close();
-  $message = "Account Creation Failed!!!";
+  $message = "Account Creation Failed!!!  message 2";
   $_SESSION["errorMessage"] = $message;
   header("Location: ../error.php?routed=0");
 }
