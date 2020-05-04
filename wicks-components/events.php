@@ -1675,7 +1675,7 @@ else {
                         }
                         else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not hosting any events yet...</h3>";
                         }
                         echo "</ul>"; 
                                 }
@@ -1733,7 +1733,7 @@ else {
                         }
                         else {
                             echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>No Search Results Found...</h3>";
+                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You havent attended any events yet...</h3>";
                         }
                         echo "</ul>"; 
                                 }
