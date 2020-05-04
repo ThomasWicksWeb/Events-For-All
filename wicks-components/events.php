@@ -206,7 +206,7 @@ else {
                     echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Arts &amp; Crafts</h2>
                             <ul class='ViewAllEventsGridParent'>";
                     
-                    $viewArtsNCraftsQuery = "SELECT * FROM Events WHERE genre = 0 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewArtsNCraftsQuery = "SELECT * FROM Events WHERE genre = 0 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result = $mysqli->query($viewArtsNCraftsQuery);
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -268,7 +268,7 @@ else {
                     
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Sports &amp; Fitness</h2>
                         <ul class='ViewAllEventsGridParent'>";
-                        $viewSportsNFitnessQuery = "SELECT * FROM Events WHERE genre = 7 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                        $viewSportsNFitnessQuery = "SELECT * FROM Events WHERE genre = 7 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                         $result2 = $mysqli->query($viewSportsNFitnessQuery);
                         if ($result2->num_rows > 0) {
                             // output data of each row
@@ -329,7 +329,7 @@ else {
                         echo "       
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Technology</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewTechQuery = "SELECT * FROM Events WHERE genre = 8 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewTechQuery = "SELECT * FROM Events WHERE genre = 8 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result3 = $mysqli->query($viewTechQuery);
                         if ($result3->num_rows > 0) {
                             // output data of each row
@@ -390,7 +390,7 @@ else {
                     echo "  
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Food &amp; Drinks</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewFoodQuery = "SELECT * FROM Events WHERE genre = 1 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewFoodQuery = "SELECT * FROM Events WHERE genre = 1 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result4 = $mysqli->query($viewFoodQuery);
                         if ($result4->num_rows > 0) {
                             // output data of each row
@@ -452,7 +452,7 @@ else {
                     echo "                    
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Outdoors &amp; Adventure</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewOutdoorsQuery = "SELECT * FROM Events WHERE genre = 4 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewOutdoorsQuery = "SELECT * FROM Events WHERE genre = 4 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result5 = $mysqli->query($viewOutdoorsQuery);
                         if ($result5->num_rows > 0) {
                             // output data of each row
@@ -514,7 +514,7 @@ else {
                     echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Photography</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewPhotoQuery = "SELECT * FROM Events WHERE genre = 6 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewPhotoQuery = "SELECT * FROM Events WHERE genre = 6 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result6 = $mysqli->query($viewPhotoQuery);
                         if ($result6->num_rows > 0) {
                             // output data of each row
@@ -575,7 +575,7 @@ else {
                     echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Movies</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewMoviesQuery = "SELECT * FROM Events WHERE genre = 2 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewMoviesQuery = "SELECT * FROM Events WHERE genre = 2 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result7 = $mysqli->query($viewMoviesQuery);
                         if ($result7->num_rows > 0) {
                             // output data of each row
@@ -637,7 +637,7 @@ else {
                     echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Music</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewMusicQuery = "SELECT * FROM Events WHERE genre = 3 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewMusicQuery = "SELECT * FROM Events WHERE genre = 3 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result8 = $mysqli->query($viewMusicQuery);
                         if ($result8->num_rows > 0) {
                             // output data of each row
@@ -699,7 +699,7 @@ else {
                     echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Party</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 5 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 5 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result9 = $mysqli->query($viewPartyQuery);
                         if ($result9->num_rows > 0) {
                             // output data of each row
@@ -759,7 +759,7 @@ else {
                     echo "
                     <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Other</h2>
                     <ul class='ViewAllEventsGridParent'>";
-                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 9 AND privacy = 0 ORDER BY startDate DESC LIMIT 5";
+                    $viewPartyQuery = "SELECT * FROM Events WHERE genre = 9 AND privacy = 0 ORDER BY startDate DESC LIMIT 3";
                     $result10 = $mysqli->query($viewPartyQuery);
                         if ($result10->num_rows > 0) {
                             // output data of each row

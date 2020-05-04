@@ -10,6 +10,21 @@ else {
 }
 
 
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
+}
+else {
+	$userID = NULL;
+}
+
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
+
 
 ?>
 
@@ -126,7 +141,10 @@ else {
                 
 
                     if ($loggedon) {
-                                
+                        echo "
+                        <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Attending</h2>
+                        <ul class='ViewAllEventsGridParent'>";
+                        echo "<li class='box'>";  
                         $attendingQuery = "SELECT eventID FROM Attendees WHERE userID = '$userID' ORDER BY eventID DESC LIMIT 5";
                         $attendingResult = $mysqli->query($attendingQuery);
                         if ($attendingResult->num_rows > 0){
@@ -153,10 +171,7 @@ else {
                             $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
                             $startDate = parseDate($startDate);
                             if ($startDateCheck >= $currentDateStr) {
-                                echo "
-                            <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Attending</h2>
-                            <ul class='ViewAllEventsGridParent'>";
-                            echo "<li class='box'>";
+                              
                             if ($eventImage === NULL) {
                                 echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                             }
@@ -170,20 +185,7 @@ else {
                                 <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                             </li>";
                             $displayed = TRUE;
-                            if ($displayed == TRUE) {
-                                echo "<div class='box'>
-                                            <div class='link-box'>
-                                                <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
-                                                <a href='./events.php?filter=14' class='is-size-5 view-more-text'>View more events 
-                                                <i class='fas fa-arrow-right view-more-arrow'></i></a>
-                                            </div>
-                                        </div>
-                                    </ul>";
-                            }
-                            if ($displayed != TRUE) {
-                                echo "
-                            <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not currently registered for any events...</h3>";
-                            }
+                            
                         }
                         
                     }
@@ -201,6 +203,7 @@ else {
             
 
                 if ($loggedon) {
+                                
                     echo "<h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Attended</h2>
                            <ul class='ViewAllEventsGridParent'>";
                     $attendingQuery = "SELECT eventID FROM Attendees WHERE userID = '$userID' ORDER BY eventID DESC LIMIT 5";
@@ -213,7 +216,6 @@ else {
                     $result12 = $mysqli->query($nearQuery);
 
                 if ($result12->num_rows > 0) {
-                    
                     // output data of each row
                     while($row = $result12->fetch_assoc()){
                         $eventID = $row['EventID'];
@@ -230,7 +232,6 @@ else {
                         $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
                         $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
                         $startDate = parseDate($startDate);
-                        
                         if ($startDateCheck < $currentDateStr) {
                         echo "<li class='box'>";
                         if ($eventImage === NULL) {
