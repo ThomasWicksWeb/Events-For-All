@@ -115,7 +115,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
 
 // Query database to create user
   $query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth, firstName, lastName, street, city, USstate, zip, phone) VALUES('$email', '$userName', '$passwordInput', '$dob', '$firstName', '$lastName', '$street', '$city', '$state', '$zip', '$phone')";
-  if ($mysqli->query($query) === TRUE) {
+  if ($mysqli->query($query) == TRUE) {
       $message = "Account Successfully Created";
       $_SESSION['message'] = $message;
       $_SESSION['loggedon'] = TRUE;
@@ -173,7 +173,10 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       }
       // Check if $uploadOk is set to 0 by an error
       if (($uploadOk == 0) || (!$file)) {
-        echo "Sorry, your file was not uploaded.";
+        echo "";
+        $message = "Sorry, your image file was not uploaded, but your account was successfully created";
+          $_SESSION['message'] = $message;
+          header("Location: ../systemMessage.php?routed=0");
         // if everything is ok, try to upload file
       } else {
         $fileNewName = uniqid('', TRUE).".".$fileLowerExt;
@@ -215,7 +218,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
   }
   else {
     $mysqli->close();
-    $message = "Account Creation Failed!!! message 1";
+    $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
   header("Location: ../error.php?routed=0");
   
@@ -223,7 +226,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
 }
 else {
   $mysqli->close();
-  $message = "Account Creation Failed!!!  message 2";
+  $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
   header("Location: ../error.php?routed=0");
 }
