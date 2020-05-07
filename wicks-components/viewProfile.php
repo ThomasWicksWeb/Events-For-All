@@ -9,8 +9,15 @@ if (isset($_SESSION['loggedon'])) {
 else {
 	$loggedon = FALSE;
 }
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
+}
+else {
+	$userID = NULL;
+}
 
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+require './methods/databaseConnection.php'; 
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -28,6 +35,9 @@ else {
 	header("Location: ./home.php");
 }
 
+if($userID == $userProfileID){
+    header("Location: ./myProfile.php");
+}
 
  // Query database for user profile
 
@@ -46,6 +56,35 @@ else {
    }
    $viewedUserHobbiesArray = explode(",", $viewedUserHobbies);
  }
+
+ if (($loggedon) && ($userID != NULL)){
+    
+    // Query database to create user
+    $friendQuery = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
+    $friendResult = $mysqli->query($friendQuery);
+    if ($friendResult->num_rows > 0) {
+     $i = 0;
+     $friendlist = array();
+    // output data of each row
+    while($row2 = $friendResult->fetch_assoc()) {
+       $friend1userID = $row2["friend1userID"]; 
+       $friend2userID = $row2["friend2userID"];
+       if ($friend1userID == $userID) {
+       $friendlist[$i] = $friend2userID;
+        }
+       else {
+       $friendlist[$i] = $friend1userID;
+       }
+       $i++;
+    }
+    foreach($friendlist as $friend) {
+        if ($userProfileID == $friend) {
+            $friendsAlready = TRUE;
+        }
+    }
+    }
+    
+    }
  $mysqli->close();
 ?>
 
@@ -95,8 +134,11 @@ else {
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
                 <?php echo "<li class='has-text-weight-bold is-size-3'>$viewedUserName</li>" ;?>
-                <li><a id="AddFriend" class="is-size-6 button is-primary" href="./addFriend.php/">Add Friend</a></li>
-                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
+                <?php if ((!$friendsAlready) && ($loggedon)) {
+                echo "<li><a id='AddFriend' class='is-size-6 button is-primary' href='./addFriend.php/'>Add Friend</a></li>";}?>
+                <?php if ($loggedon) {
+                    echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; 
+                } ?>
             </ul>
             <?php if($viewedProfileImg)
             echo "<img class='userProfileUserImg' src='./images/$viewedUserName/$viewedProfileImg' alt=''>";
@@ -132,11 +174,12 @@ else {
         <div class="modal-content">
             <h5 class="is-size-4 has-text-weight-bold">Add friend?</h5>
             <p class="is-size-6">Are you sure you want to add this person as a friend??</p>
-            <form action="">
+            <form action="<?php echo htmlspecialchars("./methods/addFriend.php");?>" method="POST">
                 <div class="modal-button-cont">
                     <button id="sendInvites" class="button is-info">Add Friend</button>
                     <button id="cancelInvites" class="button is-danger">Cancel</button>
                 </div>
+             <?php echo "<input type='hidden' id='userID' name='addedFriendID' value='$userProfileID'>";?>
             </form>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
@@ -182,11 +225,11 @@ else {
             ToggleIsActive();
         });
 
-        sendInvites.on("click", function(e){
+        /*sendInvites.on("click", function(e){
             e.preventDefault();
             alert("Friend invite sent!");
             ToggleIsActive();
-        });
+        });*/
     </script>
     <script src="./js/scripts.js"></script>
 </body>

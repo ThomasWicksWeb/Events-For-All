@@ -28,6 +28,7 @@ else {
 
 if (isset($_GET['viewEventID'])) {
     $eventID = $_GET['viewEventID'];
+    $eventID = (int)$eventID;
 }
 else {
 	$$eventID = NULL;
@@ -148,11 +149,14 @@ $attending = false;
 
                 
                    
-                if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
-                    echo "<li><a class='is-size-6 button is-info' href='#'>Join Event</a></li>
+                if (($loggedon) && ($userID != NULL) && ($userName != NULL) && ($attending == false)) {
+                    echo "<li><a class='is-size-6 button is-info' href='./methods/joinEvent.php?joinEventID=$eventID'>Join Event</a></li>";
+                }
+                    if (($loggedon) && ($userID != NULL) && ($userName != NULL)) {
+                        echo"
                     <li><a class='is-size-6 button is-secondary' href='#'>Message Organizers</a></li>
                     <li><a class='is-size-6 button is-secondary' href='./attendees.php?eventID=$eventID'>View Antendees</a></li>
-                    <li><a class='is-size-6 button is-secondary' id='InviteFriendsBtn' href='#'>Invite All Friends</a></li>";
+                    <li><a class='is-size-6 button is-secondary' id='InviteFriendsBtn' href='./methods/inviteAllFriends.php?eventID=$eventID'>Invite All Friends</a></li>";
                     } ?>
                     <li><a class="is-size-6 button is-secondary" href="#">Report Event</a></li>
                 </ul>
@@ -287,11 +291,12 @@ $attending = false;
         <div class="modal-content">
             <h5 class="is-size-4 has-text-weight-bold">Invite Friends</h5>
             <p class="is-size-6">Are you sure you want to invite your entire friends list?</p>
-            <form action="">
+            <form action="<?php echo htmlspecialchars("./methods/inviteAllFriends.php");?>" method="POST">
                 <div class="modal-button-cont">
                     <button id="sendInvites" class="button is-info">Invite All Friends</button>
                     <button id="cancelInvites" class="button is-danger">Cancel</button>
                 </div>
+                <?php echo "<input type='hidden' id='eventID' name='eventID' value='$eventID'>";?>
             </form>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
@@ -345,11 +350,11 @@ $attending = false;
             ToggleIsActive();
         });
 
-        sendInvites.on("click", function (e) {
+       /* sendInvites.on("click", function (e) {
             e.preventDefault();
             alert("Invites Sent!");
             ToggleIsActive();
-        });
+        });*/
     </script>
 
     <script src="./js/scripts.js"></script>

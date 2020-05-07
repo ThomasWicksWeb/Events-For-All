@@ -78,7 +78,7 @@ else{
 if (($userID != NULL) && ($firstName != NULL) && ($lastName != NULL) && ($dob != NULL) && ($email != NULL) && ($phone != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
 
   // Connect to MySQL and the EventsForAll Database
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  require './databaseConnection.php';
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);

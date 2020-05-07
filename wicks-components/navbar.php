@@ -24,7 +24,7 @@ else {
 if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
     // Connect to MySQL and the EventsForAll Database
-  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  require './methods/databaseConnection.php';
   
   if ($mysqli->connection_error) {
       die("connection Failed: " . $mysqli->connection_error);

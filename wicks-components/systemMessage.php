@@ -34,14 +34,24 @@ else{
 }
 
 if(isset($_GET["routed"])) {
-    $routed = $_GET["routed"];
-    
+    $routed = $_GET["routed"];   
 }
 else {
     $routed = 0;
 }
 
+if(isset($_GET["eventID"])) {
+    $eventID = $_GET["eventID"];  
+}
+else {
+    $eventID = NULL;
+}
+
 $route = parseRouting($routed);
+if ($routed == 5) {
+    $route = $route . $eventID;
+}
+
 ?>
 
 <!DOCTYPE html>

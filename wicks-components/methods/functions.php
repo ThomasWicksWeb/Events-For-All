@@ -64,6 +64,9 @@ function parseRouting($data) {
     case 4:
       return "login.php";
     break;
+    case 5:
+      return "singleEvent.php?viewEventID=";
+    break;
     default:
       return "index.php";
     break;

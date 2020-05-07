@@ -10,7 +10,7 @@ else {
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
-  
+    $userID = (int)$userID;
 }
 else {
 	$userID = NULL;
@@ -22,35 +22,7 @@ else {
 	$userName = NULL;
 }
 
-//Connect to database
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
 
-if ($mysqli->connection_error) {
-    die("connection Failed: " . $mysqli->connection_error);
-    echo "<script>console.log('Connection Error...')</script>";
-}
-else {
-    echo "<script>console.log('Connected successfully...')</script>";
-}
-
-// Query database for user profile
-
-
-$query = "SELECT Users.userName, Users.city, Users.USstate, UserProfile.profileImg, UserProfile.bio, UserProfile.hobbies FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$userID' AND UserProfile.userID = '$userID'";
-$result = $mysqli->query($query);
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-      $userName = $row["userName"];
-      $profileImg = $row["profileImg"];
-      $userBio = $row["bio"];
-      $userHobbies = $row["hobbies"];
-      $userCity = $row["city"];
-      $userState = $row["USstate"];
-  }
-  $userHobbiesArray = explode(",", $userHobbies);
-}
-$mysqli->close();
 
 ?>
 
@@ -92,6 +64,38 @@ $mysqli->close();
 <body>
 <!-- <Navbar File> -->
 <?php require './navbar.php'; ?>
+<?php //Connect to database
+require './methods/databaseConnection.php';
+
+if ($mysqli->connection_error) {
+    die("connection Failed: " . $mysqli->connection_error);
+    echo "<script>console.log('Connection Error...')</script>";
+}
+else {
+    echo "<script>console.log('Connected successfully...')</script>";
+}
+
+// Query database for user profile
+
+
+$profileQuery = "SELECT Users.userName, Users.city, Users.USstate, UserProfile.profileImg, UserProfile.bio, UserProfile.hobbies FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$userID' AND UserProfile.userID = '$userID'";
+$profileResult = $mysqli->query($profileQuery);
+if ($profileResult->num_rows > 0) {
+  // output data of each row
+  while($row = $profileResult->fetch_assoc()) {
+      $userName = $row["userName"];
+      $profileImg = $row["profileImg"];
+      $userBio = $row["bio"];
+      $userHobbies = $row["hobbies"];
+      $userCity = $row["city"];
+      $userState = $row["USstate"];
+      
+  }
+  $userHobbiesArray = explode(",", $userHobbies);
+}
+
+$mysqli->close();
+?>
 
     <!-- <UserProfile> -->
     <section class="section">
@@ -102,7 +106,7 @@ $mysqli->close();
                     <li><a class="is-size-6 button is-info" href="./friends.php">Friends</a></li>
                     <li><a class="is-size-6 button is-secondary" href="./messages.php">Messages</a></li>
                     <li><a class="is-size-6 button is-secondary" href="./editProfile.php">Edit Profile</a></li>
-                    <li><a class="is-size-6 button is-secondary" href="#">Placeholder</a></li>
+                    
                 </ul>
                 <?php if($profileImg)
             echo "<img class='userProfileUserImg' src='./images/$userName/$profileImg' alt='User Profile Image'>";
@@ -116,6 +120,7 @@ $mysqli->close();
                         <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
                         <ul class="is-size-6">
                         <?php 
+                        if($userHobbiesArray)
                         foreach($userHobbiesArray as $hobbie){
                             echo "<li>$hobbie</li>";
                         }

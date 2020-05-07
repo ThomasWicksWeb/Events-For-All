@@ -102,7 +102,7 @@ var_dump($phone);
 if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email != NULL)){
 
   // Connect to MySQL and the EventsForAll Database
-  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  require './databaseConnection.php';
 
   if ($mysqli->connection_error) {
       die("connection Failed: " . $mysqli->connection_error);
@@ -115,10 +115,11 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
 
 // Query database to create user
   $query = "INSERT INTO Users(email, userName, userPassword, dateOfBirth, firstName, lastName, street, city, USstate, zip, phone) VALUES('$email', '$userName', '$passwordInput', '$dob', '$firstName', '$lastName', '$street', '$city', '$state', '$zip', '$phone')";
-  if ($mysqli->query($query) === TRUE) {
+  if ($mysqli->query($query) == TRUE) {
       $message = "Account Successfully Created";
       $_SESSION['message'] = $message;
       $_SESSION['loggedon'] = TRUE;
+      $creation = 1;
 
      /* var_dump($message, $_SESSION['message'], $_SESSION['loggedon']);*/
 
@@ -132,7 +133,11 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
         $userID = (int)$userID;
         $_SESSION['userName'] = $userName;
         $_SESSION['userID'] = $userID;
-      
+        
+      //generate user profile
+      $profileQuery = "INSERT INTO UserProfile(userID) VALUES($userID)";
+      $mysqli->query($profileQuery);
+
       //var_dump($userName);
       //var_dump($userID);
       mkdir("../images/$userName/");
@@ -167,8 +172,11 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
       $uploadOk = 0;
       }
       // Check if $uploadOk is set to 0 by an error
-      if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+      if (($uploadOk == 0) || (!$file)) {
+        echo "";
+        $message = "Sorry, your image file was not uploaded, but your account was successfully created";
+          $_SESSION['message'] = $message;
+          header("Location: ../systemMessage.php?routed=0");
         // if everything is ok, try to upload file
       } else {
         $fileNewName = uniqid('', TRUE).".".$fileLowerExt;
@@ -181,23 +189,31 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
             $message = "Account Successfully Created";
           $_SESSION['message'] = $message;
           header("Location: ../systemMessage.php?routed=0");
-          
-        }
           $imageUpload = TRUE;
-          echo "<script>console.log('$imageUpload')</script>";
+          $creation = 2;
+        }
+          
+          /*echo "<script>console.log('$imageUpload')</script>";
           echo "<script>console.log('$target_dir')</script>";
-          echo "<script>console.log('$target_file')</script>";
+          echo "<script>console.log('$target_file')</script>";*/
         } 
         else {
             $imageUpload = false;
             $errormessage = "Sorry, there was an error uploading your file.";
-            echo "<script>console.log('$imageUpload')</script>";
+            header("Location: ../error.php?routed=0");
+            $creation = 3;
+           /* echo "<script>console.log('$imageUpload')</script>";
             echo "<script>console.log('$errormessage')</script>";
             echo "<script>console.log('$target_dir')</script>";
-            echo "<script>console.log('$target_file')</script>";   
+            echo "<script>console.log('$target_file')</script>";*/   
         }
         }
         
+    }
+    else{
+      $message = "Account Successfully Created";
+          $_SESSION['message'] = $message;
+          header("Location: ../systemMessage.php?routed=0");
     }
   }
   else {
@@ -205,7 +221,7 @@ if (($userName != NULL) && ($passwordInput != NULL) && ($dob != NULL) && ($email
     $message = "Account Creation Failed!!!";
   $_SESSION["errorMessage"] = $message;
   header("Location: ../error.php?routed=0");
-  var_dump($message);
+  
   } 
 }
 else {
