@@ -41,6 +41,8 @@ else {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
 
+
+
 </head>
 
 <body>
@@ -62,6 +64,11 @@ else {
                 </div>
                 <img id="LandingPageImg" src="" alt="Welcome!">
             </div>
+
+        </div>
+        <div id="IndexNotification" class="notification is-danger is-size-6 has-text-weight-bold">
+            <button class="delete"></button>
+            Hey there! Please note that with the current COVID-19 pandemic going on right now, we advise that all Events-4-All users <strong>please continue to follow social distancing guidlines.</strong> 
         </div>
     </section>
     <!-- </LandingPage -->
@@ -79,7 +86,13 @@ else {
     <script>
         // Set random background image on the landing page
         let imageNumberLandingPage = Math.floor((Math.random() * 5) + 1);
-        document.getElementById("LandingPageImg").src = `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
+        document.getElementById("LandingPageImg").src =
+            `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
+
+
+        document.querySelector('.delete').addEventListener("click", () => {
+            document.querySelector('.delete').parentElement.remove();
+        })
     </script>
 </body>
 
