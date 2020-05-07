@@ -30,17 +30,14 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
     <title>Home | Events-4-All</title>
 
@@ -75,6 +72,11 @@ else {
 
     <section class="section">
         <div class="container">
+            <div id="IndexNotification" class="notification is-danger is-size-6 has-text-weight-bold">
+                <button class="delete"></button>
+                Hey there! Please note that with the current COVID-19 pandemic going on right now, we advise that all
+                Events-4-All users <strong>please continue to follow social distancing guidlines.</strong>
+            </div>
             <h2 class="is-size-1 has-text-weight-bold has-text-centered">Check Out Some Events</h2>
             <div class="homePageCategorySection">
                 <h2 class="is-size-2 has-text-weight-bold">Upcoming soon...</h2>
@@ -114,14 +116,14 @@ else {
                         }
                     ?>
 
-                    
+
                 </ul>
             </div>
         </div>
     </section>
     <!-- </HomePage> -->
-  
-    
+
+
 
 
 
@@ -134,8 +136,12 @@ else {
     </script>
     <script>
         // Setting image for Hero Banner for the home page
-        let imageNumberHeroBanner = Math.floor((Math.random() * 3) + 1); 
+        let imageNumberHeroBanner = Math.floor((Math.random() * 3) + 1);
         $('#HeroBody').css('background-image', `url(./images/HeroBanner/heroBanner-min-${imageNumberHeroBanner}.jpg)`);
+
+        document.querySelector('.delete').addEventListener("click", () => {
+            document.querySelector('.delete').parentElement.remove();
+        })
     </script>
 </body>
 
