@@ -466,6 +466,10 @@ form {
           flex: 2;
 }
 
+#IndexNotification {
+  position: absolute;
+}
+
 .myFriendsGrid {
   display: -ms-grid;
   display: grid;

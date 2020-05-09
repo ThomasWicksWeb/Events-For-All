@@ -73,9 +73,22 @@ else {
 
     <section class="section">
         <div class="container helperMargin">
+            <div id="IndexNotification" class="notification is-danger is-size-6">
+                <button class="delete"></button>
+                <p class="is-size-5">Hey there!</p>
+                <p>Please know that <strong>Events-4-All</strong> was created by a group of students for their Senior Project class.</p>
+                <p>We are not actively monitoring events that are reported, nor the events that are posted either.</p>
+                <p>We thank you for checking out our project, but we recommend not using <strong>Events-4-All</strong> as an enterprise-level application.</p>
+                <p class="is-size-5">All the best,<br/> the Events-4-All developers</p>
+            </div>
             <h3 class="is-size-2 has-text-weight-bold">About <i>Events-4-All</i></h3>
-            <p class="is-size-5"><i>Events-4-All</i> is for the socialization you want, but might have trouble finding. There's already a great active community on the <i>Events-4-All</i> platform just waiting for you to join them!</p>
-            <p class="is-size-5">Register for an account if you don't already have one, and once you're logged in you're free to start browsing and registering for any event you want! Interested in finding a yoga group, hiking group, D&amp;D group, or anything of the likes? We're sure you'll find others with similar interests, and if you can't, it's super easy to start hosting your own events!</p>
+            <p class="is-size-5"><i>Events-4-All</i> is for the socialization you want, but might have trouble finding.
+                There's already a great active community on the <i>Events-4-All</i> platform just waiting for you to
+                join them!</p>
+            <p class="is-size-5">Register for an account if you don't already have one, and once you're logged in you're
+                free to start browsing and registering for any event you want! Interested in finding a yoga group,
+                hiking group, D&amp;D group, or anything of the likes? We're sure you'll find others with similar
+                interests, and if you can't, it's super easy to start hosting your own events!</p>
             <p class="is-size-5">So what are you waiting for? Let's check out some events!</p>
         </div>
     </section>
@@ -176,6 +189,11 @@ else {
         </div>
     </section>
 
+    <script>
+        document.querySelector('.delete').addEventListener("click", () => {
+            document.querySelector('.delete').parentElement.remove();
+        })
+    </script>
     <script src="./js/scripts.js"></script>
 </body>
 
