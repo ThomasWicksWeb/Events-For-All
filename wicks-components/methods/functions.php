@@ -91,8 +91,158 @@ function parseTime($data) {
 
 
 
-/*if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
-    
-}*/
+class testClass {
+  private $name;
+
+  public function getName() {
+    return $this->$name;
+  }
+  public function setName(string $data) {
+    $this->$name = $data;
+  }
+
+
+}
+
+class Invite {
+  private $inviteID;
+  private $eventID;
+  private $userID;
+  private $sendDate;
+  private $sendTime;
+  private $inviteeChoice;
+
+  function __construct($inviteID, $eventID, $userID, $dateTime, $inviteeChoice) {
+    $this->inviteID = (int)$inviteID;
+    $this->eventID = (int)$eventID;
+    $this->userID = (int)$userID;
+    $this->setSendDate($dateTime);
+    $this->setSendTime($dateTime);
+    $this->inviteeChoice = (int)$inviteeChoice;
+
+  }
+
+  public function getInviteID() {
+    return $this->inviteID;
+  }
+  public function setInviteID($data) {
+    $this->inviteID = (int)$data;
+  }
+
+  public function getEventID() {
+    return $this->eventID;
+  }
+  public function setEventID($data) {
+    $this->eventID = (int)$data;
+  }
+
+  public function getUserID() {
+    return $this->userID;
+  }
+  public function setUserID($data) {
+    $this->userID = (int)$data;
+  }
+
+  public function getChoice() {
+    return $this->inviteeChoice;
+  }
+  public function setChoice($data) {
+    $this->inviteeChoice = (int)$data;
+  }
+
+  public function getSendDate() {
+    return $this->sendDate;
+  }
+  public function setSendDate($data) {
+    $splitDate = explode(" ", $data);
+    $this->sendDate = parseDate($splitDate[0]);
+  }
+
+  public function getSendTime() {
+    return $this->sendTime;
+  }
+  public function setSendTime($data) {
+    $splitDate = explode(" ", $data);
+    $this->sendTime = parseTime($splitDate[1]);
+  }
+
+}
+
+class Message {
+  private $messageID;
+  private $sentByID;
+  private $recipientID;
+  private $subject;
+  private $messageBody;
+  private $sendDate;
+  private $sendTime;
+  private $read;
+
+  function __construct($messageID, $sentByID, $userID, $subject, $message, $dateTime, $read) {
+    $this->messageID = (int)$messageID;
+    $this->sentByID = (int)$sentByID;
+    $this->recipientID = (int)$userID;
+    $this->subject = $subject;
+    $this->messageBody = $message;
+    $this->setSendDate($dateTime);
+    $this->setSendTime($dateTime);
+    $this->read = (int)$read;
+
+  }
+
+  public function getMessageID() {
+    return $this->messageID;
+  }
+  public function setMessageID($data) {
+    $this->messageID = (int)$data;
+  }
+
+  public function getSentByID() {
+    return $this->sentByID;
+  }
+  public function setSentByID($data) {
+    $this->sentByID = (int)$data;
+  }
+
+  public function getRecipientID() {
+    return $this->recipientID;
+  }
+  public function setRecipientID($data) {
+    $this->recipientID = (int)$data;
+  }
+
+  public function getSubject() {
+    return $this->subject;
+  }
+  public function setSubject($data) {
+    $this->subject = (string)$data;
+  }
+
+  public function getMessageBody() {
+    return $this->messageBody;
+  }
+  public function setMessageBody($data) {
+    $this->messageBody = (string)$data;
+  }
+
+  public function getSendDate() {
+    return $this->sendDate;
+  }
+  public function setSendDate($data) {
+    $splitDate = explode(" ", $data);
+    $this->sendDate = parseDate($splitDate[0]);
+  }
+
+  public function getSendTime() {
+    return $this->sendTime;
+  }
+  public function setSendTime($data) {
+    $splitDate = explode(" ", $data);
+    $this->sendTime = parseTime($splitDate[1]);
+  }
+
+
+}
+
 
 ?>

@@ -7,7 +7,8 @@ if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
 else {
-	$loggedon = FALSE;
+    $loggedon = FALSE;
+    
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];

@@ -1711,8 +1711,9 @@ else {
                                 $currentDate = getdate();
                                 $currentDateStr = "$currentDate[year]-$currentDate[mon]-$currentDate[mday]";
                                 $currentDateStr = date_create("$currentDateStr", timezone_open("America/New_York"));
-                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
+                                
                                 $startDate = parseDate($startDate);
+                                $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
                                 if ($startDateCheck < $currentDateStr) {
                                 echo "<li class='box'>";
                                 if ($eventImage === NULL) {
