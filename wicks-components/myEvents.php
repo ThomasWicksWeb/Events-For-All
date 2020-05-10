@@ -143,8 +143,7 @@ else {
                     if ($loggedon) {
                         echo "
                         <h2 class='is-size-3 has-text-weight-bold allEventsCategoryHeader'>Attending</h2>
-                        <ul class='ViewAllEventsGridParent'>";
-                        echo "<li class='box'>";  
+                        <ul class='ViewAllEventsGridParent'>";  
                         $attendingQuery = "SELECT eventID FROM Attendees WHERE userID = '$userID' ORDER BY eventID DESC LIMIT 5";
                         $attendingResult = $mysqli->query($attendingQuery);
                         if ($attendingResult->num_rows > 0){
@@ -171,7 +170,7 @@ else {
                             $startDateCheck = date_create("$startDate", timezone_open("America/New_York"));
                             $startDate = parseDate($startDate);
                             if ($startDateCheck >= $currentDateStr) {
-                              
+                                echo "<li class='box'>";
                             if ($eventImage === NULL) {
                                 echo "<img src='./images/DefaultEventImage.jpg' alt='Event Image' />";
                             }
@@ -186,19 +185,34 @@ else {
                             </li>";
                             $displayed = TRUE;
                             
+                            }
+                        }
+                    }
+                }
+                        if ($displayed == TRUE) {
+                            echo "<div class='box'>
+                                        <div class='link-box'>
+                                            <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
+                                            <a href='./events.php?filter=16' class='is-size-5 view-more-text'>View more events 
+                                            <i class='fas fa-arrow-right view-more-arrow'></i></a>
+                                        </div>
+                                    </div>
+                                ";
+                        }
+                        if ($displayed != TRUE) {
+                            echo "
+                        <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not currently registered for any events...</h3>";
                         }
                         
-                    }
-                    
-                }
-                
+                    }    
                 else {
                     echo "
                     <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not currently registered any events...</h3>";
                 }
+                
+                        
+                    
                 echo "</ul>"; 
-                        }
-                    }
                 }
             
 
@@ -249,6 +263,10 @@ else {
                        $displayed = TRUE;
                        
                         }
+
+                    }
+                }
+            }
                         if ($displayed == TRUE) {
                         echo "<div class='box'>
                                     <div class='link-box'>
@@ -257,24 +275,22 @@ else {
                                         <i class='fas fa-arrow-right view-more-arrow'></i></a>
                                     </div>
                                 </div>
-                            </ul>";
+                            ";
                     }
                     if ($displayed != TRUE) {
                         echo "
-                    <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not currently registered for any events...</h3>";
+                    <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You havent attended any events yet...</h3>";
                     }
-                    }
-                    
-                          
                 }
                 
                 else {
                     echo "
                     <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You havent attended any events yet...</h3>";
                 }
+                
                 echo "</ul>"; 
-                        }
-                    }
+                
+                    
 
                     }
                     

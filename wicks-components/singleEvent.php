@@ -46,7 +46,12 @@ if ($eventResult->num_rows > 0) {
         $title = $row['eventTitle'];
         $startDate = parseDate($row['startDate']);
         $startTime = parseTime($row['startTime']);
-        $endDate = parseDate($row['endDate']);
+        $endDate = $row['endDate'];
+        if($endDate)
+        $endDate = parseDate($endDate);
+        else
+        $endDate = NULL;
+
         $endTime = parseTime($row['endTime']);
         $street = $row['street'];
         $city = $row['city'];
@@ -198,8 +203,9 @@ $attending = false;
                 <p class="has-text-weight-bold is-size-4">Event Dates</p>
                 <ul>
                     <?php 
-                    echo "<li class='has-text-weight-semi-bold is-size-5'>Start date: <span class='has-text-weight-normal is-size-6'>$startDate</span></li>
-                    <li class='has-text-weight-semi-bold is-size-5'>End date: <span class='has-text-weight-normal is-size-6'>$endDate</span></li>"; ?>
+                    echo "<li class='has-text-weight-semi-bold is-size-5'>Start date: <span class='has-text-weight-normal is-size-6'>$startDate</span></li>";
+                    if($endDate)
+                    echo"<li class='has-text-weight-semi-bold is-size-5'>End date: <span class='has-text-weight-normal is-size-6'>$endDate</span></li>"; ?>
                 </ul>
 
                 <p class="has-text-weight-bold is-size-4">Times:</p>

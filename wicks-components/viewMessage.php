@@ -1,13 +1,41 @@
 <?php 
-
+ob_start();
 //Start session and check logon status
 session_start();
+
+require './methods/functions.php';
+
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
 else {
-	$loggedon = FALSE;
+    $loggedon = FALSE;
+    //header("Location: ./methods/logOut.php");
 }
+
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
+}
+else {
+	$userID = NULL;
+}
+
+if (isset($_SESSION['userName'])) {
+    $userName = $_SESSION['userName'];
+}
+else {
+	$userName = NULL;
+}
+
+if (isset($_GET['message'])) {
+    $messageID = $_GET['message'];
+}
+else {
+	$messageID = NULL;
+}
+
+ 
 
 ?>
 
@@ -48,8 +76,62 @@ else {
 
 <body>
     <!-- <Navbar File> -->
-    <?php require './navbar.php'; ?>
+    <?php require './navbar.php'; 
+    require './methods/databaseConnection.php';
 
+    if ($mysqli->connection_error) {
+        die("connection Failed: " . $mysqli->connection_error);
+        echo "<script>console.log('Connection Error...')</script>";
+    }
+    else {
+        echo "<script>console.log('Connected successfully...')</script>";
+    }
+
+    if (($loggedon) && ($userID != NULL) && ($messageID != NULL)){
+
+        // Query database for message data
+        $messageQuery = "SELECT * FROM Messages WHERE messageID = '$messageID'";
+        $messageResult = $mysqli->query($messageQuery);
+        if ($messageResult->num_rows > 0) {
+        // grab data of each field
+        while($row2 = $messageResult->fetch_assoc()) {
+           $messageID = $row2["messageID"]; 
+           $senderID = $row2["userID"];
+           $subject = $row2["subject"];
+           $messageBody = $row2["messageBody"];
+           $sendDateMes = $row2["sentDateTime"];
+           $read = $row2["beenRead"];
+
+           if (($loggedon) && ($userID != NULL) && ($messageID != NULL) && ($senderID != NULL) && ($subject != NULL) && ($messageBody != NULL) && ($sendDateMes != NULL) && ($read != NULL)) {
+            $messageObj = new Message($messageID, $senderID, $userID, $subject, $messageBody, $sendDateMes, $read);
+             }
+             $date = $messageObj->getSendDate();
+             $time = $messageObj->getSendTime();
+
+           $query2 = "SELECT Users.userName, UserProfile.profileImg FROM Users LEFT JOIN UserProfile ON Users.userID = UserProfile.userID WHERE Users.userID = '$senderID' AND UserProfile.userID = '$senderID'";
+           $result2 = $mysqli->query($query2);
+           if ($result2->num_rows > 0) {
+           // output data of each row
+               while($row3 = $result2->fetch_assoc()) {
+                   $senderUserName = $row3["userName"]; 
+                   $senderUserImg = $row3["profileImg"];
+               }
+           }
+
+           if($read == 0) {
+            $updateReadQuery = "UPDATE Messages SET beenRead = 1 WHERE messageID = $messageID";
+            $mysqli->query($updateReadQuery); 
+           }
+
+        }
+        
+        }
+        
+        }
+
+        var_dump($messageID, $senderID, $subject, $messageBody, $sendDateMes, $read);
+
+    ?>
 
     <section class="section">
         <div class="container">
