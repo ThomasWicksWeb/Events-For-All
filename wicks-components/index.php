@@ -68,7 +68,8 @@ else {
         </div>
         <div id="IndexNotification" class="notification is-danger is-size-6 has-text-weight-bold">
             <button class="delete"></button>
-            Hey there! Please note that with the current COVID-19 pandemic going on right now, we advise that all Events-4-All users <strong>please continue to follow social distancing guidlines.</strong> 
+            Hey there! Please note that because of the current COVID-19 pandemic, we ask that all
+                Events-4-All users <strong>please continue to follow social distancing guidelines as outlined by your local government.</strong> 
         </div>
     </section>
     <!-- </LandingPage -->
