@@ -3,7 +3,6 @@
 //Start session and check logon status
 session_start();
 
-require './methods/timeout.php';
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }

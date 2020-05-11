@@ -2,7 +2,6 @@
 
 //Start session and check logon status
 session_start();
-require './methods/timeout.php';
 require './methods/functions.php';
 
 

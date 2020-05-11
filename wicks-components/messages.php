@@ -183,7 +183,6 @@ if (($loggedon) && ($userID != NULL)){
                            else
                            echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' />";
                            echo"
-                        <img src='https://placekitten.com/50/50' alt=''>
                         <h3 class='is-size-3 has-text-weight-bold'>$friendUserName</h3>
                     </div>
                     <p class='is-size-5'>$subject</p>
@@ -198,36 +197,7 @@ if (($loggedon) && ($userID != NULL)){
         }
 // end Message display?>
 
-                <li>
-                    <a href="#">
-                        <div>
-                            <img src="https://placekitten.com/500/500" alt="">
-                            <h3 class="is-size-3 has-text-weight-bold">{{ Username }}</h3>
-                        </div>
-                        <p class="is-size-6">Message preview. Cut after like 15 words?</p>
-                        <p class="has-text-grey-light">Last sent: {{ (DD/MM) }}</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <img src="https://placekitten.com/50/50" alt="">
-                            <h3 class="is-size-3 has-text-weight-bold">{{ Username }}</h3>
-                        </div>
-                        <p class="is-size-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab illum, pariatur qui dolore accusamus ullam...</p>
-                        <p class="has-text-grey-light">Last sent: {{ (DD/MM) }}</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <img src="https://placekitten.com/50/50" alt="">
-                            <h3 class="is-size-3 has-text-weight-bold">{{ Username }}</h3>
-                        </div>
-                        <p class="is-size-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, ex illo! Repellat, fuga! Voluptatibus, ab minus.</p>
-                        <p class="has-text-grey-light">Last sent: {{ (DD/MM) }}</p>
-                    </a>
-                </li>
+                
             </ul>
         </div>
     </section>
