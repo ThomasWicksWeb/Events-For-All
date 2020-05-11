@@ -95,10 +95,8 @@ if ($routed == 5) {
     <?php require './navbar.php'; ?>
 
     <?php echo "<p class='has-text-centered is-size-5'>$message</p>"; 
-    if ($loggedon)
-    echo "<script> window.setTimeout(function() {window.location.replace('$route');}, 4*1000);</script>";
-    else
-    echo "<script> window.setTimeout(function() {window.location.replace('./index.php');}, 4*1000);</script>";
+    
+    echo "<script> window.setTimeout(function() {window.location.replace('./login.php');}, 60*1000);</script>";
     
     ?>
 
