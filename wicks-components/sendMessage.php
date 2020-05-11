@@ -1,4 +1,4 @@
-< !DOCTYPE html>
+<!DOCTYPE html>
   <html lang='en'>
 
   <head>
@@ -13,7 +13,7 @@
     <meta property='og:image' content='./images/thumbnail.png' />
     <meta property='og:title' content='Title' />
     <meta property='og:description' content='Description' />
-    <title>Invites | Events-4-All</title>
+    <title>Send Message | Events-4-All</title>
     <link rel='icon' href='./images/heyHand.png'>
     <link href='https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Muli:900&display=swap' rel='stylesheet'>
@@ -22,12 +22,12 @@
     <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
-    < !-- <script src='./vendor/smoothScroll.js'>
-      </script>-->
+
   </head>
 
   <body>
-    < !-- <Navbar File>--><?php require './navbar.php';
+    <!-- <Navbar File>-->
+      <?php require './navbar.php';
 ?><section class='section'>
         <div class='container'>
           <h3 class="is-size-3 has-text-weight-bold has-text-centered">Send Message</h3>
