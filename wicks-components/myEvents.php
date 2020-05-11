@@ -183,13 +183,13 @@ else {
                                 </p>
                                 <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                             </li>";
-                            $displayed = TRUE;
+                            $displayed2 = TRUE;
                             
                             }
                         }
                     }
                 }
-                        if ($displayed == TRUE) {
+                        if ($displayed2 == TRUE) {
                             echo "<div class='box'>
                                         <div class='link-box'>
                                             <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
@@ -199,7 +199,7 @@ else {
                                     </div>
                                 ";
                         }
-                        if ($displayed != TRUE) {
+                        if ($displayed2 != TRUE) {
                             echo "
                         <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You are not currently registered for any events...</h3>";
                         }
@@ -260,14 +260,14 @@ else {
                             </p>
                             <a href='./singleEvent.php?viewEventID=$eventID' class='button is-info is-size-6 has-text-weight-bold'>View Event</a>
                         </li>";
-                       $displayed = TRUE;
+                       $displayed3 = TRUE;
                        
                         }
 
                     }
                 }
             }
-                        if ($displayed == TRUE) {
+                        if ($displayed3 === TRUE) {
                         echo "<div class='box'>
                                     <div class='link-box'>
                                         <i class='fas fa-arrow-circle-right is-size-1 has-text-info'></i>
@@ -277,7 +277,7 @@ else {
                                 </div>
                             ";
                     }
-                    if ($displayed != TRUE) {
+                    if ($displayed3 != TRUE) {
                         echo "
                     <h3 class='is-size-4 has-text-weight-bold allEventsCategoryHeader'>You havent attended any events yet...</h3>";
                     }
