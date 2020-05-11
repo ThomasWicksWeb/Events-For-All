@@ -201,7 +201,7 @@ if (($loggedon) && ($userID != NULL)){
                 <li>
                     <a href="#">
                         <div>
-                            <img src="https://placekitten.com/50/50" alt="">
+                            <img src="https://placekitten.com/500/500" alt="">
                             <h3 class="is-size-3 has-text-weight-bold">{{ Username }}</h3>
                         </div>
                         <p class="is-size-6">Message preview. Cut after like 15 words?</p>
