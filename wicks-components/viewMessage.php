@@ -135,18 +135,18 @@ else {
 
     <section class="section">
         <div class="container">
-            <h1 class="has-text-weight-bold is-size-3">Chat with {{ person you're chatting with's name }}</h1>
+            <h1 class="has-text-weight-bold is-size-3">From: {{ person you're chatting with's name }}</h1>
 
             <!-- Duplicate this line each time you receive a message -->
             <div class="messages box">
-                <h2 class="is-size-5"><span class="has-text-weight-bold">{{ Person msg is from }} </span><span class="is-size-6 has-text-light-grey">- {{ Date }}</span></h2>
+                <h2 class="is-size-4">
+                <span class="is-size-5 has-text-weight-bold">{{ Subject }} </span>
+                <br />
+                <span class="is-size-6 has-text-light-grey">{{ Date }}</span></h2>
+                <hr />
                 <p>{{ Message Body }}</p>
             </div>
-            <!-- Duplicate when you send a message -->
-            <div class="messages box">
-                <h2 class="is-size-5"><span class="has-text-weight-bold">{{ Your username }} </span><span class="is-size-6 has-text-light-grey">- {{ Date }}</span></h2>
-                <p>{{ Message Body }}</p>
-            </div>
+            
 
 
         </div>
