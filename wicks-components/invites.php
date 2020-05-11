@@ -44,6 +44,7 @@
         <h2 class="has-text-weight-bold is-size-4">{{ Event Invite Title }}</h2>
         <h3 class="is-size-5">Start date: <span class="has-text-light-grey">{{ Start Date }}</span> Start time: <span
             class="has-text-light-grey">{{ Start Time }}</span></h3>
+        <h4 class='is-size-6'>Invited by: {{ name }}</h4>
         <a class='button is-link'>View Event</a>
         <button class='button is-info' type='submit'>Accept</button>
         <button class='button is-danger'>Decline</button>
