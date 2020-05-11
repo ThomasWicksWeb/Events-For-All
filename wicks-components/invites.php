@@ -14,7 +14,7 @@
   <meta property='og:title' content='Title' />
   <meta property='og:description' content='Description' />
 
-  <title>Send Message | Events-4-All</title>
+  <title>Invites | Events-4-All</title>
 
   <link rel='icon' href='./images/heyHand.png'>
   <link href='https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap' rel='stylesheet'>
