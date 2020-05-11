@@ -76,6 +76,10 @@ form {
   border-radius: 50%;
 }
 
+.navBarProfilePicture {
+  border-radius: 8px !important;
+}
+
 .singleEventBodyGridParent {
   display: -ms-grid;
   display: grid;
@@ -202,7 +206,8 @@ form {
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: profileImg;
-  border-radius: 50%;
+  border-radius: 5px;
+  padding-left: 5px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -275,7 +280,7 @@ form {
   justify-self: flex-start;
   max-width: 200px;
   margin-top: -150px;
-  border-radius: 50%;
+  border-radius: 15px;
   border: 2px solid white;
 }
 
@@ -486,7 +491,12 @@ form {
       align-self: center;
   -ms-grid-column-align: center;
       justify-self: center;
-  border-radius: 50%;
+}
+
+.myFriendsGrid img {
+  border-radius: 5px;
+  max-height: 8rem;
+  max-width: 8rem;
 }
 
 .myFriendsGridTextCont {
@@ -506,6 +516,10 @@ form {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
+}
+
+.myFriendsGridTextCont > * {
+  margin-bottom: .5rem;
 }
 
 .myFriendsGridTextCont h4 {

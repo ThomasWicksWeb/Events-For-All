@@ -126,6 +126,10 @@ form {
     // background-size: cover;
 }
 
+.navBarProfilePicture {
+    border-radius: 8px !important;
+}
+
 
 
 // **********************************
@@ -225,7 +229,8 @@ form {
 
     & img {
         grid-area: profileImg;
-        border-radius: 50%;
+        border-radius: 5px;
+        padding-left: 5px;
         align-self: center;
         justify-self: center;
     }
@@ -288,7 +293,7 @@ form {
         justify-self: flex-start;
         max-width: 200px;
         margin-top: -150px;
-        border-radius: 50%;
+        border-radius: 15px;
         border: 2px solid white;
     }
 
@@ -484,11 +489,18 @@ form {
     grid-template-areas: "img textCont";
     grid-gap: .5rem;
 
+
     & a {
         grid-area: img;
         align-self: center;
         justify-self: center;
-        border-radius: 50%;
+        // border-radius: 50%;
+    }
+
+    & img {
+        border-radius: 5px;
+        max-height: 8rem;
+        max-width: 8rem;
     }
 
     &TextCont {
@@ -497,6 +509,11 @@ form {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: space-between;
+
+
+        &>* {
+            margin-bottom: .5rem;
+        }
 
         & h4 {
             align-self: flex-start;
