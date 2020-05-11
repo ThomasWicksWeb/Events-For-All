@@ -80,7 +80,7 @@ form {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ActionsBar ActionsBar ActionsBar ActionsBar" "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
+      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ActionsBar ActionsBar ActionsBar ActionsBar" "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
   grid-gap: 20px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -189,7 +189,7 @@ form {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole" "profileImg profileUserLink";
+      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole" "profileImg profileUserLink";
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
   -ms-grid-rows: min-content;
@@ -477,7 +477,7 @@ form {
   grid-gap: .5rem;
 }
 
-.myFriendsGrid img {
+.myFriendsGrid a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: img;
@@ -878,6 +878,8 @@ form {
 
 .all-messages li img {
   border-radius: 50%;
+  max-height: 3.25rem;
+  max-width: 3.25rem;
 }
 
 .all-messages li div {
@@ -912,6 +914,11 @@ form {
   margin-top: 1.5rem;
 }
 
+.messages {
+  max-width: 80%;
+  margin: 0 auto 2rem auto !important;
+}
+
 .friendsMessages {
   max-width: 80%;
   margin-right: auto;
@@ -928,7 +935,7 @@ form {
 @media only screen and (max-width: 769px) {
   .singleEventBodyGridParent {
     width: 100%;
-        grid-template-areas: "SplashImg" "ProfileImgAndEventInfo" "ActionsBar" "EventDesc" "Atendees";
+        grid-template-areas: "SplashImg" "ProfileImgAndEventInfo" "ActionsBar" "EventDesc" "Atendees";
     grid-gap: 10px;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -966,7 +973,7 @@ form {
     display: -ms-grid;
     display: grid;
     width: 100%;
-        grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+        grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
     -ms-grid-columns: 1fr 3fr;
         grid-template-columns: 1fr 3fr;
     -ms-grid-rows: min-content;

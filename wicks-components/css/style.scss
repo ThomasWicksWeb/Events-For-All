@@ -838,6 +838,8 @@ form {
 
         & img {
             border-radius: 50%;
+            max-height: 3.25rem;
+            max-width: 3.25rem;
         }
 
         & div {
@@ -876,6 +878,11 @@ form {
 
 .SendMessageForm {
     margin-top: 1.5rem;
+}
+
+.messages {
+    max-width: 80%;
+    margin: 0 auto 2rem auto !important;
 }
 
 .friendsMessages {
