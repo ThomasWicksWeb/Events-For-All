@@ -43,6 +43,12 @@ if(isset($_POST['email'])) {
 else{
     $email = NULL;
 }
+if(isset($_POST['phone'])) {
+  $phone = test_input($_POST['phone']);
+}
+else{
+  $phone = NULL;
+}
 if(isset($_POST['street'])) {
     $street = test_input($_POST['street']);
 }
@@ -69,10 +75,10 @@ else{
 }
 
 
-if (($userID != NULL) && ($firstName != NULL) && ($lastName != NULL) && ($dob != NULL) && ($email != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
+if (($userID != NULL) && ($firstName != NULL) && ($lastName != NULL) && ($dob != NULL) && ($email != NULL) && ($phone != NULL) && ($street != NULL) && ($city != NULL) && ($state != NULL) && ($zip != NULL)){
 
   // Connect to MySQL and the EventsForAll Database
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  require './databaseConnection.php';
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -86,15 +92,20 @@ else {
 // Query database to create user
 $query = "UPDATE Users SET firstName='$firstName', lastName='$lastName', email='$email', dateOfBirth='$dob', street='$street', city='$city', USstate='$state', zip='$zip' WHERE userID=$userID";
 if ($mysqli->query($query) === TRUE) {
+    $mysqli->close();
     $message = "Account Successfully Updated";
     $_SESSION['message'] = $message;
+    header("Location: ../systemMessage.php?routed=3");
 }
 else {
+  $mysqli->close();
   $message = "Account Update Failed!!!";
+  $_SESSION['errorMessage'] = $message;
+  header("Location: ../error.php?routed=3");
 }
 $mysqli->close();
 }
 
-echo "<p>$message</p>";
+
 
 ?>

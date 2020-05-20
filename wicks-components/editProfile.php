@@ -10,6 +10,7 @@ else {
 }
 if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
 }
 else {
 	$userID = NULL;
@@ -31,19 +32,16 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Title goes here">
-    <meta name="keywords"
-        content="Keywords go here">
-    <meta name="description"
-        content="Description goes here">
+    <meta name="keywords" content="Keywords go here">
+    <meta name="description" content="Description goes here">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta property="og:image" content="./images/thumbnail.png" />
     <meta property="og:title" content="Title" />
-    <meta property="og:description"
-        content="Description" />
+    <meta property="og:description" content="Description" />
 
-    <title>Events For All</title>
+    <title>Edit Profile | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -59,9 +57,9 @@ else {
 </head>
 
 <body>
-<!-- <Navbar File> -->
-<?php require './navbar.php'; ?>
-<?php
+    <!-- <Navbar File> -->
+    <?php require './navbar.php'; ?>
+    <?php
 
 if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     // Connect to MySQL and the EventsForAll Database
@@ -78,56 +76,54 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     
     
     // Query database for user profile
-    $query = "SELECT * FROM Users WHERE userName = '$userName'";
+    $query = "SELECT * FROM UserProfile WHERE userID = '$userID'";
     $result = $mysqli->query($query);
     if ($result->num_rows > 0) {
         // output data of each row
        while($row = $result->fetch_assoc()) {
-            $userID = $row["userID"]; 
-            $userName = $row["userName"];
-            $email = $row["email"];
-            $firstName = $row["firstName"];
-            $lastName = $row["lastName"];
-            $street = $row["street"];
-            $city = $row["city"];
-            $state = $row["USstate"];
-            $zip = $row["zip"];
-            $phone = $row["phone"];
-            $dob = $row["dateOfBirth"];
+            
+            $profileImage = $row["profileImg"];
+            $bio = $row["bio"];
+            $hobbies = $row["hobbies"];
        }
-
+       
       echo " <!-- <EditProfileInformation> -->
     <section class='section'>
         <div class='container'>"; ?>
-            <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>'>
+    <form class='form' method='POST' action='<?php echo htmlspecialchars("./methods/processProfileChanges.php");?>' enctype="multipart/form-data">
         <?php echo "<h2 class='is-size-2 has-text-weight-bold has-text-centered'>Edit Profile</h2>
                 <h2 class='is-size-4 has-text-weight-bold has-text-centered'>General Information</h2>
                 
                 <div class='dataSet'>
                     <h6 class='has-text-weight-bold is-size-5'>Username</h6>
-                    <p class='is-size-6'> $userName</p>
-                </div>
-                <hr />
-                <h2 class='is-size-5 has-text-weight-bold'>Change Profile Picture</h2>
-                <div class='file has-name'>
-                    <label class='file-label'>
-                        <input id='editProfileNewPicture' class='file-input' type='file' name='newProfileImg'>
-                        <span class='file-cta'>
-                        <span class='file-icon'>
-                            <i class='fas fa-upload'></i>
-                        </span>
-                        <span class='file-label'>Choose a file…</span>
-                        </span>
-                        <span class='file-name'>{ file name after upload }</span>
-                    </label>
+                    <p class='is-size-6'>$userName</p>
                 </div>
 
+                <hr />
+        ";?>
+
+        <h2 class="is-size-3 has-text-weight-bold has-text-centered">User Image</h2>
+        <div class='file has-name createAccountUserUpload'>
+            <label class='file-label'>
+                <input id='profilePicture' class='file-input' type='file' name='profileImg'
+                    onchange="getFileData(this)">
+                <span class='file-cta'>
+                    <span class='file-icon'>
+                        <i class='fas fa-upload'></i>
+                    </span>
+                    <span class='file-label'>Choose a file…</span>
+                </span>
+                <span id="displayFileText" class='file-name'>Filename</span>
+            </label>
+        </div>
+        
+        <?php echo "
                 <hr />
                     
                 <div class='field'>
                     <label class='label is-size-5'>Bio</label>
                     <div class='control has-icons-left'>
-                        <textarea id='EditBio' name='description' value='{Bio}' required class='textarea'></textarea>
+                        <textarea id='EditBio' name='description' value='$bio' required class='textarea'>$bio</textarea>
                     </div>
                 </div>
 
@@ -137,8 +133,8 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                     <label class='label is-size-5'>Hobbies <span class='has-text-grey has-text-weight-normal'>(Please
                             put a comma between each hobby)</span></label>
                     <div class='control has-icons-left'>
-                        <textarea id='EditHobbies' name='hobbies' value='{Hobbies}' required
-                            class='textarea'></textarea>
+                        <textarea id='EditHobbies' name='hobbies' value='$hobbies' required
+                            class='textarea'>$hobbies</textarea>
                     </div>
                 </div>
 
@@ -158,15 +154,34 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     <!-- </EditProfileInformation> -->";
     }
        else {
-        echo "Something Went wrong";
+        $errorMessage = "Something went wrong, please try again later...";
+        $_SESSION['errorMessage'] = $errorMessage;
+        header('Location: ./errorMessage.php');
     }   
     
    
    
    }
-   ?>   
+   ?>
 
-<script src="./js/scripts.js"></script>
+        <script src="./js/scripts.js"></script>
+        <script>
+            // *******************************************
+            // IIFEs assigning DatePickers to input fields
+            // *******************************************
+
+
+            const profilePictureInput = $("#profilePicture");
+            const displayFileText = $("#displayFileText");
+
+            function getFileData(myFile) {
+                const file = myFile.files[0];
+                const filename = file.name;
+                // document.getElementById('displayFileText').val = filename;
+                displayFileText.text(filename);
+            }
+            
+        </script>
 </body>
 
 </html>

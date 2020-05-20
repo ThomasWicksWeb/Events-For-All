@@ -2,6 +2,7 @@
 
 //Start session and check logon status
 session_start();
+
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
@@ -21,44 +22,7 @@ else {
 	$userName = NULL;
 }
 
-if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
-    // Connect to MySQL and the EventsForAll Database
-  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
-  
-  if ($mysqli->connection_error) {
-      die("connection Failed: " . $mysqli->connection_error);
-      echo "<script>console.log('Connection Error...')</script>";
-  }
-  else {
-      echo "<script>console.log('Connected successfully...')</script>";
-  }
-  
-  
-  // Query database to create user
-  $query = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
- $result = $mysqli->query($query);
- if ($result->num_rows > 0) {
-     $i = 0;
-     $friendlist = array();
-   // output data of each row
-   while($row = $result->fetch_assoc()) {
-       $friend1userID = $row["friend1userID"]; 
-       $friend2userID = $row["friend2userID"];
-       if ($friend1userID === $userID) {
-       $friendlist[$i] = $friend2userID;
-        }
-       else {
-       $friendlist[$i] = $friend1userID;
-       }
-       $i++;
-   }
-}
-  else {
-    
-  }
- 
-  }
   //var_dump($userID, $friend1userID, $friend2userID, $friendlist)
   
   
@@ -84,7 +48,7 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
     <meta property="og:description"
         content="Description" />
 
-    <title>Events For All</title>
+    <title>Friends | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -103,6 +67,45 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
     <!-- <Navbar File> -->
     <?php require './navbar.php'; ?>
+    <?php if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
+
+// Connect to MySQL and the EventsForAll Database
+require './methods/databaseConnection.php';
+
+if ($mysqli->connection_error) {
+  die("connection Failed: " . $mysqli->connection_error);
+  echo "<script>console.log('Connection Error...')</script>";
+}
+else {
+  echo "<script>console.log('Connected successfully...')</script>";
+}
+
+
+// Query database for friendships
+$query = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
+$result = $mysqli->query($query);
+if ($result->num_rows > 0) {
+ $i = 0;
+ $friendlist = array();
+// output data of each row
+while($row = $result->fetch_assoc()) {
+   $friend1userID = $row["friend1userID"]; 
+   $friend2userID = $row["friend2userID"];
+   if ($friend1userID === $userID) {
+   $friendlist[$i] = $friend2userID;
+    }
+   else {
+   $friendlist[$i] = $friend1userID;
+   }
+   $i++;
+}
+}
+else {
+
+}
+
+}
+?>
 
 
 <!-- <MyFriends> -->
@@ -126,16 +129,17 @@ if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
                     echo "<li class='myFriendsGrid box'>";?>
                            <?php 
-                           if($friendUserImg)
-                           echo "<img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' />";
+                           if($friendUserImg != NULL)
+                           echo "<a href='./viewProfile.php?viewUser=$friendID'><img src='./images/$friendUserName/$friendUserImg' alt='Profile Photo' /></a>";
                            else
-                           echo "<img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' />";
+                           echo "<a href='./viewProfile.php?viewUser=$friendID'><img src='./images/ProfilePhotoWithLogo.png' alt='Profile Photo' /></a>";
                            ?>
                 <?php echo "<div class='myFriendsGridTextCont'>
                             <h4 class='is-size-4 has-text-weight-bold has-text-black'>$friendUserName</h4>
-                            <a href='./viewProfile.php?viewUser=$friendID' class='is-link is-size-6'>View Profile</a>    
+                            <a href='./viewProfile.php?viewUser=$friendID' class='is-link button is-size-6'>View Profile</a>
+                            <button class='button is-danger is-size-6'>Delete Friend</button>    
                             </div>
-                            </li>";
+                            </li>";                        
                          
                 }
             }

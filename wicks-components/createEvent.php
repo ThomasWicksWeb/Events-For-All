@@ -20,6 +20,12 @@ if (isset($_SESSION['userName'])) {
 else {
 	$userName = NULL;
 }
+
+if((!$loggedon) || ($userID == NULL) || ($userName == NULL)) {
+    $message = "You must be logged in to view this page!!!";
+    $_SESSION["errorMessage"] = $message;
+    header("Location: ./error.php?routed=4");
+}
 ?>
 
 
@@ -39,7 +45,7 @@ else {
     <meta property="og:title" content="Title" />
     <meta property="og:description" content="Description" />
 
-    <title>Site Title</title>
+    <title>Create Event | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -63,7 +69,8 @@ else {
     <!-- <CreateAnEvent> -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processEvent.php");?>"
+                enctype="multipart/form-data">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Event</h2>
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">General Information</h2>
                 <div class="field">
@@ -81,8 +88,8 @@ else {
                         <label class="label is-size-6">Start Date<span
                                 class="has-text-grey has-text-weight-normal">(YYYY/MM/DD)</span></label>
                         <div class="control has-icons-left">
-                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required type="text"
-                                placeholder="Start Date">
+                            <input id="CreateEventStartDate" autocomplete="off" class="input" name="startDate" required
+                                type="text" placeholder="Start Date">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -136,6 +143,21 @@ else {
                     </div>
                 </div>
 
+                <h2 class="is-size-4 has-text-weight-bold has-text-centered">Event Image</h2>
+                <div class="file has-name createAccountUserUpload">
+                    <label class="file-label">
+                        <input id="profilePicture" class="file-input" type="file" name="eventImg"
+                            onchange="getFileData(this)">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">Choose a file…</span>
+                        </span>
+                        <span id="displayFileText" class="file-name">Filename</span>
+                    </label>
+                </div>
+
                 <h2 class="is-size-4 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="field">
@@ -186,6 +208,16 @@ else {
                         <input type="radio" name="privacy" value="isPrivate">Private</label>
                 </div>
 
+                <div id="maxGuestsParent" class="control">
+                    <label class="label is-size-6">Guest limit?</label>
+                    <label class="radio">
+                        <input type="radio" required name="maxGuests" value="notLimited">No Limit</label>
+                    <label class="radio">
+                        <input id="isLimited" required type="radio" name="maxGuests" value="Limited">Limited</label>
+                    <input id="maxGuestsTextInput" name="maxGuestsInput" class="input" type="number" min="1"
+                        placeholder="How many guests are allowed?">
+                </div>
+
                 <label class="label is-size-6">Category</label>
                 <div class="select createEventSelect">
                     <select name="category" required>
@@ -212,21 +244,57 @@ else {
                 </div>
 
                 <script src="./js/scripts.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true
-        });
-    </script>
-    <script>
-        (function(){
-            $("#CreateEventStartDate").datepicker({ dateFormat: 'yy/mm/dd' });
-        })();
+                <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+                <script>
+                    AOS.init({
+                        once: true
+                    });
+                </script>
+                <script>
+                    (function () {
+                        $("#CreateEventStartDate").datepicker({
+                            dateFormat: 'yy/mm/dd'
+                        });
+                    })();
 
-        (function(){
-            $("#CreateEventEndDate").datepicker({ dateFormat: 'yy/mm/dd' });
-        })();
-    </script>
+                    (function () {
+                        $("#CreateEventEndDate").datepicker({
+                            dateFormat: 'yy/mm/dd'
+                        });
+                    })();
+
+
+                    const isLimited = $("#isLimited");
+                    const maxGuestsParent = $("#maxGuestsParent");
+                    const maxGuestsTextInput = $("#maxGuestsTextInput");
+
+                    (function () {
+                        maxGuestsTextInput.fadeOut(300);
+
+                    })();
+
+                    maxGuestsParent.on("change", function () {
+                        if (isLimited.is(':checked')) {
+                            maxGuestsTextInput.fadeIn(300);
+                        } else {
+                            maxGuestsTextInput.fadeOut(300);
+                        }
+                    });
+
+
+
+                    const profilePictureInput = $("#profilePicture");
+                    const displayFileText = $("#displayFileText");
+
+                    function getFileData(myFile) {
+                        const file = myFile.files[0];
+                        const filename = file.name;
+                        // document.getElementById('displayFileText').val = filename;
+                        displayFileText.text(filename);
+                    }
+                </script>
+                <script src="./js/scripts.js"></script>
+                <!-- <script src="./js/createEvent.js"></script> -->
 </body>
 
 </html>

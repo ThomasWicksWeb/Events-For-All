@@ -2,14 +2,23 @@
 
 //Start session and check logon status
 session_start();
+
 if (isset($_SESSION['loggedon'])) {
 	$loggedon = $_SESSION['loggedon'];
 }
 else {
-	$loggedon = FALSE;
+    $loggedon = FALSE;
+    
+}
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $userID = (int)$userID;
+}
+else {
+	$userID = NULL;
 }
 
-$mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+require './methods/databaseConnection.php'; 
 
 if ($mysqli->connection_error) {
     die("connection Failed: " . $mysqli->connection_error);
@@ -27,6 +36,9 @@ else {
 	header("Location: ./home.php");
 }
 
+if($userID == $userProfileID){
+    header("Location: ./myProfile.php");
+}
 
  // Query database for user profile
 
@@ -41,10 +53,40 @@ else {
        $viewedUserBio = $row["bio"];
        $viewedUserHobbies = $row["hobbies"];
        $viewedUserCity = $row["city"];
-       $viewedUSerState = $row["USstate"];
+       $viewedUserState = $row["USstate"];
    }
-
+   $viewedUserHobbiesArray = explode(",", $viewedUserHobbies);
  }
+
+ if (($loggedon) && ($userID != NULL)){
+    
+    // Query database to create user
+    $friendQuery = "SELECT friend1userID, friend2userID FROM Friendships WHERE friend1userID = '$userID' OR friend2userID = '$userID'";
+    $friendResult = $mysqli->query($friendQuery);
+    if ($friendResult->num_rows > 0) {
+     $i = 0;
+     $friendlist = array();
+    // output data of each row
+    while($row2 = $friendResult->fetch_assoc()) {
+       $friend1userID = $row2["friend1userID"]; 
+       $friend2userID = $row2["friend2userID"];
+       if ($friend1userID == $userID) {
+       $friendlist[$i] = $friend2userID;
+        }
+       else {
+       $friendlist[$i] = $friend1userID;
+       }
+       $i++;
+    }
+    foreach($friendlist as $friend) {
+        if ($userProfileID == $friend) {
+            $friendsAlready = TRUE;
+        }
+    }
+    }
+    
+    }
+ $mysqli->close();
 ?>
 
 
@@ -67,7 +109,7 @@ else {
     <meta property="og:description"
         content="Description" />
 
-    <title>Events For All</title>
+    <title>Profile | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -93,24 +135,28 @@ else {
             <div class="userProfileImg" style="background-image: url('./placeholder/eventPageBanner.jpg')"></div>
             <ul class="userProfileActionBar">
                 <?php echo "<li class='has-text-weight-bold is-size-3'>$viewedUserName</li>" ;?>
-                <li><a class="is-size-6 button is-primary" href="./addFriend.php/">Add Friend</a></li>
-                <?php echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; ?>
+                <?php if ((!$friendsAlready) && ($loggedon)) {
+                echo "<li><a id='AddFriend' class='is-size-6 button is-primary' href='./addFriend.php/'>Add Friend</a></li>";}?>
+                <?php if ($loggedon) {
+                    echo "<li><a class='is-size-6 button is-secondary' href='./sendMessage.php'>Message $viewedUserName</a></li>"; 
+                } ?>
             </ul>
             <?php if($viewedProfileImg)
-            echo "<img class='userProfileUserImg' src='./images/$viewedProfileImg.jpeg' alt=''>";
+            echo "<img class='userProfileUserImg' src='./images/$viewedUserName/$viewedProfileImg' alt=''>";
             else
             echo "<img class='userProfileUserImg' src='./images/ProfilePhotoWithLogo.png' alt=''>";
             ?>
             <div class="userProfileContentBody">
                 <div class="userProfileContentBodyShortBio">
                     <h3 class="is-size-4 has-text-weight-bold">Location</h3>
-                    <?php echo "<p class='is-size-6'>$viewedUserCity, $viewedUSerState</p>";?>
+                    <?php echo "<p class='is-size-6'>$viewedUserCity, $viewedUserState</p>";?>
                     <h3 class="is-size-4 has-text-weight-bold">Hobbies</h3>
                     <ul class="is-size-6">
-                        <li>Volleyball</li>
-                        <li>Gaming</li>
-                        <li>Soccer</li>
-                        <li>Dance</li>
+                        <?php 
+                        foreach($viewedUserHobbiesArray as $hobby){
+                            echo "<li>$hobby</li>";
+                        }
+                        ?>
                     </ul>
                     <h3 class="is-size-4 has-text-weight-bold">Subtitle</h3>
                     <p class="is-size-6">More information</p>
@@ -124,7 +170,21 @@ else {
     </section>
     <!-- </UserProfile> -->
   
-    
+    <div id="modal" class="modal ">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <h5 class="is-size-4 has-text-weight-bold">Add friend?</h5>
+            <p class="is-size-6">Are you sure you want to add this person as a friend??</p>
+            <form action="<?php echo htmlspecialchars("./methods/addFriend.php");?>" method="POST">
+                <div class="modal-button-cont">
+                    <button id="sendInvites" class="button is-info">Add Friend</button>
+                    <button id="cancelInvites" class="button is-danger">Cancel</button>
+                </div>
+             <?php echo "<input type='hidden' id='userID' name='addedFriendID' value='$userProfileID'>";?>
+            </form>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <!-- <script>
         var scroll = new SmoothScroll('a[href*="#"]', {
@@ -134,6 +194,44 @@ else {
         });
     </script> -->
 
+    <script>
+        const modalParent = $("#modal")
+        const AddFriend = $("#AddFriend");
+        const modalGreySpace = $(".modal-background");
+        const modalClose = $(".modal-close");
+        const modalCancel = $("#cancelInvites");
+        const sendInvites = $("#sendInvites");
+
+        const ToggleIsActive = () => {
+            document.querySelectorAll('#modal').forEach(e => e.classList.toggle('is-active'));
+        } 
+
+        AddFriend.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalGreySpace.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalClose.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        modalCancel.on("click", function(e){
+            e.preventDefault();
+            ToggleIsActive();
+        });
+
+        /*sendInvites.on("click", function(e){
+            e.preventDefault();
+            alert("Friend invite sent!");
+            ToggleIsActive();
+        });*/
+    </script>
     <script src="./js/scripts.js"></script>
 </body>
 

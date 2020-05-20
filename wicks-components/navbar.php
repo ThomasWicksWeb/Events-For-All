@@ -24,7 +24,7 @@ else {
 if (($loggedon) && ($userName != NULL) && ($userID != NULL)){
 
     // Connect to MySQL and the EventsForAll Database
-  $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll");
+  require './methods/databaseConnection.php';
   
   if ($mysqli->connection_error) {
       die("connection Failed: " . $mysqli->connection_error);
@@ -77,14 +77,15 @@ $mysqli->close();
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Categories</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item red">Sports & Fitness</a>
-                        <a class="navbar-item">Tech</a>
-                        <a class="navbar-item">Food & Drinks</a>
-                        <a class="navbar-item">Outdoors & Adventure</a>
-                        <a class="navbar-item">Photography</a>
-                        <a class="navbar-item">Music</a>
-                        <a class="navbar-item">Movies</a>
-                        <a class="navbar-item">Other</a>
+                        <a class="navbar-item red" href="./events.php?filter=0">Arts & Crafts</a>
+                        <a class="navbar-item" href="./events.php?filter=7">Sports & Fitness</a>
+                        <a class="navbar-item" href="./events.php?filter=8">Tech</a>
+                        <a class="navbar-item" href="./events.php?filter=1">Food & Drinks</a>
+                        <a class="navbar-item" href="./events.php?filter=4">Outdoors & Adventure</a>
+                        <a class="navbar-item" href="./events.php?filter=6">Photography</a>
+                        <a class="navbar-item" href="./events.php?filter=3">Music</a>
+                        <a class="navbar-item" href="./events.php?filter=2">Movies</a>
+                        <a class="navbar-item" href="./events.php?filter=9">Other</a>
                         <hr class="navbar-divider">
                         <a class="navbar-item">Report an issue</a>
                     </div>
@@ -96,7 +97,7 @@ $mysqli->close();
            <?php if ($loggedon) {  echo "<div class='navbar-item has-dropdown is-hoverable'>
                         <a class='navbar-link'>";
                         if ($userImg) {
-                           echo "<img src='./images/$userImg.jpeg' class='navBarProfilePicture' alt='User Profile Picture'>";
+                           echo "<img src='./images/$userName/$userImg' class='navBarProfilePicture' alt='User Profile Picture'>";
                         }
                         else{
                             echo "<img src='./images/ProfilePhotoWithLogo.png' class='navBarProfilePicture' alt='User Profile Picture'>";
@@ -108,7 +109,7 @@ $mysqli->close();
                             <a class='navbar-item' href='./myAccount.php'>My Account</a>
                             <a class='navbar-item' href='./friends.php'>Friends</a>
                             <a class='navbar-item' href='./messages.php'>Messages</a>
-                            <a class='navbar-item' href=''>My Events</a>
+                            <a class='navbar-item' href='./myEvents.php'>My Events</a>
                         </div>
                     </div> ";} ?>
                     <div class="navbar-item">

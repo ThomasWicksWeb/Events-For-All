@@ -43,7 +43,7 @@ else {
     <meta property="og:description"
         content="Description" />
 
-    <title>Events For All</title>
+    <title>Edit Account | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -143,6 +143,17 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
                     <div class='control has-icons-left'>
                         <input id='EditAccountInformationDOB' name='dob' autocomplete='off' class='input' required type='text'
                             value='$dob'>
+                        <span class='icon is-small is-left'>
+                            <i class='fas fa-user'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class='field'>
+                    <label class='label is-size-6'>Phone Number</label>
+                    <div class='control has-icons-left'>
+                        <input id='EditAccountInformationPhoneNumber' name='phone' class='input' required type='text'
+                            value='$phone'>
                         <span class='icon is-small is-left'>
                             <i class='fas fa-user'></i>
                         </span>

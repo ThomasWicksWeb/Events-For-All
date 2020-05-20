@@ -76,11 +76,15 @@ form {
   border-radius: 50%;
 }
 
+.navBarProfilePicture {
+  border-radius: 8px !important;
+}
+
 .singleEventBodyGridParent {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ActionsBar ActionsBar ActionsBar ActionsBar" "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
+      grid-template-areas: "SplashImg SplashImg SplashImg SplashImg" "ActionsBar ActionsBar ActionsBar ActionsBar" "ProfileImgAndEventInfo EventDesc EventDesc Atendees";
   grid-gap: 20px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -128,6 +132,10 @@ form {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.singleEventBodyGridProfileImgAndEventInfo ul li {
+  padding-left: 12px;
 }
 
 .singleEventBodyGridActionsBar {
@@ -185,7 +193,7 @@ form {
   display: -ms-grid;
   display: grid;
   width: 100%;
-      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+      grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole" "profileImg profileUserLink";
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
   -ms-grid-rows: min-content;
@@ -195,10 +203,11 @@ form {
 
 .antendeesListItem img {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: profileImg;
-  border-radius: 50%;
+  border-radius: 5px;
+  padding-left: 5px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -218,6 +227,17 @@ form {
   -ms-grid-column: 2;
   grid-area: profileUserRole;
   padding-top: 0px;
+}
+
+.antendeesListItem a {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: profileUserLink;
+  padding-top: 0px;
+}
+
+.viewAllAttendeesLink {
+  margin-left: 50px !important;
 }
 
 .userProfileParent {
@@ -260,7 +280,7 @@ form {
   justify-self: flex-start;
   max-width: 200px;
   margin-top: -150px;
-  border-radius: 50%;
+  border-radius: 15px;
   border: 2px solid white;
 }
 
@@ -313,6 +333,10 @@ form {
   display: flex;
   overflow-x: scroll;
   padding-bottom: 10px;
+}
+
+.homePageCategorySectionEventsList .box {
+  max-width: 250px;
 }
 
 .homePageCategorySectionEventsList li {
@@ -447,6 +471,10 @@ form {
           flex: 2;
 }
 
+#IndexNotification {
+  position: absolute;
+}
+
 .myFriendsGrid {
   display: -ms-grid;
   display: grid;
@@ -454,7 +482,7 @@ form {
   grid-gap: .5rem;
 }
 
-.myFriendsGrid img {
+.myFriendsGrid a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: img;
@@ -463,7 +491,12 @@ form {
       align-self: center;
   -ms-grid-column-align: center;
       justify-self: center;
-  border-radius: 50%;
+}
+
+.myFriendsGrid img {
+  border-radius: 5px;
+  max-height: 8rem;
+  max-width: 8rem;
 }
 
 .myFriendsGridTextCont {
@@ -483,6 +516,10 @@ form {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
+}
+
+.myFriendsGridTextCont > * {
+  margin-bottom: .5rem;
 }
 
 .myFriendsGridTextCont h4 {
@@ -523,6 +560,29 @@ form {
   margin-bottom: 2rem;
 }
 
+.EventsSearchForm {
+  width: 100%;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.EventsSearchForm:first-child {
+  -webkit-box-flex: 90 !important;
+      -ms-flex: 90 !important;
+          flex: 90 !important;
+}
+
+.EventsSearchForm:nth-child(2) {
+  -webkit-box-flex: 10 !important;
+      -ms-flex: 10 !important;
+          flex: 10 !important;
+}
+
+.EventsSearchForm button {
+  margin-left: 15px;
+}
+
 .panel-block {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -541,8 +601,8 @@ form {
 .ViewAllEventsGridParent {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 1rem;
 }
 
@@ -559,6 +619,11 @@ form {
 .ViewAllEventsGridParent li a {
   width: 100%;
   margin-top: auto;
+}
+
+.EventDateText {
+  margin-top: -18px;
+  margin-bottom: -12px;
 }
 
 .panel-block {
@@ -597,7 +662,47 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 2px solid rgba(51, 51, 51, 0.801);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.arrowIsFlipped {
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  -webkit-animation: rotateArrow .5s;
+          animation: rotateArrow .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes rotateArrow {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  50% {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+  }
+}
+
+@keyframes rotateArrow {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  50% {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+  }
 }
 
 .filtersList {
@@ -628,7 +733,6 @@ form {
 }
 
 .filters-panel-parents {
-  border: 2px solid rgba(51, 51, 51, 0.65);
   border-top: 0px solid transparent;
 }
 
@@ -717,6 +821,10 @@ form {
   max-width: 90%;
 }
 
+.helperMargin {
+  margin-top: 3rem;
+}
+
 .bannerTintDarker {
   width: 100%;
   height: 100%;
@@ -726,13 +834,122 @@ form {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal-content {
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  padding: .75rem;
+}
+
+.modal-button-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+
+.modal-button-cont button:nth-child(1) {
+  margin-right: .25rem;
+}
+
+.modal-button-cont button:nth-child(2) {
+  margin-left: .25rem;
+}
+
+.all-messages {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(1fr, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  grid-gap: 1.25rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.all-messages li {
+  border-bottom-left-radius: 15px;
+  padding-bottom: .5rem;
+  padding-left: .5rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.all-messages li:hover {
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.all-messages li a {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.all-messages li img {
+  border-radius: 50%;
+  max-height: 3.25rem;
+  max-width: 3.25rem;
+}
+
+.all-messages li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.all-messages li > * {
+  padding: 0px;
+}
+
+.all-messages li > * > * {
+  padding: 0px;
+}
+
+.createAccountUserUpload {
+  margin-bottom: 3rem;
+}
+
+#SendMessageInput {
+  width: 100% !important;
+}
+
+.SendMessageForm {
+  margin-top: 1.5rem;
+}
+
+.messages {
+  max-width: 80%;
+  margin: 0 auto 2rem auto !important;
+}
+
+.friendsMessages {
+  max-width: 80%;
+  margin-right: auto;
+}
+
+.myMessages {
+  max-width: 80%;
+  margin-left: auto;
+}
+
 /* ==========================================
 =============== MEDIA QUERIES ===============
 ========================================== */
 @media only screen and (max-width: 769px) {
   .singleEventBodyGridParent {
     width: 100%;
-        grid-template-areas: "SplashImg" "ProfileImgAndEventInfo" "ActionsBar" "EventDesc" "Atendees";
+        grid-template-areas: "SplashImg" "ProfileImgAndEventInfo" "ActionsBar" "EventDesc" "Atendees";
     grid-gap: 10px;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -770,7 +987,7 @@ form {
     display: -ms-grid;
     display: grid;
     width: 100%;
-        grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
+        grid-template-areas: "profileImg profileUserName" "profileImg profileUserRole";
     -ms-grid-columns: 1fr 3fr;
         grid-template-columns: 1fr 3fr;
     -ms-grid-rows: min-content;

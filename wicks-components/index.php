@@ -28,7 +28,7 @@ else {
     <meta property="og:title" content="Title" />
     <meta property="og:description" content="Description" />
 
-    <title>Events-For-All</title>
+    <title>Home | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -40,6 +40,8 @@ else {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <!-- <script src="./vendor/smoothScroll.js"></script> -->
+
+
 
 </head>
 
@@ -62,6 +64,12 @@ else {
                 </div>
                 <img id="LandingPageImg" src="" alt="Welcome!">
             </div>
+
+        </div>
+        <div id="IndexNotification" class="notification is-danger is-size-6 has-text-weight-bold">
+            <button class="delete"></button>
+            Hey there! Please note that because of the current COVID-19 pandemic, we ask that all
+                Events-4-All users <strong>please continue to follow social distancing guidelines as outlined by your local government.</strong> 
         </div>
     </section>
     <!-- </LandingPage -->
@@ -79,7 +87,13 @@ else {
     <script>
         // Set random background image on the landing page
         let imageNumberLandingPage = Math.floor((Math.random() * 5) + 1);
-        document.getElementById("LandingPageImg").src = `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
+        document.getElementById("LandingPageImg").src =
+            `./images/LandingPage/LandingPage-${imageNumberLandingPage}.svg`;
+
+
+        document.querySelector('.delete').addEventListener("click", () => {
+            document.querySelector('.delete').parentElement.remove();
+        })
     </script>
 </body>
 

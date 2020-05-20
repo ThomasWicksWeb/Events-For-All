@@ -28,7 +28,7 @@ else {
     <meta property="og:title" content="Title" />
     <meta property="og:description" content="Description" />
 
-    <title>Site Title</title>
+    <title>Create Account | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -48,14 +48,14 @@ else {
 <body>
 
     <!-- <Navbar File> -->
-<?php require './navbar.php'; ?>
+    <?php require './navbar.php'; ?>
 
 
     <!-- <CreateAccountForm -->
     <!-- TODO: Add left icons for username and DOB fields -->
     <section class="section">
         <div class="container">
-            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>">
+            <form class="form" method="POST" action="<?php echo htmlspecialchars("./methods/processAccount.php");?>" enctype="multipart/form-data">
                 <h2 class="is-size-2 has-text-weight-bold has-text-centered">Create an Account</h2>
 
                 <div class="flexTwoFields">
@@ -68,11 +68,12 @@ else {
                             </span>
                         </div>
                     </div>
-    
+
                     <div class="field">
                         <label id="LastnameInput" class="label is-size-6">Last Name</label>
                         <div class="control has-icons-left">
-                            <input id="LastName" class="input" required type="text" name="lastName" placeholder="Last Name">
+                            <input id="LastName" class="input" required type="text" name="lastName"
+                                placeholder="Last Name">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -106,8 +107,8 @@ else {
                     <div class="field">
                         <label class="label is-size-6">Email</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="EmailInput" name="email" required class="input" type="email"
-                                placeholder="Email" value="">
+                            <input id="EmailInput" name="email" required class="input" type="email" placeholder="Email"
+                                value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -169,6 +170,7 @@ else {
                     </div>
                 </div>
 
+
                 <h2 class="is-size-3 has-text-weight-bold has-text-centered">Location Information</h2>
 
                 <div class="flexTwoFields">
@@ -190,8 +192,8 @@ else {
                     <div class="field">
                         <label class="label is-size-6">City</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="cityInput" name="city" required class="input" type="text"
-                                placeholder="City" value="">
+                            <input id="cityInput" name="city" required class="input" type="text" placeholder="City"
+                                value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -204,26 +206,26 @@ else {
                 </div>
 
                 <div class="field">
-                        <label class="label is-size-6">State</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input id="StateInput" name="state" required class="input" type="text"
-                                placeholder="State" value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <!-- If we want icons on the righthand side of the input field, uncomment below -->
-                                <!-- <i class="fas fa-exclamation-triangle"></i> -->
-                            </span>
-                        </div>
+                    <label class="label is-size-6">State</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="StateInput" name="state" required class="input" type="text" placeholder="State"
+                            value="">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <!-- If we want icons on the righthand side of the input field, uncomment below -->
+                            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+                        </span>
                     </div>
+                </div>
 
                 <div class="flexTwoFields">
                     <div class="field">
                         <label class="label is-size-6">ZIP Code</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input id="ZipInput" name="zip" required class="input" type="text"
-                                placeholder="ZIP Code" value="">
+                            <input id="ZipInput" name="zip" required class="input" type="text" placeholder="ZIP Code"
+                                value="">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -236,7 +238,7 @@ else {
 
                     <div class="field">
                         <label class="label is-size-6">Phone Number <span
-                            class="has-text-grey has-text-weight-normal">111 222 3333</span></label>
+                                class="has-text-grey has-text-weight-normal">111 222 3333</span></label>
                         <div class="control has-icons-left has-icons-right">
                             <input id="PhoneNumberInput" name="phone" required class="input" type="text"
                                 placeholder="Phone Number" value="">
@@ -249,7 +251,23 @@ else {
                             </span>
                         </div>
                     </div>
+                </div>
 
+                <hr />
+
+                <h2 class="is-size-3 has-text-weight-bold has-text-centered">User Image</h2>
+                <div class='file has-name createAccountUserUpload'>
+                    <label class='file-label'>
+                        <input id='profilePicture' class='file-input' type='file' name='profileImg'
+                            onchange="getFileData(this)">
+                        <span class='file-cta'>
+                            <span class='file-icon'>
+                                <i class='fas fa-upload'></i>
+                            </span>
+                            <span class='file-label'>Choose a file…</span>
+                        </span>
+                        <span id="displayFileText" class='file-name'>Filename</span>
+                    </label>
                 </div>
 
 
@@ -290,9 +308,21 @@ else {
         // IIFEs assigning DatePickers to input fields
         // *******************************************
 
-        (function(){
-            $("#AccountCreationDOB").datepicker({ dateFormat: 'yy/mm/dd' });
+        (function () {
+            $("#AccountCreationDOB").datepicker({
+                dateFormat: 'yy/mm/dd'
+            });
         })();
+
+        const profilePictureInput = $("#profilePicture");
+        const displayFileText = $("#displayFileText");
+
+        function getFileData(myFile) {
+            const file = myFile.files[0];
+            const filename = file.name;
+            // document.getElementById('displayFileText').val = filename;
+            displayFileText.text(filename);
+        }
 
     </script>
     <script src="./js/scripts.js"></script>

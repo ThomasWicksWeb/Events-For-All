@@ -45,7 +45,7 @@ else {
     <meta property="og:description"
         content="Description" />
 
-    <title>Events For All</title>
+    <title>My Account | Events-4-All</title>
 
     <link rel="icon" href="./images/heyHand.png">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|PT+Serif:700i&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@ else {
 
 if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
     // Connect to MySQL and the EventsForAll Database
-    $mysqli = new mysqli("localhost", "TestAdmin", "testadmin1", "EventsForAll"); 
+    require './methods/databaseConnection.php';
     
     
     if ($mysqli->connection_error) {
@@ -99,8 +99,8 @@ if (($loggedon) && ($userID !== NULL) && ($userName !== NULL)) {
             $dob = $row["dateOfBirth"];
        }
             $areaCode = substr($phone, 0, 3);
-            $localCode = substr($phone, 4, 3);
-            $userCode = substr($phone, 7);
+            $localCode = substr($phone, 3, 3);
+            $userCode = substr($phone, 6);
 
    $mysqli->close();         
 
