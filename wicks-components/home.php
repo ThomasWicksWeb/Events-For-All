@@ -79,7 +79,9 @@ else {
             </div>
             <h2 class="is-size-1 has-text-weight-bold has-text-centered">Check Out Some Events</h2>
             <div class="homePageCategorySection">
+              
                 <h2 class="is-size-2 has-text-weight-bold">Upcoming soon...</h2>
+
                 <ul class="homePageCategorySectionEventsList">
                     <?php 
                         // Connect to MySQL and the EventsForAll Database
@@ -121,6 +123,8 @@ else {
             </div>
         </div>
     </section>
+ 
+	
     <!-- </HomePage> -->
 
 
